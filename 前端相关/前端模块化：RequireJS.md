@@ -35,8 +35,6 @@ factory，函数或对象，必选参数。
 
 RequireJS是一个JS的文件和模块加载器。专门为浏览器优化，同时也支持其他JS环境。
 
-### Require的优点
-
 
 ### 使用RequireJS 
 
