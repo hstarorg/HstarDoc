@@ -109,29 +109,34 @@ NPM能够自己升级自己，使用命令如下： ``npm install npm -g``
 	npm update <packageName> [packageName2...] --save-dev
 	npm update <packageName> [packageName2...] --save
 
-#### 2.5、config：用于配置npm
+#### 2.5、config：用于设置npm参数
 
+	//设置指定参数
+	npm config set <key> <value> [--global]
+	npm set <key> <value> [--global] //可以省略config
+	//获取现有参数值
+	npm config get <key>
+	npm get <key> //可以省略config
+	//删除指定参数，此时参数值会变为默认值
+	npm config delete <key>
+	//查看npm信息；注意：此命令不是查看所有参数配置
+	npm config list
+	//编辑全量的npm配置文件（.npmrc）
+	npm config edit
+	//可以将config使用c代替，执行以上所有命令
+	npm c [set|get|delete|list]
 
+#### 2.6、cache：管理包缓存
 
-### #其他命令
----
-#### 2.5、version
+	//将指定的包加入npm缓存
+	npm cache add <tarball file>
+	npm cache add <folder>
+	npm cache add <tarball url>
+	npm cache add <name>@<version>
+	//查看现有的npm包缓存，如果加上path参数，则查看该路径下的文件
+	npm cache ls [<path>] 
+	eg: npm cache ls gulp
+	//清空缓存。如果加上path，则清理指定路径下的包缓存
+	npm cache clean [<path>]
+	eg: npm cache clean gulp
 
-	npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease]
-
-	//查看项目相关信息
-	npm version
-	npm version major
-
-#### 2.6、adduser
-
-	/*
-	 * npm adduser [--registry=url] [--scope=@orgname] [--always-auth]
-	 */
-	
-	npm adduser //添加用户向导
-	npm adduser --registry=http://registry/npmjs.org  //在指定仓库添加用户
-	npm --scope=@jay //指定组织名称
-	npm --always-auth //总是验证权限
-		
-#### 2.7、
