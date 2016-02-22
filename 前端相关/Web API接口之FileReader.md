@@ -72,3 +72,33 @@ JS:
 
 1. [MDN - Blob](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob)
 2. [MDN - FileReader](https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader)
+
+## 6、后续补充
+
+### 2016-2-17日追加
+
+FileReader的API方法readAsBinaryString在IE11中无法使用，为了兼容IE11，我们需要使用另外的API或者使用猴子补丁的方式实现该API。
+
+参考[http://stackoverflow.com/questions/31391207/javascript-readasbinarystring-function-on-e11](http://stackoverflow.com/questions/31391207/javascript-readasbinarystring-function-on-e11)
+
+补丁代码如下：
+
+```javascript
+if(!FileReader.prototype.readAsBinaryString){
+   FileReader.prototype.readAsBinaryString = function (blob) {
+     var binary = '';
+     var self = this;
+     var reader = new FileReader();
+     reader.onload = function(e){
+       var bytes = new Uint8Array(reader.result); 
+       var length = bytes.byteLength;
+       for (var i = 0; i < length; i++) {
+         binary += String.fromCharCode(bytes[i]);
+       }
+       self.result = binary;
+       $(pt).trigger('onload');
+     };
+     reader.readAsArrayBuffer(blob);
+   }
+}
+```
