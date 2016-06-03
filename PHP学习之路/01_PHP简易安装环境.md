@@ -78,9 +78,9 @@ PHP自带有一个命令行的Server，用于开发测试已经足够使用了�
 
 ## 3、Other
 
-推荐资料： [PHP之道](http://laravel-china.github.io/php-the-right-way/)
+3.1、推荐资料： [PHP之道](http://laravel-china.github.io/php-the-right-way/)
 
-PHP的编码问题，一般在php的页面上，我们都需要设置：
+3.2、PHP的编码问题，一般在php的页面上，我们都需要设置：
 
 ```php
 <?php
@@ -93,4 +93,38 @@ PHP的编码问题，一般在php的页面上，我们都需要设置：
 要想用Server运行含有该代码的PHP页面。需要特别配置一下 ``php.ini`` 文件。
 
 在PHP的解压目录，找到 ``php.ini-development``，复制一份为 ``php.ini``，然后找到 ``extension_dir``，设置为：``extension_dir = "你的PHP解压目录\ext"``，然后找到 ``;extension=php_mbstring.dll`` 去掉前面的注释。
+
+3.3、PHP框架推荐
+
+* Yaf 官方框架，超高性能
+
+http://www.laruence.com/manual/index.html
+
+http://php.net/manual/zh/yaf.installation.php
+
+* LazyPHP 超级简单的框架，建议读源码
+
+https://github.com/easychen/LazyPHP
+
+* Slim 据说还不错
+
+http://www.slimframework.com/
+
+* Laravel 高人气框架
+
+https://laravel.com/
+
+https://lumen.laravel.com/  专注API开发的PHP。
+
+* ThinkPHP 中文
+
+http://www.thinkphp.cn/
+
+* InitPHP (A PHP Framework) - (from github)
+
+http://www.initphp.com/
+
+* TinyMVC (from github)
+
+https://github.com/mohrt/tinymvc-php
 
