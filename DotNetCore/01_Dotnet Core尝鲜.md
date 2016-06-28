@@ -170,11 +170,24 @@ namespace WebApplication
 
 由于时间环境关系，没有进行更复杂测试，但我想在高并发下，Node的机制可能会有更高的性能。在大量IO操作处理中，``Dotnet Core``会有绝对的优势【后续可验证】。
 
-### 2.2 后续
+### 2.2、如何直接运行Dotnet Core程序？
+
+在开发模式下，我们通过 ``dotnet run`` 来运行程序，那我们如何来运行发布好的程序呢？
+
+首先，我们可以通过 ``dotnet publish`` 来生成好我们的应用程序（在Windows下生成的是dll，其他平台未测试）。
+
+在发布模式，我们的程序所依赖的包，也会被一同发布到目录下，我们可以在 ``/appRoot/bin/Debug/netcoreapp1.0/publish`` 中找到我们发布好的文件。
+
+此时，我们就可以将publish目录拷贝到其他电脑运行了。
+
+由于发布好的文件入口点是 ``.dll`` 文件，我们要运行它的话，需要通过 ``dotnet xxx.dll`` 来进行启动。
+
+**注意：在publish的时候，我们可以使用参数``dotnet publish -c Release`` 生成Release版本的发布包，目录对应变更为 ``bin/Release/``**
+
+**注意2：请不要删除publish目录下的文件，否则可能导致无法运行。经测试，<appName>.deps.json 和 <appName>.pdb可以删除，但依赖和 <appName>.runtimeconfig.json是绝对不能删除的。**
+
+### 2.3 后续
 
 此文为 ``Dotnet Core`` 系列第一篇，后续计划将Web开发所需要用到的一些基本知识点，库等均在 ``Dotnet Core`` 调试通，且成文。
 
 **加油，``Dotnet!``**
-
-
-
