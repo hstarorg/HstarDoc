@@ -151,7 +151,7 @@ namespace WebApplication
         {
             app.Run((context) => 
             {
-                return context.Response.WriteAsync("Hello, Form Core.");
+                return context.Response.WriteAsync("Hello, From Core.");
             });
         }
     }
@@ -191,3 +191,37 @@ namespace WebApplication
 此文为 ``Dotnet Core`` 系列第一篇，后续计划将Web开发所需要用到的一些基本知识点，库等均在 ``Dotnet Core`` 调试通，且成文。
 
 **加油，``Dotnet!``**
+
+---
+
+---
+**【6.30号更新】**
+
+### 2.4、如何创建web项目
+
+在 1.3 中，我们知道如何把一个Console App 改造为一个Web项目，但这对应开发一个Web应用来说还不够。
+
+其实，``dotnet new`` 可以默认创建 Web 项目开发模板。
+
+通过 ``dotnet new -t --help`` 我们可以看到 ``dotnet new`` 能帮我们创建的项目类型有如下四种：
+
+1. Console
+2. Web
+3. Lib
+4. xunittest
+
+我们可以直接通过 ``dotnet new -t Web`` 来创建一个 Web 项目模板，简单快捷。
+
+### 2.5、如果在Linux下发布（CentOS7）
+
+``Dotnet Core`` 开发的程序，具有跨平台能力，那如何在非Windows上发布呢？各大操作系统方式并不同。
+
+在CentOS7（仅支持7+）上发布非常简单。
+
+首先是在CentOS7上安装 ``Dotnet Core``，不知道如何安装？请查阅 [https://www.microsoft.com/net/core#centos](https://www.microsoft.com/net/core#centos) 。
+
+安装好之后，只需要在Windows把开发好的程序，通过 ``dotnet publish`` 生成发布目录，然后将该目录拷贝到CentOS上即可。
+
+最后，在CentOS上执行 ``dotnet xxx.dll`` 即可运行项目了。
+
+**注意： xxx.dll是你开发的项目的主程序**
