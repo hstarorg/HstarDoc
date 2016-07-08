@@ -1,3 +1,8 @@
+<style>
+.markdown-body pre[lang="answer"]{
+  color: white;
+}
+</style>
 ## 0、导言
 
 JavaScript超乎寻常的灵活性，让JavaScript可以有很多特殊的用法，让我们来领略一下它们的风采吧。
