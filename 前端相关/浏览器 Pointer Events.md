@@ -1,8 +1,8 @@
-##前言
+## 前言
 
 Pointer Events是一套触控输入处理规格，支持Pointer Events的浏览器包括了IE和Firefox，最近Chrome也宣布即将支持该处理规则。
 
-##PointerEvent
+## PointerEvent
 
 ``PointEvent``对象继承自``MouseEvent``，使用上也比较类似。
 
