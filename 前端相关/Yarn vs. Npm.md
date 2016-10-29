@@ -54,7 +54,7 @@ npm init -f/--force  =>  yarn init -y/--yes
 
 ### 2.2、``yarn install``
 
-``yarn install`` 该命令和 ``npm install `` 一样，用于根据 `package.json` 来初始化项目依赖。
+``yarn install`` 该命令和 ``npm install `` 一样，用于根据 ``package.json`` 来初始化项目依赖。
 
 和 ``npm`` 对比如下：
 
@@ -125,7 +125,7 @@ npm install <package> -g/--global  => yarn global add <package>
 当 ``remove`` 一个包时，它会同时更新 ``package.json`` 中对它的所有引用。
 
 ```bash
-yarn remove <package> = npm uninstall <package> --save && --save-dev && save-exact && save-optional
+yarn remove <package> = npm uninstall <package> --save | --save-dev | save-exact | save-optional
 ```
 
 和 ``yarn add`` 类似，如果要移除全局安装包，需要用 ``yarn global remove <package>``
@@ -144,7 +144,7 @@ yarn remove <package> = npm uninstall <package> --save && --save-dev && save-exa
 
 用于更新自身，如果是 ``npm``，则是： ``npm install -g npm``
 
-### 3.3、``yarn outdated`` 
+### 3.3、``yarn outdated``
 
 检查依赖版本情况，类似 ``npm outdated``
 
