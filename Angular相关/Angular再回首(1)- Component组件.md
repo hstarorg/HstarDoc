@@ -44,7 +44,7 @@
 生命周期如下：
 
 1. $onInit  -- 指令初始化时执行（放置初始化代码）
-2. $onChange(changeObj)  -- 组件数据变化时执行，并可获取变更对象
+2. $onChanges(changesObj)  -- 组件数据变化时执行，并可获取变更对象
 3. $doCheck() -- 执行变更检测时执行
 4. $onDestroy() -- 组件释放时执行（放置清理代码）
 5. $postLink() -- 类似后连接函数 （一般放置dom操作，因为此时组件已经渲染好）
@@ -61,8 +61,8 @@
       console.log('init');
     }
 
-    $onChange(changeObj) {
-      console.log('change', changeObj);
+    $onChanges(changesObj)
+      console.log('change', changesObj);
     }
 
     $doCheck() {
