@@ -163,6 +163,10 @@ mongodb://user1:password1@127.0.0.1:27017/testdb
 mongodb://user1:password1@127.0.0.1:27017/testdb/?authSource=admin
 ```
 
+如果是 `shell`，则需要先执行 `db.auth('name', 'pwd')`，之后才能执行其他命令。
+
 # 0x3、总结
 
-在使用 `MongoDB` 等诸如此类的 `DB` 时，一定要牢记安全风险，尽量做到不给外人留下明显漏洞。
+加强安全意识，人为预防常规安全风险。
+
+<time>2017-1-21 16:09:48</time>
