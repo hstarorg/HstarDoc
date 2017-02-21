@@ -5,7 +5,7 @@
 	  //do something...
 	}]);
 
-2、在页面中需要绑定有风险的html的时候，可以使用ng-bind-html="html"（version>=1.3）,如果遇到错误，控制器中可以使用`html = $sce.trustHtml(unsafeHtml)`。
+2、在页面中需要绑定有风险的html的时候，可以使用 `ng-bind-html="html"（version>=1.3）`,如果遇到错误，控制器中可以使用`html = $sce.trustHtml(unsafeHtml)`。
 
 3、 如何动态的向页面添加带指令的HTML？通入如下代码：
 
@@ -41,32 +41,42 @@
 	<select ng-options="sysOptions" ng-model="selectSystem"></select>
 	//如上HTML代码，如果sysOptions来自ajax请求，而selectSystem又不是的话，往往会选中一个空值。
 	//可以使用如下方式避免：
-	
+
+```javascript
 	.controller('TestCtrl', ['$scope', '$http', function($scope, $http){
-	  $http.get(...).success(function(data){
+	  $http.get(url).success(function(data){
 	    $scope.sysOptions = data;
 	    //在异步回调函数中，对ng-model赋值。
 	    $scope.selectSystem = 'Test';
 	  });
 	}]);
+```
 
-7、在编写指令时，属性的匹配大小写需要注意：如果在html中使用showName="xx",那么在指令的iAttrs中，应该使用showname获取。如果要在指令中使用showName获取的话，那么必须在html中使用show-name="xx"。
+7、在编写指令时，属性的匹配大小写需要注意：如果在html中使用 `showName="xx"`,那么在指令的iAttrs中，应该使用 `showname` 获取。如果要在指令中使用showName获取的话，那么必须在html中使用 `show-name="xx"`。
 
-8、要想让ng-href="{{true: 'javascript:void(0);' : 'url'}}" 生成 href="javascript:void(0);"时，需要修改配置，代码如下：
+8、要生成安全链接时，需要修改配置，代码如下：
 
-	.config(['$compileProvider', function($compileProvider){
-	    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/)
-	}]);
+```javascript
+需要将如下代码： ng-href="{{true: 'javascript:void(0);' : 'url'}}" 
+生成为： href="javascript:void(0);"
+```
+
+```javascript
+.config(['$compileProvider', function($compileProvider){
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/)
+}]);
+```
 
 9、在ng-click等ng事件中，如果拿到事件源对象？如下：
 
-	<a ng-click="click($event);" />
-	
-	$scope.click = function($event){
-	  var target = $event.target;
-	};
-	
-	//注意，如果使用ng-click="click($event.target)"，将会导致angular解析错误。
+```javascript
+<a ng-click="click($event);" />
+
+$scope.click = function($event){
+  var target = $event.target;
+};
+//注意，如果使用ng-click="click($event.target)"，将会导致angular解析错误。
+```	
 
 10、判断angular的模块是否存在，可以使用如下代码：
 
