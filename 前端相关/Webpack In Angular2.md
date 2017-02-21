@@ -233,10 +233,6 @@ plugins: [
 
 至此，我们已经将Angular2和Webpack结合起来使用了。
 
+### 1.5、使用webpack-dev-server
 
-
-
-
-
-
-
+每次都在 ``dist/`` 目录下，通过 ``anywhere`` 来打开，并不方便。我们可以通过 ``webpack-dev-server`` 插件实现静态服务器。
