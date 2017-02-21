@@ -1,3 +1,8 @@
+---
+title: 01_Angular2初体验
+date: 2017/02/21 14:47:10
+---
+
 ## 0、关于Angular2
 
 Angualr2是前端最流行的MV*框架AngularJS的革命性更新版本，官网：[https://angular.io/](https://angular.io/)，号称一个框架统一移动版和桌面。

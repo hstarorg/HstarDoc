@@ -1,3 +1,8 @@
+---
+title: Webpack初体验
+date: 2017/02/21 14:47:11
+---
+
 ## 0、关于webpack
 
 Webpack是灵活的、可扩展的、开源的模块打包工具。[https://webpack.github.io/](https://webpack.github.io/)。

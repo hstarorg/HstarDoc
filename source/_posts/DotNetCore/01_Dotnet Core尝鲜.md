@@ -1,3 +1,8 @@
+---
+title: 01_Dotnet Core尝鲜
+date: 2017/02/21 14:47:10
+---
+
 # 0、About Dotnet Core
 
 `Dotnet Core` 是新一代的 `.Net Framework`，是一个具有跨平台能力的应用程序开发框架。它本身是由多个子项目组成的。包括 ``Core Fx``、``Core CLR``、``.Net Compiler Platform`` 等等。

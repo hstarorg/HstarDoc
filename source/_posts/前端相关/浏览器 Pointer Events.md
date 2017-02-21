@@ -1,3 +1,8 @@
+---
+title: 浏览器 Pointer Events
+date: 2017/02/21 14:47:11
+---
+
 ## 前言
 
 Pointer Events是一套触控输入处理规格，支持Pointer Events的浏览器包括了IE和Firefox，最近Chrome也宣布即将支持该处理规则。

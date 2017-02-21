@@ -1,3 +1,8 @@
+---
+title: ES6入门系列四（测试题分析）
+date: 2017/02/21 14:47:10
+---
+
 ## 0、导言
 
 ES6中新增了不少的新特性，来点测试题热热身。具体题目来源请看：[http://perfectionkills.com/javascript-quiz-es6/](http://perfectionkills.com/javascript-quiz-es6/)。

@@ -1,3 +1,8 @@
+---
+title: Webpack In Angular2
+date: 2017/02/21 14:47:11
+---
+
 ## 0、前言
 
 当下Angular2是比较值得关注的技术了，想要把Angular2跑起来，还是比较容易的。但

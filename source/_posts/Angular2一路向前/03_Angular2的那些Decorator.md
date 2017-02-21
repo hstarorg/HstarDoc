@@ -1,3 +1,8 @@
+---
+title: 03_Angular2的那些Decorator
+date: 2017/02/21 14:47:10
+---
+
 ## 0、Decorator
 
 ``Decorator`` 是ECMAScript中建议的标准，使得我们可以在设计时对类和属性进行注解和修改。

@@ -1,3 +1,8 @@
+---
+title: 07_Angular2使用路由
+date: 2017/02/21 14:47:10
+---
+
 ## 0、关于路由
 
 此处所说的路由是指URL路由（也许叫URL Rewrite）。其实是把网址（URL）映射到相关Controller、Component的这个功能。

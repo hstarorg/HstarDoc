@@ -1,3 +1,8 @@
+---
+title: CORS详解
+date: 2017/02/21 14:47:11
+---
+
 ## 0、关于CORS
 
 说到CORS，就不得不先了解跨站HTTP请求（Cross-site HTTP request）。
