@@ -1,11 +1,12 @@
-## 0、导言
+# 0、导言
 
-最近从coffee切换到js，代码量一下子变大了不少，也多了些许陌生感。为了在JS代码中，更合理的使用ES6的新特性，特在此对ES6的特性做一个简单的总览。
+最近从coffee切换到js，代码量一下子变大了不少，也多了些许陌生感。
 
+为了在JS代码中，更合理的使用ES6的新特性，特在此对ES6的特性做一个简单的总览。
 
-## 1、模块（Module) (Chrome测试不可用)
+# 1、模块(Module - Chrome测试不可用)
 
-在ES6中，有class的概念，不过这只是语法糖，并没有解决模块化问题。Module功能则是为了解决模块化问题而提出的。
+>在ES6中，有class的概念，不过这只是语法糖，并没有解决模块化问题。Module功能则是为了解决模块化问题而提出的。
 
 我们可以使用如下方式定义模块：
 
@@ -30,7 +31,7 @@ app.js文件内容
 	console.log(PI);
 
 
-## 2、模块加载器（Module Loaders） (Chrome测试不可用)
+# 2、模块加载器(Module Loaders - Chrome测试不可用)
 
 既然用了定义module的规范，那么也就需要一个模块加载器，需要支持如下内容：
 
@@ -40,13 +41,14 @@ app.js文件内容
 4. 编译钩子
 5. 嵌套虚拟化
 
----
-	System.import('11_lib').then(function(m) {
-	  console.log(m.calcCircularArea(2));
-	  console.log(m.PI);
-	});
+```javascript
+System.import('11_lib').then(function(m) {
+  console.log(m.calcCircularArea(2));
+  console.log(m.PI);
+});
+```
 
-## 3、图 + 集合 + 弱引用图 + 若引用集合(Map + Set + WeakMap + WeakSet)
+# 3、图 + 集合 + 弱引用图 + 若引用集合(Map + Set + WeakMap + WeakSet)
 
 在ES6中，新增了几种数据结构。
 
@@ -78,11 +80,11 @@ app.js文件内容
 **WeakSet**和Set也是比较类型的，和Set有两个区别，一个是成员只能是对象；二个是WeakSet是不可遍历的。
 
 
-## 4、代理（Proxies） (Chrome测试不可用)
+# 4、代理（Proxies） (Chrome测试不可用)
 
 代理允许用宿主的行为来创建对象，能够实现拦截，对象的虚拟化，日志和分析等功能。
 
-## 5、数据类型Symbols
+# 5、数据类型Symbols
 
 在ES5中，JS只有6中原始类型，在ES6中，新增了Symbols类型，成为了JS中的第7种原始类型。
 该类型表示独一无二的值。使用如下：
@@ -106,7 +108,7 @@ Symbol不能与其他类型值进行运算，但是可以显式转换为字符�
 	  [key]: 'abc'
 	};
 
-## 6、可以子类化的内置对象
+# 6、可以子类化的内置对象
 
 在ES6中，我们可以自定义类型来继承内置对象，这个时候，如果要自定义构造函数，必须要在构造函数中调用super(),来呼叫父类的构造。
 
@@ -122,7 +124,7 @@ Symbol不能与其他类型值进行运算，但是可以显式转换为字符�
 	arr[1] = 12;
 	console.log(arr.length === 2);
 
-## 7、新增的API（Math + Number + String + Array + Object APIs）
+# 7、新增的API（Math + Number + String + Array + Object APIs）
 
 如下代码，一目了然：
 
@@ -154,7 +156,7 @@ Symbol不能与其他类型值进行运算，但是可以显式转换为字符�
 	//对象api
 	Object.assign(Point, { origin: new Point(0,0) })
 
-## 8、二进制和八进制字面量（Binary and Octal Literals）
+# 8、二进制和八进制字面量（Binary and Octal Literals）
 
 直接上示例：
 
@@ -164,7 +166,7 @@ Symbol不能与其他类型值进行运算，但是可以显式转换为字符�
 	var n2 = 0o12345; //0o前缀，表示八进制字面量
 	console.log(n2);
 
-## 9、承诺（Promises）
+# 9、承诺（Promises）
 
 **Promise**是ES6中新增的异步编程库。
 
@@ -187,7 +189,7 @@ Symbol不能与其他类型值进行运算，但是可以显式转换为字符�
 	});
 
 
-## 10、参考资料
+# 10、参考资料
 
 1、ECMAScript 6 features [https://github.com/lukehoban/es6features](https://github.com/lukehoban/es6features)
 
