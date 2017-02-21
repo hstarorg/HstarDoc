@@ -1,3 +1,8 @@
+---
+title: Angular再回首(1)-Component组件
+date: 2017/02/21 14:47:10
+---
+
 ## 0、再谈组件
 
 ``Component(组件)`` 在 ``Angular1`` 就已经有雏形了，那就是指令。在 ``Angular2`` 中，组件的概念被大大的强化，甚至是Angular2的核心概念。

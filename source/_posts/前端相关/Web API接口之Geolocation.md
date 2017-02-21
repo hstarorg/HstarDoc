@@ -1,3 +1,8 @@
+---
+title: Web API接口之Geolocation
+date: 2017/02/21 14:47:11
+---
+
 ## 0、关于Geolocation
 
 Geolocation，地理位置API。用于获取用户的位置信息。它不算是现有的HTML5标准的“直系”成员，但是是W3C的一个标准。它几乎就是一个真正的JavaScript API！

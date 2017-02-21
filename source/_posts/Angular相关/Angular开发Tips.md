@@ -1,3 +1,8 @@
+---
+title: Angular开发Tips
+date: 2017/02/21 14:47:10
+---
+
 1、在使用$routeProvider的时候，需要让模块依赖ngRoute，否则会提示找不到服务，示例：
 
 	angular.module('module1', ['ngRoute'])

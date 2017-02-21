@@ -1,3 +1,8 @@
+---
+title: JavaScript之糟粕
+date: 2017/02/21 14:47:10
+---
+
 ## 0、导言
 
 在上篇《JavaScript之毒瘤》中，列举了一些在JavaScript中难以避免的问题特性。本篇将会展示JavaScript中有问题的特性，但我们很容易就能便面它们。通过这些简单的做法，让JavaScript称为一门更好的语言。

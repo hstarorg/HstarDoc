@@ -1,3 +1,8 @@
+---
+title: VsCode简易配置手册
+date: 2017/02/21 14:47:11
+---
+
 ## 0、什么是VsCode（Visual Studio Code - vsc）
 
 VsCode是MS基于Atom Shell开发的新一代 ***跨平台*** 编辑器。vsc将简洁和"编码-编辑-调试"循环的流水线特点结合在代码编辑器中。

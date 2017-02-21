@@ -1,3 +1,8 @@
+---
+title: TypeScript配置文件tsconfig简析
+date: 2017/02/21 14:47:11
+---
+
 ## 0、前言
 
 在使用VsCode编写TypeScript时，VsCode提供了一个tsconfig.json辅助我们设置TypeScript的配置项，另外使用gulp-typescript或者是webpack编译ts文件时，都可以用到这个配置项来确定如何生成最终的js文件。

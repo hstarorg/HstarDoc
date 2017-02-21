@@ -1,3 +1,8 @@
+---
+title: Web API接口之FileReader
+date: 2017/02/21 14:47:11
+---
+
 ## 0、导言
 
 在给网站编写 JavaScript 代码时，也有很多可用的 API。 [WEB API 参考](https://developer.mozilla.org/zh-CN/docs/Web/API)。

@@ -1,3 +1,8 @@
+---
+title: NPM使用详解（上）
+date: 2017/02/21 14:47:10
+---
+
 ## 1、NPM是什么？
 
 NPM是JavaScript的包管理工具，在安装NodeJS（什么？你不知道node？来，我们合计合计：[https://nodejs.org/](https://nodejs.org/)）的时候,会自动安装上npm。

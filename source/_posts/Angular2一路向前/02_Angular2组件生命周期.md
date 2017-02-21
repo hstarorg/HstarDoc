@@ -1,3 +1,8 @@
+---
+title: 02_Angular2组件生命周期
+date: 2017/02/21 14:47:10
+---
+
 ## 0、Angular2 组件
 
 Angular1并不是围绕组件的概念来实现的。所以，我们需要controller、$scope，同时也需要封装自定义指令。

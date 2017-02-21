@@ -1,3 +1,8 @@
+---
+title: Google JavaScript Style Guide（上）
+date: 2017/02/21 14:47:11
+---
+
 ## 引言
 
 JavaScript是一套灵活的语言，所以我们可以用各种风格来编写代码。但为了更好的编写JavaScript代码，有些共同的规范是需要我们去遵循的。以下是Google提供的JavaScript代码风格指南，值得我们学习。

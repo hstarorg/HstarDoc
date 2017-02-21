@@ -1,3 +1,8 @@
+---
+title: 05_Angular2组件简析
+date: 2017/02/21 14:47:10
+---
+
 ## 0、Angular2组件
 
 **注：由于Angular2的API好不够稳定，书写该文时，采用的是Angular2 rc1（@angular rc.1）版本，其他版本请自行测试。**

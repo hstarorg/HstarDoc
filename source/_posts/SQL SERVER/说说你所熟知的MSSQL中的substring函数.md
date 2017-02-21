@@ -1,3 +1,8 @@
+---
+title: 说说你所熟知的MSSQL中的substring函数
+date: 2017/02/21 14:47:10
+---
+
 说说你所熟知的MSSQL中的substring函数
 
 ###函数签名：

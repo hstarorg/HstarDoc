@@ -1,3 +1,8 @@
+---
+title: 04_Angular2指令简析
+date: 2017/02/21 14:47:10
+---
+
 ## 0、Angular2指令
 
 在Angular1中，就已经有了指令的概念。Angular1中的指令用于实现可复用UI部件，也用于操作dom元素。

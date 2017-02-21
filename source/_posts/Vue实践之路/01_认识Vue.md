@@ -1,3 +1,8 @@
+---
+title: 01_认识Vue
+date: 2017/02/21 14:47:10
+---
+
 # 0、关于Vue
 
 [Vue](https://vuejs.org.cn/) 是当前非常流行的一款前端 MV* 库（国人开发），结合 vue-router, vue-resource, vuex 等等，就形成了一套比较完善的前端 MV* 开发框架。

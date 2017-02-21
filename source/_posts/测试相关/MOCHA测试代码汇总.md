@@ -1,3 +1,8 @@
+---
+title: MOCHA测试代码汇总
+date: 2017/02/21 14:47:11
+---
+
 # 0x0、导言
 
 Mocha是应用最广泛的JS测试框架，但是现在，它的维护者公开说，Mocha快死了，[原文Twitter地址](https://twitter.com/b0neskull/status/820848476393091072)。
