@@ -1,3 +1,8 @@
+---
+title: Angular：指令、Controller数据共享
+date: 2015/3/13 11:24:39
+---
+
 ## 1、Directive与Controller数据共享
 
 在指令中，不仅仅需要指令配置信息，很多时候也需要获取$scope的相关数据。那么，如何在指令中拿到$scope的数据呢？

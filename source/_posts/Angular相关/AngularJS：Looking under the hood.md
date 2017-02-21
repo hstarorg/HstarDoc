@@ -1,3 +1,8 @@
+---
+title: AngularJS：Looking under the hood
+date: 2015/3/13 11:24:39
+---
+
 原文地址：[https://www.binpress.com/tutorial/angular-js-looking-under-the-hood/153](https://www.binpress.com/tutorial/angular-js-looking-under-the-hood/153)
 
 **用AngularJS写得越多，你就越惊叹于它的神奇。我对Angular能做的一些奇妙的事情非常好奇，然后我决定分析它的源代码，看看我能否揭示它的一些秘密。我记录了我在23000多行Angular源码中发现的真正有用的，能够解释Angular先进（和隐藏）的方面的一些内容。**
