@@ -19,7 +19,7 @@ Angular表达式中的function可以不再调用.bind,.call,.apply了。这是�
 避免在Angular表达式中使用对象，如果你需要Object.keys，使它们在scope中是可访问的
 
 ---
-**Angular.copy:**due to b59b04f9
+**Angular.copy:** due to b59b04f9
 angular.copy的这个变化使得原始对象的原型适用于复制对象。此前，angular.copy会复制原始对象的作用域链到复制对象。
 
 这意味着，如果你复制对象的本身属性，它将不再包含从原型继承过来的属性。这实际上是更合理的行为

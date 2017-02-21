@@ -1,8 +1,8 @@
 # 0、About Dotnet Core
 
-``Dotnet Core`` 是新一代的 ``.Net Framework``，是一个具有跨平台能力的应用程序开发框架。它本身是由多个子项目组成的。包括 ``Core Fx``、``Core CLR``、``.Net Compiler Platform``等等。
+`Dotnet Core` 是新一代的 `.Net Framework`，是一个具有跨平台能力的应用程序开发框架。它本身是由多个子项目组成的。包括 ``Core Fx``、``Core CLR``、``.Net Compiler Platform`` 等等。
 
-``Dotnet Core`` 具有高效的开发效率，高性能和跨平台能力，是 ``.Net平台`` 的一次大跃进。
+`Dotnet Core` 具有高效的开发效率，高性能和跨平台能力，是 ``.Net平台`` 的一次大跃进。
 
 # 1、尝试 Dotnet Core
 
