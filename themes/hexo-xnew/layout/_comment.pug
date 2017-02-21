@@ -1,0 +1,15 @@
+section.comment
+  div.ds-thread(data-thread-key= config.root + page.path, data-title= page.title data-url= config.url + config.root + page.path)
+script!= "var _shortName = \"" + theme.duoshuo["short_name"] + "\";"
+script.
+    var duoshuoQuery = {};
+    duoshuoQuery["short_name"] = _shortName;
+    (function() {
+        var ds = document.createElement("script");
+        ds.type = "text/javascript";
+        ds.async = true;
+        ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+        ds.charset = "utf-8";
+        (document.getElementsByTagName("head")[0] ||
+            document.getElementsByTagName("body")[0]).appendChild(ds);
+    })();

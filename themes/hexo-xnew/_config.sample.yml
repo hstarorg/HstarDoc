@@ -1,0 +1,17 @@
+logo: /images/avatar.gif
+han_type: zh-Hant
+menu:
+  首页: /
+  归档: /pigeonhole
+  链接: /links
+  关于: /about
+duoshuo:
+  # 请使用 Bluxbox 主题
+  short_name: YOUR_DUOSHUO_ID
+icon:
+  rss: /atom.xml
+  facebook: YOUR_FACEBOOK_ID
+  twitter: YOUR_TWITTER_ID
+  github: YOUR_GITHUB_ID
+  weibo: YOUR_WEIBO_ID
+  zhihu: YOUR_ZHIHU_ID

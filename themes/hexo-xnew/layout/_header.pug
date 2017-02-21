@@ -1,0 +1,26 @@
+if theme.logo
+  a(href= config.root)
+    img.logo(src= theme.logo, alt= config.title, title= config.title)
+h1
+  a(href= config.root, alt= config.title, title= config.title)= config.title
+p!= config.subtitle
+nav
+  ul
+    each url, label in theme.menu
+      li
+        a(href= url, alt= label, title= label)= label
+
+  div.xnews-icon
+    if theme.icon
+      if theme.icon.rss
+        a(target="_blank" href= theme.icon.rss) &#xe621;
+      if theme.icon.github
+        a(target="_blank" href= "https://github.com/" + theme.icon.github, style="position: relative; top: -2px;") &#xe735;
+      if theme.icon.twitter
+        a(target="_blank" href= "https://twitter.com/" + theme.icon.twitter) &#xe71f;
+      if theme.icon.facebook
+        a(target="_blank" href= "https://www.facebook.com/" + theme.icon.facebook) &#xe60b;
+      if theme.icon.zhihu
+        a(target="_blank" href= "https://www.zhihu.com/people/" + theme.icon.zhihu) &#xe63f;
+      if theme.icon.weibo
+        a(target="_blank" href= "https://weibo.com/" + theme.icon.weibo, style="position: relative; top: -2px;") &#xe603;
