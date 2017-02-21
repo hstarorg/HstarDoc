@@ -192,9 +192,7 @@ namespace WebApplication
 
 **加油，``Dotnet!``**
 
----
 
----
 **【6.30号更新】**
 
 ### 2.4、如何创建web项目
