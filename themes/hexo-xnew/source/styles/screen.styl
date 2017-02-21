@@ -1,0 +1,28 @@
+// @import 'normalize.css'
+@import 'variables.styl'
+
+body
+  color $body-color
+  margin 0
+  height 100vh
+  font-size 16px
+  flex-direction column
+  .backstretch
+    opacity .7
+
+@media (min-width 720px)
+  body
+    display flex
+    flex-direction row
+    .backstretch
+      opacity .5
+
+header, main
+  overflow-y auto
+  -webkit-overflow-scrolling touch
+  padding 20px
+
+@import 'header.styl'
+@import 'main.styl'
+@import 'basic.styl'
+@import 'duoshuo.styl'

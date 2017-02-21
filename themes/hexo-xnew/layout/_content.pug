@@ -1,0 +1,84 @@
+if page["current_url"] && page["current_url"].indexOf("archives/") === 0
+  script.
+    window.location.href = "#{config.url}#{config.root}/pigeonhole";
+
+if is_home()
+  each post in page.posts.toArray()
+    article.item
+      a.article(href= config.root + post.path)
+        h2.home-title= post.title
+      span.post-meta
+        | 写于
+        time= full_date(new Date(post.date), ' YYYY 年 MM 月 DD 日 HH 时 mm 分')
+      if post.description
+        p.post-excerpt= post.description
+      else if post.excerpt
+        p.post-excerpt= strip_html(post.excerpt).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 140)
+      else
+        p.post-excerpt= strip_html(post.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 140)
+  div.pagination
+    != paginator({ prev_text: "«", next_text: "»" })
+  footer
+    include _footer.pug
+
+if is_page() && [ 'archives', '归档' ].indexOf(page.title.toLowerCase()) >= 0
+  article.full
+    h1= page.title
+    - let lastyear = 0
+    for post, index in site.posts.sort("date", "desc").toArray()
+      if lastyear !== post.date.format("YYYY")
+        if index !== 0
+          | </ul>
+        - lastyear = post.date.format("YYYY")
+        h4= lastyear
+        | <ul>
+        li
+          |「
+          a(href= config.root + post.path) #{post.title}
+          | 」·
+          time= full_date(new Date(post.date), ' MM 月 DD 日')
+      else
+        li
+          |「
+          a(href= config.root + post.path) #{post.title}
+          |」·
+          time= full_date(new Date(post.date), ' MM 月 DD 日')
+    if site.posts.toArray().length !== 0
+      | </ul >
+    footer
+      include _footer.pug
+else if is_page()
+  article.full
+    h1= page.title
+    if page.updated
+      span.post-meta
+        | 最后更新：
+        time= full_date(new Date(page.date), ' YYYY 年 MM 月 DD 日 HH 时 mm 分')
+    div.article-toc
+      strong 大纲
+      != toc(page.content)
+    != page.content
+    hr
+    if theme.duoshuo
+      include _comment.pug
+    footer
+      include _footer.pug
+else if is_post()
+  article.full
+    h1= page.title
+    span.post-meta
+      | 写于
+      time= full_date(new Date(page.date), ' YYYY 年 MM 月 DD 日 HH 时 mm 分')
+      if page.updated
+        br
+        | 更新于
+        time= full_date(new Date(page.updated), ' YYYY 年 MM 月 DD 日 HH 时 mm 分')
+    div.article-toc
+      strong 大纲
+      != toc(page.content)
+    != page.content
+    hr
+    if theme.duoshuo
+      include _comment.pug
+    footer
+      include _footer.pug

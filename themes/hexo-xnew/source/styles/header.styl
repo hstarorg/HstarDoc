@@ -1,0 +1,93 @@
+@keyframes slide
+  0%
+    transform translate3d(0, 0, 0)
+  100%
+    transform translate3d(-240px, -240px, 0)
+
+header
+  flex 1
+  overflow hidden
+  position relative
+  text-align center
+  a, h1, p, nav
+    position relative
+    z-index 2
+  img.logo
+    width 72px
+    height 72px
+    border-radius 50%
+  a
+    color $header-line-color
+  h1
+    font-size 3.5em
+    margin-top 20px
+    line-height 1em
+    letter-spacing -1px
+    text-shadow 0 1px 6px hsla(0, 0, 0, .5)
+    a
+      color $title-color
+  p
+    color $description-color
+    letter-spacing 0
+    margin 0
+    text-shadow 0 1px 3px hsla(0, 0, 0, .35)
+    font-size 2em
+  nav
+    ul
+      list-style none
+      margin 0
+      padding 0
+      li
+        color $header-line-color
+        display inline-block
+        padding 12px 0 12px 12px
+        font-size 1.3em
+        &:after
+          content '.'
+          padding-left 12px
+        &:last-child
+          &:after
+            content ''
+        a
+          color $header-li-color
+        a:hover
+          text-decoration underline
+    .xnews-icon
+      margin-top 10px
+      font-family xnews-icon
+      font-size 1.5em
+      a
+        margin 4px
+        color #444
+        &:hover
+          color $title-color
+          transition color .3s ease
+  .space
+    animation slide 8s linear infinite
+    background-image url('../images/stars.svg')
+    background-position center center
+    background-size 240px
+    height 400%
+    left 0
+    position absolute
+    top 0
+    width 400%
+    z-index 1
+
+@media (min-width 720px)
+  body
+    header
+      flex 1
+      overflow hidden
+      text-align right
+      padding 40px
+    nav
+      ul
+        padding-top 24px
+        li
+          display block
+          line-height 1.6em
+          padding 0
+          &:after
+            content ''
+            padding 0

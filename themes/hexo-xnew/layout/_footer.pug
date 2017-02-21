@@ -1,0 +1,13 @@
+section.copyright
+  | &copy; 2016 -
+  = full_date(new Date(), ' YYYY')
+  a(href= config.root)= config.author
+section.intro
+  | 由
+  a(href='https://hexo.io/') Hexo
+  | 驱动&middot;挂载
+  a(href='https://github.com/xadillax/hexo-xnew') X'new
+  | 主题
+  if config.feed && config.feed.url
+    | &middot;
+    a(href= config.feed.url) RSS Feed
