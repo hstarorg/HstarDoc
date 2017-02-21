@@ -1,0 +1,152 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、前言在使用VsCode编写TypeScript时，VsCode提供了一个tsconfig.json辅助我们设置TypeScript的配置项，另外使用gulp-typescript或者是webpack编译ts文件时，都可以用到这个配置项来确定如何生成最终的js文件。
+那tsconfig.json到"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TypeScript配置文件tsconfig简析 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>TypeScript配置文件tsconfig简析</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、前言"><span class="toc-number">1.</span> <span class="toc-text">0、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、tsconfig-json"><span class="toc-number">2.</span> <span class="toc-text">1、tsconfig.json</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、compilerOptions"><span class="toc-number">2.1.</span> <span class="toc-text">1.1、compilerOptions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2、compileOnSave"><span class="toc-number">2.2.</span> <span class="toc-text">1.2、compileOnSave</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3、exclude"><span class="toc-number">2.3.</span> <span class="toc-text">1.3、exclude</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4、files"><span class="toc-number">2.4.</span> <span class="toc-text">1.4、files</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、常用tsconfig配置"><span class="toc-number">3.</span> <span class="toc-text">2、常用tsconfig配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、参考资料"><span class="toc-number">4.</span> <span class="toc-text">3、参考资料</span></a></li></ol></div><h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>在使用VsCode编写TypeScript时，VsCode提供了一个tsconfig.json辅助我们设置TypeScript的配置项，另外使用gulp-typescript或者是webpack编译ts文件时，都可以用到这个配置项来确定如何生成最终的js文件。</p>
+<p>那tsconfig.json到底有哪些常用属性，它们又起到什么作用呢？下文将为你一一揭晓。</p>
+<h2 id="1、tsconfig-json"><a href="#1、tsconfig-json" class="headerlink" title="1、tsconfig.json"></a>1、tsconfig.json</h2><h3 id="1-1、compilerOptions"><a href="#1-1、compilerOptions" class="headerlink" title="1.1、compilerOptions"></a>1.1、compilerOptions</h3><p>tsconfig.json文件中的 <code>compilerOptions</code> 属性用于确定如何编译ts文件。</p>
+<p>其中大概有如下属性：</p>
+<p>1.1.1、<strong>module: enum</strong></p>
+<p><code>module</code> 用于指定模块的代码生成规则，可以使用 <code>commonjs</code> 、 <code>amd</code> 、 <code>umd</code> 、 <code>system</code> 、 <code>es6</code> 、 <code>es2015</code> 、 <code>none</code> 这些选项。</p>
+<p>选择commonJS，会生成符合commonjs规范的文件，使用amd，会生成满足amd规范的文件，使用system会生成使用ES6的system.import的代码。使用es6或者是es2015会生产包含ES6特性的代码。</p>
+<p>1.1.2、<strong>target: enum</strong></p>
+<p><code>target</code> 用于指定生成代码的兼容版本，可以从es3,es5,es2015,es6中选择一个，如果不设置，默认生产的代码兼容到es3。</p>
+<p>1.1.3、<strong>sourceMap: boolean</strong></p>
+<p><code>sourceMap</code> 是是否生成SourceMap的开关，如果设置为true，则会生成.map文件。</p>
+<p>1.1.4、 <strong>noImplicitAny: boolean</strong></p>
+<p><code>noImplicitAny</code> 当表达式和申明 类型为any时，是否需要发出警告，设置true，则不警告</p>
+<p>1.1.5、 <strong>removeComments: boolean</strong></p>
+<p>用于指定是否需要输出注释，设置为true，则不输出注释。</p>
+<p>1.1.6、 <strong>charset: string</strong></p>
+<p>用于指定ts文件的编码格式</p>
+<p>1.1.7、 <strong>declaration: boolean</strong></p>
+<p>是否需要生成定义文件d.ts，设置为true，则生成。</p>
+<p>1.1.8、 <strong>diagnostics: boolean</strong></p>
+<p>是否需要显示诊断信息，设置为true，则显示。</p>
+<p>1.1.9、 <strong>emitBOM: boolean</strong></p>
+<p>是否需要在输出文件的开头发出一个UTF-8字节顺序标记，设置为true，则输出。</p>
+<p>1.1.10、<strong>inlineSourceMap: boolean</strong></p>
+<p>是否需要将sourceMap文件生成到js文件中，设置为true，则生成到js文件中。</p>
+<p><strong>注：此选项和sourceMap、mapRoot选项冲突，会优先使用inlineSouceMap</strong></p>
+<p>1.1.11、<strong>inlineSources： boolean</strong></p>
+<p>用于指定生成的source内容是否inline，如果设置为true，则inline展示（从测试的效果来看，就是生成在js文件中的source map内容要多一些）</p>
+<p><strong>注：该设置项依赖inlineSouceMap设置为true</strong></p>
+<p>1.1.12、<strong>jsx: enum</strong></p>
+<p>用于指定按照何种方式生成jsx代码，可选react和preserve。</p>
+<p>1.1.13、<strong>reactNamespace: string</strong></p>
+<p>配置jsx属性使用，指定生成react代码时，需要使用的命名空间。默认””</p>
+<p>1.1.14、<strong>listFiles: boolean</strong></p>
+<p>编译时是否需要打印文件列表，设置为true，则打印。默认false</p>
+<p>1.1.15、<strong>locale: string</strong></p>
+<p>用于指定本地化错误信息，如果设定为en-us，那么错误信息将显示英文。默认””</p>
+<p>1.1.16、<strong>mapRoot: string(uri)</strong></p>
+<p>指定map文件的跟路径，该选项的值影响.map文件中的sources属性。默认””</p>
+<p><strong>注：该选项依赖sourceMap: true</strong></p>
+<p>1.1.17、<strong>newLine: enum</strong></p>
+<p>指定换行符。可选 <code>CRLF</code> 和 <code>LF</code> 两种，前者是回车换行，后者是换行。默认是回车换行</p>
+<p>1.1.18、<strong>noEmit: boolean</strong></p>
+<p>当设置为true时，将不会输出</p>
+<p>1.1.19、<strong>noEmitHelpers: boolean</strong></p>
+<p>设置为true时，不会生成自定义的helper函数。</p>
+<p>1.1.20、<strong>noEmitOnError: boolean</strong></p>
+<p>设置为true时，如果遇到了错误，就不再输出</p>
+<p>1.1.21、<strong>noLib: boolean</strong></p>
+<p>设置为true时，将不会包含默认的库，如（lib.d.ts）,此时有可能导致找不到Array，String等对象</p>
+<p>1.1.22、<strong>noResolve: boolean</strong></p>
+<p>设置为true时，不使用三斜杠引入模块，需要从编译的文件列表中添加。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// &lt;reference path="" /&gt;</span></div><div class="line"><span class="keyword">import</span> PI <span class="keyword">from</span> <span class="string">'./2A.ts'</span>;</div></pre></td></tr></table></figure>
+<p>1.1.23、<strong>skipDefaultLibCheck: boolean</strong></p>
+<p>设置为true时，将跳过默认库检查。</p>
+<p>1.1.24、<strong>outFile: string(uri)</strong></p>
+<p>设置输出文件，会将多个ts输入文件合并到该文件中</p>
+<p>1.1.25、<strong>outDir: string(uri)</strong></p>
+<p>指定输出文件的根目录。</p>
+<p>1.1.26、<strong>preserveConstEnums: boolean</strong></p>
+<p>设置为true时，生成代码时不会删除常量枚举声明。</p>
+<p>1.1.27、<strong>pretty: boolean</strong></p>
+<p>当设置为true时，错误信息，跟踪信息将带有颜色和样式</p>
+<p>1.1.28、<strong>noImplicitUseStrict: boolean</strong></p>
+<p>当设置为true时，编译输出时不会调用’use strict’指令（也就是不生成use strict）</p>
+<p>1.1.29、<strong>rootDir: string(uri)</strong></p>
+<p>指定输入文件的根目录。rootDir应包含所有的源文件。</p>
+<p>1.1.30、<strong>isolatedModules: boolean</strong></p>
+<p>设置为true时，无条件的触发导入未解决的文件。</p>
+<p>1.1.31、<strong>sourceRoot: string(uri)</strong></p>
+<p>设置在调试时定位的目标文件根目录</p>
+<p>1.1.32、<strong>suppressExcessPropertyErrors: boolean</strong></p>
+<p>设置为true时，禁止过剩的对象字面量属性检查</p>
+<p>1.1.33、<strong>suppressImplicitAnyIndexErrors: boolean</strong></p>
+<p>Suppress noImplicitAny errors for indexing objects lacking index signatures.</p>
+<p>1.1.34、<strong>stripInternal: boolean</strong></p>
+<p>设置为true，则遇到@internal注解时，不会触发代码定义。</p>
+<p>1.1.35、<strong>watch: boolean</strong></p>
+<p>设置为true时，将监视文件变化。当文件变化时，自动编译</p>
+<p>1.1.36、<strong>experimentalDecorators: boolean</strong></p>
+<p>设置为true，则支持ES7的装饰器特性</p>
+<p>1.1.37、<strong>emitDecoratorMetadata: boolean</strong></p>
+<p>设置为true，则使用元数据特性</p>
+<p>1.1.38、<strong>moduleResolution: string</strong></p>
+<p>指定模块的解析策略，Node或者是classic，默认是classic。</p>
+<p>1.1.39、<strong>allowUnusedLabels: boolean</strong></p>
+<p>设置为true时，允许没有用到的标签。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">l: do&#123;</div><div class="line">  console.log(&apos;abc&apos;);</div><div class="line">&#125;while (1 !== 1);</div></pre></td></tr></table></figure>
+<p>以上代码有个未使用的标签l，默认是会报错的。</p>
+<p>1.1.40、<strong>noImplicitReturns: boolean</strong></p>
+<p>设置为true时，如果不是函数中的所有路径都有返回值，则提示Error。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(a === <span class="number">1</span>)&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'abc'</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">//fun函数只有当a = 1的时候，才有确定的返回值。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1.1.41、<strong>noFallthroughCasesInSwitch: boolean</strong></p>
+<p>设置为true时，将严格校验switch-case语法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> key = <span class="string">'ab'</span>;</div><div class="line">  <span class="keyword">switch</span> (key) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">'ab'</span>:</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'abc'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码默认情况不会报错，当设置noFallthroughCasesInSwitch: true时，则会提示错误。</p>
+<p>1.1.42、<strong>allowUnreachableCode: boolean</strong></p>
+<p>设置为true时，如果有无法访问的代码，也不会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'abc'</span>;</div><div class="line">  <span class="keyword">return</span> <span class="string">'ccc'</span>; <span class="comment">//默认会报错，设置allowUnreachableCode为true时，则不报错</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1.1.43、<strong>forceConsistentCasingInFileNames: boolean</strong></p>
+<p>设置为true时，将强制区分大小写。默认为false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//2a.ts</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> PI = <span class="number">3.1415926</span>;</div><div class="line"><span class="comment">//1a.ts</span></div><div class="line"><span class="keyword">import</span> PI <span class="keyword">from</span> <span class="string">'./2A.ts'</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> PI;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码默认可以通过，当强制区分大小写时，则提示错误 ‘2a’ !== ‘2A’</p>
+<p>1.1.44、<strong>allowSyntheticDefaultImports: boolean</strong></p>
+<p>设置为true时，则允许从没有默认导出的模块中默认导入(也就是不做检查)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//2.ts</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> PI = <span class="number">3.1415926</span>;</div><div class="line"><span class="comment">//1.ts</span></div><div class="line"><span class="keyword">import</span> PI <span class="keyword">from</span> <span class="string">'./2.ts'</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> PI;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码，默认是会报错的，当设置allowSyntheticDefaultImports时，则不会报错。</p>
+<p>1.1.45、<strong>allowJs: boolean</strong></p>
+<p>当设置为true时，js文件也会被编译。</p>
+<p><strong>注意：编译js文件时，如果不另外设置outFile，将不会成功，因为不能够重写源代码文件</strong></p>
+<h3 id="1-2、compileOnSave"><a href="#1-2、compileOnSave" class="headerlink" title="1.2、compileOnSave"></a>1.2、compileOnSave</h3><p>该属性用于启用保存时编译功能。</p>
+<p><em>**注意：当前仅仅只有VS2015配置TypeScript1.8.4以后或者在atom中搭配atom-typescript插件才有效</em></p>
+<h3 id="1-3、exclude"><a href="#1-3、exclude" class="headerlink" title="1.3、exclude"></a>1.3、exclude</h3><p>exclude用于排除不需要编译的ts文件。该属性和files属性冲突。两者只能设置其一。</p>
+<h3 id="1-4、files"><a href="#1-4、files" class="headerlink" title="1.4、files"></a>1.4、files</h3><p>当files属性不存在时，编译器会编译当前目录和子目录中的所有文件。当files属性存在是，仅仅是编译files列表中的文件。</p>
+<p>该属性和exclude属性冲突。如果同时指定了exclude和files，则files属性优先。</p>
+<h2 id="2、常用tsconfig配置"><a href="#2、常用tsconfig配置" class="headerlink" title="2、常用tsconfig配置"></a>2、常用tsconfig配置</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"compilerOptions"</span>: &#123;</div><div class="line">    <span class="attr">"target"</span>: <span class="string">"ES5"</span>,</div><div class="line">    <span class="attr">"module"</span>: <span class="string">"commonjs"</span>,</div><div class="line">    <span class="attr">"emitDecoratorMetadata"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"experimentalDecorators"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"sourceMap"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"noEmitHelpers"</span>: <span class="literal">true</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"exclude"</span>: [</div><div class="line">    <span class="string">"node_modules"</span>,</div><div class="line">    <span class="string">"typings/main"</span>,</div><div class="line">    <span class="string">"typings/main.d.ts"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"compileOnSave"</span>: <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3、参考资料"><a href="#3、参考资料" class="headerlink" title="3、参考资料"></a>3、参考资料</h2><ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html" target="_blank" rel="external">https://www.typescriptlang.org/docs/handbook/tsconfig-json.html</a></li>
+<li><a href="http://json.schemastore.org/tsconfig" target="_blank" rel="external">http://json.schemastore.org/tsconfig</a></li>
+</ul>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/TypeScript配置文件tsconfig简析/" data-title="TypeScript配置文件tsconfig简析" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/TypeScript配置文件tsconfig简析/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

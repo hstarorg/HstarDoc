@@ -1,0 +1,192 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="##No.11、熟练掌握闭包Tips：
+
+函数可以引用定义在其外部的作用域变量。
+闭包比创建它们的函数有更长的生命周期。
+闭包在内部存储其外部变量的引用，并能读写这些变量。
+ //第一个事实：JavaScript允许你引用在当前函数以外定义的变量。 function testClosures(){
+"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>编写高质量JS代码的68个有效方法（三） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>编写高质量JS代码的68个有效方法（三）</h1><span class="post-meta">写于<time> 2014 年 10 月 30 日 00 时 00 分</time><br>更新于<time> 2017 年 02 月 21 日 13 时 59 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#No-12、理解变量申明提升"><span class="toc-number">1.</span> <span class="toc-text">No.12、理解变量申明提升</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-13、使用立即调用的函数表达式创建局部作用域"><span class="toc-number">2.</span> <span class="toc-text">No.13、使用立即调用的函数表达式创建局部作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-15、当心局部块函数声明笨拙的作用域"><span class="toc-number">3.</span> <span class="toc-text">No.15、当心局部块函数声明笨拙的作用域</span></a></li></ol></div><p>##No.11、熟练掌握闭包<br><strong>Tips：</strong></p>
+<ol>
+<li>函数可以引用定义在其外部的作用域变量。</li>
+<li>闭包比创建它们的函数有更长的生命周期。</li>
+<li><p>闭包在内部存储其外部变量的引用，并能读写这些变量。</p>
+<p> //第一个事实：JavaScript允许你引用在当前函数以外定义的变量。<br> function testClosures(){</p>
+<pre><code>var all = &apos;Test&apos;;
+function test(m){
+    return all + &apos; and &apos; + m;
+}
+return test(&apos;closures&apos;);
+</code></pre><p> }<br> testClosures(); //‘Test and closures’</p>
+<p> //第二个事实：即使外部函数已返回，当前函数仍然可以引用在外部函数所定义的变量。<br> function testClosures(){</p>
+<pre><code>var all = &apos;Test&apos;;
+function test(m){
+    return all + &apos; and &apos; + m;
+}
+return test;
+</code></pre><p> }<br> var t = testClosures();<br> t(‘closures’); //‘Test and closures’</p>
+<p> //第三个事实：闭包可以更新外部变量的值<br> function TestClass(){</p>
+<pre><code>var all;
+return {
+    set: function(value){
+        all = value;
+    },
+    get: function(){
+        return all;
+    }
+};
+</code></pre><p> }<br> var t = new TestClass();<br> t.set(‘555’);<br> t.get();</p>
+</li>
+</ol>
+<p>闭包的优缺点：<br>优点： 变量保护、封装性，能够实现字段的可访问性(示例如下)</p>
+<pre><code>function ModelClass(){
+    //Property
+    var name,age=23;
+    return {
+        setName: function(value){ //设置名称
+            name = value;
+        },
+        getName: function(){ //获取名称
+            return name;
+        },
+        getAge: function(){ //只读
+            return age;
+        }
+    };
+}        
+</code></pre><p>缺点： 常驻内存，会增加内存使用量，使用不当和容易造成内存泄露。</p>
+<h2 id="No-12、理解变量申明提升"><a href="#No-12、理解变量申明提升" class="headerlink" title="No.12、理解变量申明提升"></a>No.12、理解变量申明提升</h2><ol>
+<li>代码块中的函数申明会提升到函数顶部</li>
+<li>重复申明变量被视为单个变量</li>
+<li>考虑手动提升局部变量的申明，避免混淆（将函数内所需变量集中申明到函数顶部）</li>
+</ol>
+<p>JavaScript支持词法作用域，而不支持块级作用域</p>
+<pre><code>function test(){
+    alert(a); //undefined
+    var a = 1;
+    alert(a);  //1
+}
+test();
+以上代码等价于：
+function test(){
+    var a;
+    alert(a); //undefined
+    a = 1;
+    alert(a);  //1
+}
+test();
+</code></pre><p>一个例外是 <em>try…catch</em> :catch块中的变量作用域只在catch中。</p>
+<pre><code>function test(){
+    var x = &apos;1&apos;;
+    try{
+        throw &apos;&apos;
+    }catch(x){
+        alert(&apos;error&apos;);
+        x = &apos;2&apos;;
+    }
+    alert(x); // 1
+}
+test();
+</code></pre><h2 id="No-13、使用立即调用的函数表达式创建局部作用域"><a href="#No-13、使用立即调用的函数表达式创建局部作用域" class="headerlink" title="No.13、使用立即调用的函数表达式创建局部作用域"></a>No.13、使用立即调用的函数表达式创建局部作用域</h2><ol>
+<li>理解绑定与赋值的区别</li>
+<li>闭包通过引用而不是值捕获它们的外部变量</li>
+<li>使用立即调用的函数表达式（IIFE）来创建具有作用域</li>
+<li>当心在立即调用的函数表达式中包裹代码块可能改变其行为的情形</li>
+</ol>
+<p>看看以下代码段输出什么？</p>
+<pre><code>function test(){
+    var arr = [1,2,3,4,5];
+    var result = [];
+    for(var i = 0, len = arr.length; i &lt; len; i++){
+        result[i] = function(){
+            return arr[i];
+        }
+    }
+    return result;
+}
+var result = test();
+result[0](); 
+</code></pre><p>可以通过立即调用表达式来解决JavaScript缺少块级作用域。如上代码可修改为:</p>
+<pre><code>function test(){
+    var arr = [1,2,3,4,5];
+    var result = [];
+    for(var i = 0, len = arr.length; i &lt; len; i++){
+        (function(){
+            var j = i;
+            result[i] = function(){
+                return arr[j];
+            }
+        })(i);
+    }
+    return result
+}
+var result = test();
+result[0]();
+</code></pre><p>##No.14、当心命名函数表达式笨拙的作用域</p>
+<ol>
+<li>在Error对象和调试器中使用命名函数表达式改进栈跟踪</li>
+<li>在ES3和有问题的JS环境中，函数表达式作用域会被Object.prototype污染</li>
+<li>谨记在错误百出的JS环境中会提升命名函数表达式声明，并导致命名函数表达式的重复存储</li>
+<li>考虑避免使用命名函数表达式或在发布前删除函数名</li>
+<li>如果将代码发布到正确实现的ES5的环境中，没什么好担心的</li>
+</ol>
+<p>匿名和命名函数表达式的官方区别在于后者会绑定到与其函数名相同的变量上，该变量将作为该函数内部的一个局部变量。这可以用来写递归函数表达式。</p>
+<pre><code>var f = function find(tree, key){
+    if(!tree){
+        return null;
+    }
+    if(tree.key === key){
+        return tree.value;
+    }
+    //函数内部可以访问find
+    return find(tree.left, key) || find(tree.right, key);
+}
+</code></pre><p><strong>结论：尽量避免使用命名函数表达式</strong></p>
+<h2 id="No-15、当心局部块函数声明笨拙的作用域"><a href="#No-15、当心局部块函数声明笨拙的作用域" class="headerlink" title="No.15、当心局部块函数声明笨拙的作用域"></a>No.15、当心局部块函数声明笨拙的作用域</h2><ol>
+<li>始终将函数声明置于程序或被包含的函数的最外层以避免不可移植的行为</li>
+<li><p>使用var声明和有条件赋值语句替代有条件的函数声明</p>
+<p> function f(){</p>
+<pre><code>return &apos;global&apos;;
+</code></pre><p> }<br> function test(x){</p>
+<pre><code>var result = [];
+if(x){
+    function f(){
+        return &apos;local&apos;;
+    }
+    result.push(f());
+}
+result.push(f());
+return result;
+</code></pre><p> }<br> test(true);<br> test(false);</p>
+</li>
+</ol>
+<p><strong>结论：尽量将函数块定义为变量，防止函数提前</strong></p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2014/10/30/编写高质量JS代码的68个有效方法-读书笔记/[20141030]编写高质量JS代码的68个有效方法（三）/" data-title="编写高质量JS代码的68个有效方法（三）" data-url="http://hstarorg.github.io/blog/blog/2014/10/30/编写高质量JS代码的68个有效方法-读书笔记/[20141030]编写高质量JS代码的68个有效方法（三）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

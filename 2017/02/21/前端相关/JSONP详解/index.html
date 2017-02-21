@@ -1,0 +1,112 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、关于JSONP什么的JSONPJSONP（JSON with Padding）是资料格式 JSON 的一种“使用模式”，可以让网页从别的网域要资料。另一个解决这个问题的新方法是跨来源资源共享。（参考：https://zh.wikipedia.org/wiki/JSONP）
+JSONP的起源
+曾经"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JSONP详解 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>JSONP详解</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、关于JSONP"><span class="toc-number">1.</span> <span class="toc-text">0、关于JSONP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么的JSONP"><span class="toc-number">1.1.</span> <span class="toc-text">什么的JSONP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSONP的起源"><span class="toc-number">1.2.</span> <span class="toc-text">JSONP的起源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSONP用来做什么"><span class="toc-number">1.3.</span> <span class="toc-text">JSONP用来做什么</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、JSONP实现原理"><span class="toc-number">2.</span> <span class="toc-text">1、JSONP实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、封装JSONP调用JSONP"><span class="toc-number">3.</span> <span class="toc-text">2、封装JSONP调用JSONP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、扩展"><span class="toc-number">4.</span> <span class="toc-text">3、扩展</span></a></li></ol></div><h2 id="0、关于JSONP"><a href="#0、关于JSONP" class="headerlink" title="0、关于JSONP"></a>0、关于JSONP</h2><h3 id="什么的JSONP"><a href="#什么的JSONP" class="headerlink" title="什么的JSONP"></a>什么的JSONP</h3><p>JSONP（JSON with Padding）是资料格式 JSON 的一种“使用模式”，可以让网页从别的网域要资料。另一个解决这个问题的新方法是跨来源资源共享。（参考：<a href="https://zh.wikipedia.org/wiki/JSONP" target="_blank" rel="external">https://zh.wikipedia.org/wiki/JSONP</a>）</p>
+<h3 id="JSONP的起源"><a href="#JSONP的起源" class="headerlink" title="JSONP的起源"></a>JSONP的起源</h3><ol>
+<li>曾经的Ajax不能跨域请求（现在的也不能，不过有cors）</li>
+<li>Web上使用script调用js文件不存在跨域问题（实际上，只要拥有src属性的标签都允许跨域，比如script,img,iframe）</li>
+<li>那个时候，想要通过web端跨域访问数据，只可以在服务器端设法把数据装进js，然后客户端调用</li>
+<li>刚好这个时候JSON大行其道</li>
+<li>所以，解决方案就出来，web端像调用脚本一样来跨域请求服务器上动态生成的js文件</li>
+<li>为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP。</li>
+</ol>
+<h3 id="JSONP用来做什么"><a href="#JSONP用来做什么" class="headerlink" title="JSONP用来做什么"></a>JSONP用来做什么</h3><p>通过JSONP的起源，我们大概也知道了JSONP就是为了跨域资源访问的。</p>
+<h2 id="1、JSONP实现原理"><a href="#1、JSONP实现原理" class="headerlink" title="1、JSONP实现原理"></a>1、JSONP实现原理</h2><p>我们知道，在script标签中请求的js代码，到客户端之后，是能被自动执行的。</p>
+<p>我们先构造一个后端（采用node实现）：</p>
+<pre><code>var http = require(&apos;http&apos;);
+
+var server = http.createServer((req, res) =&gt; {
+  var sendObj = {
+    url: req.url,
+    name: &apos;test&apos;
+  };
+  res.write(`callback(${JSON.stringify(sendObj)})`);
+  res.end();
+});
+
+server.listen(9999, () =&gt; {
+  console.log(&apos;started.&apos;)
+});
+</code></pre><p>我们要使用这个这个数据呢？可以用Ajax，可能会产生跨域问题</p>
+<p>另外，可以用如下写法：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;JSONP TEST&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script&gt;
+  function callback(obj){
+    console.log(obj);
+  }
+  &lt;/script&gt;
+  &lt;script src=&quot;http://localhost:9999/abc&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>打开这个页面后，我们会看到控制台会输出一个对象<code>Object {url: &quot;/abc&quot;, name: &quot;test&quot;}</code>,<br>也就是后端返回的对象。</p>
+<p><strong>当使用script请求地址时，会将返回的字符串，默认当成js解析。由于后端返回是的callback(xxx),所以会调用本地的callback函数。</strong></p>
+<p><strong>从原理上来看，要使用JSONP，必须要后端返回相应的数据，这个就是JSONP的模式了，允许客户端传递一个callback函数，后端将数据包裹在callback函数中返回。</strong></p>
+<p><strong>从原理也能看出，JSONP并不要求必须传递JSON格式的数据，只要是JS函数能够认可的数据都是可以传递的</strong></p>
+<h2 id="2、封装JSONP调用JSONP"><a href="#2、封装JSONP调用JSONP" class="headerlink" title="2、封装JSONP调用JSONP"></a>2、封装JSONP调用JSONP</h2><p>知道了原理，我们很容易能够实现一个jsonp的函数调用，代码如下：</p>
+<pre><code>window.JSONP = function(url, callback){
+  callback = callback || &apos;callback&apos;;
+  var result;
+  return new Promise((resolve, reject) =&gt; {
+    var overwritten;
+    var scriptEl = document.createElement(&apos;script&apos;);
+    scriptEl.src = url + &apos;?callback=&apos; + callback;
+    //加载完成后，删除callback
+    scriptEl.onload = function(){
+      if(overwritten === undefined){
+        delete window[callback];  
+      }else{
+        window[callback] = overwritten;
+      }
+      resolve(result);
+    }
+    //挂载一个callback到window上
+    overwritten = window[callback]; //先保存一个，用完之后再还原
+    window[callback] = function(data){
+      result = data
+    }
+    document.head.appendChild(scriptEl);
+  });
+};
+</code></pre><p>如何用？</p>
+<pre><code>window.JSONP(&apos;http://localhost:9999/abc&apos;).then((data) =&gt; {
+  console.log(data);
+});
+</code></pre><h2 id="3、扩展"><a href="#3、扩展" class="headerlink" title="3、扩展"></a>3、扩展</h2><p>在jQuery中，我们使用jsonp感觉就和使用ajax没有区别，但实际上它们的底层实现实现是完全不一样的，毕竟原理都不同。</p>
+<p>虽然很多库和框架都把jsonp封装到了ajax中，但是一定要记得jsonp不是ajax的一个特例。</p>
+<p>当前，除了用jsonp跨域之外，还可以采用服务端代理（通过不跨域的后端程序，发送webClient去请求数据，然后转发），CORS（API服务器允许跨域的一种设置）。</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/JSONP详解/" data-title="JSONP详解" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/JSONP详解/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

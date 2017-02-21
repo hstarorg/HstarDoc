@@ -1,0 +1,277 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="1、Directive与Controller数据共享在指令中，不仅仅需要指令配置信息，很多时候也需要获取$scope的相关数据。那么，如何在指令中拿到$scope的数据呢？
+1.1、Directive和Controller使用同一个scope&amp;lt;!doctype html&amp;gt;
+&amp;lt;htm"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Angular：指令、Controller数据共享 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>Angular：指令、Controller数据共享</h1><span class="post-meta">写于<time> 2015 年 03 月 13 日 11 时 24 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 17 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、Directive与Controller数据共享"><span class="toc-number">1.</span> <span class="toc-text">1、Directive与Controller数据共享</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、Directive和Controller使用同一个scope"><span class="toc-number">1.1.</span> <span class="toc-text">1.1、Directive和Controller使用同一个scope</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2、在指令作用域中使用-，将当前属性作为字符串传递"><span class="toc-number">1.2.</span> <span class="toc-text">1.2、在指令作用域中使用@，将当前属性作为字符串传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3、在指令的作用域中使用-，进行数据的双向绑定"><span class="toc-number">1.3.</span> <span class="toc-text">1.3、在指令的作用域中使用=，进行数据的双向绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4、在Directive中调用Controller的方法"><span class="toc-number">1.4.</span> <span class="toc-text">1.4、在Directive中调用Controller的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、在controller中，拿到directive的作用域"><span class="toc-number">2.</span> <span class="toc-text">2、在controller中，拿到directive的作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1、拿到scope的元素，调用isolateScope获取scope"><span class="toc-number">2.1.</span> <span class="toc-text">2.1、拿到scope的元素，调用isolateScope获取scope</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、-指令之间相互获取数据"><span class="toc-number">3.</span> <span class="toc-text">3、 指令之间相互获取数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1、通过directive依赖来共享数据"><span class="toc-number">3.1.</span> <span class="toc-text">3.1、通过directive依赖来共享数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2、通过如2-1的方式获取数据"><span class="toc-number">3.2.</span> <span class="toc-text">3.2、通过如2.1的方式获取数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、-其他Hacky的方式"><span class="toc-number">4.</span> <span class="toc-text">4、 其他Hacky的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、参考资料"><span class="toc-number">5.</span> <span class="toc-text">5、参考资料</span></a></li></ol></div><h2 id="1、Directive与Controller数据共享"><a href="#1、Directive与Controller数据共享" class="headerlink" title="1、Directive与Controller数据共享"></a>1、Directive与Controller数据共享</h2><p>在指令中，不仅仅需要指令配置信息，很多时候也需要获取$scope的相关数据。那么，如何在指令中拿到$scope的数据呢？</p>
+<h3 id="1-1、Directive和Controller使用同一个scope"><a href="#1-1、Directive和Controller使用同一个scope" class="headerlink" title="1.1、Directive和Controller使用同一个scope"></a>1.1、Directive和Controller使用同一个scope</h3><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Angular Demo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div ng-controller=&quot;DemoCtrl&quot;&gt;
+      &lt;d1&gt;&lt;/d1&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 脚本区域 --&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          scope: false, //defualt value is false
+          template: &apos;&lt;h1&gt;Hi,{{name}}&lt;/h1&gt;&apos;,
+          link: function(scope, iElement, iAttrs){
+            console.log(&apos;directive scope id = &apos; + scope.$id);
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+        console.log(&apos;controller scope id = &apos; + $scope.$id);
+        $scope.name = &apos;Jay&apos;;
+      }]);
+
+      //可以采用如此方式启动angular扫描，或者直接使用ng-app=&quot;app&quot;
+      angular.bootstrap(document.body, [&apos;app&apos;]);
+    &lt;/script&gt;
+    &lt;!-- 脚本区域 End --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>执行以上代码，页面显示Hi Jay，并在控制台打印</p>
+<pre><code>controller scope id = 2
+directive scope id = 2
+</code></pre><p>在指令中，默认会直接使用上级的scope，从控制台来看，先执行controller的scope，再执行directive的scope。因为id一致，所以是同一个scope。既然是同一个scope，那么共享数据自然就不是问题了。该方式，适合业务性质的directive，如果是公共的directive，不建议使用此方式，可能会导致scope杂乱。</p>
+<h3 id="1-2、在指令作用域中使用-，将当前属性作为字符串传递"><a href="#1-2、在指令作用域中使用-，将当前属性作为字符串传递" class="headerlink" title="1.2、在指令作用域中使用@，将当前属性作为字符串传递"></a>1.2、在指令作用域中使用@，将当前属性作为字符串传递</h3><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Angular Demo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div ng-controller=&quot;DemoCtrl&quot;&gt;
+      &lt;d1 name=&quot;{{key}}&quot;&gt;&lt;/d1&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 脚本区域 --&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          scope: {
+            name: &apos;@&apos;
+          },
+          template: &apos;&lt;h1&gt;Hi,{{name}}&lt;/h1&gt;&apos;,
+          link: function(scope, iElement, iAttrs){
+            console.log(&apos;directive scope id = &apos; + scope.$id);
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+        console.log(&apos;controller scope id = &apos; + $scope.$id);
+        $scope.key = &apos;Jay&apos;;
+
+      }]);
+
+      //可以采用如此方式启动angular扫描，或者直接使用ng-app=&quot;app&quot;
+      angular.bootstrap(document.body, [&apos;app&apos;]);
+    &lt;/script&gt;
+    &lt;!-- 脚本区域 End --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>以上代码，主要修改了指令的scope，从输出来看，指令和controller各自是自己独有的作用域。</p>
+<p><code>scope = {name: &#39;@&#39;}</code>，等价于</p>
+<pre><code>link:function(scope, iElement, iAttrs){
+    scope.name = iAttrs.name;
+}
+</code></pre><p>Controller中的key的变化，会即时影响到Directive的变化，但是Directive的变化并不会反向影响到Controller，结果近似于单向绑定。</p>
+<h3 id="1-3、在指令的作用域中使用-，进行数据的双向绑定"><a href="#1-3、在指令的作用域中使用-，进行数据的双向绑定" class="headerlink" title="1.3、在指令的作用域中使用=，进行数据的双向绑定"></a>1.3、在指令的作用域中使用=，进行数据的双向绑定</h3><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Angular Demo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div ng-controller=&quot;DemoCtrl&quot;&gt;
+      key = {{key}}
+      &lt;d1 name=&quot;key&quot;&gt;&lt;/d1&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 脚本区域 --&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          scope: {
+            name: &apos;=&apos;
+          },
+          template: &apos;&lt;h1&gt;Hi,{{name}}&lt;/h1&gt;&lt;input type=&quot;text&quot; ng-model=&quot;name&quot; /&gt;&apos;,
+          link: function(scope, iElement, iAttrs){
+            console.log(&apos;directive scope id = &apos; + scope.$id);
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+        console.log(&apos;controller scope id = &apos; + $scope.$id);
+        $scope.key = &apos;Jay&apos;;
+
+      }]);
+
+      //可以采用如此方式启动angular扫描，或者直接使用ng-app=&quot;app&quot;
+      angular.bootstrap(document.body, [&apos;app&apos;]);
+    &lt;/script&gt;
+    &lt;!-- 脚本区域 End --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>以上代码的变化在于，使用了scope: {name: ‘=’}，该代码将父作用域的属性和指令的属性进行双向绑定。所以指令中文本框的值的变化，将会同步影响controller中key的变化。</p>
+<p><strong>注意：在使用指令的时候，html代码，并不是和示例1.1一致了，如果是双向绑定，那么应该使用&lt;d1 name=”key” /&gt;，而不是&lt;d1 name=”“&gt;。</strong></p>
+<h3 id="1-4、在Directive中调用Controller的方法"><a href="#1-4、在Directive中调用Controller的方法" class="headerlink" title="1.4、在Directive中调用Controller的方法"></a>1.4、在Directive中调用Controller的方法</h3><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Angular Demo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body ng-app=&quot;app&quot;&gt;
+    &lt;div ng-controller=&quot;DemoCtrl&quot;&gt;
+      key = {{key}}
+      &lt;d1 name=&quot;key&quot; show-name=&quot;show(key)&quot;&gt;&lt;/d1&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 脚本区域 --&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          scope: {
+            name: &apos;=&apos;,
+            showName: &apos;&amp;&apos;
+          },
+          template: &apos;&lt;h1&gt;Hi,{{name}}&lt;/h1&gt;&lt;input type=&quot;text&quot; ng-model=&quot;name&quot; /&gt;&apos; 
+          + &apos;&lt;button ng-click=&quot;showName(name)&quot;&gt;Show&lt;/button&gt;&apos;,
+          link: function(scope, iElement, iAttrs){
+            console.log(&apos;directive scope id = &apos; + scope.$id);
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+        console.log(&apos;controller scope id = &apos; + $scope.$id);
+        $scope.key = &apos;Jay&apos;;
+        $scope.show = function(name){
+            alert(name);
+        };
+      }]);
+    &lt;/script&gt;
+    &lt;!-- 脚本区域 End --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>点击指令生成的按钮，会执行controller的show方法，利用在scope: {showName: ‘&amp;’}，可以将父级作用域的方法绑定到指令中。</p>
+<p><strong>注意，一定要注意属性命令，在html中书写showName，那么在iAttrs中对应showname，只有在html中书写show-name,在会在iAttrs中对应showName。</strong></p>
+<h2 id="2、在controller中，拿到directive的作用域"><a href="#2、在controller中，拿到directive的作用域" class="headerlink" title="2、在controller中，拿到directive的作用域"></a>2、在controller中，拿到directive的作用域</h2><h3 id="2-1、拿到scope的元素，调用isolateScope获取scope"><a href="#2-1、拿到scope的元素，调用isolateScope获取scope" class="headerlink" title="2.1、拿到scope的元素，调用isolateScope获取scope"></a>2.1、拿到scope的元素，调用isolateScope获取scope</h3><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Angular Demo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body ng-app=&quot;app&quot;&gt;
+    &lt;div ng-controller=&quot;DemoCtrl&quot;&gt;
+      key = {{key}}
+      &lt;button ng-click=&quot;click()&quot;&gt;Click&lt;/button&gt;
+      &lt;hr /&gt;
+      &lt;d1 id=&quot;d1&quot; name=&quot;key&quot; show-name=&quot;show(key)&quot;&gt;&lt;/d1&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 脚本区域 --&gt;
+    &lt;script src=&quot;//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          scope: {}, //等价于 scope: true
+          template: &apos;&lt;h1&gt;Hi,{{name}}&apos;,
+          link: function(scope, iElement, iAttrs){
+            scope.name = &apos;directive name&apos;;
+            console.log(&apos;directive scope id = &apos; + scope.$id);
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+        console.log(&apos;controller scope id = &apos; + $scope.$id);
+        $scope.click = function(){
+          var dirScope = $(&apos;#d1&apos;).isolateScope();
+          alert(dirScope.name);
+        }
+      }]);
+    &lt;/script&gt;
+    &lt;!-- 脚本区域 End --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>此代码中，利用$(‘#d1’).isolateScope，拿到了该指令的scope，所以可以随时方式，该方式在多种指令中也有效。</p>
+<p><strong>如果判断应该用isolateScope()还是scope()获取作用域？一个最简单的方式，用F12查看源码，找到该元素，然后查看class是ng-isolate-scope还是ng-scope</strong></p>
+<h2 id="3、-指令之间相互获取数据"><a href="#3、-指令之间相互获取数据" class="headerlink" title="3、 指令之间相互获取数据"></a>3、 指令之间相互获取数据</h2><h3 id="3-1、通过directive依赖来共享数据"><a href="#3-1、通过directive依赖来共享数据" class="headerlink" title="3.1、通过directive依赖来共享数据"></a>3.1、通过directive依赖来共享数据</h3><pre><code>&lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          require: &apos;^ngModel&apos;,
+          scope: {}, //等价于 scope: true
+          template: false,
+          link: function(scope, iElement, iAttrs, ngModelCtrl){
+
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+
+      }]);
+&lt;/script&gt;
+</code></pre><h3 id="3-2、通过如2-1的方式获取数据"><a href="#3-2、通过如2-1的方式获取数据" class="headerlink" title="3.2、通过如2.1的方式获取数据"></a>3.2、通过如2.1的方式获取数据</h3><h2 id="4、-其他Hacky的方式"><a href="#4、-其他Hacky的方式" class="headerlink" title="4、 其他Hacky的方式"></a>4、 其他Hacky的方式</h2><ol>
+<li>通过<code>$parent</code>访问父级作用域</li>
+<li>通过<code>$$prevSibling</code>访问该作用域的上一个兄弟作用域</li>
+<li>通过<code>$$nextSibling</code>访问该作用域的下一个兄弟作用域</li>
+<li>通过<code>$$childHead</code>访问儿子作用域的第一个</li>
+<li>通过<code>$$childTail</code>访问儿子作用域的最后一个</li>
+</ol>
+<h2 id="5、参考资料"><a href="#5、参考资料" class="headerlink" title="5、参考资料"></a>5、参考资料</h2><ol>
+<li><p><a href="http://tech.blinemedical.com/sharing-data-between-child-and-parent-directives-and-scopes-in-angularjs/" target="_blank" rel="external">SHARING DATA BETWEEN CHILD AND PARENT DIRECTIVES AND SCOPES (IN ANGULARJS)</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/bigdataZJ/p/AngularJS1.html" target="_blank" rel="external">directive和controller如何通信</a></p>
+</li>
+</ol>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2015/03/13/Angular相关/Angular：指令、Controller数据共享/" data-title="Angular：指令、Controller数据共享" data-url="http://hstarorg.github.io/blog/blog/2015/03/13/Angular相关/Angular：指令、Controller数据共享/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

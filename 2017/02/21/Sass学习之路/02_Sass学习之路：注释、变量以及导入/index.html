@@ -1,0 +1,179 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="前言由于.sass不兼容CSS代码，所以以下内容完全使用.scss的语法。
+Sass注释Sass中除了提供CSS中的标准注释之外，还提供了一种静默注释：
+/* 我是标准注释 */
+// 我是静默注释
+标准注释大多数情况下（一种例外：设置输出风格为compressed）是会生成到最终的CSS中的，而静"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>02_Sass学习之路：注释、变量以及导入 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>02_Sass学习之路：注释、变量以及导入</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass注释"><span class="toc-number">2.</span> <span class="toc-text">Sass注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass变量"><span class="toc-number">3.</span> <span class="toc-text">Sass变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#局部变量"><span class="toc-number">3.1.</span> <span class="toc-text">局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局变量"><span class="toc-number">3.2.</span> <span class="toc-text">全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认变量"><span class="toc-number">3.3.</span> <span class="toc-text">默认变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特殊变量"><span class="toc-number">3.4.</span> <span class="toc-text">特殊变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多值变量"><span class="toc-number">3.5.</span> <span class="toc-text">多值变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入"><span class="toc-number">4.</span> <span class="toc-text">导入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结尾"><span class="toc-number">5.</span> <span class="toc-text">结尾</span></a></li></ol></div><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于.sass不兼容CSS代码，所以以下内容完全使用.scss的语法。</p>
+<h2 id="Sass注释"><a href="#Sass注释" class="headerlink" title="Sass注释"></a>Sass注释</h2><p>Sass中除了提供CSS中的标准注释之外，还提供了一种静默注释：</p>
+<pre><code>/* 我是标准注释 */
+// 我是静默注释
+</code></pre><p>标准注释大多数情况下（<strong>一种例外：设置输出风格为compressed</strong>）是会生成到最终的CSS中的，而静默注释的话，只是Sass的注释，是不会被生成到CSS文件中的。</p>
+<p>如果想，就算设置输出风格为compressed也要加入特定注释呢？那么可以采用<strong>重要注释</strong>写法，如下：</p>
+<pre><code>/*! 我的重要注释 */
+</code></pre><p>也就是在标准注释的基础上，将注释的第一个字符设置为感叹号。</p>
+<h2 id="Sass变量"><a href="#Sass变量" class="headerlink" title="Sass变量"></a>Sass变量</h2><p>Sass作为一个CSS预处理器，那么最基本的编程语言特性<strong>变量</strong>自然也是必不可少的。Sass中变量系统相对比较丰富，包含局部变量，全局变量，默认变量，特殊变量（变量作用在属性上），多值变量。</p>
+<p><strong>Sass变量以$开头，用:分割变量名与变量值，以;结尾。如： $color: red;</strong></p>
+<p><strong>Sass变量，不区分中横线和下划线，比如定义变量为$bg-color，那么使用$bg_color也能访问到哦！</strong></p>
+<h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>同大多数编程语言一样，变量的作用域是它本身的这个块，以及所有的子集。如:</p>
+<pre><code>body{
+  $color: blue;
+  color: $color;
+  .container{
+    background-color: $color;    
+  }
+}
+</code></pre><p>将被编译为：</p>
+<pre><code>body {
+  color: blue;
+}
+
+body .container {
+  background-color: blue;
+}
+</code></pre><p>同时，需要注意：针对以上代码，如果内部修改了$color的值，也会同时影响到外部的变量值。</p>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>如果定义在局部的变量，与它同级的选择器中是无法使用的：</p>
+<pre><code>body{
+  $color: blue;
+  color: $color;
+  .container{
+    background-color: $color;    
+  }
+}
+
+// 会出现错误，未定义的变量
+footer{
+  color: $color;
+}
+</code></pre><p>这个时候，就需要提升$color为全局变量，<strong>在变量值之后，加上!global</strong>,示例如下：</p>
+<pre><code>body{
+  $color: blue !global;
+  color: $color;
+  .container{
+    background-color: $color;    
+  }
+}
+
+// 会出现错误，未定义的变量
+footer{
+  color: $color;
+}
+</code></pre><p>这个的话，就能够正常编译了，因为$color被提升为全局变量了。</p>
+<h3 id="默认变量"><a href="#默认变量" class="headerlink" title="默认变量"></a>默认变量</h3><p>在Sass中，可以通过在<strong>变量值之后加入!default</strong>来让变量称为默认变量，如果有对该变量的赋值，不管前后，那么变量的默认值都会被替换掉，示例如下：</p>
+<pre><code>$color: red;
+body{
+  $color: blue !default;
+  color: $color;
+  .container{
+    background-color: $color;    
+  }
+}
+footer{
+  color: $color;
+}
+</code></pre><p>可以通过注释掉!default来查看生成的CSS的异同。</p>
+<h3 id="特殊变量"><a href="#特殊变量" class="headerlink" title="特殊变量"></a>特殊变量</h3><p>Sass的变量，还可以用在属性中，此时需要使用#{变量名}来引用，示例如下：</p>
+<pre><code>$containerId: c1;
+
+##{$containerId}{
+  color: red;
+}
+</code></pre><p>此时，生成的CSS为：</p>
+<pre><code>#c1 {
+  color: red;
+}
+</code></pre><h3 id="多值变量"><a href="#多值变量" class="headerlink" title="多值变量"></a>多值变量</h3><p>强大的Sass，还提供了一种特殊的变量，即为多值变量，在一个变量中，可以定义多个值，然后通过制定的函数访问，示例如下：</p>
+<pre><code>// List类型的多值变量 
+$px: 5px 10px 15px 20px;
+
+// Map类型的多值变量 
+$map: (id1: test, id2: testGrid, color: red);
+
+body{
+  // 此处需要注意，索引是从1开始，不是从0哦。
+  margin-left: nth($px, 1);
+
+  // 使用map-get访问，当心key的使用，指定了不存在的key会导致生成的css异常 
+  #{map-get($map, id2)}{
+    color: red;
+  }
+
+  #id{
+    color: map-get($map, color);
+  }
+}
+</code></pre><p>生成的CSS如下：</p>
+<pre><code>body {
+  margin-left: 5px;
+}
+
+body testGrid {
+  color: red;
+}
+
+body #id {
+  color: red;
+}
+</code></pre><h2 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h2><p>体现可维护性的重要指标就是文件似乎可以单一职责，那么在Sass中，主要体现在导入上。由于Sass中的导入指令和CSS的导入指令是同样的关键字，那么就需要按照一定的规则来判别了，满足以下任意一条规则的导入，使用CSS的原生导入：</p>
+<ol>
+<li>被导入的文件名以.css结尾</li>
+<li>被导入的文件是一个在线的url地址</li>
+<li>以@import url(…)方式去导入文件</li>
+</ol>
+<p>同时，编写局部的sass文件，建议使用下划线开头,如： _a.scss，这样就不会生成多余的_a.css了。</p>
+<pre><code>//_a.scss
+#id2{
+  color: red;
+}
+
+//1.scss
+@import &quot;a.scss&quot;;
+#id1{
+  color: blue;
+}
+
+body{
+    @import &quot;a.scss&quot;;
+}
+</code></pre><p>最终生成的结果为:</p>
+<pre><code>#id2 {
+  color: red;
+}
+
+#id1 {
+  color: blue;
+}
+
+body #id2 {
+  color: red;
+}
+</code></pre><h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>欲知后事如何，请听下回分解！</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/Sass学习之路/02_Sass学习之路：注释、变量以及导入/" data-title="02_Sass学习之路：注释、变量以及导入" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/Sass学习之路/02_Sass学习之路：注释、变量以及导入/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

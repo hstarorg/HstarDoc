@@ -1,0 +1,74 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="幻☆精灵的Blog站点"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>幻☆精灵的Blog · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="item"><a class="article" href="/blog/2015/03/12/编写高质量JS代码的68个有效方法-读书笔记/[20150312]编写高质量JS代码的68个有效方法（十三）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（十三）</h2></a><span class="post-meta">写于<time> 2015 年 03 月 12 日 00 时 00 分</time></span><p class="post-excerpt">##No.61、不要阻塞I/O事件队列
+Tips：：
+
+异步API使用回调函数来延缓处理代价高昂的操作以避免阻塞主应用程序
+JavaScript并发的接收事件，但会使用一个事件队列按序地处理事件处理程序
+在应用程序事件队列中绝不要使用阻塞的I/O
+
+JavaScript程序是构建</p></article><article class="item"><a class="article" href="/blog/2015/03/04/编写高质量JS代码的68个有效方法-读书笔记/[20150304]编写高质量JS代码的68个有效方法（十二）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（十二）</h2></a><span class="post-meta">写于<time> 2015 年 03 月 04 日 00 时 00 分</time></span><p class="post-excerpt">##No.56、避免不必要的状态Tips：
+
+尽可能地使用无状态的API
+如果API是有状态的，标示出每个操作与哪些状态有关联
+
+无状态的API简洁，更容易学习和使用，也不需要考虑其他的状态。如：
+&amp;apos;test&amp;apos;.toUpperCase(); // &amp;apos;</p></article><article class="item"><a class="article" href="/blog/2015/02/14/编写高质量JS代码的68个有效方法-读书笔记/[20150214]编写高质量JS代码的68个有效方法（十一）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（十一）</h2></a><span class="post-meta">写于<time> 2015 年 02 月 14 日 00 时 00 分</time></span><p class="post-excerpt">##No.51、在类数组对象上附庸通用的数组方法Tips:
+
+对于类数组对象，通过提取方法对象并使用其call方法来复用通用的Array方法
+任意一个具有索引属性和恰当length属性的对象都可以使用通用的Array方法
+
+Array.proteotype中的标准方法被设计成其他</p></article><article class="item"><a class="article" href="/blog/2015/01/23/编写高质量JS代码的68个有效方法-读书笔记/[20150123]编写高质量JS代码的68个有效方法（十）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（十）</h2></a><span class="post-meta">写于<time> 2015 年 01 月 23 日 00 时 00 分</time></span><p class="post-excerpt">##No.46、使用数组而不要使用字典来存储有序集合Tips:
+
+使用for…in 循环来枚举对象属性应当与顺序无关
+如果聚集运算字典中的数据，确保聚集操作与顺序无关
+使用数组而不是字典来存储有序集合
+
+由于标准允许JavaScript引擎自由选择顺序，那么如果用字典存储有序数据</p></article><article class="item"><a class="article" href="/blog/2015/01/10/编写高质量JS代码的68个有效方法-读书笔记/[20150110]编写高质量JS代码的68个有效方法（九）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（九）</h2></a><span class="post-meta">写于<time> 2015 年 01 月 10 日 00 时 00 分</time></span><p class="post-excerpt">##No.41、将原型视为实现细节Tips：
+
+对象是接口，原型是实现
+避免检查你无法控制的对象的原型结构
+避免检查实现在你无法控制的对象内部的属性
+
+我们可以获取对象的属性值和调用其方法，这些操作都不是特别在意属性存储在原型继承结构的哪个位置。只要其属性值保存很定，那么这些操作</p></article><article class="item"><a class="article" href="/blog/2015/01/07/前端相关/[20150107]Web离线存储的几种方式/"><h2 class="home-title">Web离线存储的几种方式</h2></a><span class="post-meta">写于<time> 2015 年 01 月 07 日 00 时 00 分</time></span><p class="post-excerpt">随着HTML5的正式定稿，我们也可以大量使用HTML离线网络应用程序的特性。
+#1、Application CacheApplication Cache 可以很简单让我们的WebApp具有离线的能力。
+支持的浏览器：IE10+，FireFox，Chrome，Safari，Oper</p></article><article class="item"><a class="article" href="/blog/2014/12/27/编写高质量JS代码的68个有效方法-读书笔记/[20141227]编写高质量JS代码的68个有效方法（八）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（八）</h2></a><span class="post-meta">写于<time> 2014 年 12 月 27 日 00 时 00 分</time></span><p class="post-excerpt">##NO.36、只将实例状态存储在实例对象中Tips：
+
+共享可变数据可能会出问题，因为原型是被其所有的实例共享的
+将可变的实例存储在实例对象中
+
+一般来说，由于原型属性指向的对象是所有实例共享的。所以不建议在原型指向的对象中存储共享数据。下面给一个简单的例子：
+var Pers</p></article><article class="item"><a class="article" href="/blog/2014/12/20/编写高质量JS代码的68个有效方法-读书笔记/[20141220]编写高质量JS代码的68个有效方法（七）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（七）</h2></a><span class="post-meta">写于<time> 2014 年 12 月 20 日 00 时 00 分</time></span><p class="post-excerpt">##No.30、理解prototype、getPrototypeOf和proto之间的不同Tips：
+
+C.prototype属性是new C() 创建的对象的原型
+Object.getPrototypeOf(obj)是ES5中检索对象原型的标准函数
+obj. proto是检索对</p></article><article class="item"><a class="article" href="/blog/2014/12/13/编写高质量JS代码的68个有效方法-读书笔记/[20141213]编写高质量JS代码的68个有效方法（六）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（六）</h2></a><span class="post-meta">写于<time> 2014 年 12 月 13 日 00 时 00 分</time></span><p class="post-excerpt">##No.26、使用bind方法实现函数柯里化Tips：
+
+使用bind方法实现函数柯里化，即创建一个固定需求参数子集的委托函数
+传入null或undefined作为接收者的参数来实现函数柯里化，从而忽略其接收者
+
+什么是函数柯里化？
+将函数与其参数的一个子集绑定的技术称为函数柯</p></article><article class="item"><a class="article" href="/blog/2014/12/05/编写高质量JS代码的68个有效方法-读书笔记/[20141205]编写高质量JS代码的68个有效方法（五）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（五）</h2></a><span class="post-meta">写于<time> 2014 年 12 月 05 日 00 时 00 分</time></span><p class="post-excerpt">##No.21、使用apply方法通过不同数量的参数调用函数Tips：
+
+使用apply方法自定一个可计算的参数数组来调用可变参数的函数
+使用apply方法的第一个参数给可变参数的方法提供一个接收者
+ //示例：计算给定数据的最大值 function getMaxNum(){
+v</p></article><div class="pagination"><a class="extend prev" rel="prev" href="/blog/page/11/">«</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/10/">10</a><a class="page-number" href="/blog/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/blog/page/13/">13</a><a class="extend next" rel="next" href="/blog/page/13/">»</a></div><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

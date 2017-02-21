@@ -1,0 +1,175 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="##No.41、将原型视为实现细节Tips：
+
+对象是接口，原型是实现
+避免检查你无法控制的对象的原型结构
+避免检查实现在你无法控制的对象内部的属性
+
+我们可以获取对象的属性值和调用其方法，这些操作都不是特别在意属性存储在原型继承结构的哪个位置。只要其属性值保存很定，那么这些操作的行为也不变。简言之"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>编写高质量JS代码的68个有效方法（九） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>编写高质量JS代码的68个有效方法（九）</h1><span class="post-meta">写于<time> 2015 年 01 月 10 日 00 时 00 分</time><br>更新于<time> 2017 年 02 月 21 日 13 时 59 分</time></span><div class="article-toc"><strong>大纲</strong></div><p>##No.41、将原型视为实现细节<br><strong>Tips：</strong></p>
+<ol>
+<li>对象是接口，原型是实现</li>
+<li>避免检查你无法控制的对象的原型结构</li>
+<li>避免检查实现在你无法控制的对象内部的属性</li>
+</ol>
+<p>我们可以获取对象的属性值和调用其方法，这些操作都不是特别在意属性存储在原型继承结构的哪个位置。只要其属性值保存很定，那么这些操作的行为也不变。简言之，原型是一种对象行为的实现细节。</p>
+<p>正是由于以上的特性，所以如果修改了实现细节，那么依赖于这些对象的使用者就会被破坏，而且还很难诊断这类bug。所以一般来说，对于使用者，最好不要干涉那些属性。</p>
+<p>##No.42、避免使用轻率的猴子补丁<br><strong>Tips：</strong></p>
+<ol>
+<li>避免使用轻率的猴子补丁</li>
+<li>记录程序库所执行的所有猴子补丁</li>
+<li>考虑通过将修改设置于一个导出函数中，使猴子补丁成为可选的</li>
+<li>使用猴子补丁为缺失的标准API提供polyfills</li>
+</ol>
+<p><strong>何为猴子补丁？</strong></p>
+<p>由于对象共享原型，因为每一个对象都可以增加、删除或修改原型的属性。这个有争议的实践通常被称为猴子补丁。</p>
+<p>猴子补丁的吸引力在于它的强大，如果数组缺少一个有用的方法，那么我们可以自己扩展它。但是在多个库同时对数组进行不兼容扩展时，问题就来了，有可能调用方法之后的结果和预期不一致。</p>
+<p>危险的猴子补丁有一个特别可靠而且有价值的使用场景：polyfill。补齐标准所支持的方法。</p>
+<p>##No.43、使用Object的直接实例构造轻量级的字典<br><strong>Tips:</strong></p>
+<ol>
+<li>使用对象字面量构建轻量级字典</li>
+<li>轻量级字典应该是Object.prototype的直接子类，以使for…in循环免受原型污染</li>
+</ol>
+<p>JavaScript对象的核心是一个字符串属性名称与属性值的映射表。</p>
+<pre><code>var dict = {
+  key1: &apos;value1&apos;,
+  key2: &apos;value2&apos;
+};
+for(var key in dict){
+  console.log(&apos;key=&apos;+ key + &apos;,value=&apos; + dict[key]);
+}
+</code></pre><p>在使用for…in时，要小心原型污染。</p>
+<pre><code>function Dict(){
+  Dict.prototype.count = function(){
+    var c = 0;
+    for(var p in this){
+      c++;
+    }
+    return c;
+  }  
+}
+
+var dict = new Dict();
+dict.name = &apos;jay&apos;;
+console.log(dict.count()); //结果是2，因为for...in会枚举出所有的属性，包括原型上的。
+</code></pre><p>所有人都不应当增加属性到Object.prototype上，因为这样做可能会污染for…in循环，那么我们通过使用Object的直接实例，可以将风险仅仅局限于Object.prototype。</p>
+<p>##No.44、使用null原型以防止原型污染<br><strong>Tips：</strong></p>
+<ol>
+<li>在ES5中，使用Object.create(null)创建的自由原型的空对象是不太容易被污染的</li>
+<li>在一些较老的环境中，考虑使用{<strong>proto</strong>: null}</li>
+<li>要注意<code>__proto__</code>既不标准，也不是完全可移植的，并且可能会在未来的JavaScript环境中去除</li>
+<li>绝不要使用<code>__proto__</code>名作为字典的key，因为一些环境将其作为特殊的属性对待</li>
+</ol>
+<p>对构造函数的原型属性设置null或者是undefined是无效的：</p>
+<pre><code>function Dict(){
+
+}
+Dict.prototype = null;
+var dict = new Dict();
+console.log(Object.getPrototypeOf(dict) === null); // false
+console.log(Object.getPrototypeOf(dict) === Object.prototype); //true
+</code></pre><p>在ES5中，提供了标准方法来创建一个没有原型的对象：</p>
+<pre><code>var dict = Object.create(null);
+console.log(Object.getPrototypeOf(dict) === null); // true
+</code></pre><p>在不支持Object.create函数的旧的JS环境中，可以使用如下方式创建没有原型的对象：</p>
+<pre><code>var dict = {__proto__: null}
+console.log(Object.getPrototypeOf(dict) === null); // true
+</code></pre><p><strong>注意：在支持Object.create函数的环境中，尽可能的坚持使用标准的Object.create函数</strong></p>
+<p>##No.45、使用hasOwnProperty方法来避免原型污染<br><strong>Tips：</strong></p>
+<ol>
+<li>使用hasOwnProperty方法避免原型污染</li>
+<li>使用词法作用域和call方法避免覆盖hasOwnProperty方法</li>
+<li>考虑在封装hasOwnProperty测试样板代码的类中实现字典操作</li>
+<li>使用字典类避免将<code>__proto__</code>作为key来使用</li>
+</ol>
+<p>即使是一个空的对象字面量也继承了Object.prototype的大量属性：</p>
+<pre><code>var dict = {}
+console.log(&apos;a&apos; in dict); // false
+console.log(&apos;toString&apos; in dict); // true
+console.log(&apos;valueOf&apos; in dict); // true
+</code></pre><p>不过，Object.prototype提供了方法来测试字典条目：</p>
+<pre><code>var dict = {}
+console.log(dict.hasOwnProperty(&apos;a&apos;)); // false
+console.log(dict.hasOwnProperty(&apos;toString&apos;)); // false
+console.log(dict.hasOwnProperty(&apos;valueOf&apos;)); // false
+</code></pre><p>但是，如果在字典中存储一个同为“hasOwnProperty”的属性，那么：</p>
+<pre><code>var dict = {
+  hasOwnProperty: null
+}
+console.log(dict.hasOwnProperty(&apos;a&apos;)); // TypeError
+</code></pre><p>最安全的方法则是使用call：</p>
+<pre><code>var dict = {
+  hasOwnProperty: null
+}
+console.log({}.hasOwnProperty.call(dict, &apos;hasOwnProperty&apos;)); // true、
+</code></pre><p>最后，我们来看一个复杂的但更安全的字典类：</p>
+<pre><code>function Dict(elements){
+  this.elements = elements || {};
+  this.hasSpecialProto = false;
+  this.specialProto = undefined;
+}
+
+Dict.prototype.has = function(key){
+  if(key === &apos;__proto__&apos;){
+    return this.hasSpecialProto;
+  }
+  return {}.hasOwnProperty.call(this.elements, key);
+};
+
+Dict.prototype.get = function(key){
+  if(key === &apos;__proto__&apos;){
+    return this.specialProto;
+  }
+  return this.has(key) ? this.elements[key] : undefined;
+};
+
+Dict.prototype.set = function(key, value){
+  if(key === &apos;__proto__&apos;){
+    this.hasSpecialProto = true;
+    this.specialProto = value;
+  }else{
+    this.elements[key] = value;
+  }
+};
+
+Dict.prototype.remove = function(key){
+  if(key === &apos;__proto__&apos;){
+    this.hasSpecialProto = false;
+    this.specialProto = undefined;
+  }else{
+    delete this.elements[key];
+  }
+};
+
+// 测试代码
+var dict = new Dict();
+console.log(dict.has(&apos;__proto__&apos;)); // false
+</code></pre><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2015/01/10/编写高质量JS代码的68个有效方法-读书笔记/[20150110]编写高质量JS代码的68个有效方法（九）/" data-title="编写高质量JS代码的68个有效方法（九）" data-url="http://hstarorg.github.io/blog/blog/2015/01/10/编写高质量JS代码的68个有效方法-读书笔记/[20150110]编写高质量JS代码的68个有效方法（九）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

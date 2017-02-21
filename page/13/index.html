@@ -1,0 +1,53 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="幻☆精灵的Blog站点"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>幻☆精灵的Blog · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="item"><a class="article" href="/blog/2014/11/29/编写高质量JS代码的68个有效方法-读书笔记/[20141129]编写高质量JS代码的68个有效方法（四）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（四）</h2></a><span class="post-meta">写于<time> 2014 年 11 月 29 日 00 时 00 分</time></span><p class="post-excerpt">##No.16、避免使用eval创建局部变量Tips：
+
+避免使用eval函数创建的变量污染调用者作用域。
+如果eval函数代码可能创建全局变量，将此调用封装到嵌套的函数中已防止作用域污染。
+
+执行eval时，eval中的变量才会被加到作用域中（函数作用域）
+function f</p></article><article class="item"><a class="article" href="/blog/2014/11/21/JS札记/[20141121]JavaScript之Array常用功能汇总/"><h2 class="home-title">JavaScript之Array常用功能汇总</h2></a><span class="post-meta">写于<time> 2014 年 11 月 21 日 00 时 00 分</time></span><p class="post-excerpt">导语：在JavaScript中，Array是一个使用比较频繁的对象，那么它到底有哪些常用的方法呢？
+首先，我们先看一下Array对象的类型：
+typeof Array // &amp;apos;function&amp;apos;
+Array instanceof Object // true
+</p></article><article class="item"><a class="article" href="/blog/2014/11/14/SQL SERVER/[20141114]这些年你需要注意的SQL/"><h2 class="home-title">这些年你需要注意的SQL</h2></a><span class="post-meta">写于<time> 2014 年 11 月 14 日 00 时 00 分</time></span><p class="post-excerpt">#1、使用对象时，请显式的指定对象的架构者（默认为dbo）分析： 在SQL SERVER中，如果用户User1访问表table1，那么查询分析器必须决定是检索 User1.table1 还是 dbo.table1 。所以每次User1访问同一张表table1时，查询分析器都必须对</p></article><article class="item"><a class="article" href="/blog/2014/10/30/编写高质量JS代码的68个有效方法-读书笔记/[20141030]编写高质量JS代码的68个有效方法（三）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（三）</h2></a><span class="post-meta">写于<time> 2014 年 10 月 30 日 00 时 00 分</time></span><p class="post-excerpt">##No.11、熟练掌握闭包Tips：
+
+函数可以引用定义在其外部的作用域变量。
+闭包比创建它们的函数有更长的生命周期。
+闭包在内部存储其外部变量的引用，并能读写这些变量。
+ //第一个事实：JavaScript允许你引用在当前函数以外定义的变量。 function testCl</p></article><article class="item"><a class="article" href="/blog/2014/10/25/前端相关/[20141025]从0开始Grunt/"><h2 class="home-title">从0开始Grunt</h2></a><span class="post-meta">写于<time> 2014 年 10 月 25 日 00 时 00 分</time></span><p class="post-excerpt">首先，Grunt是什么？Grunt是JavaScript任务运行工具。使用它可以自动化诸如文件(夹)操作、代码压缩、代码编译、单元测试、代码规范校验等等重复的任务。
+如何安装Grunt？（Windows）Step1、Grunt依赖Node扩展包，那么必须要安装Node：
+
+打开N</p></article><article class="item"><a class="article" href="/blog/2014/10/11/编写高质量JS代码的68个有效方法-读书笔记/[20141011]编写高质量JS代码的68个有效方法（二）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（二）</h2></a><span class="post-meta">写于<time> 2014 年 10 月 11 日 00 时 00 分</time></span><p class="post-excerpt">##No.6、了解分号插入的局限性Tips：
+
+仅在“}”标记之前、一行的结束和程序的结束处推导分号
+仅在紧接着的标记不能被解析的时候推导分号
+在以(、[、+、-或/字符开头的语句前绝不能省略分号
+当脚本连接的时候，在脚本之间显式的插入分号
+在return、throw、break</p></article><article class="item"><a class="article" href="/blog/2014/09/26/编写高质量JS代码的68个有效方法-读书笔记/[20140926]编写高质量JS代码的68个有效方法（一）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（一）</h2></a><span class="post-meta">写于<time> 2014 年 09 月 26 日 13 时 36 分</time></span><p class="post-excerpt">##No.1、了解你使用的JavaScript版本Tips：
+
+决定你的应用程序支持JavaScript的哪些版本。
+确保你使用的任何JavaScript的特性对于应用程序将要运行的所有环境都是支持的。
+总是在执行严格模式检查的环境中测试严格代码。
+当心连接那些在不同严格模式下有</p></article><article class="item"><a class="article" href="/blog/2014/09/13/C#/[20140913]可替代反射的几种方式/"><h2 class="home-title">C#可替代反射的几种方式</h2></a><span class="post-meta">写于<time> 2014 年 09 月 13 日 00 时 00 分</time></span><p class="post-excerpt">##标准的反射代码##
+var type = obj.GetType();
+var fieldInfo = type.GetField(&amp;quot;age&amp;quot;, BindingFlags.Instance | BindingFlags.NonPublic);
+fieldI</p></article><div class="pagination"><a class="extend prev" rel="prev" href="/blog/page/12/">«</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/11/">11</a><a class="page-number" href="/blog/page/12/">12</a><span class="page-number current">13</span></div><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

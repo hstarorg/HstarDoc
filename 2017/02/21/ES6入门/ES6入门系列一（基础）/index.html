@@ -1,0 +1,132 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="##1、let命令Tips:
+
+块级作用域（只在当前块中有效）
+不会变量提升（必须先申明在使用）
+让变量独占该块，不再受外部影响
+不允许重复声明
+
+总之：let更像我们熟知的静态语言的的变量声明指令
+ES6新增了let命令，用来声明变量。用法类似于var，但所声明的变量，只能在let命令所在的代码块"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ES6入门系列一（基础） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>ES6入门系列一（基础）</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong></div><p>##1、let命令<br><strong>Tips:</strong></p>
+<ol>
+<li>块级作用域（只在当前块中有效）</li>
+<li>不会变量提升（必须先申明在使用）</li>
+<li>让变量独占该块，不再受外部影响</li>
+<li>不允许重复声明</li>
+</ol>
+<p><strong>总之：let更像我们熟知的静态语言的的变量声明指令</strong></p>
+<p>ES6新增了let命令，用来声明变量。用法类似于var，但所声明的变量，只能在let命令所在的代码块内有效。</p>
+<p>let声明的变量只有块级作用域</p>
+<pre><code>&apos;use strict&apos;
+{
+  let a = 1;
+}
+console.log(a); //结果是什么？
+</code></pre><p>看一段熟悉的代码：</p>
+<pre><code>var a = [];
+for (var i = 0; i &lt; 10; i++) {
+  a[i] = function () {
+    console.log(i);
+  };
+}
+console.log(a[6]()); //结果是什么？
+</code></pre><p>如果改用let的话，那么看以下代码输出什么？</p>
+<pre><code>&apos;use strict&apos;
+var a = [];
+for (let i = 0; i &lt; 10; i++) {
+  a[i] = function () {
+    console.log(i);
+  };
+}
+console.log(a[6]()); // ?
+</code></pre><p>同时，在使用let的时候，必须先申明再使用，不像var会变量提升：</p>
+<pre><code>&apos;use strict&apos;
+console.log(a);
+let a = 1;
+</code></pre><p>ES6中明确规定，如果区块存在let和const，那么该区块就形成封闭作用域，凡是在声明致歉就使用这些变量，就会报错。简称“暂时性死区”（temporal dead zone，简称TDZ）。</p>
+<p>看一个不太容易发现的死区：（注：该代码未测试）</p>
+<pre><code>function bar(x=y, y=2) {
+  return [x, y];
+}
+
+bar(); // 报错
+</code></pre><p>调用bar之所以报错，是因为参数x默认值等于另一个参数y，而此时y还没有声明，属于“死区”。</p>
+<p>需要注意，函数参数作用域和函数体的作用域是分离的：</p>
+<pre><code>let foo = &apos;outer&apos;;
+
+function bar(func) {
+  let foo = &apos;inner&apos;;
+  console.log(func()); // outer
+}
+
+bar(function(){
+  console.log(foo);
+});
+</code></pre><p>同时，let还不允许重复声明</p>
+<pre><code>{
+  let a = 1;
+  var a = 1;
+}
+{
+  let a = 1;
+  let a = 2;
+}
+</code></pre><p>##2、const命令<br><strong>Tips：</strong></p>
+<ol>
+<li>const用于声明常量，一旦声明，值就不能改变</li>
+<li>const具有块级作用域</li>
+<li>const不能变量提升（先声明后使用）</li>
+<li>不可重复声明</li>
+</ol>
+<p><strong>const看起来很像我们熟知的静态语言的只读对象</strong></p>
+<p>const声明常量，一旦声明，值将是不可变的。</p>
+<pre><code>&apos;use strict&apos;
+const PI = 3.1415;
+PI // 3.1415
+PI = 3; //Error
+</code></pre><p>const指令指向变量所在的地址，所以对该变量进行属性设置是可行的（未改变变量地址），如果想完全不可变化（包括属性），那么可以使用冻结。</p>
+<pre><code>&apos;use strict&apos;
+const C1 = {};
+C1.a = 1;
+console.log(C1.a); // 1 
+
+//冻结对象，此时前面用不用const都是一个效果
+const C2 = Object.freeze({}); 
+C2.a = 1; //Error,对象不可扩展
+console.log(C2.a);
+</code></pre><p>##3、全局对象属性</p>
+<p>JavaScript中，全局对象是最顶层的对象，浏览器中是window对象，Node中是global对象，ES5规定，所有全局变量都是全局对象的属性。</p>
+<p>在ES6中，var和function申明的变量，属于全局对象的属性，let和const则不是全局对象的属性。</p>
+<pre><code>&apos;use strict&apos;
+let b = 2;
+console.log(global.b); // undefined
+</code></pre><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/ES6入门/ES6入门系列一（基础）/" data-title="ES6入门系列一（基础）" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/ES6入门/ES6入门系列一（基础）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

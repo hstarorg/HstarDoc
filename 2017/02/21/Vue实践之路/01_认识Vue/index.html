@@ -1,0 +1,60 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、关于VueVue 是当前非常流行的一款前端 MV 库（国人开发），结合 vue-router, vue-resource, vuex 等等，就形成了一套比较完善的前端 MV 开发框架。
+与它非常相似的框架是 Avalon ，都借鉴了当前流行的前端 MV* 库、框架，都是基于 ES5 getter"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>01_认识Vue · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>01_认识Vue</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0、关于Vue"><span class="toc-number">1.</span> <span class="toc-text">0、关于Vue</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1、配套工具"><span class="toc-number">2.</span> <span class="toc-text">1、配套工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、开始一个项目"><span class="toc-number">3.</span> <span class="toc-text">2、开始一个项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、认识-vue"><span class="toc-number">4.</span> <span class="toc-text">3、认识.vue</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、其他"><span class="toc-number">5.</span> <span class="toc-text">4、其他</span></a></li></ol></div><h1 id="0、关于Vue"><a href="#0、关于Vue" class="headerlink" title="0、关于Vue"></a>0、关于Vue</h1><p><a href="https://vuejs.org.cn/" target="_blank" rel="external">Vue</a> 是当前非常流行的一款前端 MV<em> 库（国人开发），结合 vue-router, vue-resource, vuex 等等，就形成了一套比较完善的前端 MV</em> 开发框架。</p>
+<p>与它非常相似的框架是 <a href="http://avalonjs.coding.me/" target="_blank" rel="external">Avalon</a> ，都借鉴了当前流行的前端 MV* 库、框架，都是基于 ES5 getter setter 实现双向绑定。</p>
+<p>与 <code>Avalon</code> 相比， <code>Vue</code> 在稳定性和文档方面更胜一筹。</p>
+<p>但 <code>Avalon</code> 利用 <code>VBScript</code> 在IE6+上实现了双向绑定，不过文档和稳定性稍微有些欠缺。</p>
+<p>那么如果没有IE9-的兼容性要求，有需要产线环境，那么Vue就是非常合适的一个东西了。</p>
+<h1 id="1、配套工具"><a href="#1、配套工具" class="headerlink" title="1、配套工具"></a>1、配套工具</h1><p><code>Vue</code> 本身仅仅是一个双向绑定，组件化的库，要实现一个完整的应用，那么还需要其他的一些配套工具。</p>
+<p>实际上，在 <code>Vue</code> 发布到流行的这几年间，它的配套工具已经相当完善了。特别是 <a href="https://github.com/vuejs/vue-cli" target="_blank" rel="external">vue-cli</a>，更是极大的减少了环境搭建的成本。</p>
+<p>其他的路由，Ajax，数据流， <a href="https://github.com/vuejs" target="_blank" rel="external">vuejs组织</a> 也都提供了相应的package来支撑。</p>
+<ol>
+<li>路由  vue-router</li>
+<li>Ajax/HTTP vue-resource</li>
+<li>数据流 vuex</li>
+</ol>
+<h1 id="2、开始一个项目"><a href="#2、开始一个项目" class="headerlink" title="2、开始一个项目"></a>2、开始一个项目</h1><p>如果有Angular等前端框架使用经验，那么可以很轻松的切入vue的使用，因为有太多的似曾相识。</p>
+<p>另外，通过vue-cli，我们可以不用自己去搭建开发环境，几条命令就足以让我们能够看到一个能跑起来的完整项目。特别是还自带热更新，自动编译，自动刷新等强大的构建功能。</p>
+<p>来领略一下vue的魅力吧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 全局安装vue-cli命令行工具</div><div class="line">$ npm install -g vue-cli  </div><div class="line"></div><div class="line">// 在当前目录中创建一个demo1目录，并创建一个基于webpack的开发环境。</div><div class="line">//（该命令是向导式方式，可以设置一些属性）</div><div class="line">$ vue init webpack demo1 // vue-init &lt;template-name&gt; [project-name]</div><div class="line"></div><div class="line">// 进入真正的项目目录</div><div class="line">$ cd demo1 </div><div class="line"></div><div class="line">// 安装依赖，你懂的~</div><div class="line">$ npm install </div><div class="line"></div><div class="line">// 运行开发环境（注意：默认端口是8080，执行该命令后不会自动打开页面，</div><div class="line">// 需要打开浏览器手动输入 http://localhost:8080 ）</div><div class="line">$ npm run dev</div></pre></td></tr></table></figure>
+<p>仅仅有开发环境，你满足了么？反正我是不满足的，<code>vue-cli</code> 还提供了完善的命令，能够直接打包产线所需要的资源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm run build // 生产环境打包</div></pre></td></tr></table></figure>
+<h1 id="3、认识-vue"><a href="#3、认识-vue" class="headerlink" title="3、认识.vue"></a>3、认识.vue</h1><p><code>.vue</code> 是vue特有的一种文件格式，一个 <code>.vue</code> 文件也是一个独立的组件。</p>
+<p>它把内部内容分为三块，样式，模板和逻辑（JS），逻辑部分原生支持 <code>ES2015</code>，简单的示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  &lt;!-- 用于放置组件样式 --&gt;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;!-- 用于放置组件模板 --&gt;</div><div class="line">&lt;/template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">  // 用于放置组件逻辑代码</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>其中的 style 标记，还可以使用 <code>scoped</code> 标记来生成模块化CSS，也可以使用 <code>lang=&quot;&lt;lang&gt;&quot;</code> 来选择使用一个CSS预处理器。</p>
+<p>我喜欢的方式如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span> <span class="attr">lang</span>=<span class="string">"stylus"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>注意：如果选择了使用预处理器，那么需要安装特定的预处理器loader，如使用 <code>npm install stylus-loader</code> 来增加对 <code>stylus</code> 的支持。 </strong></p>
+<h1 id="4、其他"><a href="#4、其他" class="headerlink" title="4、其他"></a>4、其他</h1><p>主流MVVM框架性能比较</p>
+<p><img src="http://avalonjs.coding.me/styles/performance.jpg" alt="主流MVVM框架性能比较"></p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/Vue实践之路/01_认识Vue/" data-title="01_认识Vue" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/Vue实践之路/01_认识Vue/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

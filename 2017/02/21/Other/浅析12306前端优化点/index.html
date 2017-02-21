@@ -1,0 +1,52 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="关于12306中国铁路客户服务中心(12306.cn)，相信大家都不陌生。作为一个超大型的类电商网站，具体业务不予置评，但从前端设计来看，却有诸多的不足。
+12306订票首页分析12306首页(https://kyfw.12306.cn/otn/)请求达到32个，累计文件大小近800k。
+其中有一半"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>浅析12306前端优化点 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>浅析12306前端优化点</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于12306"><span class="toc-number">1.</span> <span class="toc-text">关于12306</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12306订票首页分析"><span class="toc-number">2.</span> <span class="toc-text">12306订票首页分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化1、使用浏览器缓存"><span class="toc-number">3.</span> <span class="toc-text">优化1、使用浏览器缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化2、图片优化"><span class="toc-number">4.</span> <span class="toc-text">优化2、图片优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化3、图片组合为CSS贴图"><span class="toc-number">5.</span> <span class="toc-text">优化3、图片组合为CSS贴图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化4、暂缓JS解析"><span class="toc-number">6.</span> <span class="toc-text">优化4、暂缓JS解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化5、使用css而不是图片控制背景"><span class="toc-number">7.</span> <span class="toc-text">优化5、使用css而不是图片控制背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化6、CSS合并"><span class="toc-number">8.</span> <span class="toc-text">优化6、CSS合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化7、JS合并"><span class="toc-number">9.</span> <span class="toc-text">优化7、JS合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">10.</span> <span class="toc-text">总结</span></a></li></ol></div><h2 id="关于12306"><a href="#关于12306" class="headerlink" title="关于12306"></a>关于12306</h2><p>中国铁路客户服务中心(<a href="https://kyfw.12306.cn/" target="_blank" rel="external">12306.cn</a>)，相信大家都不陌生。作为一个超大型的类电商网站，具体业务不予置评，但从前端设计来看，却有诸多的不足。</p>
+<h2 id="12306订票首页分析"><a href="#12306订票首页分析" class="headerlink" title="12306订票首页分析"></a>12306订票首页分析</h2><p>12306首页(<a href="https://kyfw.12306.cn/otn/" target="_blank" rel="external">https://kyfw.12306.cn/otn/</a>)请求达到32个，累计文件大小近800k。</p>
+<p>其中有一半是图片资源，大小达到444kb。</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/humin/771181/o_1.jpg" alt="12306首页图片资源"></p>
+<p>另外有6个css文件请求，特别的是有2次css请求完全指向同一个css文件。</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/humin/771181/o_2.jpg" alt="12306首页CSS请求"></p>
+<p>还有8个js请求</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/humin/771181/o_3.jpg" alt="12306首页JS请求"></p>
+<p>这就是首页初次打开所需要的内容，当然还有两个html页面，就不计算了。可以看到，打开整个页面文件大小达到800k，和taobao，jd之类的比起来，这个大小是很小的，但是为什么给用户的体验就是卡顿、加载中、加载中呢？</p>
+<p>接下来，就从前端的角度来看下，有没有可以优化的地方呢？</p>
+<h2 id="优化1、使用浏览器缓存"><a href="#优化1、使用浏览器缓存" class="headerlink" title="优化1、使用浏览器缓存"></a>优化1、使用浏览器缓存</h2><p>在页面加载中，12306请求了如此多的资源，很多资源看起来，根本就是不太容易变化的，应在HTTP标头中设置有效期，尽可能多的使用浏览器缓存。</p>
+<h2 id="优化2、图片优化"><a href="#优化2、图片优化" class="headerlink" title="优化2、图片优化"></a>优化2、图片优化</h2><p>数据传输时间，在访问网站的过程中，是一个耗时比较大的过程，其中又以图片传输为最，如果网站上有较多的图片，那么就要想办法减少体积，延迟加载等等。在12306的页面上，logo（<a href="https://kyfw.12306.cn/otn/resources/images/logo.png" target="_blank" rel="external">https://kyfw.12306.cn/otn/resources/images/logo.png</a> ），icon（<a href="https://kyfw.12306.cn/otn/resources/images/logo.png" target="_blank" rel="external">https://kyfw.12306.cn/otn/resources/images/logo.png</a> ）等等图片都是可以优化的。</p>
+<h2 id="优化3、图片组合为CSS贴图"><a href="#优化3、图片组合为CSS贴图" class="headerlink" title="优化3、图片组合为CSS贴图"></a>优化3、图片组合为CSS贴图</h2><p>浏览器一般都有并发连接数限制，也就是同时请求的资源数量是有效的，前端优化点之一就是减少请求数量，那么12306中的诸多小图片完全可以合并到一个大图之中，采用贴图定位的方式，降低请求数量。</p>
+<h2 id="优化4、暂缓JS解析"><a href="#优化4、暂缓JS解析" class="headerlink" title="优化4、暂缓JS解析"></a>优化4、暂缓JS解析</h2><p>由于JS是阻塞加载的，一般来说，把js放在head中会影响页面的渲染速度，很多时候，我们都推荐把js放在body结束标记之前。但12306偏偏没有这么做，把大把的js放在head中。</p>
+<h2 id="优化5、使用css而不是图片控制背景"><a href="#优化5、使用css而不是图片控制背景" class="headerlink" title="优化5、使用css而不是图片控制背景"></a>优化5、使用css而不是图片控制背景</h2><p>这个似乎是大家都知道的常识，就算为了兼容老版本的浏览器，也可以考虑做优雅降级。但12306偏偏就大量使用背景图。</p>
+<h2 id="优化6、CSS合并"><a href="#优化6、CSS合并" class="headerlink" title="优化6、CSS合并"></a>优化6、CSS合并</h2><p>同样为了减少请求数，应该尽量将CSS压缩合并。分析12306的站点css，发现部分合并了，部分没有，而且有些css连压缩都没做，很难想象是怎么打算的。另外，外部控件的样式（不会变的样式）完全可以打包放到cdn上。</p>
+<h2 id="优化7、JS合并"><a href="#优化7、JS合并" class="headerlink" title="优化7、JS合并"></a>优化7、JS合并</h2><p>JS同上，该打包就打包，不要搞一堆js出来，加载还慢。。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>抢票还是每年的一个老大难的问题。12306，你可以推说你的核心逻辑复杂，这个我接受。但你完全可以把前端的一些基本优化点做到吧。就算我买不到票，至少我抢票的时候心情不至于太差。。</p>
+<p>以上，抢票之余作为一个伪前端的发泄。</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/Other/浅析12306前端优化点/" data-title="浅析12306前端优化点" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/Other/浅析12306前端优化点/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

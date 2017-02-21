@@ -1,0 +1,59 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？1、从doctype定义开始HTML4：
+&amp;lt;!DOCTYPE HTML PUBLIC &amp;quot;-//W3C//DTD HTML 4.01 Transitional//EN&amp;quot; 
+&amp;quot;http://w"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>从零开始H5（一）：升级你的HTML到HTML5 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>从零开始H5（一）：升级你的HTML到HTML5</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？"><span class="toc-number">1.</span> <span class="toc-text">现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、从doctype定义开始"><span class="toc-number">1.1.</span> <span class="toc-text">1、从doctype定义开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、简化meta"><span class="toc-number">1.2.</span> <span class="toc-text">2、简化meta</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、简化link标记"><span class="toc-number">1.3.</span> <span class="toc-text">3、简化link标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、简化script标记"><span class="toc-number">1.4.</span> <span class="toc-text">4、简化script标记</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q-A"><span class="toc-number">2.</span> <span class="toc-text">Q/A</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、为什么做了这些改变，在老式浏览器上也能用？"><span class="toc-number">2.1.</span> <span class="toc-text">1、为什么做了这些改变，在老式浏览器上也能用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、doctype以后也不会在变了，合适吗？"><span class="toc-number">2.2.</span> <span class="toc-text">2、doctype以后也不会在变了，合适吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、XHTML怎么了？很多年前听说它是未来的发展方向？"><span class="toc-number">2.3.</span> <span class="toc-text">3、XHTML怎么了？很多年前听说它是未来的发展方向？</span></a></li></ol></li></ol></div><h2 id="现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？"><a href="#现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？" class="headerlink" title="现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？"></a>现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？</h2><h3 id="1、从doctype定义开始"><a href="#1、从doctype定义开始" class="headerlink" title="1、从doctype定义开始"></a>1、从doctype定义开始</h3><p>HTML4：</p>
+<pre><code>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; 
+&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+</code></pre><p>HTML5：</p>
+<pre><code>&lt;!doctype html&gt;
+</code></pre><p><strong>注意：这不仅仅是HTML5的doctype，这也是HTML将来所有版本的doctype。不仅如此，它甚至在老版本的浏览器中也能正常工作。</strong></p>
+<h3 id="2、简化meta"><a href="#2、简化meta" class="headerlink" title="2、简化meta"></a>2、简化meta</h3><p>HTML4：</p>
+<pre><code>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+</code></pre><p>HTML5：</p>
+<pre><code>&lt;meta charset=&quot;utf-8&quot; /&gt;
+</code></pre><h3 id="3、简化link标记"><a href="#3、简化link标记" class="headerlink" title="3、简化link标记"></a>3、简化link标记</h3><p>HTML4：</p>
+<pre><code>&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;index.css&quot; /&gt;
+</code></pre><p>HTML5：</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;index.css&quot; /&gt;
+</code></pre><p><strong>注意：升级到HTML5后，使用link不在需要指定type了，因为已经宣布CSS作为HTML5的标准样式，这也是HTML5的默认样式。</strong></p>
+<h3 id="4、简化script标记"><a href="#4、简化script标记" class="headerlink" title="4、简化script标记"></a>4、简化script标记</h3><p>HTML4：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>HTML5：</p>
+<pre><code>&lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    console.log(&apos;html5&apos;);
+&lt;/sscript&gt;
+</code></pre><p><strong>注意：对于HTML5，JavaScript已经成为标准，所以不在需要指定type了，同时，对于script标签，结尾标记不能简写。</strong></p>
+<h2 id="Q-A"><a href="#Q-A" class="headerlink" title="Q/A"></a>Q/A</h2><h3 id="1、为什么做了这些改变，在老式浏览器上也能用？"><a href="#1、为什么做了这些改变，在老式浏览器上也能用？" class="headerlink" title="1、为什么做了这些改变，在老式浏览器上也能用？"></a>1、为什么做了这些改变，在老式浏览器上也能用？</h3><p>拿link和script来说，浏览器早已假定默认使用CSS和JavaScript，所以和标准一致。包括doctype和meta也是一样。</p>
+<h3 id="2、doctype以后也不会在变了，合适吗？"><a href="#2、doctype以后也不会在变了，合适吗？" class="headerlink" title="2、doctype以后也不会在变了，合适吗？"></a>2、doctype以后也不会在变了，合适吗？</h3><p>doctype的使用主要在于告诉浏览器采用它们的”标准模式”表现内容，所以不管以后HTML6或者其他，&lt;!doctype html&gt;已经足够表达意思了。</p>
+<h3 id="3、XHTML怎么了？很多年前听说它是未来的发展方向？"><a href="#3、XHTML怎么了？很多年前听说它是未来的发展方向？" class="headerlink" title="3、XHTML怎么了？很多年前听说它是未来的发展方向？"></a>3、XHTML怎么了？很多年前听说它是未来的发展方向？</h3><p>它夭折了。因为灵活性超过了严格语法。当然，如果你喜欢XML，那么还可以用严格模式编写HTML5。</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/从零开始H5/从零开始H5（一）：升级你的HTML到HTML5/" data-title="从零开始H5（一）：升级你的HTML到HTML5" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/从零开始H5/从零开始H5（一）：升级你的HTML到HTML5/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

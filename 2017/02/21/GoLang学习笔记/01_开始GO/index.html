@@ -1,0 +1,61 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、前言Go是啥？看这里。简而言之，就是一门系统级的编程语言。
+为嘛要学/用它？
+
+追个潮流，体验下不同风格的语言设计思想
+跨平台部署，单文件部署
+强大的功能（系统级）
+对分布式的友好支持
+
+上手有啥问题？
+
+不友好的语法（也有一部分人觉得语法很优雅，对我来说，这语法可算不上友好）
+和大多数语言不一"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>01_开始GO · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>01_开始GO</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0、前言"><span class="toc-number">1.</span> <span class="toc-text">0、前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1、开干"><span class="toc-number">2.</span> <span class="toc-text">1、开干</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、创建项目基架"><span class="toc-number">2.0.1.</span> <span class="toc-text">1.1、创建项目基架</span></a></li></ol></li></ol></li></ol></div><h1 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h1><p>Go是啥？看<a href="https://golang.org" target="_blank" rel="external">这里</a>。简而言之，就是一门系统级的编程语言。</p>
+<p>为嘛要学/用它？</p>
+<ol>
+<li>追个潮流，体验下不同风格的语言设计思想</li>
+<li>跨平台部署，单文件部署</li>
+<li>强大的功能（系统级）</li>
+<li>对分布式的友好支持</li>
+</ol>
+<p>上手有啥问题？</p>
+<ol>
+<li>不友好的语法（也有一部分人觉得语法很优雅，对我来说，这语法可算不上友好）</li>
+<li>和大多数语言不一样的设计风格（需要慢慢消化）</li>
+<li>没有趁手的IDE（LiteIDE, Sublime Text, VsCode这几个可以自己优化得比较好用）</li>
+</ol>
+<h1 id="1、开干"><a href="#1、开干" class="headerlink" title="1、开干"></a>1、开干</h1><p>虽然比较恶心语法，但是其他优秀的点，也是比较吸引人的，再加上项目需要，那就开干。</p>
+<p>因为有其他前/后端语言的经验，就跳过常规学习过程，直接上手做项目。</p>
+<p><strong>注意：虽然跳过了不少步骤，但是语法还是要学习的，书还是要看的，先来一本《Go语言编程》</strong></p>
+<h3 id="1-1、创建项目基架"><a href="#1-1、创建项目基架" class="headerlink" title="1.1、创建项目基架"></a>1.1、创建项目基架</h3><p><code>Go</code> 是一个有很多规范的语法，就连创建目录结构也有一定的约束。之前的版本略过，我本地安装的是 <code>go1.7.3</code> 版本，通过 <code>go version</code> 可查看。</p>
+<p>接下来就为该版本，创建一个相对较为标准的项目结构。</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/GoLang学习笔记/01_开始GO/" data-title="01_开始GO" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/GoLang学习笔记/01_开始GO/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

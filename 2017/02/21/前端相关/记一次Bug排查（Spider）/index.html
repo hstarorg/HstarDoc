@@ -1,0 +1,101 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、写在之前Spider是什么？Spider是基于Express框架结合socket.io（现已切换为ws）和Echarts2实现的即时性能监视工具。整体结构为前后端分离，通过express的static中间件来处理静态请求，Express本身则处理api请求。
+用法上，只需要按照指定的格式post"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>记一次Bug排查（Spider） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>记一次Bug排查（Spider）</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、写在之前"><span class="toc-number">1.</span> <span class="toc-text">0、写在之前</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spider是什么？"><span class="toc-number">1.1.</span> <span class="toc-text">Spider是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spider能做什么？"><span class="toc-number">1.2.</span> <span class="toc-text">Spider能做什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、问题初现"><span class="toc-number">2.</span> <span class="toc-text">1、问题初现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、问题分析"><span class="toc-number">3.</span> <span class="toc-text">2、问题分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#猜想1：Node代码写法问题，导致内存泄露"><span class="toc-number">3.1.</span> <span class="toc-text">猜想1：Node代码写法问题，导致内存泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#猜想2：缓存数据的代码有内存泄露"><span class="toc-number">3.2.</span> <span class="toc-text">猜想2：缓存数据的代码有内存泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#猜想4：再度怀疑缓存代码"><span class="toc-number">3.3.</span> <span class="toc-text">猜想4：再度怀疑缓存代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#猜想5：每次提交数据都会触发一次推送，推送频率较高，导致数据阻塞"><span class="toc-number">3.4.</span> <span class="toc-text">猜想5：每次提交数据都会触发一次推送，推送频率较高，导致数据阻塞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、Bug分析"><span class="toc-number">4.</span> <span class="toc-text">3、Bug分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、后续"><span class="toc-number">5.</span> <span class="toc-text">4、后续</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、总结"><span class="toc-number">6.</span> <span class="toc-text">5、总结</span></a></li></ol></div><h2 id="0、写在之前"><a href="#0、写在之前" class="headerlink" title="0、写在之前"></a>0、写在之前</h2><h3 id="Spider是什么？"><a href="#Spider是什么？" class="headerlink" title="Spider是什么？"></a>Spider是什么？</h3><p>Spider是基于Express框架结合socket.io（现已切换为ws）和Echarts2实现的即时性能监视工具。整体结构为前后端分离，通过express的static中间件来处理静态请求，Express本身则处理api请求。</p>
+<p>用法上，只需要按照指定的格式post数据给Spider，那么当请求Spider展示时，将会自动将数据展示为图表。</p>
+<p>项目地址：<a href="http://trgit2/backend_framework/spider" target="_blank" rel="external">http://trgit2/backend_framework/spider</a></p>
+<p>展示地址：<a href="http://developer.newegg.org/spider" target="_blank" rel="external">http://developer.newegg.org/spider</a></p>
+<h3 id="Spider能做什么？"><a href="#Spider能做什么？" class="headerlink" title="Spider能做什么？"></a>Spider能做什么？</h3><p>Spider可以提供一段时间（最大30分钟）内特定操作的消耗时间统计图（散点图）。大概展示效果如下图：</p>
+<p><img src="http://7xit2j.com1.z0.glb.clouddn.com/test1.png" alt="散点图"></p>
+<h2 id="1、问题初现"><a href="#1、问题初现" class="headerlink" title="1、问题初现"></a>1、问题初现</h2><p>该项目从15年3月发布，由于用户量较少，一直稳定运行。</p>
+<p>近期，MPS团队使用它来监控业务请求各个阶段的耗时情况，用于定位性能问题。此时，问题出现，spider运行一段时间（10~30分钟）后将会消耗大量服务器内存，导致内存不足而崩溃。</p>
+<p>此时，用户使用场景：</p>
+<ol>
+<li>在c#程序中，收集各种类型操作的耗时数据，累计起来。</li>
+<li>每隔1s将数据提交到spider后端。</li>
+<li>打开监控页面，查看数据（可能会有多个监控端）</li>
+</ol>
+<p>spider处理过程：</p>
+<ol>
+<li>接收到请求数据之后，将数据进行处理，并存入内存；</li>
+<li>如果发现有监控端运行，那么推送数据给监控端（每次收到请求数据都会触发一次推送）</li>
+<li>监控端根据最新的数据绘制图表展示。</li>
+</ol>
+<h2 id="2、问题分析"><a href="#2、问题分析" class="headerlink" title="2、问题分析"></a>2、问题分析</h2><h3 id="猜想1：Node代码写法问题，导致内存泄露"><a href="#猜想1：Node代码写法问题，导致内存泄露" class="headerlink" title="猜想1：Node代码写法问题，导致内存泄露"></a>猜想1：Node代码写法问题，导致内存泄露</h3><p>因为JS的闭包容易内存泄露，首先怀疑代码写法问题。</p>
+<p><strong>验证：</strong>经过仔细排查代码，并对有可能有泄露代码进行改写</p>
+<p><strong>结果：</strong>问题未解决，未缓解</p>
+<h3 id="猜想2：缓存数据的代码有内存泄露"><a href="#猜想2：缓存数据的代码有内存泄露" class="headerlink" title="猜想2：缓存数据的代码有内存泄露"></a>猜想2：缓存数据的代码有内存泄露</h3><p>由于客户端提交的数据是直接写入内存的，而刚好又是消耗内存，那么开始怀疑缓存数据的代码。</p>
+<p><strong>验证：</strong>重写了数据缓存代码（参考正常运行的缓存代码实现）</p>
+<p><strong>结果：</strong>问题未解决，未缓解</p>
+<p><strong>此时，把最常见的情况都验证了，无解。思绪中断，接着做了哪些事情呢？</strong></p>
+<ol>
+<li>查找有可能导致JS内存泄露的情况，一一确认。</li>
+<li>安装JS的内存分析工具（条件苛刻，未安装成功）。</li>
+<li>安装Node程序的监控包，进行大量本地测试（很难复现问题）。</li>
+<li>此时陷入困境…</li>
+<li>再次想方设法安装内存分析工具，在本地测试，未果（问题很难复现）。</li>
+<li>线上测试，问题依旧，根据结果，发现大量字符串占用内存，导致内存不足。</li>
+<li>分析代码，查找该字符串初现的位置。</li>
+<li>开始新的猜测</li>
+</ol>
+<p>###猜想3：socket.io内存泄露</p>
+<p>从内存分析的结果来看，大量字符串占用了内存，该格式的字符串，是由socket.io分发到客户端的时候产生的。所以怀疑到了socket.io头上。</p>
+<p>通过查资料，发现socket.io确实有内存泄露的前科，一度认为这就是原因。</p>
+<p><strong>验证1：</strong>升级socket.io到最新的版本</p>
+<p><strong>结果1：</strong>有一定的好转，但不明显（坚持的时间稍微久一点，内存偶尔能回收一下）</p>
+<p>再次各种查资料，发现有提到强制node使用gc回收，可以处理非托管内存。</p>
+<p><strong>验证2：</strong>增加gc回收代码，定时执行</p>
+<p><strong>结果2：</strong>基本上看起来无效，和结果1并没有太大区别</p>
+<p><strong>此时，有点穷途末路了。问题还在，继续探索</strong></p>
+<p><strong>验证3：</strong>考虑到项目本身不大，重新使用了一个新的WebSocket(ws)包来推送数据</p>
+<p><strong>结果3：</strong>有明显好转，坚持的时间更长了（一度认为解决了问题）</p>
+<p><strong>可是好景不长，较长时间（几小时）后，问题再次出现</strong></p>
+<h3 id="猜想4：再度怀疑缓存代码"><a href="#猜想4：再度怀疑缓存代码" class="headerlink" title="猜想4：再度怀疑缓存代码"></a>猜想4：再度怀疑缓存代码</h3><p>此时未直接验证，切换到业界一个比较流行的缓存库(<a href="https://github.com/isaacs/node-lru-cache" target="_blank" rel="external">lru-cache</a>)。</p>
+<h3 id="猜想5：每次提交数据都会触发一次推送，推送频率较高，导致数据阻塞"><a href="#猜想5：每次提交数据都会触发一次推送，推送频率较高，导致数据阻塞" class="headerlink" title="猜想5：每次提交数据都会触发一次推送，推送频率较高，导致数据阻塞"></a>猜想5：每次提交数据都会触发一次推送，推送频率较高，导致数据阻塞</h3><p>这个猜想，算来后面总结的。一开始怀疑过这个问题，想过降低推送频率，但没有实施。经@James分析也猜测问题可能会出现在此处，因为大量字符串占用内存，也满足这个猜想。想到就做：</p>
+<p><strong>验证：</strong>将每次收到数据触发推送，修改为间隔一定时间（5s）推送一次。</p>
+<p><strong>结果：</strong>内存趋于平稳，及时性在接收范围内。</p>
+<p>至此，问题基本上算是解决了。</p>
+<h2 id="3、Bug分析"><a href="#3、Bug分析" class="headerlink" title="3、Bug分析"></a>3、Bug分析</h2><p>此次问题，是由于服务端推送数据量较大，而且频率较高，上次推送未完成，就触发了下一次推送。导致消息阻塞，越积越多，所以就耗尽内存而亡。</p>
+<h2 id="4、后续"><a href="#4、后续" class="headerlink" title="4、后续"></a>4、后续</h2><p>之后，spider运行一天多之后死掉过一次，但没有看到具体原因。重启之后，稳定运行至今。暂时性怀疑中途死掉的一次为意外（或者瞬时流量大增）</p>
+<h2 id="5、总结"><a href="#5、总结" class="headerlink" title="5、总结"></a>5、总结</h2><p>从发现该问题，到解决该问题，耗时大概在一周。虽然期间还处理了其他任务，但整体来说解决这个问题还是消耗了很长的时间。</p>
+<p><strong>究其原因：</strong></p>
+<ol>
+<li>对TCP底层传输数据不太熟悉</li>
+<li>没有处理大量数据高频率推送的经验</li>
+<li>发布时，只对程序进行了简单的本地测试，没有进行压力测试。</li>
+</ol>
+<p><strong>学到了什么：</strong></p>
+<ol>
+<li>对代码负责，以更严谨的态度来对待，减少出问题</li>
+<li>对WebSocket的负载和相关设计有了更深刻的理解</li>
+<li>多做一些测试，更稳定的保持代码质量</li>
+</ol>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/记一次Bug排查（Spider）/" data-title="记一次Bug排查（Spider）" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/记一次Bug排查（Spider）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

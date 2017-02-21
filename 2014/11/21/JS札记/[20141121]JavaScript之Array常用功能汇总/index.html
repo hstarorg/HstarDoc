@@ -1,0 +1,174 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="导语：在JavaScript中，Array是一个使用比较频繁的对象，那么它到底有哪些常用的方法呢？
+首先，我们先看一下Array对象的类型：
+typeof Array // &amp;apos;function&amp;apos;
+Array instanceof Object // true
+从上可以看出，Arr"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript之Array常用功能汇总 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>JavaScript之Array常用功能汇总</h1><span class="post-meta">写于<time> 2014 年 11 月 21 日 00 时 00 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、concat"><span class="toc-number">1.</span> <span class="toc-text">#1、concat()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、join"><span class="toc-number">2.</span> <span class="toc-text">#2、join()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、pop"><span class="toc-number">3.</span> <span class="toc-text">#3、pop()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、push"><span class="toc-number">4.</span> <span class="toc-text">#4、push()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、reverse"><span class="toc-number">5.</span> <span class="toc-text">#5、reverse()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、shift"><span class="toc-number">6.</span> <span class="toc-text">6、shift()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7、slice"><span class="toc-number">7.</span> <span class="toc-text">#7、slice()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8、sort"><span class="toc-number">8.</span> <span class="toc-text">#8、sort()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9、splice"><span class="toc-number">9.</span> <span class="toc-text">#9、splice()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10、unshift"><span class="toc-number">10.</span> <span class="toc-text">#10、unshift()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#我们还可以为Array添加更多的常用功能，比如："><span class="toc-number"></span> <span class="toc-text">我们还可以为Array添加更多的常用功能，比如：</span></a></div><p><strong>导语：</strong>在JavaScript中，Array是一个使用比较频繁的对象，那么它到底有哪些常用的方法呢？</p>
+<p>首先，我们先看一下Array对象的类型：</p>
+<pre><code>typeof Array // &apos;function&apos;
+Array instanceof Object // true
+</code></pre><p>从上可以看出，Array本质是一个function，同样派生自Object，定义如下：</p>
+<pre><code>function Array(args) {}
+</code></pre><p>###接下来，我们来看Array自身的方法：</p>
+<h4 id="1、concat"><a href="#1、concat" class="headerlink" title="#1、concat()"></a>#1、concat()</h4><p>定义：原型方法，连接两个或更多的数组，并返回结果（新数组）。</p>
+<pre><code>Array.prototype.concat = function(items) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2];
+var arr2 = arr1.concat([3, 4]);
+var arr3 = arr2.concat([5, 6], [7, 8] ,10, {});
+console.log(arr1); // [1, 2]
+console.log(arr2); // [1, 2, 3, 4]
+console.log(arr3); // [1, 2, 3, 4, 5, 6, 7, 8,  10, Object]
+</code></pre><p><strong>注意：</strong>concat不仅可以连接单个对象，也可以连接多个对象，同时如果是参数为数组，那么会将数组元素拆分并连接，如果是对象，则直接将对象连接。<span style="color:red;"><b>该方法不会改变原始数组</b></span></p>
+<h4 id="2、join"><a href="#2、join" class="headerlink" title="#2、join()"></a>#2、join()</h4><p>定义：原型方法，把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。</p>
+<pre><code>Array.prototype.join = function(separator) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr = [1, 2, 3];
+console.log(arr.join(&apos;|&apos;)); // &apos;1|2|3&apos;
+console.log(arr.join(&apos;&apos;));  // &apos;123&apos;
+console.log(arr.join(&apos;---&apos;));  // &apos;1---2---3&apos;
+</code></pre><p><strong>注意：</strong>太常用了，没什么可注意的~</p>
+<h4 id="3、pop"><a href="#3、pop" class="headerlink" title="#3、pop()"></a>#3、pop()</h4><p>定义：原型方法，删除并返回数组的最后一个元素。</p>
+<pre><code>Array.prototype.pop = function() {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2, 3, 4];
+var lastOne = arr1.pop();
+console.log(lastOne);  // 4
+console.log(arr1);     // [1, 2, 3]
+</code></pre><p><strong>注意：</strong>该方法无参数，有返回值，返回数组最后一个元素。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="4、push"><a href="#4、push" class="headerlink" title="#4、push()"></a>#4、push()</h4><p>定义：原型方法，向数组的末尾添加一个或更多元素，并返回新的长度。</p>
+<pre><code>Array.prototype.push = function(items) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2];
+var len = arr1.push(3);
+var arr2 = arr1.push(4, 5);
+console.log(len);
+console.log(arr1);
+console.log(arr2);
+</code></pre><p><strong>注意：</strong>该方法的返回值会返回数组的新长度。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="5、reverse"><a href="#5、reverse" class="headerlink" title="#5、reverse()"></a>#5、reverse()</h4><p>定义：原型方法，颠倒数组中元素的顺序。</p>
+<pre><code>Array.prototype.reverse = function() {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2, 3, 4, 5];
+var res = arr1.reverse();
+console.log(res);
+console.log(arr1);
+</code></pre><p><strong>注意：</strong>该方法的返回值为自身（翻转后的值），<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="6、shift"><a href="#6、shift" class="headerlink" title="6、shift()"></a>6、shift()</h4><p>定义：原型方法，删除并返回数组的第一个元素。</p>
+<pre><code>Array.prototype.shift = function() {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2, 3];
+var res = arr1.shift();
+console.log(res);
+console.log(arr1);
+</code></pre><p><strong>注意：</strong>该方法返回数组第一个元素，和pop()方法对应（返回并删除最后一个元素）。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="7、slice"><a href="#7、slice" class="headerlink" title="#7、slice()"></a>#7、slice()</h4><p>定义：原型方法，从某个已有的数组返回选定的元素。</p>
+<pre><code>Array.prototype.slice = function(start,end) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var res1 = arr.slice(0, 3);
+var res2 = arr.slice(0, 100);
+var res3 = arr.slice(-1,-6);
+var res4 = arr.slice(-6, -1);
+console.log(res1);
+console.log(res2);
+console.log(res3);
+console.log(res4);
+console.log(arr)
+</code></pre><p><strong>注意：</strong>该方法支持逆向索引，同时索引采取区间左闭右开的原则。<span style="color:red;"><b>该方法不会改变原始数组</b></span></p>
+<h4 id="8、sort"><a href="#8、sort" class="headerlink" title="#8、sort()"></a>#8、sort()</h4><p>定义：原型方法，对数组的元素进行排序。</p>
+<pre><code>Array.prototype.sort = function(compareFn) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr = [1, 5, 2, 3, 4, 7, 8, 6, 9];
+var res1 = arr.sort(); //如果是数字，默认从小到大排序
+console.log(res1);
+var arr2 = [&apos;a&apos;, &apos;c&apos;, &apos;b&apos;];
+var res2 = arr2.sort();//如果是字符，按照字符顺序（ASCII，字符串同）排序
+console.log(res2);
+//遇到复杂数据，经过测试是按照数组&lt;正则&lt;数字&lt;对象&lt;字符串&lt;函数 这个顺序
+var arr3 = [{name:&apos;name&apos;}, 134, &apos;aaa&apos;, function(){}, [], /a/];
+var res3 = arr3.sort();
+console.log(arr3);
+
+//可以通过自定义规则实现复杂的排序
+var res4 = arr.sort(function(a1, a2){
+    if(a1 === a2){ // 两者相等，那么就算想等
+        return 0;
+    }
+    if(a1%3 === 0){ //如果a1被3整除，那么a1小
+        return -1;
+    }
+    if(a2%3 === 0){ //如果a2被3整除，那么a2小
+        return 1;
+    }
+    return a2%3-a2%3; //不满足以上条件，那么根据余数比大小，余数小的元素小
+})
+console.log(res4);
+</code></pre><p><strong>注意：</strong>该方法返回自身（排序后数组）。可通过function(a1, a2){}实现非常复杂的排序规则。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="9、splice"><a href="#9、splice" class="headerlink" title="#9、splice()"></a>#9、splice()</h4><p>定义：原型方法，删除元素，并向数组添加新元素。（该方法相等较复杂，悠着点用）</p>
+<pre><code>Array.prototype.splice = function(start,deleteCount,items) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var res1 = arr1.splice(0, 3, &apos;new1&apos;, &apos;new2&apos;);
+console.log(res1);  // [1, 2, 3] 
+console.log(arr1);  // [&apos;new1&apos;, &apos;new2&apos;, 4, 5, 6, 7, 8, 9] 
+
+arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+res1 = arr1.splice(-6, 3, &apos;new1&apos;, &apos;new2&apos;);
+console.log(res1);  // [4, 5, 6]
+console.log(arr1);  // [1, 2, 3, &apos;new1&apos;, &apos;new2&apos;, 7, 8, 9]
+</code></pre><p><strong>注意：</strong>splice()函数支持倒叙索引，同时第二个参数是长度（不是下标），新插入的数据会插入在start下标位置。返回值为删除的元素数组。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="10、unshift"><a href="#10、unshift" class="headerlink" title="#10、unshift()"></a>#10、unshift()</h4><p>定义：原型方法，向数组的开头添加一个或更多元素，并返回新的长度。</p>
+<pre><code>Array.prototype.unshift = function(items) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1= [1, 2, 3];
+var res1 = arr1.unshift(&apos;new1&apos;, &apos;new2&apos;);
+console.log(res1); // 5
+console.log(arr1); // [&quot;new1&quot;, &quot;new2&quot;, 1, 2, 3] 
+</code></pre><p><strong>注意：</strong>该方法和push相对(在末尾添加元素，返回新长度)，该方法的返回值是新数组长度。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h3 id="我们还可以为Array添加更多的常用功能，比如："><a href="#我们还可以为Array添加更多的常用功能，比如：" class="headerlink" title="我们还可以为Array添加更多的常用功能，比如："></a>我们还可以为Array添加更多的常用功能，比如：</h3><pre><code>Array.prototype.where = function(predicateFn){
+    var parameterIsFn = typeof predicateFn === &apos;function&apos;
+    var result = [];
+    for(var i = 0, len = this.length; i &lt; len; i++){
+        if(!parameterIsFn || predicateFn(this[i])){
+            result.push(this[i]);
+        }
+    }
+    return result;
+};
+
+var arr = [&apos;new1&apos;, &apos;new2&apos;, 1, 2, 3];
+var res = arr.where(function(item){
+    return typeof item === &apos;number&apos;;
+});
+console.log(res);
+</code></pre><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2014/11/21/JS札记/[20141121]JavaScript之Array常用功能汇总/" data-title="JavaScript之Array常用功能汇总" data-url="http://hstarorg.github.io/blog/blog/2014/11/21/JS札记/[20141121]JavaScript之Array常用功能汇总/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

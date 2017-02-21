@@ -1,0 +1,174 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、什么是RPCRPC（Remote Procedure Call - 远程过程调用）,是通过网络从远程计算机上请求服务，而不需要了解底层网路技术的细节。简单点说，就是像调用本地服务（方法）一样调用远端的服务（方法）。
+RPC与REST的区别RPC是一种协议，REST是一种架构风格。
+RPC以行为为"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Thrift简单实践 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>Thrift简单实践</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、什么是RPC"><span class="toc-number">1.</span> <span class="toc-text">0、什么是RPC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RPC与REST的区别"><span class="toc-number">1.1.</span> <span class="toc-text">RPC与REST的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、RPC框架Thrift（0-9-3）"><span class="toc-number">2.</span> <span class="toc-text">1、RPC框架Thrift（0.9.3）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Thrift的简单实践（Windows）"><span class="toc-number">3.</span> <span class="toc-text">2、Thrift的简单实践（Windows）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-安装Thrift"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 安装Thrift</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-编写接口定义文件"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 编写接口定义文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-利用Thrift实现nodeJS服务端"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 利用Thrift实现nodeJS服务端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Node-Client-调用"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 Node Client 调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5、Http-Client-调用"><span class="toc-number">3.5.</span> <span class="toc-text">2.5、Http Client 调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、demo地址"><span class="toc-number">4.</span> <span class="toc-text">3、demo地址</span></a></li></ol></div><h2 id="0、什么是RPC"><a href="#0、什么是RPC" class="headerlink" title="0、什么是RPC"></a>0、什么是RPC</h2><p><strong>RPC</strong>（Remote Procedure Call - 远程过程调用）,是通过网络从远程计算机上请求服务，而不需要了解底层网路技术的细节。简单点说，就是<strong>像调用本地服务（方法）一样调用远端的服务（方法）。</strong></p>
+<h3 id="RPC与REST的区别"><a href="#RPC与REST的区别" class="headerlink" title="RPC与REST的区别"></a>RPC与REST的区别</h3><p>RPC是一种协议，REST是一种架构风格。</p>
+<p>RPC以行为为中心，REST以资源为中心。当加入新功能时，RPC需要增加更多的行为，并进行调用。REST的话，调用方法基本不变。</p>
+<p>RPC可以不基于HTTP协议，因此在后端语言调用中，可以采用RPC获得更好的性能。REST一般是基于HTTP协议。</p>
+<h2 id="1、RPC框架Thrift（0-9-3）"><a href="#1、RPC框架Thrift（0-9-3）" class="headerlink" title="1、RPC框架Thrift（0.9.3）"></a>1、RPC框架Thrift（0.9.3）</h2><p>Thrift是一种开源的高效的、支持多种编程语言的远程服务调用框架。支持C++, Java, Python, PHP, Ruby, Erlang, Perl, Haskell, C#, Cocoa, JavaScript, Node.js, Smalltalk, OCaml 和 Delphi等诸多语言，能够很好的进行跨语言调用。</p>
+<p>Thrift官网： <a href="https://thrift.apache.org/" target="_blank" rel="external">https://thrift.apache.org/</a></p>
+<h2 id="2、Thrift的简单实践（Windows）"><a href="#2、Thrift的简单实践（Windows）" class="headerlink" title="2、Thrift的简单实践（Windows）"></a>2、Thrift的简单实践（Windows）</h2><h3 id="2-1-安装Thrift"><a href="#2-1-安装Thrift" class="headerlink" title="2.1 安装Thrift"></a>2.1 安装Thrift</h3><p>在<a href="http://www.apache.org/dyn/closer.cgi?path=/thrift/0.9.3/thrift-0.9.3.exe" target="_blank" rel="external">http://www.apache.org/dyn/closer.cgi?path=/thrift/0.9.3/thrift-0.9.3.exe</a>这里可以下载Thrift的windows系统编译版本。</p>
+<p>该文件是一个绿色文件，可以放置在目录中，进入该目录的cmd，就可以直接使用thrift。输入<code>thrift -version</code>可以查看当前Thrift的版本。</p>
+<p><img src="http://7xit2j.com1.z0.glb.clouddn.com/abc1.png" alt="img1"></p>
+<p>至此，Thrift已完成安装</p>
+<h3 id="2-2-编写接口定义文件"><a href="#2-2-编写接口定义文件" class="headerlink" title="2.2 编写接口定义文件"></a>2.2 编写接口定义文件</h3><p>在安装好Thrift之后，需要我们编写接口定义文件，用来约定服务和thrift类型的接口定义。</p>
+<p>Thrift主要有一下这些类型：</p>
+<ol>
+<li>bool     –简单类型，true or false</li>
+<li>byte     –简单类型，单字符</li>
+<li>i16      –简单类型，16位整数</li>
+<li>i32      –简单类型，32位整数</li>
+<li>i64      –简单类型，64位整数</li>
+<li>double   –简单类型，双精度浮点型</li>
+<li>string   –简单类型，utf-8编码字符串</li>
+<li>binary   –二进制，未编码的字符序列</li>
+<li>struct    –结构体，对应结构体、类等对象类型</li>
+<li>list    –list容器</li>
+<li>set     –set容器</li>
+<li>map     –map容器</li>
+<li>enum    –枚举类型</li>
+</ol>
+<p>接下来，利用这些类型，编写一个简单的.thrift接口定义文件。</p>
+<pre><code>/* 1.thrift file content */
+namespace js ThriftTest
+namespace csharp ThriftTest
+
+service ThriftTest{
+  double plus(1:double num1, 2:double num2)
+}
+</code></pre><p>更复杂的案例： <a href="https://git-wip-us.apache.org/repos/asf?p=thrift.git;a=blob_plain;f=test/ThriftTest.thrift;hb=HEAD" target="_blank" rel="external">https://git-wip-us.apache.org/repos/asf?p=thrift.git;a=blob_plain;f=test/ThriftTest.thrift;hb=HEAD</a></p>
+<p>在利用<code>thrift --gen js:node --gen js 1.thrift</code>来生成好客户端代码和服务端代码。可以跟多个–gen <language>参数，来实现一次性生成多个语言的代码。</language></p>
+<h3 id="2-3-利用Thrift实现nodeJS服务端"><a href="#2-3-利用Thrift实现nodeJS服务端" class="headerlink" title="2.3 利用Thrift实现nodeJS服务端"></a>2.3 利用Thrift实现nodeJS服务端</h3><pre><code>var thrift = require(&apos;thrift&apos;);
+
+var ThriftTest = require(&quot;./gen-nodejs/ThriftTest&quot;);
+var ttypes = require(&quot;./gen-nodejs/1_types&quot;);
+
+
+var nodeServer = thrift.createServer(ThriftTest, {
+  //完成具体的事情
+  plus: function(n1, n2, callback){
+    console.log(`server request, n1 = ${n1}, n2 = ${n2}.`);
+    callback(null, n1 + n2);
+  }
+});
+
+//处理错误，假设不处理，如果客户端强制断开连接，会导致后端程序挂掉
+nodeServer.on(&apos;error&apos;, function(err){
+  console.log(err);
+});
+
+nodeServer.listen(7410);
+console.log(&apos;node server started... port: 7410&apos;);
+
+//如果client的浏览器，通信采用http的时候，需要创建http server
+var httpServer = thrift.createWebServer({
+  cors: {&apos;*&apos;: true}, //配置跨域访问
+  services: {
+    &apos;/thrift&apos;: { //配置路径映射
+      transport: thrift.TBufferedTransport,
+      protocol: thrift.TJSONProtocol,
+      processor: ThriftTest,
+      handler: { //具体的处理对象
+        plus: function(n1, n2, callback) {
+          console.log(`http request, n1 = ${n1}, n2 = ${n2}.`);
+          callback(null, n1 + n2);
+        }
+      }
+    }
+  }
+});
+
+httpServer.on(&apos;error&apos;, function(err) {
+  console.log(err);
+});
+
+httpServer.listen(7411);
+console.log(&apos;http server started... port: 7411&apos;);
+</code></pre><h3 id="2-4-Node-Client-调用"><a href="#2-4-Node-Client-调用" class="headerlink" title="2.4 Node Client 调用"></a>2.4 Node Client 调用</h3><pre><code>var thrift = require(&apos;thrift&apos;);
+var ThriftTest = require(&apos;./gen-nodejs/ThriftTest&apos;);
+var ttypes = require(&apos;./gen-nodejs/1_types&apos;);
+
+transport = thrift.TBufferedTransport()
+protocol = thrift.TBinaryProtocol()
+
+var connection = thrift.createConnection(&quot;localhost&quot;, 7410, {
+  transport : transport,
+  protocol : protocol
+});
+
+connection.on(&apos;error&apos;, function(err) {
+  console.log(false, err);
+});
+
+var client = thrift.createClient(ThriftTest, connection);
+
+var sum = client.plus(1, 1, function(err, result){
+  //connection.end(); //如果不关闭连接，那么强制断开连接，将会导致后端出现error
+  if(err){
+    console.log(err);
+    return;
+  }
+  console.log(result);
+});
+</code></pre><h3 id="2-5、Http-Client-调用"><a href="#2-5、Http-Client-调用" class="headerlink" title="2.5、Http Client 调用"></a>2.5、Http Client 调用</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Thrift Test Client&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;input type=&quot;text&quot; id=&quot;num1&quot;&gt; + &lt;input type=&quot;text&quot; id=&quot;num2&quot;&gt; &lt;button onclick=&quot;call()&quot;&gt;=&lt;/button&gt; &lt;span id=&quot;result&quot;&gt;?&lt;/span&gt;
+ &lt;!--  &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt; --&gt;
+  &lt;script src=&quot;thrift.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;gen-js/1_types.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;gen-js/ThriftTest.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    var transport = new Thrift.Transport(&quot;http://127.0.0.1:7411/thrift&quot;);
+    var protocol = new Thrift.TJSONProtocol(transport);
+    var client = new ThriftTest.ThriftTestClient(protocol);
+    var el_result = document.getElementById(&apos;result&apos;);
+    function call(){
+      var num1 = +document.getElementById(&apos;num1&apos;).value,
+      num2 = +document.getElementById(&apos;num2&apos;).value;
+      client.plus(num1, num2, function(result) {
+        el_result.innerText = result;
+        alert(&apos;调用成功！&apos;);
+      });
+    }
+  &lt;/script&gt;
+  &lt;script&gt;
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><strong>注意：如果在thrift生成代码时，使用了–gen js:jquery参数，那么在浏览器调用的时候，就必须依赖jquery。</strong></p>
+<h2 id="3、demo地址"><a href="#3、demo地址" class="headerlink" title="3、demo地址"></a>3、demo地址</h2><p><a href="https://github.com/hstarorg/HstarDemoProject/tree/master/thrift_demo" target="_blank" rel="external">https://github.com/hstarorg/HstarDemoProject/tree/master/thrift_demo</a></p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/Other/Thrift简单实践/" data-title="Thrift简单实践" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/Other/Thrift简单实践/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

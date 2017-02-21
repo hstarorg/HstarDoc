@@ -1,0 +1,102 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、关于webpackWebpack是灵活的、可扩展的、开源的模块打包工具。https://webpack.github.io/。Webpack获取模块和它们之间的依赖关系，然后将这些内容打包为静态资源。
+0.1、 Webpack有如下几大特点：
+插件 –利用webpack提供的多功能插件接口，使得"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Webpack初体验 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>Webpack初体验</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、关于webpack"><span class="toc-number">1.</span> <span class="toc-text">0、关于webpack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1、-Webpack有如下几大特点："><span class="toc-number">1.1.</span> <span class="toc-text">0.1、 Webpack有如下几大特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-2、为什么要webpack？-webpack形成的动机"><span class="toc-number">1.2.</span> <span class="toc-text">0.2、为什么要webpack？(webpack形成的动机)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、Webpack功能"><span class="toc-number">2.</span> <span class="toc-text">1、Webpack功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、加载器（Loaders）"><span class="toc-number">2.1.</span> <span class="toc-text">1.1、加载器（Loaders）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、插件"><span class="toc-number">2.2.</span> <span class="toc-text">1.1、插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-开发工具"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 开发工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、使用Webpack"><span class="toc-number">3.</span> <span class="toc-text">2、使用Webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、参考文档"><span class="toc-number">4.</span> <span class="toc-text">3、参考文档</span></a></li></ol></div><h2 id="0、关于webpack"><a href="#0、关于webpack" class="headerlink" title="0、关于webpack"></a>0、关于webpack</h2><p>Webpack是灵活的、可扩展的、开源的模块打包工具。<a href="https://webpack.github.io/" target="_blank" rel="external">https://webpack.github.io/</a>。<br>Webpack获取模块和它们之间的依赖关系，然后将这些内容打包为静态资源。</p>
+<h3 id="0-1、-Webpack有如下几大特点："><a href="#0-1、-Webpack有如下几大特点：" class="headerlink" title="0.1、 Webpack有如下几大特点："></a>0.1、 Webpack有如下几大特点：</h3><ol>
+<li>插件 –利用webpack提供的多功能插件接口，使得它可以被添加很多新特性，实现了webpack的高扩展性。</li>
+<li>加载器（Loaders） – webpack通过加载器来预处理文件，所以它不仅仅只能打包javascript。同时，使用node程序可以很容易的实现自己的加载器。</li>
+<li>代码分割 – webpack允许你将代码分块，按需加载，减少初始加载时间。</li>
+<li>开发工具 –webpack支持SourceUrl和相关调试，同时可以通过开发中间件和开发服务器来实现自动化。</li>
+<li>高性能 –通过异步IO和多级缓存支持，实现了webpack的高性能。</li>
+<li>多支持 -webpack支持amd和commonjs风格的代码，并且还可以静态分析和拥有一个评价引擎来评估简单表达式。</li>
+<li>资源优化 –webpack能够实现多层优化来减少输出大小，还能使用散列还关注请求缓存。</li>
+<li>多目标 –webpack的主要目标是在Web上，但是它还支持WebWorks和node.js。</li>
+</ol>
+<h3 id="0-2、为什么要webpack？-webpack形成的动机"><a href="#0-2、为什么要webpack？-webpack形成的动机" class="headerlink" title="0.2、为什么要webpack？(webpack形成的动机)"></a>0.2、为什么要webpack？(webpack形成的动机)</h3><ol>
+<li>多种模块加载的方式，AMD、CommonJS、ES6 modules，各有优点，也各有缺陷。</li>
+<li>传输方式的两个极端，每次请求一个模块和一个请求所有模块，都并不能达到很好的效果。</li>
+<li>资源不仅仅是JavaScript，也有可能是字体、图片，多语言，模板等。</li>
+</ol>
+<h2 id="1、Webpack功能"><a href="#1、Webpack功能" class="headerlink" title="1、Webpack功能"></a>1、Webpack功能</h2><h3 id="1-1、加载器（Loaders）"><a href="#1-1、加载器（Loaders）" class="headerlink" title="1.1、加载器（Loaders）"></a>1.1、加载器（Loaders）</h3><p>Loader是把资源文件进行转换的一种程序，使用资源文件做为参数，然后返回新的资源文件。比如，将CoffeeScript代码处理为JS代码。</p>
+<p><strong>Loader有哪些特点呢？</strong></p>
+<ol>
+<li>Loader可以链接，通过管道方式传输。</li>
+<li>Loader可以是同步或者是异步的。</li>
+<li>Loader使用nodeJs运行，而且能够做更多。</li>
+<li>Loader接受查询参数，可以用来传递配置。</li>
+<li>Loader可以在配置中绑定到扩展货正则表达式。</li>
+<li>Loader可以使用npm发布。</li>
+<li>普通模块可以通过package.json来转换为loader。</li>
+<li>Loader可以访问配置。</li>
+<li>插件可以为Loader添加更多特性。</li>
+</ol>
+<p>Loader采用<code>xxx-loader</code>这样的名字命令。<code>xxx</code>就是上下文的名称。在使用loader的时候，可以忽略<code>-loader</code>，只需要使用上下文名称就可以了。</p>
+<p><strong>有如下三种方式可以使用loader，</strong></p>
+<ol>
+<li>通过require来使用</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用当前目录的loader.js处理指定的文件</span></div><div class="line"><span class="built_in">require</span>(<span class="string">"./loader!./dir/file.txt"</span>);</div><div class="line"><span class="comment">// 使用jade-loader来处理.jade模板文件</span></div><div class="line"><span class="built_in">require</span>(<span class="string">"jade!./template.jade"</span>);</div></pre></td></tr></table></figure>
+<ol>
+<li>通过配置</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">module</span>: &#123;</div><div class="line">    <span class="attr">loaders</span>: [</div><div class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.jade$/</span>, <span class="attr">loader</span>: <span class="string">"jade"</span> &#125;,</div><div class="line">      <span class="comment">// =&gt; 针对.jade文件使用jade-loader</span></div><div class="line"></div><div class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">loader</span>: <span class="string">"style!css"</span> &#125;,</div><div class="line">      <span class="comment">// =&gt; 针对.css文件使用style和css两种loader</span></div><div class="line">      <span class="comment">// 另外的一种配置语法</span></div><div class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">loaders</span>: [<span class="string">"style"</span>, <span class="string">"css"</span>] &#125;,</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>通过cli</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack --module-bind jade --module-bind &apos;css=style!css&apos;</div></pre></td></tr></table></figure>
+<p><strong>如何使用查询参数？</strong></p>
+<p>在require中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">"url-loader?mimetype=image/png!./file.png"</span>);</div></pre></td></tr></table></figure>
+<p>在配置中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方式一</span></div><div class="line">&#123; <span class="attr">test</span>: <span class="regexp">/\.png$/</span>, <span class="attr">loader</span>: <span class="string">"url-loader?mimetype=image/png"</span> &#125;</div><div class="line"></div><div class="line"><span class="comment">//方式二</span></div><div class="line">&#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.png$/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">"url-loader"</span>,</div><div class="line">    <span class="attr">query</span>: &#123; <span class="attr">mimetype</span>: <span class="string">"image/png"</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在CLI中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack --<span class="built_in">module</span>-bind <span class="string">"png=url-loader?mimetype=image/png"</span></div></pre></td></tr></table></figure>
+<h3 id="1-1、插件"><a href="#1-1、插件" class="headerlink" title="1.1、插件"></a>1.1、插件</h3><p>使用插件一般都涉及到webpack的打包功能，比如使用<a href="https://github.com/senotrusov/bell-on-bundler-error-plugin" target="_blank" rel="external">BellOnBundlerErrorPlugin</a>，来提示在打包过程的错误。</p>
+<p>webpack包含部分内置插件，可以在config中进行配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">"webpack"</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">    <span class="keyword">new</span> webpack.ResolverPlugin([</div><div class="line">        <span class="keyword">new</span> webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(<span class="string">"bower.json"</span>, [<span class="string">"main"</span>])</div><div class="line">    ], [<span class="string">"normal"</span>, <span class="string">"loader"</span>])</div><div class="line">  ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>也可以通过以下代码使用外部插件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ComponentPlugin = <span class="built_in">require</span>(<span class="string">"component-webpack-plugin"</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">      <span class="keyword">new</span> ComponentPlugin()</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="1-3-开发工具"><a href="#1-3-开发工具" class="headerlink" title="1.3 开发工具"></a>1.3 开发工具</h3><p>开发工具相关配置通过通过<a href="http://webpack.github.io/docs/configuration.html" target="_blank" rel="external">Configuration</a>进行查看。</p>
+<p>提供开发服务器的包：<a href="http://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="external">webpack-dev-server</a></p>
+<p>用于高级用户的中间件：<a href="http://webpack.github.io/docs/webpack-dev-middleware.html" target="_blank" rel="external">webpack-dev-middleware</a></p>
+<h2 id="2、使用Webpack"><a href="#2、使用Webpack" class="headerlink" title="2、使用Webpack"></a>2、使用Webpack</h2><p>我们一般采用配置文件加webpack.config的方式来使用webpack，那具体应该如何用呢？</p>
+<p>首先，通过 <code>npm install webpack -g</code> 和 <code>npm install webpack --save-dev</code> 全局和在项目中安装webpack。</p>
+<p>然后通过 <code>npm install xxx</code> 来安装webpack所需要的插件和加载器（Loader）</p>
+<p>接下来，就是编写webpack的配置文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>); <span class="comment">//引入webpack</span></div><div class="line"></div><div class="line"><span class="comment">//webpack配置</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">entry</span>: &#123;</div><div class="line">    <span class="attr">app</span>: <span class="string">'index.js'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">output</span>: &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">'./dist'</span>, <span class="comment">//输出目录</span></div><div class="line">    filename: <span class="string">'[name][hash]bundle.js'</span> <span class="comment">//输出文件名</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">resolve</span>: &#123;</div><div class="line">    <span class="attr">root</span>: __dirname</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">module</span>: &#123;</div><div class="line">    <span class="attr">noParse</span>: [],</div><div class="line">    <span class="attr">loaders</span>: [ <span class="comment">//针对不同的文件，采用不同的加载器来处理</span></div><div class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.js$/</span>, <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>, <span class="attr">loader</span>: <span class="string">'babel'</span>&#125;, <span class="comment">//js文件除开node_modules,通过babel来处理</span></div><div class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.html$/</span>, <span class="attr">loader</span>: <span class="string">'raw'</span> &#125;, <span class="comment">//html文件通过raw-loader处理</span></div><div class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">loader</span>: <span class="string">'style!css'</span>&#125; <span class="comment">//css文件通过style-loader和css-loader来处理</span></div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">    <span class="comment">//Banner插件，合并时增加注释</span></div><div class="line">    <span class="keyword">new</span> webpack.BannerPlugin(<span class="string">'Hello'</span> + <span class="keyword">new</span> <span class="built_in">Date</span>())</div><div class="line">  ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>最后，执行webpack，就能够启动了，在执行webpack的时候，可以附加很多参数，这些参数可以通过 <code>webpack -h</code> 来查看</p>
+<p><strong>当前只能简单使用，等理解了webpack的核心思想，再写一篇《webpack深度解析》，敬请期待…</strong></p>
+<h2 id="3、参考文档"><a href="#3、参考文档" class="headerlink" title="3、参考文档"></a>3、参考文档</h2><ol>
+<li><a href="http://webpack.github.io/docs/" target="_blank" rel="external">Webpack官方文档</a></li>
+<li><a href="http://blog.madewithlove.be/post/webpack-your-bags/" target="_blank" rel="external">在一个真实的项目中使用Webpack</a></li>
+</ol>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/Webpack初体验/" data-title="Webpack初体验" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/Webpack初体验/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

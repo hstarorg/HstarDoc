@@ -1,0 +1,371 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="##No.61、不要阻塞I/O事件队列
+Tips：：
+
+异步API使用回调函数来延缓处理代价高昂的操作以避免阻塞主应用程序
+JavaScript并发的接收事件，但会使用一个事件队列按序地处理事件处理程序
+在应用程序事件队列中绝不要使用阻塞的I/O
+
+JavaScript程序是构建在事件之上的。在其他"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>编写高质量JS代码的68个有效方法（十三） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>编写高质量JS代码的68个有效方法（十三）</h1><span class="post-meta">写于<time> 2015 年 03 月 12 日 00 时 00 分</time><br>更新于<time> 2017 年 02 月 21 日 13 时 59 分</time></span><div class="article-toc"><strong>大纲</strong></div><p>##No.61、不要阻塞I/O事件队列</p>
+<p><strong>Tips：</strong>：</p>
+<ol>
+<li>异步API使用回调函数来延缓处理代价高昂的操作以避免阻塞主应用程序</li>
+<li>JavaScript并发的接收事件，但会使用一个事件队列按序地处理事件处理程序</li>
+<li>在应用程序事件队列中绝不要使用阻塞的I/O</li>
+</ol>
+<p>JavaScript程序是构建在事件之上的。在其他一些语言中，我们可能常常会实现如下代码：</p>
+<pre><code>var result = downFileSync(&apos;http://xxx.com&apos;); 
+console.log(result);
+</code></pre><p>以上代码，如果downFileSync需要5分钟，那么程序就会停下来等待5分钟。这样的函数就被称为同步函数（或阻塞函数）。如果在浏览器中实现这样的函数，那么结果就是浏览器卡住，等待下载完成后，再继续响应。那么，这将极大的影响体验。所以，在JavaScript中，一般使用如下方式：</p>
+<pre><code>downFileAsync(&apos;http://xxx.com&apos;, function(result){
+  console.log(result);
+});
+console.log(&apos;async&apos;);
+</code></pre><p>以上代码执行中，就算下载文件要5分钟，那么程序也会立马打印出“async”，然后在下载完成的时候，打印result出来。这样才能保证执行环境能正确响应客户的操作。</p>
+<p>JavaScript并发的一个最重要的规则是绝不要在应用程序事件队列中使用阻塞I/O的API。在浏览器中，甚至基本没有任何阻塞的API是可用的。其中XMLHttpRequest库有一个同步版本的实现，被认为是一种不好的实现，影响Web应用程序的交互性。</p>
+<p>在现代浏览器（IE10+(含)、Chrome、FireFox）中，提供了Worker的API，该API使得产生大量的并行计算称为可能。</p>
+<p><em>如何使用？</em></p>
+<p>首先，编写两个文件,第一个是task.js,如下：</p>
+<pre><code>//task.js
+console.time(&apos;t1&apos;);
+var sum = 0;
+for(var i = 0; i &lt; 500000000; i++){
+  sum += i;
+}
+console.log(&apos;test&apos;);
+console.timeEnd(&apos;t1&apos;);
+postMessage(&apos;worker result:&apos; + sum);
+</code></pre><p>然后是index.html，用于调用worker，代码如下：</p>
+<pre><code>// index.html
+&lt;button onclick=&quot;alert(&apos;aa&apos;)&quot;&gt;Test&lt;/button&gt;
+&lt;script&gt;
+  var worker = new Worker(&apos;test.js&apos;); 
+  worker.onmessage = function(evt){
+    console.log(evt.data);
+  };
+&lt;/script&gt;
+</code></pre><p>在index.html的JavaScript脚本中。使用<code>var worker = new Worker(&#39;test.js&#39;);</code>来实例化一个Worker，Worker的构造为：new Worker([string] url),然后注册一个onmessage事件，用于处理test.js的通知，就是test.js中的postMessage函数。test.js中的每一次执行postMessage函数都会触发一次Worker的onmessage回调。</p>
+<p>在静态服务器中访问index.html,可以看到输出为：</p>
+<pre><code>test
+t1: 2348.633ms
+worker result:124999999567108900
+</code></pre><p>再来看看Worker的优缺点，我们可以做什么：</p>
+<ol>
+<li>可以加载一个JS进行大量的复杂计算而不挂起主进程，并通过postMessage，onmessage进行通信</li>
+<li>可以在worker中通过importScripts(url)加载另外的脚本文件</li>
+<li>可以使用 setTimeout(), clearTimeout(), setInterval(), and clearInterval()</li>
+<li>可以使用XMLHttpRequest来发送请求</li>
+<li>可以访问navigator的部分属性</li>
+</ol>
+<p>有那些局限性：</p>
+<ol>
+<li>不能跨域加载JS</li>
+<li>worker内代码不能访问DOM</li>
+<li>各个浏览器对Worker的实现不大一致，例如FF里允许worker中创建新的worker,而Chrome中就不行</li>
+<li>不是每个浏览器都支持这个新特性</li>
+</ol>
+<p>更多信息，请参考：</p>
+<ol>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/Performance/Using_web_workers" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/Guide/Performance/Using_web_workers</a></li>
+<li><a href="http://www.cnblogs.com/feng_013/archive/2011/09/20/2175007.html" target="_blank" rel="external">http://www.cnblogs.com/feng_013/archive/2011/09/20/2175007.html</a></li>
+</ol>
+<p>##No.62、在异步序列中使用嵌套或命名的回调函数<br><strong>Tips：</strong>：</p>
+<ol>
+<li>使用嵌套或命名的回调函数按顺序地执行多个异步操作</li>
+<li>尝试在过多的嵌套的回调函数和尴尬的命名的非嵌套回调函数之间取得平衡</li>
+<li>避免将可被并行执行的操作顺序化</li>
+</ol>
+<p>想象一下如下需求，异步请数据库查找一个地址，并异步下载。由于是异步，我们不可能发起两个连续请求，那么js代码很可能是这样的：</p>
+<pre><code>db.lookupAsync(&apos;url&apos;, function(url){
+  downloadAsync(url, function(result){
+    console.log(result);
+  });
+});
+</code></pre><p>我们使用嵌套，成功解决了这个问题，但是当这样的依赖很多时，我们的代码可能是这样：</p>
+<pre><code>db.lookupAsync(&apos;url&apos;, function(url){
+  downloadAsync(&apos;1.txt&apos;, function(){
+    downloadAsync(&apos;2.txt&apos;, function(){
+      downloadAsync(&apos;3.txt&apos;, function(){
+        //do something...
+      });
+    });
+  });
+});
+</code></pre><p>这样就陷入了回调地狱。要减少过多的嵌套的方法之一就是将回调函数作为命名的函数，并将它们需要的附加数据作为额外的参数传递。比如：</p>
+<pre><code>db.lookupAsync(&apos;url&apos;, downloadUrl);
+
+function downloadUrl(url){
+  downloadAsync(url, printResult);
+}
+
+function printResult(result){
+  console.log(result);
+}
+</code></pre><p>这样能控制嵌套回调的规模，但是还是不够直观。实际上，在node中解决此类问题是用现有的模块，如async。</p>
+<p>##No.63、当心丢弃错误<br><strong>Tips：</strong>：</p>
+<ol>
+<li>通过编写共享的错误处理函数来避免复制和粘贴错误处理代码</li>
+<li>确保明确地处理所有的错误条件以避免丢弃错误</li>
+</ol>
+<p>一般情况下，我们的错误处理代码如下：</p>
+<pre><code>try{
+  a();
+  b();
+  c();
+}catch(ex){
+  //处理错误
+}
+</code></pre><p>对于异步的代码，不可能将错误包装在一个try中，事实上，异步的API甚至根本不可能抛出异常。<strong>异步的API倾向于将错误表示为回调函数的特定参数，或使用一个附加的错误处理回调函数（有时被称为errbacks）</strong>。代码如下:</p>
+<pre><code>downloadAsync(url, function(result){
+  console.log(result);
+}, function(err){ //提供一个单独的错误处理函数
+  console.log(&apos;Error:&apos; + err);
+});
+</code></pre><p>多次嵌套时，错误处理函数会被多次复制，所以可以将错误处理函数提取出来，减少重复代码，代码如下：</p>
+<pre><code>downloadAsync(&apos;1.txt&apos;, function(result){
+  downloadAsync(&apos;2.txt&apos;, function(result2){
+    console.log(result + result2);
+  }, onError);
+}, onError);
+</code></pre><p><strong>在node中，异步API的回调函数第一个参数表示err，这已经成为一个大众标准</strong></p>
+<p>##No.64、对异步循环使用递归<br><strong>Tips：</strong>：</p>
+<ol>
+<li>循环不能是异步的</li>
+<li>使用递归函数在时间循环的单独轮次中执行迭代</li>
+<li>在事件循环的单独伦次中执行递归，并不会导致调用栈溢出</li>
+</ol>
+<p>针对异步下载文件，如果要使用循环，大概是如下代码：</p>
+<pre><code>function downloadFilesSync(urls){
+  for(var i = 0, len = urls.length; i &lt; len; i++){
+    try{
+      return downloadSync(urls[i]);
+    }catch(ex){
+    }
+  }
+}
+</code></pre><p>以上代码并不能正确工作，因为方法一调用，就会启动所有的下载，并不能等待一个完成，再继续下一个。</p>
+<p>要实现功能，看看下面的递归代码：</p>
+<pre><code>function downloadFilesSync(urls){
+  var len = urls.length;
+  function tryNextURL(i) {
+    if (i &gt;= n) {
+      console.log(&apos;Error&apos;);
+      return; //退出
+    }
+    downloadAsync(urls[i], function(result){
+      console.log(result);
+      //下载成功后，尝试下一个。    
+      tryNextURL(i + 1);
+    });
+  }
+  tryNextURL(0);// 启动递归
+}
+</code></pre><p>类似这样的实现，就能解决批量下载的问题了。</p>
+<p>##No.65、不要再计算时阻塞事件队列<br><strong>Tips：</strong>：</p>
+<ol>
+<li>避免在主事件队列中执行代码高昂的算法</li>
+<li>在支持Worker API的平台，该API可以用来在一个独立的事件队列中运行长计算程序</li>
+<li>在Worker API 不可用或代价高昂的环境中，考虑将计算程序分解到事件循环的多个轮次中</li>
+</ol>
+<p>打开浏览器控制台，执行 <code>while(true){}</code>，会是什么效果？</p>
+<p><strong>好吧，浏览器卡死了！！！</strong></p>
+<p>如果有这样的需求，那么优先选择使用Worker实现吧。由于有些平台不支持类似Worker的API，那么可选的方案是将算法分解为多个步骤。代码如下：</p>
+<pre><code>//首先，将逻辑分为几个步骤
+function step1(){console.log(1);}
+function step2(){console.log(2);}
+function step3(){console.log(3);}
+var taskArr = [step1, step2, step3];
+
+var doWork = function(tasks){
+  function next(){
+    if(tasks.length === 0){
+      console.log(&apos;Tasks finished.&apos;);
+      return;
+    }
+    var task = tasks.shift();
+    if(task){
+      task();
+      setTimeout(next, 0);
+    }   
+  }
+  setTimeout(next, 0);
+}
+//启动任务
+doWork(taskArr);
+</code></pre><p>##No.66、使用计数器来执行并行操作<br><strong>Tips：</strong>：</p>
+<ol>
+<li>JavaScript应用程序中的事件发生是不确定的，即顺序是不可预测的</li>
+<li>使用计数器避免并行操作中的数据竞争</li>
+</ol>
+<p>先看一个简单的示例：</p>
+<pre><code>function downFiles(urls){
+  var result = [],len = urls.length;
+  if(len === 0){
+    console.log(&apos;urls argument is a empty array.&apos;);
+    return;
+  }
+  urls.forEach(function(url){
+    downloadAsync(url, function(text){
+      result.push(text);
+      if(result.length === len){
+        console.log(&apos;download all files.&apos;);
+      }
+    });
+  });
+}
+</code></pre><p>有什么问题呢？result的结果和urls是顺序并不匹配，所以，我们不知道怎么使用这个result。</p>
+<p>如何改进？请看如下代码，使用计数器，代码如下：</p>
+<pre><code>function downFiles(urls){
+  var result = [],len = urls.length;
+  var count = 0;// 定义计数器
+  if(len === 0){
+    console.log(&apos;urls argument is a empty array.&apos;);
+    return;
+  }
+  urls.forEach(function(url, i){
+    downloadAsync(url, function(text){
+      result[i] = text;
+      count++;
+      //计数器等于url个数，那么退出
+      if(count === len){
+        console.log(&apos;download all files.&apos;);
+      }
+    });
+  });
+}
+</code></pre><p>##No.67、绝不要同步地调用异步的回调函数<br><strong>Tips：</strong>：</p>
+<ol>
+<li>即使可以立即得到数据，也绝不要同步地调用异步回调函数</li>
+<li>同步地调用异步的回调函数扰乱了预期的操作序列，并可能导致意想不到的交错代码</li>
+<li>同步地调用异步的回调函数可能导致栈溢出或错误的处理异常</li>
+<li>使用异步的API，比如setTimeout函数来调用异步回调函数，使其运行于另外一个回合</li>
+</ol>
+<p>如果异步下载代码，优先从缓存拿数据，那么代码很可能是：</p>
+<pre><code>var cache = new Dict();
+
+function downFileWithCache(url, onsuccess){
+  if (cache.has(url)){
+    onsuccess(cache.get(url));
+    return;
+  }
+  return downloadAsync(url, function(text){
+    cache.set(url, text);
+    onsuccess(text);
+  });
+}
+</code></pre><p>以上代码，同步的调用了回调函数，可能会导致一些微妙的问题，<strong>异步的回调函数本质上是以空的调用栈来调用，因此将异步的循环实现为递归函数是安全的，完全没有累计赵越调用栈控件的危险。</strong>同步的调用不能保证这一点，所以，更好的代码如下：</p>
+<pre><code>var cache = new Dict();
+
+function downFileWithCache(url, onsuccess){
+  if (cache.has(url)){
+    setTimeout(onsuccess.bind(null, cache.get(url)), 0)
+    return;
+  }
+  return downloadAsync(url, function(text){
+    cache.set(url, text);
+    onsuccess(text);
+  });
+}
+</code></pre><p>##No.68、使用promise模式清洁异步逻辑<br><strong>Tips：</strong>：</p>
+<ol>
+<li>promise代表最终值，即并行操作完成时最终产生的结果</li>
+<li>使用promise组合不同的并行操作</li>
+<li>使用promise模式的API避免数据竞争</li>
+<li>在要求有意的竞争条件时使用select（也被称为choose）</li>
+</ol>
+<p>一直以来，JavaScript处理异步的方式都是callback，当异步任务很多的时候，维护大量的callback将是一场灾难。所以Promise规范也应运而生，<a href="http://www.ituring.com.cn/article/66566" target="_blank" rel="external">http://www.ituring.com.cn/article/66566</a> 。</p>
+<p>Promise已经纳入了ES6，而且高版本的Chrome、Firefox都已经实现了Promise，只不过和现如今流行的类Promise类库相比少些API。</p>
+<p>看下最简单的Promise代码（猜猜最后输出啥？）：</p>
+<pre><code>var p1 = new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(&apos;1&apos;);
+    resolve(&apos;2&apos;);
+  }, 3000);
+});
+
+p1.then(function(val){
+  console.log(val);
+});
+</code></pre><p>如果代码是这样呢？</p>
+<pre><code>var p1 = new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(&apos;1&apos;);
+    //resolve(&apos;2&apos;);
+    reject(&apos;3&apos;);
+  }, 3000);
+});
+
+p1.then(function(val){
+  console.log(val);
+}, function(val){
+  console.log(val);
+});
+</code></pre><p>再来看一个Promise.all的示例：</p>
+<pre><code>Promise.all([new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(1);
+    resolve(1);
+  }, 2000);
+}), new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(2);
+    resolve(2);
+  }, 1000);
+}), Promise.reject(3)])
+.then(function(values){
+  console.log(values);
+});
+</code></pre><p><code>Promise.all([]).then(fn)</code><strong>只有当所有的异步任务执行完成之后，才会执行then。</strong></p>
+<p>接着看一个Promise.race的示例：</p>
+<pre><code>Promise.race([new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(&apos;p1&apos;);
+    resolve(1);
+  }, 2000);
+}), new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(&apos;p2&apos;);
+    resolve(2);
+  }, 1000);
+})])
+.then(function(value){
+  console.log(&apos;value = &apos; + value);
+});
+</code></pre><p>结果是：</p>
+<pre><code>p2
+value = 2
+p1
+</code></pre><p><code>Promise.race([]).then(fn)</code><strong>会同时执行所有的异步任务，但是只要完成一个异步任务，那么就调用then。</strong></p>
+<p><strong>promise.catch(onRejected)是promise.then(undefined, onRejected) 的语法糖。</strong></p>
+<p>更多关于Promise的资料请参考：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></p>
+<p>第三方Promise库有许多，如：Q, when.js 等</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2015/03/12/编写高质量JS代码的68个有效方法-读书笔记/[20150312]编写高质量JS代码的68个有效方法（十三）/" data-title="编写高质量JS代码的68个有效方法（十三）" data-url="http://hstarorg.github.io/blog/blog/2015/03/12/编写高质量JS代码的68个有效方法-读书笔记/[20150312]编写高质量JS代码的68个有效方法（十三）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="随着HTML5的正式定稿，我们也可以大量使用HTML离线网络应用程序的特性。
+#1、Application CacheApplication Cache 可以很简单让我们的WebApp具有离线的能力。
+支持的浏览器：IE10+，FireFox，Chrome，Safari，Opera
+优点：
+
+离线浏"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Web离线存储的几种方式 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>Web离线存储的几种方式</h1><span class="post-meta">写于<time> 2015 年 01 月 07 日 00 时 00 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、Application-Cache"><span class="toc-number">1.</span> <span class="toc-text">#1、Application Cache</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、Local-Storage"><span class="toc-number">2.</span> <span class="toc-text">#2、Local Storage</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、Web-SQL"><span class="toc-number">3.</span> <span class="toc-text">#3、Web SQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、IndexedDB"><span class="toc-number">4.</span> <span class="toc-text">#4、IndexedDB</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他"><span class="toc-number">5.</span> <span class="toc-text">其他</span></a></li></ol></div><p>随着HTML5的正式定稿，我们也可以大量使用HTML离线网络应用程序的特性。</p>
+<h1 id="1、Application-Cache"><a href="#1、Application-Cache" class="headerlink" title="#1、Application Cache"></a>#1、Application Cache</h1><p><a href="http://www.w3schools.com/html/html5_app_cache.asp" target="_blank" rel="external">Application Cache</a> 可以很简单让我们的WebApp具有离线的能力。</p>
+<p><strong>支持的浏览器：</strong>IE10+，FireFox，Chrome，Safari，Opera</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>离线浏览 – 用户可以再离线时使用Application</li>
+<li>速度 – 由于缓存了资源，如果加载很快</li>
+<li>减少服务端数据加载 – 浏览器只需要从服务器加载更新过的数据</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>Manifest文件有变化时才更新</li>
+<li>一次必须更新Manifest中的所有文件，下次才生效</li>
+</ol>
+<p><strong>如何使用？</strong></p>
+<p>Step1:在html上指定manifest文件 (index.html)</p>
+<pre><code>&lt;html manifest=&quot;appCacheList.manifest&quot;&gt;
+&lt;/html&gt;
+</code></pre><p>Step2:设定manifest文件内容 (appCache.manifest)</p>
+<pre><code>CACHE MANIFEST
+
+# 离线缓存的内容
+./all.css
+./1.jpg
+./index.js
+
+# NETWORK:*，表示其他内容从网络获取
+NETWORK:
+*
+
+# 第一个uri是资源，第二个是fallback
+FALLBACK:
+/html/ /offline.html
+</code></pre><p>手动更新缓存：</p>
+<pre><code>if ( window.applicationCache.status == window.applicationCache.UPDATEREADY ){
+    window.applicationCache.update();
+}
+</code></pre><p><strong>注意：</strong></p>
+<ol>
+<li>不同的浏览器对Application Cache的大小不一致，请注意。</li>
+<li>更多细节可参考<a href="http://kayosite.com/web-app-by-jquery-mobile-and-html5-offline-web-applications.html" target="_blank" rel="external">http://kayosite.com/web-app-by-jquery-mobile-and-html5-offline-web-applications.html</a></li>
+</ol>
+<h1 id="2、Local-Storage"><a href="#2、Local-Storage" class="headerlink" title="#2、Local Storage"></a>#2、Local Storage</h1><p><a href="http://www.w3schools.com/html/html5_webstorage.asp" target="_blank" rel="external">Local Storage</a>使得我们可以在浏览器中保存数据。</p>
+<p><strong>支持的浏览器：</strong>IE10+，FireFox，Chrome，Safari，Opera</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>容量大</li>
+<li>易用</li>
+<li>强大</li>
+<li>原生支持</li>
+<li>仅存在本地，不会与服务器发生交互</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>浏览器兼容性差</li>
+<li>安全性差（不要存储敏感数据）</li>
+</ol>
+<p><strong>如何使用？</strong></p>
+<p>首先通过 <code>window.localStorage</code> 来判断浏览器是否支持Local Storage。然后由于该方式具有浏览器兼容性，建议用一个通用的库，来屏蔽兼容性。</p>
+<pre><code>// 对基本方法的封装，需要判断浏览器，屏蔽它们的细节差异。
+(function(window){
+  if(!window.localStorage){
+    throw new Error(&apos;Your brower can\&apos;t support local storage!&apos;);
+  }
+  var ls = window.localStorage;
+  var localStorageKit = {
+    getLength: function(){
+      return ls.length;
+    },
+    clear: function(){
+      ls.clear();
+      return true;
+    },
+    set: function(k, v){
+      ls.setItem(k, v);
+    },
+    get: function(k){
+      return ls.getItem(k);
+    },
+    remove: function(k){
+      ls.removeItem(k);
+    },
+    getKeyByIndex: function(index){
+      return ls.key(index);
+    }
+  };
+  window.lsKit = localStorageKit;
+})(window);
+</code></pre><p>基本操作方式与cookie无太多差异。</p>
+<p><strong>Session Storage：</strong><br>Session Storage和Local Storage非常类似，操作方式也一致。由于其中保存的存只是当前会话有效，那么此处就不细说。</p>
+<h1 id="3、Web-SQL"><a href="#3、Web-SQL" class="headerlink" title="#3、Web SQL"></a>#3、Web SQL</h1><p><a href="http://en.wikipedia.org/wiki/Web_SQL_Database" target="_blank" rel="external">Web Sql Database</a>，是html5环境下可以用js执行CRUD的web数据库。数据库核心是SQLite。</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>本地数据库</li>
+<li>可以处理复杂的关系型数据</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>暂时只有chrome才支持，对于Android大行其道的移动端，这应该是可以避免的缺点(貌似最新版本的Opera和Safari也支持了)</li>
+</ol>
+<p><strong>如何使用？</strong></p>
+<p>首先，先介绍Web sql的三个核心方法：</p>
+<ol>
+<li>openDatabase：这个方法使用现有数据库或创建新数据库创建数据库对象。</li>
+<li>transaction：这个方法允许我们根据情况控制事务提交或回滚。</li>
+<li><p>executeSql：这个方法用于执行真实的SQL查询。</p>
+<p> var db = openDatabase(‘mydb’, ‘1.0’, ‘Test DB’, 2 <em> 1024 </em> 1024);<br> var msg;<br> db.transaction(function (tx) {<br>   tx.executeSql(‘CREATE TABLE IF NOT EXISTS LOGS (id unique, log)’);<br>   tx.executeSql(‘INSERT INTO LOGS (id, log) VALUES (1, “foobar”)’);<br>   tx.executeSql(‘INSERT INTO LOGS (id, log) VALUES (2, “logmsg”)’);<br>   console.log(‘Log message created and row inserted.’);<br> });<br> db.transaction(function (tx) {<br>   tx.executeSql(‘SELECT * FROM LOGS’, [], function (tx, results) {</p>
+<pre><code>var len = results.rows.length, i;
+console.log(&apos;Found rows: &apos; + len);
+for (i = 0; i &lt; len; i++){
+  console.log(results.rows.item(i).log)
+}
+</code></pre><p>   }, null);<br> });</p>
+</li>
+</ol>
+<p>当成数据库用，就行。</p>
+<h1 id="4、IndexedDB"><a href="#4、IndexedDB" class="headerlink" title="#4、IndexedDB"></a>#4、IndexedDB</h1><p><a href="http://www.w3.org/TR/IndexedDB/" target="_blank" rel="external">IndexedDB</a>是结构化的本地数据存储。是基于平面文件的数据库，采用了分层的键值存储和基本的索引。</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>标准化</li>
+<li>存储复杂数据</li>
+<li>支持索引</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>不支持SQL</li>
+<li>相对来说，操作较复杂</li>
+</ol>
+<p><strong>如何使用？</strong></p>
+<pre><code>// 打开数据库，第一个参数为数据库名，第二个为数据库版本号
+var dbRequest = window.indexedDB.open(&apos;testDb&apos;, 2);
+
+dbRequest.onupgradeneeded=function(e){
+    // 创建数据仓库
+    var db=e.target.result;
+    if(!db.objectStoreNames.contains(&apos;users&apos;)){
+        var store=db.createObjectStore(&apos;users&apos;,{keyPath: &apos;id&apos;});
+        store.createIndex(&apos;nameIndex&apos;,&apos;name&apos;,{unique:true}); 
+        store.createIndex(&apos;ageIndex&apos;,&apos;age&apos;,{unique:false}); 
+    }
+    console.log(&apos;upgrade successfully!&apos;);
+};
+
+dbRequest.onsuccess = function(e){
+  console.log(&apos;Open database successfully!&apos;);
+  // 这里拿到了数据库
+  var db = e.target.result;
+  var storeName = &apos;users&apos;;
+  // 写入数据
+  var tran = db.transaction(storeName, &apos;readwrite&apos;);
+  var users = tran.objectStore(storeName);
+  for(var i = 0; i &lt; 5; i++){
+    users.add({
+      id: i,
+      name: &apos;user&apos; + i,
+      age: Math.floor(Math.random() * 10) + 18
+    });
+  }
+
+  //查询数据
+  var userStore = db.transaction(storeName).objectStore(storeName);
+  var request = userStore.openCursor();
+  request.onsuccess = function(e){
+    var cursor = e.target.result;
+    if(cursor){
+      console.log(cursor.key);
+      console.log(cursor.value);
+      cursor.continue();
+    }
+  }
+}
+</code></pre><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p><a href="http://html5online.com.cn/articles/2012080901.html" target="_blank" rel="external">HTML 5中几种用于在客户端本地存储数据的API之间的比较</a></p>
+<p><a href="http://www.cnblogs.com/dolphinX/p/3415761.html" target="_blank" rel="external">HTML5本地存储——IndexedDB（一：基本使用）</a></p>
+<p><a href="http://www.cnblogs.com/dolphinX/p/3416889.html" target="_blank" rel="external">HTML5本地存储——IndexedDB（二：索引）</a></p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2015/01/07/前端相关/[20150107]Web离线存储的几种方式/" data-title="Web离线存储的几种方式" data-url="http://hstarorg.github.io/blog/blog/2015/01/07/前端相关/[20150107]Web离线存储的几种方式/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="1、CSS布局之浮动1.1、float之图文混排float的意思就是元素漂浮在上层。
+可以直接通过设置float属性实现图文混排，代码如下：
+&amp;lt;div style=&amp;quot;width:200px;height:200px;border: 1px solid gray;&amp;quot;&amp;gt;
+"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CSS布局（下） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>CSS布局（下）</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、CSS布局之浮动"><span class="toc-number">1.</span> <span class="toc-text">1、CSS布局之浮动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、float之图文混排"><span class="toc-number">1.1.</span> <span class="toc-text">1.1、float之图文混排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2、float的副作用"><span class="toc-number">1.2.</span> <span class="toc-text">1.2、float的副作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3、奇怪的浮动效果"><span class="toc-number">1.3.</span> <span class="toc-text">1.3、奇怪的浮动效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、CSS布局之百分比宽度"><span class="toc-number">2.</span> <span class="toc-text">2、CSS布局之百分比宽度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、CSS布局之媒体查询（Media-Query）"><span class="toc-number">3.</span> <span class="toc-text">3、CSS布局之媒体查询（Media Query）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、CSS布局之column"><span class="toc-number">4.</span> <span class="toc-text">4、CSS布局之column</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、CSS布局之flexbox"><span class="toc-number">5.</span> <span class="toc-text">5、CSS布局之flexbox</span></a></li></ol></div><h2 id="1、CSS布局之浮动"><a href="#1、CSS布局之浮动" class="headerlink" title="1、CSS布局之浮动"></a>1、CSS布局之浮动</h2><h3 id="1-1、float之图文混排"><a href="#1-1、float之图文混排" class="headerlink" title="1.1、float之图文混排"></a>1.1、float之图文混排</h3><p>float的意思就是元素漂浮在上层。</p>
+<p>可以直接通过设置float属性实现图文混排，代码如下：</p>
+<pre><code>&lt;div style=&quot;width:200px;height:200px;border: 1px solid gray;&quot;&gt;
+  &lt;img src=&quot;&quot; alt=&quot;&quot; style=&quot;width:100px;height:100px;float:right;&quot;&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.
+&lt;/div&gt;
+</code></pre><div style="width:200px;height:200px;border: 1px solid gray;"><br>  <img src="" alt="" style="width:100px;height:100px;float:right;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.<br></div>
+
+<h3 id="1-2、float的副作用"><a href="#1-2、float的副作用" class="headerlink" title="1.2、float的副作用"></a>1.2、float的副作用</h3><p>当为元素设置float只有，它将会漂浮起来。那么它之后的元素就会忽略它，而进行定位。所以会导致元素重叠：</p>
+<pre><code>&lt;div style=&quot;width:50px;height:50px;border:1px solid red;float:left&quot;&gt;
+  我是悬浮元素
+&lt;/div&gt;
+&lt;div style=&quot;width:100px;height:100px;border:1px solid blue;&quot;&gt;
+  我是标准div元素内容
+&lt;/div&gt;
+</code></pre><div style="width:50px;height:50px;border:1px solid red;float:left"><br>  我是悬浮元素<br></div><br><div style="width:100px;height:100px;border:1px solid blue;"><br>  我是标准div元素内容<br></div>
+
+<p>这个时候，就需要清除浮动(clear:both)，另外，还可以通过clear:left|right来分别清除左右浮动：</p>
+<pre><code>&lt;div style=&quot;width:50px;height:50px;border:1px solid red;float:left&quot;&gt;
+  我是悬浮元素
+&lt;/div&gt;
+&lt;div style=&quot;width:100px;height:100px;border:1px solid blue;clear:both;&quot;&gt;
+  我是标准div元素内容
+&lt;/div&gt;
+</code></pre><div style="width:50px;height:50px;border:1px solid red;float:left"><br>  我是悬浮元素<br></div><br><div style="width:100px;height:100px;border:1px solid blue;clear:both;"><br>  我是标准div元素内容<br></div>
+
+<h3 id="1-3、奇怪的浮动效果"><a href="#1-3、奇怪的浮动效果" class="headerlink" title="1.3、奇怪的浮动效果"></a>1.3、奇怪的浮动效果</h3><p>在内容的浮动元素高度大于外部容器时，效果如下：</p>
+<pre><code>&lt;div style=&quot;width:100px;border:1px solid blue;&quot;&gt;
+  &lt;div style=&quot;width:50px;height:150px;border:1px solid red;float:right&quot;&gt;
+    我是悬浮元素
+  &lt;/div&gt;
+  我是标准div元素内容
+&lt;/div&gt;
+</code></pre><div style="width:100px;border:1px solid blue;"><br>  <div style="width:50px;height:150px;border:1px solid red;float:right"><br>    我是悬浮元素<br>  </div><br>  我是标准div元素内容<br></div>
+
+<div style="clear:both;"></div><br>    <strong>如何修复？</strong><br><br>可以通过clearfix样式来修复：<br><br>    <style><br>      .clearfix {<br>        overflow: auto;<br>        zoom: 1;/<em>针对IE需要额外关照</em>/<br>      }<br>    </style><br>    <div class="clearfix" style="width:100px;border:1px solid blue;"><br>      <div style="width:50px;height:150px;border:1px solid red;float:right"><br>        我是悬浮元素<br>      </div><br>      我是标准div元素内容<br>    </div>
+
+<p><style><br>  .clearfix {<br>    overflow: auto;<br>    zoom: 1;/<em>针对IE需要额外关照</em>/<br>  }<br></style></p>
+<div class="clearfix" style="width:100px;border:1px solid blue;"><br>  <div style="width:50px;height:150px;border:1px solid red;float:right"><br>    我是悬浮元素<br>  </div><br>  我是标准div元素内容<br></div>
+
+<h2 id="2、CSS布局之百分比宽度"><a href="#2、CSS布局之百分比宽度" class="headerlink" title="2、CSS布局之百分比宽度"></a>2、CSS布局之百分比宽度</h2><p>百分比宽度可以非常容易的实现动态布局，但是当窗口变得很窄的时候，元素的展示可能会错乱。所以需要选择最合适的布局方式。</p>
+<p>另外，不能使用min-width来修复这个问题，因为如果是左右结构，对左边的元素设定min-width，右边的元素是不会遵守的，可能会引起重叠。</p>
+<h2 id="3、CSS布局之媒体查询（Media-Query）"><a href="#3、CSS布局之媒体查询（Media-Query）" class="headerlink" title="3、CSS布局之媒体查询（Media Query）"></a>3、CSS布局之媒体查询（Media Query）</h2><p>“响应式设计（Responsive Design）”是一种让网站针对不同的浏览器和设备“响应”不同显示效果的策略，这样可以让网站在任何情况下显示的很棒！</p>
+<p>如果要兼容移动端，请加上如下类似meta</p>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, maximum-scale=2, minimum-scale=0.5, user-scalable=no&quot;&gt;
+</code></pre><p>因为众所周知，手机端的屏幕分辨率相当多，所以可以强制指定屏幕的width是等于设备宽度的，忽略分辨率。<br>maximum-scale 是指最大缩放比例。</p>
+<h2 id="4、CSS布局之column"><a href="#4、CSS布局之column" class="headerlink" title="4、CSS布局之column"></a>4、CSS布局之column</h2><p>CSS columns是较新的标准，不支持IE9及以下和Opera Mini，所以需要使用浏览器前缀。Column可以很轻松的实现文字的多列布局，示例如下：</p>
+<pre><code>&lt;div style=&quot;width:150px;-webkit-column-count:3;-webkit-column-gap: 1em;&quot;&gt;
+  CSS布局CSS布局CSS布局CSS布局CSS布局CSS布局CSS布局CSS布局CSS布局CSS布局
+&lt;/div&gt;
+</code></pre><div style="width:150px;-webkit-column-count:3;-webkit-column-gap: 1em;"><br>  CSS布局CSS布局CSS布局CSS布局CSS布局CSS布局CSS布局CSS布局CSS布局CSS布局<br></div>
+
+<h2 id="5、CSS布局之flexbox"><a href="#5、CSS布局之flexbox" class="headerlink" title="5、CSS布局之flexbox"></a>5、CSS布局之flexbox</h2><p>flexbox布局模式被用来重新定义CSS中的布局方式。</p>
+<pre><code>&lt;style&gt;
+  .container{
+    width: 80%;
+    border: 1px solid red;
+    height:50px;
+    display: flex;
+  }
+&lt;/style&gt;
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div style=&quot;width:100px;&quot;&gt;&lt;/div&gt;
+  &lt;div style=&quot;flex:3;background:lightgray;&quot;&gt;1&lt;/div&gt;
+  &lt;div style=&quot;flex:5;background:lightyellow;&quot;&gt;2&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p><style><br>  .container{<br>    width: 80%;<br>    border: 1px solid red;<br>    height:50px;<br>    display: flex;<br>  }<br></style></p>
+<div class="container"><br>  <div style="width:100px;"></div><br>  <div style="flex:3;background:lightgray;">1</div><br>  <div style="flex:5;background:lightyellow;">2</div><br></div>
+
+<p>分析一下以上代码，只需要在容器上设置display:flex，那么内部元素的如果设置了flex样式，那么就会按照flex进行计算，然后实现flex布局。</p>
+<p>flex布局，还能实现简单的垂直居中布局。</p>
+<pre><code>&lt;div class=&quot;container&quot; style=&quot;align-items: center; justify-content: center;&quot;&gt;
+  我是垂直居中的元素
+&lt;/div&gt;
+</code></pre><div class="container" style="align-items: center; justify-content: center;"><br>  我是垂直居中的元素<br></div>
+
+<p>其中，align-items设置水平居中，justify-content设置了垂直居中。</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/CSS布局（下）/" data-title="CSS布局（下）" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/CSS布局（下）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

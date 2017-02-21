@@ -1,0 +1,90 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、什么是 Yarn ?官方解释是：FAST, RELIABLE, AND SECURE DEPENDENCY MANAGEMENT（快速，可靠和安全的依赖管理器）。
+它是 facebook 开源的一个 npm 替代品。我们主要用它来进行依赖管理工作。
+1、为什么需要 Yarn ?对于 Yarn，其"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Yarn vs. Npm · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>Yarn vs. Npm</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0、什么是-Yarn"><span class="toc-number">1.</span> <span class="toc-text">0、什么是 Yarn ?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1、为什么需要-Yarn"><span class="toc-number">2.</span> <span class="toc-text">1、为什么需要 Yarn ?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、yarn-cli-使用手册（对比npm）"><span class="toc-number">3.</span> <span class="toc-text">2、yarn-cli 使用手册（对比npm）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1、yarn-init"><span class="toc-number">3.0.1.</span> <span class="toc-text">2.1、yarn init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2、yarn-install"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.2、yarn install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3、yarn-add"><span class="toc-number">3.0.3.</span> <span class="toc-text">2.3、yarn add</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4、yarn-remove"><span class="toc-number">3.0.4.</span> <span class="toc-text">2.4、yarn remove</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5、yarn-publish"><span class="toc-number">3.0.5.</span> <span class="toc-text">2.5、yarn publish</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、其他重要的命令"><span class="toc-number">4.</span> <span class="toc-text">3、其他重要的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1、yarn-run"><span class="toc-number">4.0.1.</span> <span class="toc-text">3.1、yarn run</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2、yarn-self-update"><span class="toc-number">4.0.2.</span> <span class="toc-text">3.2、yarn self-update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3、yarn-outdated"><span class="toc-number">4.0.3.</span> <span class="toc-text">3.3、yarn outdated</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4、yarn-upgrade"><span class="toc-number">4.0.4.</span> <span class="toc-text">3.4、yarn upgrade</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5、yarn-config"><span class="toc-number">4.0.5.</span> <span class="toc-text">3.5、yarn config</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、参考资料"><span class="toc-number">5.</span> <span class="toc-text">4、参考资料</span></a></li></ol></div><h1 id="0、什么是-Yarn"><a href="#0、什么是-Yarn" class="headerlink" title="0、什么是 Yarn ?"></a>0、什么是 <code>Yarn</code> ?</h1><p>官方解释是：<strong>FAST, RELIABLE, AND SECURE DEPENDENCY MANAGEMENT（快速，可靠和安全的依赖管理器）</strong>。</p>
+<p>它是 <code>facebook</code> 开源的一个 <code>npm</code> 替代品。我们主要用它来进行依赖管理工作。</p>
+<h1 id="1、为什么需要-Yarn"><a href="#1、为什么需要-Yarn" class="headerlink" title="1、为什么需要 Yarn ?"></a>1、为什么需要 <code>Yarn</code> ?</h1><p>对于 <code>Yarn</code>，其实一开始我是拒绝的。</p>
+<p>为啥？</p>
+<ol>
+<li>发布第二天时我就去体验，结果发现安装它自身比较麻烦，而且安装依赖还慢，还非常容易崩溃。</li>
+<li>命令和 <code>npm</code> 不一样，增加了学习成本</li>
+<li><code>yarn</code> 安装依赖进度条在windows上不友好（是npm之前旧版本的样式）</li>
+<li>觉得赶超 <code>npm</code> 还需要一定的时间</li>
+</ol>
+<p>那为什么又开始推荐 <code>yarn</code> 呢？</p>
+<ol>
+<li><code>npm</code> 安装依赖慢，是个长久的问题</li>
+<li>再次体验 <code>yarn</code>, 发现之前遇到的一些问题都不见了</li>
+<li>使用 <code>yarn</code> 安装依赖，速度有很大的提升<br>4、<code>yarn</code> 比 <code>npm</code> 提供更多更易用的功能 </li>
+</ol>
+<p>综上，我觉得现在可以开始尝试使用 <code>yarn</code>，说不定过不了多久，还真能完全替代 <code>npm</code>。</p>
+<h1 id="2、yarn-cli-使用手册（对比npm）"><a href="#2、yarn-cli-使用手册（对比npm）" class="headerlink" title="2、yarn-cli 使用手册（对比npm）"></a>2、<code>yarn-cli</code> 使用手册（对比npm）</h1><p>首先，要使用 <code>yarn-cli</code>，需要先执行 <code>npm install -g yarn</code> 来全局安装 <code>yarn</code>（莫名的想到，IE浏览器最大的作用就是下载其他浏览器），通过 <code>yarn --version</code> 来查看 <code>yarn</code> 的版本。</p>
+<p>如 <code>npm</code> 一样，<code>yarn</code> 也提供了较多的命令。其中最常用的命令如下：</p>
+<ol>
+<li>yarn init ($ npm init)</li>
+<li>yarn install ($ npm install) </li>
+<li>yarn add ($ npm install –save)</li>
+<li>yarn remove ($ npm uninstall –save) </li>
+<li>yarn publish ($ npm publish)</li>
+</ol>
+<p><strong>注意：下文中仅仅会列出本人觉得比较有代表性/常用的命令，并不是所有的命令</strong></p>
+<h3 id="2-1、yarn-init"><a href="#2-1、yarn-init" class="headerlink" title="2.1、yarn init"></a>2.1、<code>yarn init</code></h3><p><code>yarn init</code> 用于初始化 <code>package.json</code> 文件，效果和 <code>npm init</code> 类似。</p>
+<p>同样也支持直接创建，不询问。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 初始化package.json，带交互</span></div><div class="line">npm init  =&gt;  yarn init</div><div class="line"></div><div class="line"><span class="comment"># 初始化package.json，直接创建</span></div><div class="line">npm init <span class="_">-f</span>/--force  =&gt;  yarn init -y/--yes</div></pre></td></tr></table></figure>
+<h3 id="2-2、yarn-install"><a href="#2-2、yarn-install" class="headerlink" title="2.2、yarn install"></a>2.2、<code>yarn install</code></h3><p><code>yarn install</code> 该命令和 <code>npm install</code> 一样，用于根据 <code>package.json</code> 来初始化项目依赖。</p>
+<p>和 <code>npm</code> 对比如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装所有依赖</span></div><div class="line">npm install =&gt; yarn install</div><div class="line"></div><div class="line"><span class="comment"># 安装项目依赖（对比开发依赖，上产线时的依赖）</span></div><div class="line">npm install --production =&gt; yarn install --production/--prod</div></pre></td></tr></table></figure>
+<p>除此之外，<code>yarn install</code> 还有一些新的参数设置，正是这些设置，让 <code>yarn</code> 比 <code>npm</code> 有着更强大的功能。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 强制安装所有的包，就算是已经安装过的</span></div><div class="line">yarn install --force</div><div class="line"></div><div class="line"><span class="comment"># 不会读取和生成lockfile</span></div><div class="line">yarn install --no-lockfile</div><div class="line"></div><div class="line"><span class="comment"># 不生成lockfile</span></div><div class="line">yarn install --pure-lockfile</div></pre></td></tr></table></figure>
+<h3 id="2-3、yarn-add"><a href="#2-3、yarn-add" class="headerlink" title="2.3、yarn add"></a>2.3、<code>yarn add</code></h3><p><code>yarn add &lt;package&gt;</code> 等同于 <code>npm install &lt;package&gt;</code>，用于安装指定包，它和 <code>npm</code> 的区别如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 仅安装依赖包</span></div><div class="line">npm install &lt;package&gt; --save  =&gt;  N/A</div><div class="line"></div><div class="line"><span class="comment"># 安装依赖包，并写入 dependencies 属性</span></div><div class="line">npm install &lt;package&gt; --save  =&gt;  yarn add &lt;package&gt;  </div><div class="line"></div><div class="line"><span class="comment"># 安装依赖包，并写入 devDependencies 属性</span></div><div class="line">npm install &lt;package&gt; --save-dev  =&gt;  yarn add &lt;package&gt; --dev</div><div class="line"></div><div class="line"><span class="comment"># 安装依赖包，并写入 peerDependencies 属性</span></div><div class="line">N/A  =&gt;  yarn add &lt;package&gt; --peer</div><div class="line"></div><div class="line"><span class="comment"># 安装依赖包，并写入 optionalDependencies 属性</span></div><div class="line">npm install &lt;package&gt; --save-optional  =&gt;  yarn add &lt;package&gt; --optional</div><div class="line"></div><div class="line"><span class="comment"># 安装精确的版本号的依赖包</span></div><div class="line"><span class="comment"># 什么意思呢？简单点说，就是在 package.json中写入的版本号规则不一样。</span></div><div class="line"><span class="comment"># 默认场景下，是会写： "xxx":"^1.1.0"，允许使用同一主版本的包，如1.2.0</span></div><div class="line"><span class="comment"># 当设置该参数之后，就会变成： "xxx": "1.1.0"，（只能使用该版本号的包）</span></div><div class="line">npm install &lt;package&gt;[@version] --save-exact  =&gt; yarn add &lt;package&gt;[@version] --exact</div><div class="line"></div><div class="line"><span class="comment"># 安装具有相同次版本号的依赖包</span></div><div class="line">N/A  =&gt;  yarn add &lt;package&gt;[@version] --tilde</div></pre></td></tr></table></figure>
+<p>除此之外，还有一个比较常见的安装包方式，那就是全局安装安装，在 <code>yarn</code> 中又该如何使用呢？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 全局安装依赖包</span></div><div class="line">npm install &lt;package&gt; -g/--global  =&gt; yarn global add &lt;package&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-4、yarn-remove"><a href="#2-4、yarn-remove" class="headerlink" title="2.4、yarn remove"></a>2.4、<code>yarn remove</code></h3><p>该命令和 <code>npm uninstall</code> 比较类似，用于删除依赖包。但和 <code>npm uninstall</code> 又有点不同。</p>
+<p>因为它没法直接删除包，而不更新 <code>package.json</code>。</p>
+<p>当 <code>remove</code> 一个包时，它会同时更新 <code>package.json</code> 中对它的所有引用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yarn remove &lt;package&gt; = npm uninstall &lt;package&gt; --save | --save-dev | save-exact | save-optional</div></pre></td></tr></table></figure>
+<p>和 <code>yarn add</code> 类似，如果要移除全局安装包，需要用 <code>yarn global remove &lt;package&gt;</code></p>
+<h3 id="2-5、yarn-publish"><a href="#2-5、yarn-publish" class="headerlink" title="2.5、yarn publish"></a>2.5、<code>yarn publish</code></h3><p>用于将包发布到仓库（当前是npm仓库）上。类似于 <code>npm publish</code></p>
+<h1 id="3、其他重要的命令"><a href="#3、其他重要的命令" class="headerlink" title="3、其他重要的命令"></a>3、其他重要的命令</h1><h3 id="3-1、yarn-run"><a href="#3-1、yarn-run" class="headerlink" title="3.1、yarn run"></a>3.1、<code>yarn run</code></h3><p>该命令和 <code>npm run</code> 没啥区别，用户执行 <code>package.json</code> 中 <code>script</code> 节点中定义的命令。</p>
+<h3 id="3-2、yarn-self-update"><a href="#3-2、yarn-self-update" class="headerlink" title="3.2、yarn self-update"></a>3.2、<code>yarn self-update</code></h3><p>用于更新自身，如果是 <code>npm</code>，则是： <code>npm install -g npm</code></p>
+<h3 id="3-3、yarn-outdated"><a href="#3-3、yarn-outdated" class="headerlink" title="3.3、yarn outdated"></a>3.3、<code>yarn outdated</code></h3><p>检查依赖版本情况，类似 <code>npm outdated</code></p>
+<h3 id="3-4、yarn-upgrade"><a href="#3-4、yarn-upgrade" class="headerlink" title="3.4、yarn upgrade"></a>3.4、<code>yarn upgrade</code></h3><p>用于更新版本，类似于 <code>npm update</code></p>
+<h3 id="3-5、yarn-config"><a href="#3-5、yarn-config" class="headerlink" title="3.5、yarn config"></a>3.5、<code>yarn config</code></h3><p>该命令用于管理 <code>yarn</code> 的配置数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看配置数据</span></div><div class="line">npm config list  =&gt;  yarn config list </div><div class="line"></div><div class="line"><span class="comment"># 查看指定的key值</span></div><div class="line">npm config get &lt;key&gt;  =&gt;  yarn config get &lt;key&gt;</div><div class="line"></div><div class="line"><span class="comment"># 删除指定的Key</span></div><div class="line">npm config delete &lt;key&gt;  =&gt;  yarn config delete &lt;key&gt;</div><div class="line"></div><div class="line"><span class="comment"># 设置指定的key - value</span></div><div class="line">npm config <span class="built_in">set</span> &lt;key&gt; &lt;value&gt; =&gt; yarn config <span class="built_in">set</span> &lt;key&gt; &lt;value&gt;</div></pre></td></tr></table></figure>
+<p><strong>由于国内的环境，强烈建议将 <code>registry</code>设置为： <code>https://registry.npm.taobao.org/</code>，命令如下：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yarn config <span class="built_in">set</span> registry https://registry.npm.taobao.org/ -g</div></pre></td></tr></table></figure>
+<h1 id="4、参考资料"><a href="#4、参考资料" class="headerlink" title="4、参考资料"></a>4、参考资料</h1><ol>
+<li><a href="https://yarnpkg.com/en/docs/cli/" target="_blank" rel="external">yarn 文档</a></li>
+<li><a href="https://docs.npmjs.com/cli/" target="_blank" rel="external">npm 文档</a></li>
+</ol>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/Yarn vs. Npm/" data-title="Yarn vs. Npm" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/Yarn vs. Npm/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

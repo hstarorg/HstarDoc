@@ -1,0 +1,116 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="1、CSS3文本效果1.1、text-shadow文本阴影语法：text-shadow: h-shadow v-shadow blur color;(&amp;lt;水平阴影&amp;gt;，&amp;lt;垂直阴影&amp;gt;，[模糊距离]，[阴影颜色])
+示例：
+&amp;lt;h1 style=&amp;quot;text-shadow"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CSS3入门之文本与字体 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>CSS3入门之文本与字体</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、CSS3文本效果"><span class="toc-number">1.</span> <span class="toc-text">1、CSS3文本效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、text-shadow文本阴影"><span class="toc-number">1.1.</span> <span class="toc-text">1.1、text-shadow文本阴影</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">我是文本阴影</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">我是文本阴影</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">我是文本阴影</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2、word-break文本换行"><span class="toc-number">0.1.</span> <span class="toc-text">1.2、word-break文本换行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3、text-overflow修剪文本"><span class="toc-number">0.2.</span> <span class="toc-text">1.3、text-overflow修剪文本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、CSS3字体"><span class="toc-number">1.</span> <span class="toc-text">2、CSS3字体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1、-font-face引入网络字体"><span class="toc-number">1.1.</span> <span class="toc-text">2.1、@font-face引入网络字体</span></a></li></ol></li></ol></div><h2 id="1、CSS3文本效果"><a href="#1、CSS3文本效果" class="headerlink" title="1、CSS3文本效果"></a>1、CSS3文本效果</h2><h3 id="1-1、text-shadow文本阴影"><a href="#1-1、text-shadow文本阴影" class="headerlink" title="1.1、text-shadow文本阴影"></a>1.1、text-shadow文本阴影</h3><p>语法：<code>text-shadow: h-shadow v-shadow blur color;</code>(&lt;水平阴影&gt;，&lt;垂直阴影&gt;，[模糊距离]，[阴影颜色])</p>
+<p>示例：</p>
+<pre><code>&lt;h1 style=&quot;text-shadow: 5px 5px 2px green;&quot;&gt;我是文本阴影&lt;/h1&gt;
+&lt;h1 style=&quot;text-shadow: 0 0 5px blue;&quot;&gt;我是文本阴影&lt;/h1&gt;
+&lt;h1 style=&quot;text-shadow: 2px 2px 4px #000000;color: white;&quot;&gt;我是文本阴影&lt;/h1&gt;
+</code></pre><h1 style="text-shadow: 5px 5px 2px green;">我是文本阴影</h1>
+
+<h1 style="text-shadow: 0 0 5px blue;">我是文本阴影</h1>
+
+<h1 style="text-shadow: 2px 2px 4px #000000;color: white;">我是文本阴影</h1>
+
+<p><strong>该属性兼容IE10+以及所有现代浏览器</strong></p>
+<h3 id="1-2、word-break文本换行"><a href="#1-2、word-break文本换行" class="headerlink" title="1.2、word-break文本换行"></a>1.2、word-break文本换行</h3><p>语法： <code>word-break: normal|break-all|keep-all;</code></p>
+<p>normal:默认换行；break-all:允许在单词内换行；keep-all:只能在半角空格或连字符处换行</p>
+<p>示例：</p>
+<pre><code>&lt;div style=&quot;width:100px;word-break:break-all;&quot;&gt;Nice to meet you. good mor-ning.&lt;/div&gt;
+&lt;div style=&quot;width:100px;word-break:keep-all;&quot;&gt;Nice to meet you. good mor-ning.&lt;/div&gt;
+</code></pre><div style="width:100px;word-break:break-all;">Nice to meet you. good mor-ning.</div><br><div style="width:100px;word-break:keep-all;">Nice to meet you. good mor-ning.</div>
+
+<h3 id="1-3、text-overflow修剪文本"><a href="#1-3、text-overflow修剪文本" class="headerlink" title="1.3、text-overflow修剪文本"></a>1.3、text-overflow修剪文本</h3><p>语法：<code>text-overflow: clip|ellipsis|string;</code></p>
+<p>示例：</p>
+<pre><code>&lt;div style=&quot;width: 100px; overflow:hidden; white-space:nowrap;text-overflow: clip;&quot;&gt;Nice to meet you. good mor-ning.&lt;/div&gt;
+&lt;div style=&quot;width: 100px; overflow:hidden; white-space:nowrap;text-overflow: ellipsis;&quot;&gt;Nice to meet you. good mor-ning.&lt;/div&gt;
+</code></pre><div style="width: 100px; overflow:hidden; white-space:nowrap;text-overflow: clip;">Nice to meet you. good mor-ning.</div><br><div style="width: 100px; overflow:hidden; white-space:nowrap;text-overflow: ellipsis;">Nice to meet you. good mor-ning.</div>
+
+<p><strong>注意：使用text-overflow的时候，需要与overflow:hidden;white-space:nowrap;协同使用</strong></p>
+<h2 id="2、CSS3字体"><a href="#2、CSS3字体" class="headerlink" title="2、CSS3字体"></a>2、CSS3字体</h2><p>在CSS3之前，必须使用已经在用户计算机上安装好的字体，给Web设计带来很大的局限性。现在，通过CSS3,Web设计师可以使用他们喜欢的任意字体。</p>
+<h3 id="2-1、-font-face引入网络字体"><a href="#2-1、-font-face引入网络字体" class="headerlink" title="2.1、@font-face引入网络字体"></a>2.1、@font-face引入网络字体</h3><p>Firefox、Chrome、Safari 以及 Opera 支持 .ttf (True Type Fonts) 和 .otf (OpenType Fonts) 类型的字体。</p>
+<p>Internet Explorer 9+ 支持新的 @font-face 规则，但是仅支持 .eot 类型的字体 (Embedded OpenType)。</p>
+<p>不兼容IE8，IE8-。</p>
+<p>示例：</p>
+<pre><code>&lt;style&gt;
+    @font-face {
+        font-family: SentyPaperCut;
+        src:url(http://hstarcdn.github.io/fonts/SentyPaperCut.ttf);
+    }
+    @font-face {
+        font-family:SentyCreamPuff;
+        src:url(http://hstarcdn.github.io/fonts/SentyCreamPuff.otf);
+    }
+    .font1,.font2{
+      font-size: 50px;
+    }
+    .font1{
+      color: red;
+      font-family: SentyTEA-Platinum;
+    }
+    .font2{
+      color: blue;
+      font-family: SentyCreamPuff;
+    }
+&lt;/style&gt;
+
+&lt;span class=&quot;font1&quot;&gt;
+  自定义字体演示
+&lt;/span&gt;
+&lt;span class=&quot;font2&quot;&gt;
+  自定义字体演示
+&lt;/span&gt;
+</code></pre><style>
+    @font-face {
+        font-family: SentyTEA-Platinum;
+        src:url(http://hstarcdn.github.io/fonts/SentyTEA-Platinum.ttf);
+    }
+    @font-face {
+        font-family:SentyCreamPuff;
+        src:url(http://hstarcdn.github.io/fonts/SentyCreamPuff.otf);
+    }
+    .font1,.font2{
+      font-size: 50px;
+    }
+    .font1{
+      color: red;
+      font-family: SentyTEA-Platinum;
+    }
+    .font2{
+      color: blue;
+      font-family: SentyCreamPuff;
+    }
+</style>
+
+<p><span class="font1"><br>  自定义字体演示<br></span><br><span class="font2"><br>  自定义字体演示<br></span></p>
+<p>除此之外，在@font-face中，还可以设置多种字体描述符，如：</p>
+<table class="dataintable"><br><tbody><tr><br><th style="width:20%;">描述符</th><br><th style="width:25%;">值</th><br><th>描述</th><br></tr><br><br><tr><br><td>font-family</td><br><td><i>name</i></td><br><td>必需。规定字体的名称。</td><br></tr><br><br><tr><br><td>src</td><br><td><i>URL</i></td><br><td>必需。定义字体文件的 URL。</td><br></tr><br><br><tr><br><td>font-stretch</td><br><td><br>    <ul><br>    <li>normal</li><br>    <li>condensed</li><br>    <li>ultra-condensed</li><br>    <li>extra-condensed</li><br>    <li>semi-condensed</li><br>    <li>expanded</li><br>    <li>semi-expanded</li><br>    <li>extra-expanded</li><br>    <li>ultra-expanded</li><br>    </ul><br></td><br><td>可选。定义如何拉伸字体。默认是 “normal”。</td><br></tr><br><br><tr><br><td>font-style</td><br><td><br>    <ul><br>    <li>ormal</li><br>    <li>italic</li><br>    <li>oblique</li><br>    </ul><br></td><br><td>可选。定义字体的样式。默认是 “normal”。</td><br></tr><br><br><tr><br><td>font-weight</td><br><td><br>    <ul><br>    <li>normal</li><br>    <li>bold</li><br>    <li>100</li><br>    <li>200</li><br>    <li>300</li><br>    <li>400</li><br>    <li>500</li><br>    <li>600</li><br>    <li>700</li><br>    <li>800</li><br>    <li>900</li><br>    </ul><br></td><br><td>可选。定义字体的粗细。默认是 “normal”。</td><br></tr><br><br><tr><br><td>unicode-range</td><br><td><i>unicode-range</i></td><br><td>可选。定义字体支持的 UNICODE 字符范围。默认是 “U+0-10FFFF”。</td><br></tr><br></tbody></table><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/CSS3学习之路/CSS3入门之文本与字体/" data-title="CSS3入门之文本与字体" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/CSS3学习之路/CSS3入门之文本与字体/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

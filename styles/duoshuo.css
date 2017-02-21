@@ -1,0 +1,38 @@
+#ds-thread #ds-reset .ds-highlight {
+  color: $body-link-hover-color !important;
+}
+#ds-thread #ds-reset a.ds-like-thread-button {
+  border-radius: 3px;
+}
+#ds-thread #ds-reset li.ds-tab a.ds-current {
+  border-radius: 3px;
+}
+#ds-thread #ds-reset .ds-comments .ds-avatar img {
+  border-radius: 50%;
+  background: none;
+}
+#ds-thread #ds-reset #ds-bubble {
+  border-radius: 5px !important;
+}
+#ds-thread #ds-reset #ds-bubble a {
+  color: #919191 !important;
+}
+#ds-thread #ds-reset .ds-replybox .ds-avatar img {
+  border-radius: 50%;
+}
+#ds-thread #ds-reset .ds-replybox form .ds-rounded-top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+}
+#ds-thread #ds-reset .ds-replybox form div.ds-post-toolbar div.ds-post-options {
+  border-bottom-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+#ds-thread #ds-reset .ds-replybox form div.ds-post-toolbar button.ds-post-button {
+  border-bottom-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}

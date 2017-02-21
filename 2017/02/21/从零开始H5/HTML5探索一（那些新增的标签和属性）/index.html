@@ -1,0 +1,186 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="html5相比html4，添加了部分语义化的标签和属性，现在我们就从这些标签和属性开始，学习html5吧。
+首先，认识下HTML5新的文档类型：
+&amp;lt;!DOCTYPE html&amp;gt;
+那些新标签格式
+&amp;lt;bdi&amp;gt; 定义文本的文本方向，使其脱离其周围文本的方向设置
+&amp;lt;mark&amp;g"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HTML5探索一（那些新增的标签和属性） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>HTML5探索一（那些新增的标签和属性）</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#那些新标签"><span class="toc-number">1.</span> <span class="toc-text">那些新标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表单"><span class="toc-number">1.2.</span> <span class="toc-text">表单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图像"><span class="toc-number">1.3.</span> <span class="toc-text">图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#音频-视频"><span class="toc-number">1.4.</span> <span class="toc-text">音频/视频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接"><span class="toc-number">1.5.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列表"><span class="toc-number">1.6.</span> <span class="toc-text">列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样式-节-–-语义化标签"><span class="toc-number">1.7.</span> <span class="toc-text">样式/节 – 语义化标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程"><span class="toc-number">1.8.</span> <span class="toc-text">编程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#那些新属性"><span class="toc-number">2.</span> <span class="toc-text">那些新属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol></div><p>html5相比html4，添加了部分语义化的标签和属性，现在我们就从这些标签和属性开始，学习html5吧。</p>
+<p>首先，认识下HTML5新的文档类型：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+</code></pre><h2 id="那些新标签"><a href="#那些新标签" class="headerlink" title="那些新标签"></a>那些新标签</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><ol>
+<li>&lt;bdi&gt; 定义文本的文本方向，使其脱离其周围文本的方向设置</li>
+<li>&lt;mark&gt; 定义有记号的文本</li>
+<li>&lt;meter&gt; 定义预定义范围内的度量</li>
+<li>&lt;progress&gt; 定义任何类型的任务的进度</li>
+<li>&lt;rp&gt; 定义若浏览器不支持ruby元素显示的内容</li>
+<li>&lt;rt&gt; 定义ruby注释的解释</li>
+<li>&lt;ruby&gt; 定义ruby注释</li>
+<li>&lt;time&gt; 定义日期/时间</li>
+<li>&lt;wbr&gt; 强制定义换行点</li>
+</ol>
+<p>HTML：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;HTML5 Test Page 1&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;&lt;bdi&gt;BDI:在发布用户评论或其他您无法完全控制的内容时，该标签很有用 test&lt;/bdi&gt;&lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;div&gt;&lt;mark&gt;Mark:定义带有记号的文本&lt;/mark&gt;&lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;div style=&quot;width:200px;border:1px solid red;&quot;&gt;&lt;meter value=&quot;10&quot; /&gt;Meter&lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;div&gt;&lt;progress value=&quot;10&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;Progress: 用于显示进度，结合JS一同使用&lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;div&gt;我在 &lt;time datetime=&quot;2008-02-14&quot;&gt;情人节&lt;/time&gt; 有个约会
+    &lt;mark&gt;该标签不会再在任何浏览器中呈现任何特殊效果，仅仅方便搜索引擎生成更智能的结果&lt;/mark&gt;
+    &lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;div&gt;
+      &lt;p&gt;如果想学习 AJAX，那么您必须熟悉 XML&lt;wbr&gt;Http&lt;wbr&gt;Request 对象。&lt;/p&gt;
+      &lt;mark&gt;wbr可强制设置换行点&lt;/mark&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><ol>
+<li>&lt;datalist&gt; 定义下拉列表</li>
+<li>&lt;keygen&gt; 定义生成密钥</li>
+<li>&lt;output&gt; 定义输出的一些类型</li>
+</ol>
+<p>HTML：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;HTML5 Test Page 2&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;form method=&quot;post&quot;&gt;
+      &lt;p&gt;datalist:和input元素配合，用于定义input可能的值&lt;/p&gt;
+      &lt;input id=&quot;lang&quot; list=&quot;dl&quot; /&gt;
+      &lt;datalist id=&quot;dl&quot;&gt;
+        &lt;option value=&quot;C#&quot; /&gt;
+        &lt;option value=&quot;Java&quot; /&gt;
+        &lt;option value=&quot;PHP&quot; /&gt;
+      &lt;/datalist&gt;
+      &lt;hr /&gt;
+      &lt;p&gt;keygen:提交密钥串到服务器&lt;/p&gt;
+      Username: &lt;input type=&quot;text&quot; name=&quot;usr_name&quot; /&gt;
+      Encryption: &lt;keygen name=&quot;security&quot; /&gt;
+      &lt;input type=&quot;submit&quot; /&gt;
+      &lt;hr /&gt;
+    &lt;/form&gt;
+    &lt;p&gt;output:定义不同类型的输出&lt;/p&gt;
+    &lt;form oninput=&quot;x.value=parseInt(a.value)+parseInt(b.value)&quot;&gt;
+      0
+      &lt;input type=&quot;range&quot; id=&quot;a&quot; value=&quot;50&quot;&gt;100
+      +&lt;input type=&quot;number&quot; id=&quot;b&quot; value=&quot;50&quot;&gt;
+      =&lt;output name=&quot;x&quot; for=&quot;a&quot;&gt;&lt;/output&gt;
+    &lt;/form&gt; 
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><ol>
+<li>&lt;canvas&gt; 定义图形</li>
+<li>&lt;figcaption&gt; 定义figure元素的标题</li>
+<li>&lt;figure&gt; 定义媒介内容的分组，以及它们的标题</li>
+</ol>
+<p>HTML：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;HTML5 Test Page 3&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;p&gt;canvas:你懂的，画布，各种绚丽效果就靠它了。&lt;/p&gt;
+      &lt;canvas id=&quot;c&quot;&gt;&lt;/canvas&gt;
+      &lt;script&gt;
+        var canvas=document.getElementById(&apos;c&apos;);
+        var ctx=canvas.getContext(&apos;2d&apos;);
+        ctx.fillStyle=&apos;#FF0000&apos;;
+        ctx.fillRect(0,0,80,100);
+      &lt;/script&gt;
+    &lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;div&gt;
+      &lt;p&gt;
+      figure: 规定独立的流内容（图像、图表、照片、代码等等），figure 元素的内容应该与主内容相关，但如果被删除，则不应对文档流产生影响。
+      &lt;br /&gt;
+      figcaption:定义 figure 元素的标题，语义化&lt;/p&gt;
+      &lt;figure&gt;
+        &lt;figcaption&gt;黄浦江上的的卢浦大桥&lt;/figcaption&gt;
+        &lt;img src=&quot;https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSehM_6Bfd79RwCCy1wNj_K6YGEkMsdt0Gekn10Dc6xJ8nxDcS7rg&quot; width=&quot;350&quot; height=&quot;234&quot; /&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;   
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="音频-视频"><a href="#音频-视频" class="headerlink" title="音频/视频"></a>音频/视频</h3><ol>
+<li>&lt;audio&gt; 定义声音内容</li>
+<li>&lt;source&gt; 定义媒介源</li>
+<li>&lt;track&gt; 定义用在媒体播放器中的文本轨道</li>
+<li>&lt;video&gt; 定义视频</li>
+</ol>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><ol>
+<li>&lt;nav&gt; 定义导航链接</li>
+</ol>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><ol>
+<li>&lt;command&gt; 定义命令按钮 –<strong>注：现在浏览器暂时都不支持</strong></li>
+</ol>
+<h3 id="样式-节-–-语义化标签"><a href="#样式-节-–-语义化标签" class="headerlink" title="样式/节 – 语义化标签"></a>样式/节 – 语义化标签</h3><ol>
+<li>&lt;header&gt; 定义section或page的页眉</li>
+<li>&lt;footer&gt; 定义section或page的页脚</li>
+<li>&lt;section&gt; 定义section</li>
+<li>&lt;article&gt; 定义文章</li>
+<li>&lt;aside&gt; 定义页面内容之外的内容</li>
+<li>&lt;details&gt; 定义元素细节</li>
+<li>&lt;dialog&gt; 定义对话框或窗口</li>
+<li>&lt;summary&gt; 为&lt;details&gt;元素定义可见的标题</li>
+</ol>
+<h3 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h3><p>&lt;embed&gt; 为外部应用程序（非HTML）定义容器</p>
+<h2 id="那些新属性"><a href="#那些新属性" class="headerlink" title="那些新属性"></a>那些新属性</h2><ol>
+<li>contenteditable 规定元素内容是否可编辑</li>
+<li>contextmenu 规定元素的上下文菜单。上下文菜单在用户点击元素时显示</li>
+<li>data-* 用于存储页面或应用程序的私有定制数据</li>
+<li>draggable 规定元素是否可拖动</li>
+<li>dropzone 规定在拖动被多动数据时是否进行复制、移动或链接</li>
+<li>hidden 规定元素仍未或不再相关</li>
+<li>spellcheck 规定是否对元素进行拼写和语法检查</li>
+<li>translate 规定是否应该翻译元素内容</li>
+</ol>
+<p><strong>以上全局属性可用于任何HTML元素</strong></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="http://www.w3schools.com/tags/" target="_blank" rel="external">http://www.w3schools.com/tags/</a></li>
+</ol>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/从零开始H5/HTML5探索一（那些新增的标签和属性）/" data-title="HTML5探索一（那些新增的标签和属性）" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/从零开始H5/HTML5探索一（那些新增的标签和属性）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

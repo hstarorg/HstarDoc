@@ -1,0 +1,188 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="##No.30、理解prototype、getPrototypeOf和proto之间的不同Tips：
+
+C.prototype属性是new C() 创建的对象的原型
+Object.getPrototypeOf(obj)是ES5中检索对象原型的标准函数
+obj. proto是检索对象原型的非标准方法
+"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>编写高质量JS代码的68个有效方法（七） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>编写高质量JS代码的68个有效方法（七）</h1><span class="post-meta">写于<time> 2014 年 12 月 20 日 00 时 00 分</time><br>更新于<time> 2017 年 02 月 21 日 13 时 59 分</time></span><div class="article-toc"><strong>大纲</strong></div><p>##No.30、理解prototype、getPrototypeOf和<strong>proto</strong>之间的不同<br><strong>Tips：</strong></p>
+<ol>
+<li>C.prototype属性是new C() 创建的对象的原型</li>
+<li>Object.getPrototypeOf(obj)是ES5中检索对象原型的标准函数</li>
+<li>obj.<strong> proto</strong>是检索对象原型的非标准方法</li>
+<li>类是由一个构造函数和一个关联的原型组成的一种设计模式</li>
+</ol>
+<p>简单点说，就是prototype属性直接是创建的对象的原型；getPrototypeOf()是一个标准函数，来获取对象原型；而<strong> proto</strong>则是不标准的原型属性。</p>
+<pre><code>//定义一个类型
+function User(name, age){
+    this.name = name;
+    this.age = age;
+}
+//实例化类型
+var user = new User(&apos;Jay&apos;, 23);
+
+//原型属性prototype作用在类对象上
+User.prototype
+//非标准__proto__作用在对象实例上
+user.__proto__
+//getPrototypeOf则是Object的一个方法，参数为实例对象
+Object.getPrototypeOf(user)
+
+Object.getPrototypeOf(user) === User.prototype; // true
+User.prototype === user.__proto__; // true
+</code></pre><p>##No.31、使用Object.getPrototypeOf()函数而不要使用<strong> proto</strong>属性<br><strong>Tips：</strong></p>
+<ol>
+<li>使用符合标准的Object.getPrototypeOf()函数而不要使用非标准的<strong> proto</strong>属性</li>
+<li>在支持<strong> proto</strong>属性的非ES5环境中实现Object.getPrototypeOf()函数</li>
+</ol>
+<p>由于非标准属性不具有完全兼容性，所以容易出一些奇奇怪怪的问题，不建议使用。<br>在支持<strong> proto</strong>的非ES5标准环境下，使用下面代码来实现Object.getPrototypeOf()函数：</p>
+<pre><code>if(typeof Object.getPrototypeOf === &apos;undefined&apos;){
+    Object.getPrototypeOf = function(obj){
+        var t = typeof obj;
+        if(!obj || (t !== &apos;object&apos; &amp;&amp; t !== &apos;function&apos;)){
+            throw new TypeError(&apos;Not an object.&apos;);
+        }
+        return obj.__proto__;
+    }
+}
+</code></pre><p>##No.32、始终不要修改<strong> proto</strong>属性<br><strong>Tips：</strong></p>
+<ol>
+<li>始终不要修改<strong> proto</strong>属性</li>
+<li>使用Object.create函数给对象设置自定义原型</li>
+</ol>
+<p><strong> proto</strong>很特殊，具有修改对象原型链的能力。修改了<strong> proto</strong>属性可能会造成以下几个问题：</p>
+<ol>
+<li>可移植性问题。并不是所有平台都支持改变对象原型的特性</li>
+<li>性能问题。会使得引擎对JS代码的优化失效</li>
+<li>行为不可预测。修改了<strong> proto</strong>可能会破坏原有的继承体系</li>
+</ol>
+<p>##No.33、使构造函数和new操作符无关<br><strong>Tips：</strong></p>
+<ol>
+<li>通过使用new操作符或Object.create方法在构造函数中调用自身使得该构造函数与调用语法无关</li>
+<li>当一个函数期望使用new操作符调用时，清晰地文档化该函数</li>
+</ol>
+<p>同31，我们来看一下User对象：</p>
+<pre><code>function User(name, age){
+    this.name = name;
+    this.age = age;
+}
+//如果使用new，那么会创建全新对象
+var user = new User(&apos;Jay&apos;, 23);
+
+//如果忘记使用new呢？
+var user = User(&apos;Jay&apos;, 23)
+//这个时候，该句代码，相当于调用函数，此时this在一般情况下是window，在ES5严格模式下是undefined。
+//当是window的时候，则会污染全局变量name和age，造成无法预期的问题。
+//当是undefined的时候，则会直接导致一个即时错误。
+//由于User没有显式return，导致等号左边的user的值为undefined。
+</code></pre><p>为了避免以上问题，可能使用以下两种方式：</p>
+<pre><code>//方式一：
+//通过在函数体判断，然后调用自身的方式来实现，一定会使用new。缺点是它需要额外的函数调用，对性能有影响。
+function User(name, age){
+    if(!(this instanceof User)){
+        return new User(name, age);
+    }
+    this.name = name;
+    this.age = age;
+}
+
+//方式二：
+//通过判断this，将正确的接收者赋值给self，其他函数体内需要用this的地方，全部用self代替。缺点是使用了再ES5环境中有效的Object.create()。
+function User(name, age){
+    var self = this instaceof User ? this : Object.create(User.prototype);
+    self.name = name;
+    self.age  =age; 
+}
+
+//方式二补充，由于Object.create()只在ES5中生效，为了在旧环境中使用的话，可以使用以下方式扩充Object.create()。
+if(typeof Object.create === &apos;undefined&apos;){
+    Object.create = function(prototype){
+        function C(){}
+        C.prototype = prototype;
+        return new C();
+    }
+}
+</code></pre><p>##No.34、在原型中存储方法<br><strong>Tips：</strong></p>
+<ol>
+<li>将方法存储在实例对象中将创建该函数的多个副本，因为每个实例都有一份副本</li>
+<li>将方法存储于原型中优于存储在实例对象中</li>
+</ol>
+<p>将方法存储在原型上，那么多个实例对象会共享该原型方法。如果存储在实例上的，每创建一个实例则会创建一个函数副本，会占用更多的内存。</p>
+<p>##No.35、使用闭包存储私有数据<br><strong>Tips：</strong></p>
+<ol>
+<li>闭包变量是私有的，只能通过局部引用获取</li>
+<li>将局部变量作为私有数据从而通过方法实现信息隐藏</li>
+</ol>
+<p>不多说，直接上代码：</p>
+<pre><code>function User(name, age){
+    // 私有对象
+    var privateObj = {
+        name: name,
+        age: age,
+        sex: &apos;男&apos;
+    }
+    // 公开属性
+    return {
+        name: privateObj.name,
+        age: privateObj.age,
+        setAge: function(age){
+            privateObj.age = age;
+        }
+    }
+}
+
+var user = new User(&apos;Jay&apos;, 23);
+console.log(user.name); // &apos;Jay&apos;
+console.log(user.age);  // 23
+console.log(user.sex);  // undefined
+user.setAge(25);        
+console.log(user.age);  // 23
+</code></pre><p>思考：为什么最后一个user.age 是 23？？？</p>
+<p>修改如下呢：</p>
+<pre><code>function User(name, age){
+    // 私有对象
+    var privateObj = {
+        name: name,
+        age: age,
+        sex: &apos;男&apos;
+    }
+    // 公开属性
+    return {
+        name: privateObj.name,
+        age: function(){
+            return privateObj.age;
+        }
+        setAge: function(age){
+            privateObj.age = age;
+        }
+    }
+}
+</code></pre><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2014/12/20/编写高质量JS代码的68个有效方法-读书笔记/[20141220]编写高质量JS代码的68个有效方法（七）/" data-title="编写高质量JS代码的68个有效方法（七）" data-url="http://hstarorg.github.io/blog/blog/2014/12/20/编写高质量JS代码的68个有效方法-读书笔记/[20141220]编写高质量JS代码的68个有效方法（七）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

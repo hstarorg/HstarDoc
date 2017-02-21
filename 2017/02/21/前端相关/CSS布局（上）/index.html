@@ -1,0 +1,97 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="1、CSS布局之display1.1、dispalydispaly是CSS中最重要的用于控制布局的属性，每个元素都有一个默认的display，大多数元素的默认值通常是block（块级元素）或inline（行内元素）。
+另一个常用的display是none。一些特殊元素的默认值就是它，如script、"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CSS布局（上） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>CSS布局（上）</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、CSS布局之display"><span class="toc-number">1.</span> <span class="toc-text">1、CSS布局之display</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、dispaly"><span class="toc-number">1.1.</span> <span class="toc-text">1.1、dispaly</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-display-none-与-visibility-hidden"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 display:none 与 visibility:hidden</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2、垂直居中"><span class="toc-number">1.3.</span> <span class="toc-text">2.2、垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3、绝对居中"><span class="toc-number">1.4.</span> <span class="toc-text">2.3、绝对居中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、盒子模型"><span class="toc-number">2.</span> <span class="toc-text">3、盒子模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1、content-box"><span class="toc-number">2.1.</span> <span class="toc-text">3.1、content-box</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2、border-box"><span class="toc-number">2.2.</span> <span class="toc-text">3.2、border-box</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-示例"><span class="toc-number">2.3.</span> <span class="toc-text">3.3 示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4、浏览器兼容性"><span class="toc-number">2.4.</span> <span class="toc-text">3.4、浏览器兼容性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、元素定位"><span class="toc-number">3.</span> <span class="toc-text">4、元素定位</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1、position-static"><span class="toc-number">3.1.</span> <span class="toc-text">4.1、position:static</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2、position-relative"><span class="toc-number">3.2.</span> <span class="toc-text">4.2、position:relative</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3、position-fixed"><span class="toc-number">3.3.</span> <span class="toc-text">4.3、position:fixed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4、position-absolute"><span class="toc-number">3.4.</span> <span class="toc-text">4.4、position:absolute</span></a></li></ol></li></ol></div><h2 id="1、CSS布局之display"><a href="#1、CSS布局之display" class="headerlink" title="1、CSS布局之display"></a>1、CSS布局之display</h2><h3 id="1-1、dispaly"><a href="#1-1、dispaly" class="headerlink" title="1.1、dispaly"></a>1.1、dispaly</h3><p>dispaly是CSS中最重要的用于控制布局的属性，每个元素都有一个默认的display，大多数元素的默认值通常是block（块级元素）或inline（行内元素）。</p>
+<p>另一个常用的display是none。一些特殊元素的默认值就是它，如script、link等。</p>
+<h3 id="1-2-display-none-与-visibility-hidden"><a href="#1-2-display-none-与-visibility-hidden" class="headerlink" title="1.2 display:none 与 visibility:hidden"></a>1.2 display:none 与 visibility:hidden</h3><p>display设置为none，是不会保存元素本该显示的空间，但是visibility:hidden会保留。</p>
+<pre><code>&lt;div style=&quot;width: 100px; height: 100px; border: 1px solid red;float:left;&quot;&gt;
+  &lt;span style=&quot;display:none;&quot;&gt;ABCD&lt;/span&gt;EFG
+&lt;/div&gt;
+&lt;div style=&quot;width: 100px; height: 100px; border: 1px solid red;float:left;&quot;&gt;
+  &lt;span style=&quot;visibility:hidden;&quot;&gt;ABCD&lt;/span&gt;EFG
+&lt;/div&gt;
+</code></pre><div style="width: 100px; height: 100px; border: 1px solid red;float:left;"><br>  <span style="display:none;">ABCD</span>EFG<br></div><br><div style="width: 100px; height: 100px; border: 1px solid red;float:left"><br>  <span style="visibility:hidden;">ABCD</span>EFG<br></div><br><div style="clear:both;"><br><br>### 1.3、更多的display值<br><br>比较常用的有list-item,inline-block,table,table-cell,flex等。<br><br>全部列表如下：<br><br>    none inline block contents list-item inline-block inline-table<br><br>    table table-cell table-column table-column-group table-footer-group table-header-group table-row table-row-group<br><br>    flex inline-flex grid inline-grid<br><br>    ruby ruby-base ruby-text ruby-base-container ruby-text-container<br><br>    run-in<br><br>    /<em> Global values </em>/<br>    display: inherit;<br>    display: initial;<br>    display: unset;<br><br>### 1.4 可改写的display属性<br><br>虽然每个元素都有默认的display，但是我们可以随时随地的重写它，比如将li元素修改为inline-block，制作水平菜单。<br><br>## 2、元素居中<br><br>### 2.1、水平居中<br><br>通过设置margin为auto可以实现水平居中，前提是元素必须得有宽度<br><br>    <div style="width:400px;margin:0 auto;height:10px;border:1px solid red;"></div>
+
+<div style="width:400px;margin:0 auto;height:10px;border:1px solid red;"></div>
+
+<h3 id="2-2、垂直居中"><a href="#2-2、垂直居中" class="headerlink" title="2.2、垂直居中"></a>2.2、垂直居中</h3><p>因为table的cell可以设置垂直居中，所以玩么可以模拟这样的效果</p>
+<pre><code>&lt;div style=&quot;width: 400px;height: 200px;border: 1px solid red;display: table-cell; vertical-align: middle;&quot;&gt;
+    &lt;div style=&quot;width:100px; height:100px;background: blue;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><div style="width: 200px;height: 200px;border: 1px solid red;display: table-cell; vertical-align: middle;"><br>    <div style="width:100px; height:100px;background: blue;"></div><br></div>
+
+<h3 id="2-3、绝对居中"><a href="#2-3、绝对居中" class="headerlink" title="2.3、绝对居中"></a>2.3、绝对居中</h3><p>知道水平居中和垂直居中，那么绝对居中就比较容易实现了。组合一下：</p>
+<pre><code>&lt;div style=&quot;width: 200px;height: 200px;border: 1px solid red;display: table-cell; vertical-align: middle;&quot;&gt;
+  &lt;div style=&quot;width:100px; height:100px;background: blue;margin:0 auto;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><div style="width: 200px;height: 200px;border: 1px solid red;display: table-cell; vertical-align: middle;"><br>  <div style="width:100px; height:100px;background: blue;margin:0 auto;"></div><br></div>
+
+<p>还有没有更好的方式呢？如下：</p>
+<p>通过设置position:absolute,然后top、bottom、left、right值为0，margin:auto;实现绝对居中。<br>如果要相对容器居中，设置容器的position为relative。</p>
+<pre><code>&lt;div style=&quot;width: 200px;height: 200px;border: 1px solid red; position:relative;&quot;&gt;
+  &lt;div style=&quot;width:100px; height:100px;background: blue;margin:auto;position:absolute;top:0;left:0;bottom:0; right: 0;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><div style="width: 200px;height: 200px;border: 1px solid red; position:relative;"><br>  <div style="width:100px; height:100px;background: blue;margin:auto;position:absolute;top:0;left:0;bottom:0; right: 0;"></div><br></div>
+
+
+<h2 id="3、盒子模型"><a href="#3、盒子模型" class="headerlink" title="3、盒子模型"></a>3、盒子模型</h2><p>盒子模型(box-sizing)有两种典型值，分别为content-box,border-box。</p>
+<h3 id="3-1、content-box"><a href="#3-1、content-box" class="headerlink" title="3.1、content-box"></a>3.1、content-box</h3><p>此时，设置在元素上的宽度为内容宽度，那么元素所占用的宽度为：width + border * 2 + padding * 2 + margin * 2。宽度同理</p>
+<h3 id="3-2、border-box"><a href="#3-2、border-box" class="headerlink" title="3.2、border-box"></a>3.2、border-box</h3><p>此时，设置在元素上的宽度为包含border的宽度，那么占用总宽度为width + margin * 2。内容宽度为width - padding * 2 - border * 2。</p>
+<h3 id="3-3-示例"><a href="#3-3-示例" class="headerlink" title="3.3 示例"></a>3.3 示例</h3><pre><code>&lt;div style=&quot;width:100px; margin: 10px; padding: 15px; border: 5px solid blue; box-sizing:content-box&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;width:100px; margin: 10px; padding: 15px; border: 5px solid blue; box-sizing:border-box&quot;&gt;&lt;/div&gt;
+</code></pre><div style="width:100px; margin: 10px; padding: 15px; border: 5px solid blue; box-sizing:content-box"></div><br><div style="width:100px; margin: 10px; padding: 15px; border: 5px solid blue; box-sizing:border-box"></div>
+
+<h3 id="3-4、浏览器兼容性"><a href="#3-4、浏览器兼容性" class="headerlink" title="3.4、浏览器兼容性"></a>3.4、浏览器兼容性</h3><p>为了保证浏览器兼容性，需要加上特定浏览器前缀。</p>
+<h2 id="4、元素定位"><a href="#4、元素定位" class="headerlink" title="4、元素定位"></a>4、元素定位</h2><p>如果要实现更多复杂的布局，那么就需要了解下position了。</p>
+<h3 id="4-1、position-static"><a href="#4-1、position-static" class="headerlink" title="4.1、position:static"></a>4.1、position:static</h3><p>static是position属性的默认值，position:static的元素不会被特殊定位。</p>
+<h3 id="4-2、position-relative"><a href="#4-2、position-relative" class="headerlink" title="4.2、position:relative"></a>4.2、position:relative</h3><p>在相对定位(relative)的元素上设置top、right、bottom、left会使其偏离正常位置，其他元素不会调整位置来弥补它偏离后剩下的空隙。</p>
+<pre><code>&lt;div style=&quot;border:1px solid red; width: 400px; height: 200px;&quot;&gt;
+  &lt;div style=&quot;background: blue; width:100px; height: 100px;&quot;&gt;&lt;/div&gt;
+  ABCDE
+&lt;/div&gt;
+&lt;div style=&quot;border:1px solid red; width: 400px; height: 200px;&quot;&gt;
+  &lt;div style=&quot;background: blue; width:100px; height: 100px;position:relative; left: 100px;top:50px;&quot;&gt;&lt;/div&gt;
+  ABCDE
+&lt;/div&gt;
+</code></pre><div style="border:1px solid red; width: 400px; height: 200px;"><br>  <div style="background: blue; width:100px; height: 100px;"></div><br>  ABCDE<br></div><br><div style="border:1px solid red; width: 400px; height: 200px;"><br>  <div style="background: blue; width:100px; height: 100px;position:relative; left: 100px;top:50px;"></div><br>  ABCDE<br></div>
+
+<h3 id="4-3、position-fixed"><a href="#4-3、position-fixed" class="headerlink" title="4.3、position:fixed"></a>4.3、position:fixed</h3><p>固定定位（fixed）元素会相对于视窗来定位，所以就算页面滚动，它还是会留在相同位置。示例请看左下角。</p>
+<pre><code>&lt;div style=&quot;width: 100px;height:100px; position:fixed; bottom: 0; right: 0;
+border: 1px solid red;&quot;&gt;固定定位&lt;/div&gt;
+</code></pre><div style="width: 100px;height:100px; position:fixed; bottom: 0; right: 0;
+border: 1px solid red;">固定定位</div>
+
+<h3 id="4-4、position-absolute"><a href="#4-4、position-absolute" class="headerlink" title="4.4、position:absolute"></a>4.4、position:absolute</h3><p>绝对定位元素（absolute）与fixed类似，但是它不是相对视窗，而是相对最近的positioned（position值不是static的元素都是positioned元素）祖先元素，如果没有这样的祖先元素，那么它相对于文档的body元素，并且会随着页面滚动而滚动。</p>
+<pre><code>&lt;div style=&quot;border:1px solid red; width: 400px; height: 200px;position:relative;&quot;&gt;
+    &lt;div style=&quot;background: blue; width:100px; height: 100px;position:absolute;top: 25px;right:25px;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><div style="border:1px solid red; width: 400px; height: 200px;position:relative;"><br>    <div style="background: blue; width:100px; height: 100px;position:absolute;top: 25px;right:25px;"></div><br></div>
+</div><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/CSS布局（上）/" data-title="CSS布局（上）" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/CSS布局（上）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、导言JavaScript超乎寻常的灵活性，让JavaScript可以有很多特殊的用法，让我们来领略一下它们的风采吧。
+此为下篇，上篇请查阅：上篇
+1、那些不常见（好玩）的题目（下）
+1.21、1Number.MIN_VALUE &amp;gt; 0
+解析： 此题考察数字的最小值，它的最小值是大于0的浮点"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>那些不常见的JavaScript题目（下） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>那些不常见的JavaScript题目（下）</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、那些不常见（好玩）的题目（下）"><span class="toc-number">2.</span> <span class="toc-text">1、那些不常见（好玩）的题目（下）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-21、"><span class="toc-number">2.1.</span> <span class="toc-text">1.21、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-22、"><span class="toc-number">2.2.</span> <span class="toc-text">1.22、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-23、"><span class="toc-number">2.3.</span> <span class="toc-text">1.23、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-24、"><span class="toc-number">2.4.</span> <span class="toc-text">1.24、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-25、"><span class="toc-number">2.5.</span> <span class="toc-text">1.25、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-26、"><span class="toc-number">2.6.</span> <span class="toc-text">1.26、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-27、"><span class="toc-number">2.7.</span> <span class="toc-text">1.27、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-28、"><span class="toc-number">2.8.</span> <span class="toc-text">1.28、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-29、"><span class="toc-number">2.9.</span> <span class="toc-text">1.29、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-30、"><span class="toc-number">2.10.</span> <span class="toc-text">1.30、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-31、"><span class="toc-number">2.11.</span> <span class="toc-text">1.31、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-32、"><span class="toc-number">2.12.</span> <span class="toc-text">1.32、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-33、"><span class="toc-number">2.13.</span> <span class="toc-text">1.33、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-34、"><span class="toc-number">2.14.</span> <span class="toc-text">1.34、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-35、"><span class="toc-number">2.15.</span> <span class="toc-text">1.35、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-36、"><span class="toc-number">2.16.</span> <span class="toc-text">1.36、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-37、"><span class="toc-number">2.17.</span> <span class="toc-text">1.37、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-38、"><span class="toc-number">2.18.</span> <span class="toc-text">1.38、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-39、"><span class="toc-number">2.19.</span> <span class="toc-text">1.39、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-40、"><span class="toc-number">2.20.</span> <span class="toc-text">1.40、</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、参考资料"><span class="toc-number">3.</span> <span class="toc-text">2、参考资料</span></a></li></ol></div><h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>JavaScript超乎寻常的灵活性，让JavaScript可以有很多特殊的用法，让我们来领略一下它们的风采吧。</p>
+<p>此为下篇，上篇请查阅：<a href="那些不常见的JavaScript题目（上）.md">上篇</a></p>
+<h2 id="1、那些不常见（好玩）的题目（下）"><a href="#1、那些不常见（好玩）的题目（下）" class="headerlink" title="1、那些不常见（好玩）的题目（下）"></a>1、那些不常见（好玩）的题目（下）</h2><hr>
+<h3 id="1-21、"><a href="#1-21、" class="headerlink" title="1.21、"></a>1.21、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Number</span>.MIN_VALUE &gt; <span class="number">0</span></div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题考察数字的最小值，它的最小值是大于0的浮点数。</p>
+<p><strong>答案：</strong> <code>true</code></p>
+<hr>
+<h3 id="1-22、"><a href="#1-22、" class="headerlink" title="1.22、"></a>1.22、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span> &lt; <span class="number">2</span> &lt; <span class="number">3</span>, <span class="number">3</span> &lt; <span class="number">2</span> &lt; <span class="number">1</span>]</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题考察运算顺序。直接从左往右计算，即可。等价于：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[<span class="literal">true</span> &lt; <span class="number">3</span>, <span class="literal">false</span> &lt; <span class="number">1</span>]</div><div class="line">=&gt;</div><div class="line">[<span class="number">1</span> &lt; <span class="number">3</span>, <span class="number">0</span> &lt; <span class="number">1</span>]</div></pre></td></tr></table></figure>
+<p><strong>答案：</strong> <code>[true, true]</code></p>
+<hr>
+<h3 id="1-23、"><a href="#1-23、" class="headerlink" title="1.23、"></a>1.23、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">2</span> == [[[<span class="number">2</span>]]]</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题考察类型转化，全部调用toString(),转换为了<code>&#39;2&#39;</code></p>
+<p><strong>答案：</strong> <code>true</code></p>
+<hr>
+<h3 id="1-24、"><a href="#1-24、" class="headerlink" title="1.24、"></a>1.24、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">3.</span>toString();</div><div class="line"><span class="number">3.</span>.toString();</div><div class="line"><span class="number">3.</span>..toString();</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题考察.的结合性问题，对于到底属于数字还是函数调用呢，其实只能是数字。三个点是什么语法？</p>
+<p><strong>注意：这也导致了整数字面量无法直接调用toString()</strong></p>
+<p><strong>答案：</strong> <code>error, &#39;3&#39;, error</code></p>
+<hr>
+<h3 id="1-25、"><a href="#1-25、" class="headerlink" title="1.25、"></a>1.25、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> x = y = <span class="number">1</span>;</div><div class="line">&#125;)();</div><div class="line"><span class="built_in">console</span>.log(y);</div><div class="line"><span class="built_in">console</span>.log(x);</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题考察作用域问题和var定义变量问题。当没有用var定义变量时，变量会成为全局变量。</p>
+<p><strong>答案：</strong> <code>1, error</code></p>
+<hr>
+<h3 id="1-26、"><a href="#1-26、" class="headerlink" title="1.26、"></a>1.26、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="regexp">/123/</span>, b = <span class="regexp">/123/</span>;</div><div class="line">a == b</div><div class="line">a === b</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题考察正则表达式比较，即使字面量相等，它们也不相等。</p>
+<p><strong>答案：</strong> <code>false, false</code></p>
+<hr>
+<h3 id="1-27、"><a href="#1-27、" class="headerlink" title="1.27、"></a>1.27、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</div><div class="line">    b = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</div><div class="line">    c = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>];</div><div class="line">a ==  b;</div><div class="line">a === b;</div><div class="line">a &gt; c;</div><div class="line">a &lt; c;</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题同样考察对象比较。当比较相等时，引用不同，所以皆不等。当比较大小时，会按照数组元素，依次比较字典序。</p>
+<p><strong>答案：</strong> <code>false, false, false, true</code></p>
+<hr>
+<h3 id="1-28、"><a href="#1-28、" class="headerlink" title="1.28、"></a>1.28、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123;&#125;, b = <span class="built_in">Object</span>.prototype;</div><div class="line">[a.prototype === b, <span class="built_in">Object</span>.getPrototypeOf(a) === b]</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题比较有误导性，对于一个对象实例来说，获取原型的方法是：<code>a.constructor.prototype</code> 或者是 <code>Object.getPrototypeOf(a)</code>，对于 <code>a.prototype</code>，直接当成一个属性访问，由于未定义，所以会产生 <code>undefined</code>。</p>
+<p><strong>答案：</strong> <code>false, true</code></p>
+<hr>
+<h3 id="1-29、"><a href="#1-29、" class="headerlink" title="1.29、"></a>1.29、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> a = f.prototype, b = <span class="built_in">Object</span>.getPrototypeOf(f);</div><div class="line">a === b</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题同样考察原型相关知识，前者是f的原型，后者是f的构造函数（Function）的原型。</p>
+<p><strong>答案：</strong> <code>false</code></p>
+<hr>
+<h3 id="1-30、"><a href="#1-30、" class="headerlink" title="1.30、"></a>1.30、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123; &#125;</div><div class="line"><span class="keyword">var</span> oldName = foo.name;</div><div class="line">foo.name = <span class="string">"bar"</span>;</div><div class="line">[oldName, foo.name]</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 函数的名称为常量，但需要注意，赋值不会报错。</p>
+<p><strong>答案：</strong> <code>[&#39;foo&#39;, &#39;foo&#39;]</code></p>
+<hr>
+<h3 id="1-31、"><a href="#1-31、" class="headerlink" title="1.31、"></a>1.31、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"1 2 3"</span>.replace(<span class="regexp">/\d/g</span>, <span class="built_in">parseInt</span>)</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题考察 <code>String.replace()</code> 的回调函数，它的回调函数定义是 <code>funcation(matchValue, group, valueIndex, sourceStr){}</code>，依次为匹配到的值、正则分组，该值在字符串中的index，字符串本身。由于在该题中，正则没有分组，所以，调用了三次 <code>parseInt</code> 如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">parseInt</span>(<span class="string">'1'</span>, <span class="number">0</span>, <span class="string">'1 2 3'</span>);</div><div class="line"><span class="built_in">parseInt</span>(<span class="string">'2'</span>, <span class="number">2</span>, <span class="string">'1 2 3'</span>);</div><div class="line"><span class="built_in">parseInt</span>(<span class="string">'3'</span>, <span class="number">4</span>, <span class="string">'1 2 3'</span>);</div></pre></td></tr></table></figure>
+<p><strong>答案：</strong> <code>&#39;1 NaN 3&#39;</code></p>
+<hr>
+<h3 id="1-32、"><a href="#1-32、" class="headerlink" title="1.32、"></a>1.32、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> parent = <span class="built_in">Object</span>.getPrototypeOf(f);</div><div class="line">f.name <span class="comment">// ?</span></div><div class="line">parent.name <span class="comment">// ?</span></div><div class="line"><span class="keyword">typeof</span> <span class="built_in">eval</span>(f.name) <span class="comment">// ?</span></div><div class="line"><span class="keyword">typeof</span> <span class="built_in">eval</span>(parent.name) <span class="comment">//  ?</span></div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 通过 <code>Object.getPrototypeOf()</code> 获取原型，参数是实例，当f为实例的时候，获取实例f的原型就等于 <code>Function.prototype</code>，由于Function的原型还是一个function。所以 <code>parent = Function.prototype 是一个没有名字的function</code>。</p>
+<p>因此:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f.name <span class="comment">// f</span></div><div class="line">parent.name <span class="comment">// ''</span></div></pre></td></tr></table></figure></p>
+<p>使用 <code>eval</code>，执行f，会返回f这个函数，执行’’,会返回 <code>undefined</code>。</p>
+<p><strong>答案：</strong> <code>&#39;f&#39;, &#39;&#39;, &#39;function&#39;, &#39;undefined&#39;</code></p>
+<hr>
+<h3 id="1-33、"><a href="#1-33、" class="headerlink" title="1.33、"></a>1.33、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lowerCaseOnly =  <span class="regexp">/^[a-z]+$/</span>;</div><div class="line">[lowerCaseOnly.test(<span class="literal">null</span>), lowerCaseOnly.test()]</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 正则 <code>test()</code> 方法，会把参数当成字符串来使用，但要注意，<code>null</code> 会被当成 <code>&#39;null&#39;</code>来使用，无参则为 <code>undefined</code>。 </p>
+<p><strong>答案：</strong> <code>[true, true]</code></p>
+<hr>
+<h3 id="1-34、"><a href="#1-34、" class="headerlink" title="1.34、"></a>1.34、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[,,,].join(<span class="string">", "</span>)</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong>  由于JS的Array本质也是对象，所以具有对象的一个特点，会忽略最后一个单引号，<code>[,,,].length // 3</code>。</p>
+<p>另外，这种方式定义，实际上是没有产生真正的key的。<code>[,,,] // [undefined * 3]</code></p>
+<p><strong>答案：</strong> <code>[, , ]</code></p>
+<hr>
+<h3 id="1-35、"><a href="#1-35、" class="headerlink" title="1.35、"></a>1.35、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123;<span class="attr">class</span>: <span class="string">"Animal"</span>, <span class="attr">name</span>: <span class="string">'Fido'</span>&#125;;</div><div class="line">a.class</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题理应考察 <code>class</code> 为JS中的保留字，由于JS版本升级，此种写法已经可以正常返回属性值了。</p>
+<p><strong>注意：在IE8-的浏览器中，会有语法错误，使用了保留字</strong> </p>
+<p><strong>答案：</strong> <code>&#39;Animal&#39;</code></p>
+<hr>
+<h3 id="1-36、"><a href="#1-36、" class="headerlink" title="1.36、"></a>1.36、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"epoch"</span>)</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 日期通过new返回的一定是一个Date对象，如果参数格式不合理，则会返回 <code>Invalid Date</code> 的日期对象。</p>
+<p><strong>答案：</strong> <code>Invalid Date</code></p>
+<hr>
+<h3 id="1-37、"><a href="#1-37、" class="headerlink" title="1.37、"></a>1.37、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="built_in">Function</span>.length,</div><div class="line">    b = <span class="keyword">new</span> <span class="built_in">Function</span>().length</div><div class="line">a === b</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> <code>Function.length</code> 默认为1，<code>Function</code> 实例的 <code>length</code> 属性等于 <code>function</code>的参数个数。</p>
+<p><strong>答案：</strong> <code>false</code></p>
+<hr>
+<h3 id="1-38、"><a href="#1-38、" class="headerlink" title="1.38、"></a>1.38、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="built_in">Date</span>(<span class="number">0</span>);</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>);</div><div class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">[a === b, b === c, a === c]</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 直接函数调用，不关心参数是啥，都会返回当前日期字符串。</p>
+<p>通过 <code>new Date()</code>，如果无参数，返回当前日期对象。</p>
+<p>通过 <code>new Date(0)</code>，就有一个参数，并且是数字，则参数含义为long类型的UTC时间。</p>
+<p><strong>答案：</strong> <code>[false, false, false]</code></p>
+<hr>
+<h3 id="1-39、"><a href="#1-39、" class="headerlink" title="1.39、"></a>1.39、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> min = <span class="built_in">Math</span>.min(), max = <span class="built_in">Math</span>.max()</div><div class="line">min &lt; max</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题考察 <code>Math.min()</code> 和 <code>Math.max()</code> 的用法。</p>
+<p>当 <code>Math.min()</code> 无参数时，返回 <code>Infinity</code>，参考：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min" target="_blank" rel="external">MDN Math.min</a></p>
+<p>当 <code>Math.max()</code> 无参数时，返回 <code>-Infinity</code>，参考：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max" target="_blank" rel="external">MDN Math.min</a></p>
+<p><strong>答案：</strong> <code>false</code></p>
+<hr>
+<h3 id="1-40、"><a href="#1-40、" class="headerlink" title="1.40、"></a>1.40、</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2014-03-19"</span>),</div><div class="line">    b = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2014</span>, <span class="number">03</span>, <span class="number">19</span>);</div><div class="line">[a.getDay() === b.getDay(), a.getMonth() === b.getMonth()]</div></pre></td></tr></table></figure>
+<p><strong>解析：</strong> 此题考察使用年月日构造函数时，月份是从0开始计算的。</p>
+<p><strong>答案：</strong> <code>[false, false]</code></p>
+<h2 id="2、参考资料"><a href="#2、参考资料" class="headerlink" title="2、参考资料"></a>2、参考资料</h2><p><a href="https://developer.mozilla.org/en-US" target="_blank" rel="external">MDN</a> – Mozilla 开发者网络</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="external">MDN Javascrpt</a> –MDN JavaScript目录</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/JS札记/那些不常见的JavaScript题目（下）/" data-title="那些不常见的JavaScript题目（下）" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/JS札记/那些不常见的JavaScript题目（下）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

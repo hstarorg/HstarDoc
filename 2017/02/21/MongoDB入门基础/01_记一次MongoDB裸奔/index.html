@@ -1,0 +1,63 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="导言大意失荆州，裸奔的 MongoDB 被黑了。虽然并不是什么非常重要的数据，但也给自己敲响的一个警钟。虽然我们平时不容易接触到数据安全，但我们在开发，部署项目的时候，一定要养成良好的安全意识。
+根据木桶原理，整个系统的安全性，取决于整个系统最薄弱的环节。所以，我们要尽可能多的考虑更多组成部分的安全"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>01_记一次MongoDB裸奔 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>01_记一次MongoDB裸奔</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#导言"><span class="toc-number">1.</span> <span class="toc-text">导言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件发现"><span class="toc-number">2.</span> <span class="toc-text">事件发现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原因分析"><span class="toc-number">3.</span> <span class="toc-text">原因分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决（重头再来）"><span class="toc-number">4.</span> <span class="toc-text">解决（重头再来）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#就这么一点简单的步骤，就能实现-MongoDB-较高的安全性，可这却是非常容易忽略的点。希望大家引以为戒。"><span class="toc-number">4.0.1.</span> <span class="toc-text">就这么一点简单的步骤，就能实现 MongoDB 较高的安全性，可这却是非常容易忽略的点。希望大家引以为戒。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol></div><h1 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h1><p>大意失荆州，裸奔的 <code>MongoDB</code> 被黑了。虽然并不是什么非常重要的数据，但也给自己敲响的一个警钟。虽然我们平时不容易接触到数据安全，但我们在开发，部署项目的时候，一定要养成良好的安全意识。</p>
+<p>根据木桶原理，整个系统的安全性，取决于整个系统最薄弱的环节。所以，我们要尽可能多的考虑更多组成部分的安全性。</p>
+<h1 id="事件发现"><a href="#事件发现" class="headerlink" title="事件发现"></a>事件发现</h1><p>本月初，发生了大家所熟知的 <code>MondoDB赎金事件</code>。当时本人也保持了一定的关注，并去 <a href="https://www.shodan.io/" target="_blank" rel="external">https://www.shodan.io/</a> 溜达了一圈，顺便连了几个裸奔的MongoDB（当然，绝未做任何更改）。</p>
+<p>直到昨天下午，发现我应用的管理员账户登录不上了。多次检查密码，发现还是无法解决，此时有点怀疑被黑了。由于应用有新建用户功能，新建一个和管理员账户同名的账户，居然成功了。这个时候，我想多半是遭了，只等晚上回去确认了。</p>
+<p>回到家，远程到服务器，一连接，果然遭了（可怜我那几十个代码片段 + 几个Gist），需要赎金0.1BTC。</p>
+<h1 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h1><p>此时可能就要问了，都知道了裸奔不安全，为嘛还不修复？</p>
+<p>我能说我懒么？心大么？</p>
+<p>因为当时我部署的版本的3.2，据说3.2默认没有开启外网访问。我心大到直接未经尝试就认为这是对的。</p>
+<p>实际这句话也没错，Linux版本的 <code>3.x</code> 确实是默认绑定到 <code>127.0.0.1</code> 上的。可TM我是运行在 <code>Windows</code> 上的，由于安装的时候，默认没有创建配置文件，导致一运行就绑定到所有host上了。</p>
+<p><strong>当上，以上都是外因！根本原因还是自己疏忽大意，安全意识薄弱。</strong></p>
+<h1 id="解决（重头再来）"><a href="#解决（重头再来）" class="headerlink" title="解决（重头再来）"></a>解决（重头再来）</h1><p>没有备份，直接无法恢复。</p>
+<p>另外，0.1个BTC我是拿不出来的（我也不相信他会好心给你恢复），再加上数据也不是太重要，就直接把安全设置配置上，重头开始。</p>
+<p>那现在是如何配置安全性的呢？</p>
+<p>以下操作，均在未开启授权访问时执行</p>
+<p>首先是添加用户并设置角色：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 切换到admin库</span></div><div class="line">use admin</div><div class="line"></div><div class="line"><span class="comment"># 创建User</span></div><div class="line">db.createUser(&#123;user: <span class="string">'&lt;name&gt;'</span>, <span class="built_in">pwd</span>: <span class="string">'&lt;password&gt;'</span>, roles: [</div><div class="line">	&#123;role: <span class="string">'readWrite'</span>, db: <span class="string">'&lt;dbname&gt;'</span>&#125;,</div><div class="line">	&#123;role: <span class="string">'dbAdmin'</span>, db: <span class="string">'&lt;dbname&gt;'</span>&#125;</div><div class="line">]&#125;)</div></pre></td></tr></table></figure>
+<p>接下来就是创建一个配置文件（2.6之后，配置文件是yaml格式），内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">systemLog:</div><div class="line">    destination: file</div><div class="line">    path: c:\data\log\mongod.log</div><div class="line">storage:</div><div class="line">    dbPath: c:\data\db</div><div class="line">net:</div><div class="line">    bindIp: 127.0.0.1</div><div class="line">    port: 27017</div></pre></td></tr></table></figure>
+<p><strong>注意：配置文件中一定要设定 <code>log path</code> 和 <code>db path</code></strong></p>
+<p><strong>注意2：如果要限制外网访问，就可以配置 net -&gt; bindIp，另外也可以调整端口</strong></p>
+<p>此时如何运行呢？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --config <span class="string">"D:\MongoDB\mongod.conf"</span> --auth</div></pre></td></tr></table></figure>
+<p>带上 <code>--auth</code> 就是开启授权访问。</p>
+<p>最后客户端访问也需要稍微修改下，只需要修改 <code>mongoAddress</code> 配置即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># MongoDB Connection String Format</span></div><div class="line">mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]</div><div class="line"></div><div class="line"><span class="comment"># 实例地址</span></div><div class="line">const mongoAddress = <span class="string">'mongodb://admin:Pwd0603@127.0.0.1:27017/dojo'</span></div></pre></td></tr></table></figure>
+<h3 id="就这么一点简单的步骤，就能实现-MongoDB-较高的安全性，可这却是非常容易忽略的点。希望大家引以为戒。"><a href="#就这么一点简单的步骤，就能实现-MongoDB-较高的安全性，可这却是非常容易忽略的点。希望大家引以为戒。" class="headerlink" title="就这么一点简单的步骤，就能实现 MongoDB 较高的安全性，可这却是非常容易忽略的点。希望大家引以为戒。"></a>就这么一点简单的步骤，就能实现 <code>MongoDB</code> 较高的安全性，可这却是非常容易忽略的点。希望大家引以为戒。</h3><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li>一定不能疏忽大意，安全意识要加强。</li>
+<li>一定要结果实际验证，才能下结论。不能不清楚外置条件，人云亦云。</li>
+<li>不要有我的应用小，就不会被黑这种想法。批量攻击，才不会放过你。</li>
+<li>定期做好数据备份，被攻击是一回事，能否恢复又是另外一回事了。</li>
+</ol>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/MongoDB入门基础/01_记一次MongoDB裸奔/" data-title="01_记一次MongoDB裸奔" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/MongoDB入门基础/01_记一次MongoDB裸奔/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

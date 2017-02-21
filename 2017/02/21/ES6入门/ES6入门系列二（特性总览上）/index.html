@@ -1,0 +1,252 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、导言最近从coffee切换到js，代码量一下子变大了不少，也多了些许陌生感。为了在JS代码中，更合理的使用ES6的新特性，特在此对ES6的特性做一个简单的总览。
+1、箭头函数(Arrows)使用 =&amp;gt; 简写的函数称之为箭头函数，和C#的lambda，CoffeeScript的语法比较类似。"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ES6入门系列二（特性总览上） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>ES6入门系列二（特性总览上）</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、箭头函数-Arrows"><span class="toc-number">2.</span> <span class="toc-text">1、箭头函数(Arrows)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、类定义（classes）"><span class="toc-number">3.</span> <span class="toc-text">2、类定义（classes）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、增强的对象常量（Enhanced-Object-Literals）"><span class="toc-number">4.</span> <span class="toc-text">3、增强的对象常量（Enhanced Object Literals）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、模板字符串（Template-Strings）"><span class="toc-number">5.</span> <span class="toc-text">4、模板字符串（Template Strings）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、解构（Destructuring）–-Node和Chrome中执行不成功，忽略"><span class="toc-number">6.</span> <span class="toc-text">5、解构（Destructuring）– Node和Chrome中执行不成功，忽略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、Default-Rest-Spread-–-Node和Chrome中执行不成功，忽略"><span class="toc-number">7.</span> <span class="toc-text">6、Default + Rest + Spread – Node和Chrome中执行不成功，忽略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、局部变量-常量（Let-Const）"><span class="toc-number">8.</span> <span class="toc-text">7、局部变量+常量（Let + Const）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、迭代器-For-Of（Iterators-For-Of）"><span class="toc-number">9.</span> <span class="toc-text">8、迭代器 + For..Of（Iterators + For..Of）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9、生成器（Generators）"><span class="toc-number">10.</span> <span class="toc-text">9、生成器（Generators）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10、unicode"><span class="toc-number">11.</span> <span class="toc-text">10、unicode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11、参考资料"><span class="toc-number">12.</span> <span class="toc-text">11、参考资料</span></a></li></ol></div><h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>最近从coffee切换到js，代码量一下子变大了不少，也多了些许陌生感。为了在JS代码中，更合理的使用ES6的新特性，特在此对ES6的特性做一个简单的总览。</p>
+<h2 id="1、箭头函数-Arrows"><a href="#1、箭头函数-Arrows" class="headerlink" title="1、箭头函数(Arrows)"></a>1、箭头函数(Arrows)</h2><p>使用 =&gt; 简写的函数称之为箭头函数，和C#的lambda，CoffeeScript的语法比较类似。</p>
+<pre><code>var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+//简单使用
+var arr2 = arr.map(x =&gt; x + 1);
+console.log(arr2);
+//等价于
+arr2 = arr.map(function (x) {
+  return x + 1;
+});
+console.log(arr2);
+
+//此处必须用()包裹对象，否则语法错误
+var arr3 = arr.map((x, i) =&gt; ({
+  idx: i,
+  value: x
+}));
+console.log(arr3);
+//等价于
+arr3 = arr.map(function (x, i) {
+  return {
+    idx: i,
+    value: x
+  };
+});
+console.log(arr3);
+
+//如果函数是一个语句块
+var arr4 = [];
+arr.forEach(x =&gt; {
+  if (x % 3 === 0) {
+    arr4.push(x);
+  }
+});
+console.log(arr4);
+//等价于
+arr4.length = 0;
+arr.forEach(function (x) {
+  if (x % 3 === 0) {
+    arr4.push(x);
+  }
+});
+console.log(arr4);
+
+//此处this一直指向obj对象。和一般function不同，箭头函数共享词法作用域。
+var obj = {
+  name: &apos;test&apos;,
+  foods: [&apos;fish&apos;, &apos;milk&apos;],
+  eat() {
+    this.foods.forEach(x =&gt;
+      console.log(this.name + &apos;like eat &apos; + x) //注意。此地不能有分号，因为属于表达式，不是语句块。
+    );
+  }
+};
+obj.eat();
+</code></pre><h2 id="2、类定义（classes）"><a href="#2、类定义（classes）" class="headerlink" title="2、类定义（classes）"></a>2、类定义（classes）</h2><p>在ES6中，可以直接使用class关键字定义类，并可以定义构造函数，静态方法，get/set 方法，实例方法等。</p>
+<pre><code>&apos;use strict&apos;;
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  eat() {
+    console.log(this.name + &apos; should eat food.&apos;);
+  }
+};
+
+class Dog extends Animal {
+  //构造函数
+  constructor(age) {
+      super(&apos;Dog&apos;);
+      this.age = age;
+      //实例方法
+      this.instanceFun = function () {
+        console.log(&apos;Instance Function.&apos;);
+      }
+    }
+    //静态方法
+  static go() {
+      console.log(&apos;Dog will go.&apos;);
+    }
+    //原型方法
+  prototypeFunc() {
+    console.log(&apos;Prototype Function.&apos;);
+  }
+
+  //get、set
+  get dogName() {
+    return &apos;Name: &apos; + this.name;
+  }
+  set dogName(value) {
+    this.name = value;
+  }
+
+  //get
+  get dogAge() {
+    return &apos;Age: &apos; + this.age;
+  }
+}
+
+var dog = new Dog(4);
+Dog.go();
+dog.eat();
+dog.instanceFun();
+dog.prototypeFunc();
+console.log(dog.dogName);
+dog.dogName = &apos;x&apos;;
+console.log(dog.dogName);
+console.log(dog.dogAge);
+dog.dogAge = 5; //会失败，属性没有getter。
+</code></pre><h2 id="3、增强的对象常量（Enhanced-Object-Literals）"><a href="#3、增强的对象常量（Enhanced-Object-Literals）" class="headerlink" title="3、增强的对象常量（Enhanced Object Literals）"></a>3、增强的对象常量（Enhanced Object Literals）</h2><pre><code>var obj = {
+  name: &apos;obj&apos;,
+  __proto__: {
+    name: &apos;parent&apos;
+  },
+
+  toString() {
+    // 可以通过super直接取到原型对象的属性
+    return super.name + &apos;:&apos; + this.name;
+  },
+
+  [&apos;prop_&apos; + (() =&gt; 1)()]: 1 //动态属性
+};
+
+console.log(obj.toString());
+console.log(obj.prop_1);
+</code></pre><h2 id="4、模板字符串（Template-Strings）"><a href="#4、模板字符串（Template-Strings）" class="headerlink" title="4、模板字符串（Template Strings）"></a>4、模板字符串（Template Strings）</h2><p>简化了字符串的构造，拼接等。</p>
+<pre><code>//基本字符串，\n有效。
+var str = `Basic string &apos;\n&apos; in Javascript.`;
+console.log(str);
+// Basic string &apos;
+// &apos; in Javascript.
+
+//多行字符串
+str = `Multiline 
+strings`;
+console.log(str);
+// Multiline
+// strings
+
+//字符串插值
+var name = &apos;Jay&apos;;
+str = `Hello, ${name}`;
+console.log(str); // &apos;Hello, Jay.&apos;
+</code></pre><h2 id="5、解构（Destructuring）–-Node和Chrome中执行不成功，忽略"><a href="#5、解构（Destructuring）–-Node和Chrome中执行不成功，忽略" class="headerlink" title="5、解构（Destructuring）– Node和Chrome中执行不成功，忽略"></a>5、解构（Destructuring）– Node和Chrome中执行不成功，忽略</h2><p>允许使用模式匹配，来匹配数组和对象。</p>
+<h2 id="6、Default-Rest-Spread-–-Node和Chrome中执行不成功，忽略"><a href="#6、Default-Rest-Spread-–-Node和Chrome中执行不成功，忽略" class="headerlink" title="6、Default + Rest + Spread – Node和Chrome中执行不成功，忽略"></a>6、Default + Rest + Spread – Node和Chrome中执行不成功，忽略</h2><h2 id="7、局部变量-常量（Let-Const）"><a href="#7、局部变量-常量（Let-Const）" class="headerlink" title="7、局部变量+常量（Let + Const）"></a>7、局部变量+常量（Let + Const）</h2><pre><code>&apos;use strict&apos;; //必须启用严格模式
+
+{
+  let x = 1;
+}
+console.log(x); //Error:x is not defined.
+
+const PI = 3.14;
+PI = 3.15; //Error: 无法对常量赋值
+console.log(PI); //3.14
+</code></pre><h2 id="8、迭代器-For-Of（Iterators-For-Of）"><a href="#8、迭代器-For-Of（Iterators-For-Of）" class="headerlink" title="8、迭代器 + For..Of（Iterators + For..Of）"></a>8、迭代器 + For..Of（Iterators + For..Of）</h2><p>比较类似于C#中的IEnumerable，使用for..of来访问迭代器。它不要求实现一个数组，而是使用和LINQ类似的懒加载。</p>
+<pre><code>(function () {
+  &apos;use strict&apos;;
+  let test = {
+    [Symbol.iterator]() {
+      let pre = 0,
+        cur = 1;
+      return {
+        next() {//此处方法名不能变
+          pre = cur;
+          cur = pre + cur;
+          console.log(&apos;pre = &apos; + pre);
+          console.log(&apos;cur = &apos; + cur);
+          //返回值的属性名也不能改变
+          return {
+            done: false,
+            value: cur
+          };
+        }
+      }
+    }
+  };
+
+  for (var n of test) {
+    if (n &gt; 1000) {
+      break;
+    }
+    console.log(n);
+  }
+})();
+
+// 用于获取数组的键值
+for (var item of[1, 3, 5, 7, 9]) {
+  console.log(item);
+}
+</code></pre><h2 id="9、生成器（Generators）"><a href="#9、生成器（Generators）" class="headerlink" title="9、生成器（Generators）"></a>9、生成器（Generators）</h2><p>允许在function*()函数中使用yield关键字。</p>
+<pre><code>function* foo(x) {
+  var y = 2 * (yield(x + 1));
+  var z = yield(y / 3);
+  return (x + y + z);
+}
+
+var it = foo(5);
+
+console.log(it.next()); // { value:6, done:false }
+console.log(it.next(12)); // { value:8, done:false }
+console.log(it.next(13)); // { value:42, done:true }
+</code></pre><h2 id="10、unicode"><a href="#10、unicode" class="headerlink" title="10、unicode"></a>10、unicode</h2><p>增加了对unicode字符的支持。比如“𠮷”（这个和吉不一样哦！）</p>
+<pre><code>console.log(&apos;𠮷&apos;.length); //2
+
+// 正则表达式增加了u这个参数，匹配unicode字符。
+console.log(&quot;𠮷&quot;.match(/./u)[0].length) // 2
+
+// new form
+&quot;\u{20BB7}&quot;==&quot;𠮷&quot;==&quot;\uD842\uDFB7&quot;
+
+// new String ops
+&quot;𠮷&quot;.codePointAt(0) == 0x20BB7
+
+// for-of iterates code points
+for(var c of &quot;𠮷&quot;) {
+  console.log(c);
+}
+</code></pre><h2 id="11、参考资料"><a href="#11、参考资料" class="headerlink" title="11、参考资料"></a>11、参考资料</h2><p>1、ECMAScript 6 features <a href="https://github.com/lukehoban/es6features" target="_blank" rel="external">https://github.com/lukehoban/es6features</a></p>
+<p>2、ECMAScript 6 入门 <a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">http://es6.ruanyifeng.com/</a></p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/ES6入门/ES6入门系列二（特性总览上）/" data-title="ES6入门系列二（特性总览上）" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/ES6入门/ES6入门系列二（特性总览上）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

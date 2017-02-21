@@ -1,0 +1,204 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="##No.1、了解你使用的JavaScript版本Tips：
+
+决定你的应用程序支持JavaScript的哪些版本。
+确保你使用的任何JavaScript的特性对于应用程序将要运行的所有环境都是支持的。
+总是在执行严格模式检查的环境中测试严格代码。
+当心连接那些在不同严格模式下有不同预期的脚本。
+
+"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>编写高质量JS代码的68个有效方法（一） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>编写高质量JS代码的68个有效方法（一）</h1><span class="post-meta">写于<time> 2014 年 09 月 26 日 13 时 36 分</time><br>更新于<time> 2017 年 02 月 21 日 13 时 59 分</time></span><div class="article-toc"><strong>大纲</strong></div><p>##No.1、了解你使用的JavaScript版本<br><strong>Tips</strong>：</p>
+<ol>
+<li>决定你的应用程序支持JavaScript的哪些版本。</li>
+<li>确保你使用的任何JavaScript的特性对于应用程序将要运行的所有环境都是支持的。</li>
+<li>总是在执行严格模式检查的环境中测试严格代码。</li>
+<li>当心连接那些在不同严格模式下有不同预期的脚本。</li>
+</ol>
+<p>JavaScript的普及使得它在1997年成为国际标准，官方名称为ECMAScript。除了ECMAScript标准存在多个版本之外，还存在一些JavaScript实现支持非标准特性，其他JavaScript实现不支持的情况。所以需要注意你所写的JavaScript代码所支持的版本。</p>
+<pre><code>/*[Sample]如下代码，在IE下会Syntax error，但是在Chrome中则是定义常量*/
+const PI=3.14;PI=3;PI
+</code></pre><p>由于JavaScript的主要生态系统–<strong>Web浏览器</strong>并不支持让程序员指定某个JavaScript版本来执行代码。在ES5中，引入了另外一种版本控制的考量–<strong>严格格式（strict mode）</strong>，这个特性允许你选择在受限制的JavaScript版本中禁用JavaScript语言中问题较多或易于出错的特性。由于JS语法涉及向后兼容，所以在没有严格检查的环境中也能执行严格代码。</p>
+<pre><code>/*[Sample]如何使用严格模式，在程序/函数体的开始处加入&apos;use strict&apos;
+    使用字符串字面量作为指令看起来比较怪异，但好处是可以向后兼容，因为执行字符串字面量没有任何副作用
+/*
+function f(x){
+    &apos;use strict&apos;;
+    var arguments=[];//SyntaxError:Unexpected eval or arguments in strict mode
+}
+</code></pre><p>“use strict”指令只有在脚本或者函数顶部才生效，这也是使用严格模式的一个陷进。脚本连接将变得颇为敏感。假如有多个js文件，一些需要执行在严格模式下，一些不需要执行在严格模式下，如何处理呢？</p>
+<ol>
+<li>将需要严格模式检查的文件和不需要严格模式检查的文件分开连接</li>
+<li><p>通过将自身包裹在立即调用的函数表达式中的方式来连接多个文件</p>
+<p> /<em>file1.js</em>/<br> function fun1(){</p>
+<pre><code>var arguments=[];
+</code></pre><p> }</p>
+<p> /<em>file2.js</em>/<br> ‘use strict’;<br> function fun2(){</p>
+<pre><code>console.log(&apos;strict mode!&apos;);
+</code></pre><p> }</p>
+<p> /<em>按照方式二连接后的文件内容应该是</em>/<br> /<em>fileMerge.js</em>/<br> (function(){</p>
+<pre><code>function fun1(){
+    var arguments=[];
+}
+</code></pre><p> })();<br> (function(){</p>
+<pre><code>&apos;use strict&apos;;
+function fun2(){
+    console.log(&apos;strict mode!&apos;);
+}
+</code></pre><p> })();</p>
+</li>
+</ol>
+<p>##No.2、理解JavaScript的浮点数<br><strong>Tips</strong>：</p>
+<ol>
+<li>JavaScript的数字都是双精度的浮点数。</li>
+<li>JavaScript的整数仅仅是双精度浮点数的一个子集，而不是一个单独的数据类型。</li>
+<li>位运算将数字视为32位的有符号整数。</li>
+<li>当心浮点运算中的精度陷进。</li>
+</ol>
+<p>大部分语言都有几种数值数据类型，但是JavaScript只有一种</p>
+<pre><code>typeof 1;    //&apos;number&apos;
+typeof 1.1;  //&apos;number&apos;
+typeof -1;   //&apos;number&apos;
+</code></pre><p>对于位运算，JavaScript不会直接将操作数作为浮点数运算，会先转换为32位整数再进行运算</p>
+<pre><code>8|1;    //9
+8.1|1;  //9
+</code></pre><p>如何快速从10进制转换到2~36进制？</p>
+<pre><code>(100).toString(2);    //1100100
+(100).toString(10);   //100
+(100).toString(35);   //2u
+(100).toString(36);   //2s
+</code></pre><p>注意parseInt和parseFloat的用法</p>
+<p><strong>警告（以下为非标准特性，各浏览器执行有差异）：</strong></p>
+<ol>
+<li>如果要转换的字符串已0x或者0X开头，那么parseInt(‘0xAB’)等价于parseInt(‘0xAB’,16)</li>
+<li>如果遇到0开头，那么parseInt(‘013’)等价于parseInt(‘013’,8)</li>
+<li><p><strong>强烈建议在使用parseInt时指定进制</strong></p>
+<p> parseInt(‘9x’);    //9 会自动忽略不能转换的字符<br> parseInt(‘x9’);    //NaN 发现第一个字符就不能转换，返回NaN<br> parseInt(‘1100100’,2);    //100 可以在parseInt的第二个参数指定当前字符串的进制<br> parseInt(‘2xxx’,2);    //NaN 遇到无法转换的情况，返回NaN<br> parseInt(‘08’);    //IE下:0,Chrome35下:8 </p>
+</li>
+</ol>
+<p>浮点数是出了名的不精确，你能知道以下代码的执行结果吗？</p>
+<pre><code>0.1+0.2;           //0.30000000000000004
+(0.1+0.2)+0.3;     //0.6000000000000001
+0.1+(0.2+0.3);     //0.6
+0.3-0.2;           //0.09999999999999998
+</code></pre><p>当我们关心精度时，要小心浮点数的局限性。有效的方法是尽可能的采用整数值运算，整数在运算时不需要舍入。</p>
+<p>##No.3、当心隐式的强制转换<br><strong>Tips</strong>：</p>
+<ol>
+<li>类型错误可能被隐式的强制转换所隐藏。</li>
+<li>重载的运算符+是进行加法运算还是字符串连接取决于其参数类型。</li>
+<li>对象通过valueOf方法强制转换为数字，通过toString方法强制转换为字符串。</li>
+<li>具有valueOf方法的对象应该实现toString方法，返回一个有valueOf方法产生的数字的字符串表示。</li>
+<li><p>测试一个值是否为未定义的值，应该使用typeof或者与undeined进行比较而不是使用真值运算。</p>
+<p> 3+true;   //4 true转换为数字1<br> ‘fun’(1); //TypeError:string is not a function<br> null.x;   //TypeError: Cannot read property ‘x’ of null<br> 2+3;      //5<br> 2+’3’;    //‘23’ 偏爱字符串，遇到字符串，那么优先用字符串连接<br> 1+2+’3’;  //‘33’ 加法运算是从左到右，所以等价于(1+2)+’3’<br> 1+’2’+3;  //‘123’<br> ‘17’*3;   //51<br> ‘8’|’1’   //9</p>
+</li>
+</ol>
+<p>如何测试一个值是NaN？</p>
+<pre><code>var x=NaN;
+x===NaN;   //false，NaN不等于自身
+</code></pre><p>如果知道带测试的值是数字，那么可以使用标准库函数isNaN</p>
+<pre><code>isNaN(NaN);  //true
+</code></pre><p>但是对于其他绝对不是NaN，但会被强制转换为NaN的值，使用isNaN方法是无法区分的。</p>
+<pre><code>isNaN(&apos;foo&apos;);  //true
+isNaN(undefined);  //true
+isNaN({});   //true
+isNaN({valueOf:&apos;foo&apos;});  //true
+</code></pre><p>幸运的是，有一个既简单有可靠但有点不直观的方法测试它：</p>
+<p><strong>JS中，NaN是唯一一个不等于其自身的值。</strong></p>
+<pre><code>var x=NaN;
+x!==x //true
+
+/*测试x是否是NaN，是返回true，否则返回false*/
+function isReallyNaN(x){
+    return x!==x;
+}
+</code></pre><p>如何控制对象的强制转换？</p>
+<pre><code>&apos;J&apos;+{toString:function(){return &apos;S&apos;}};  //&apos;JS&apos; 
+2*{valueOf:function(){return 3;}};  //6
+
+var obj={
+    toString:function(){
+        return &apos;[object Obj]&apos;;
+    },
+    valueOf:function(){
+        return 1;
+    }
+}
+&apos;object:&apos;+obj;  //&apos;object:1&apos;
+
+解释：
+1. 在需要数字的场合，优先判断valueOf，没有的话，则采用toString。
+2. 如果对象同时拥有valueOf和toString方法，同时又一定是需要数字的场合，那么JavaScript盲目的选择valueOf方法而不是toString方法来解决这种含糊的情况。
+3. 针对2：最好避免使用valueOf方法，除非对象的确需要一个数字的抽象，并且obj.toString()能产生一个obj.valueOf()的字符串的表示。
+</code></pre><p>关于真值运算：</p>
+<p><strong>JavaScript中有7个假值：false、0、-0、’’、NaN、null和undefined，其他都为真值</strong></p>
+<p>##No.4、原始类型优于封装对象<br><strong>Tips</strong>：</p>
+<ol>
+<li>当做相等比较是，原始类型的封装对象与其原始值行为不一样。</li>
+<li>获取和设置原始类型值的属性会隐式地创建封装对象。</li>
+</ol>
+<p>除了对象以外，JavaScript有5个原始值类型：布尔值、数字、字符串、null和undefined。（令人困惑的是，对于null类型进行typeof操作得到的结果为”object”，然而，ECMAScript标准描述其为一个独特的类型。）</p>
+<pre><code>var s=&apos;hello&apos;;  
+var sObj=new String(s);
+typeof s;    //&apos;string&apos;
+typeof sObj;   //&apos;object&apos; 包装对象的类型是object
+
+var sObj1=new String(s);
+var sObj2=new String(s);
+sObj1==sObj2;   //false
+sObj1===sObj2;  //false
+
+解释：可以理解为引用类型，每个对象是单独的对象，其引用是不一致的，所以只等于自身。
+</code></pre><p>JavaScript对基本类型有隐式封装，所以我们可以如下书写代码：</p>
+<pre><code>&apos;test&apos;.toUpperCase(); //&apos;TEST&apos;
+
+&apos;test&apos;.test=&apos;test&apos;;
+&apos;test&apos;.test;   //undefined
+
+解释：对基本类型调用方法/设置属性时，会产生隐式封装。
+原始值-&gt;封装类型（产生封装对象）-&gt;封装对象执行方法/设置属性-&gt;返回原始值-&gt;抛弃封装对象。
+所以更新封装不会造成持久的影响，同时对原始值设置属性是没有意义的。
+</code></pre><p>##No.5、避免对混合类型使用==运算符<br><strong>Tips</strong>：</p>
+<ol>
+<li>当参数类型不同时，==运算符应用了一套难以理解的隐式强制转换规则。</li>
+<li>使用===运算符，使读者不需要设计任何的隐式强制转换就能明白你的比较运算。 </li>
+<li>当比较不同类型的值时，使用你自己的显式强制转换使程序的行为更清晰。</li>
+</ol>
+<p>看代码：</p>
+<pre><code>&apos;1.0e0&apos;=={valueOf:function(){return true;}}; //true 因为通过隐式转换，就变成了1==1，所以结果为true。
+
+转换为字符串：&apos;&apos;+1; //&apos;1&apos;
+转换为数字  : +&apos;1&apos;; //1
+
+var date=new Date(&apos;1999/12/31&apos;);
+date==&apos;1991/12/31&apos;;//false
+date==&apos;Fri Dec 31 1999 00:00:00 GMT+0800 (China Standard Time)&apos;;//true
+
+解释：世界上有太多的数据表现形式，JS需要知道你使用的是哪一种，==运算符并不能推断和统一所有的数据格式，所以更好的策略是显式自定义应用程序转换的逻辑，并使用严格相等运算符。
+</code></pre><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2014/09/26/编写高质量JS代码的68个有效方法-读书笔记/[20140926]编写高质量JS代码的68个有效方法（一）/" data-title="编写高质量JS代码的68个有效方法（一）" data-url="http://hstarorg.github.io/blog/blog/2014/09/26/编写高质量JS代码的68个有效方法-读书笔记/[20140926]编写高质量JS代码的68个有效方法（一）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

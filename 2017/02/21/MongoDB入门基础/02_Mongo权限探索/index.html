@@ -1,0 +1,126 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0x0、导言经过一次 MongoDB 被黑之后，就想把 MongoDB 的权限仔细的了解一遍。安全第一！安全第一！
+为了避免版本不一致导致的差异，特此说明：以下命令均在 Mongo3.4 中测试，理论上支持所有 3.x 版本
+0x1、MongoDB权限系统MongoDB 的权限管理也是符合 RBAC"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>02_Mongo权限探索 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>02_Mongo权限探索</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0、导言"><span class="toc-number">1.</span> <span class="toc-text">0x0、导言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1、MongoDB权限系统"><span class="toc-number">2.</span> <span class="toc-text">0x1、MongoDB权限系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1、如何授权启动"><span class="toc-number">2.1.</span> <span class="toc-text">1.1、如何授权启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2、MongoDB角色管理"><span class="toc-number">2.2.</span> <span class="toc-text">1.2、MongoDB角色管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1、系统角色"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.2.1、系统角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2、自定义角色"><span class="toc-number">2.2.2.</span> <span class="toc-text">1.2.2、自定义角色</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2、MongoDB用户管理"><span class="toc-number">2.3.</span> <span class="toc-text">1.2、MongoDB用户管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2、使用授权的MongoDB"><span class="toc-number">3.</span> <span class="toc-text">0x2、使用授权的MongoDB</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x3、总结"><span class="toc-number">4.</span> <span class="toc-text">0x3、总结</span></a></li></ol></div><h1 id="0x0、导言"><a href="#0x0、导言" class="headerlink" title="0x0、导言"></a>0x0、导言</h1><p>经过一次 <code>MongoDB</code> 被黑之后，就想把 <code>MongoDB</code> 的权限仔细的了解一遍。安全第一！安全第一！</p>
+<p>为了避免版本不一致导致的差异，特此说明：以下命令均在 <code>Mongo3.4</code> 中测试，理论上支持所有 <code>3.x</code> 版本</p>
+<h1 id="0x1、MongoDB权限系统"><a href="#0x1、MongoDB权限系统" class="headerlink" title="0x1、MongoDB权限系统"></a>0x1、MongoDB权限系统</h1><p><code>MongoDB</code> 的权限管理也是符合 <code>RBAC</code> 的权限系统。</p>
+<p>既然是 <code>RBAC</code> 的权限管理，那么就一定会有 <code>actions</code> 和 <code>resources</code> 的概念。</p>
+<p>在 <code>MongoDB</code> 中，每一种操作都对应一种 <code>action</code>，在 <a href="https://docs.mongodb.com/manual/reference/privilege-actions/" target="_blank" rel="external">Action List</a> 可以查看所有的 <code>Action</code> 列表</p>
+<p>同理，<code>Collection/Database/Cluster</code> 都是 <code>Resrouce</code>, <code>resource</code> 列表也可以在 <a href="https://docs.mongodb.com/manual/reference/resource-document/" target="_blank" rel="external">Resource Document</a> 找到。</p>
+<h2 id="1-1、如何授权启动"><a href="#1-1、如何授权启动" class="headerlink" title="1.1、如何授权启动"></a>1.1、如何授权启动</h2><p>在 <code>MongoDB</code> 中，默认是无授权启动的。如果我们要开启授权，那么需要在启动 <code>MongoDB</code> 的时候，加上 <code>--auth</code> 参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --config <span class="string">"&lt;config path&gt;"</span> --auth</div></pre></td></tr></table></figure>
+<p>如果使用配置文件，那么也可以直接配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">security</div><div class="line">    authorization: enabled</div></pre></td></tr></table></figure>
+<p><strong>注意：如果没有添加账户，就算设置 <code>--auth</code> 参数也无效，需要先添加用户，在添加用户的时候，必须要指定用户角色。</strong></p>
+<h2 id="1-2、MongoDB角色管理"><a href="#1-2、MongoDB角色管理" class="headerlink" title="1.2、MongoDB角色管理"></a>1.2、MongoDB角色管理</h2><p>在 <code>MongoDB</code> 中，具有两种类型的角色，一类是系统角色，一类是自定义角色。</p>
+<p>一般来说，我们只需要关注系统角色。自定义角色需要通过角色相关的Shell来进行CRUD。</p>
+<h3 id="1-2-1、系统角色"><a href="#1-2-1、系统角色" class="headerlink" title="1.2.1、系统角色"></a>1.2.1、系统角色</h3><p><code>MongoDB</code> 按照分类，具有较多的角色，列举如下，也可在 <a href="https://docs.mongodb.com/manual/core/security-built-in-roles/" target="_blank" rel="external">security-built-in-roles</a> 查看所有内建角色明细。</p>
+<ul>
+<li><p>数据库用户相关角色</p>
+<ol>
+<li>read –只能查看单个数据库</li>
+<li>readWrite – 可读写单个数据库</li>
+</ol>
+</li>
+<li><p>数据库管理员相关角色</p>
+<ol>
+<li>dbAdmin – 数据库管理员，能进行差不多各种操作</li>
+<li>dbOwner – 等于dbAdmin、readWrite、userAdmin的并集，数据库拥有者</li>
+<li>userAdmin – 能够管理各种用户，角色等（如果是admin集合的，则能管理所有db）</li>
+</ol>
+</li>
+<li><p>集群管理员相关角色</p>
+<ol>
+<li>clusterAdmin – 是clusterManager，clusterMonitor，clusterMonitor权限的集合，还多了个删除数据库操作。</li>
+<li>clusterManager – 主要是配置集群</li>
+<li>clusterMonitor – 主要是监控集群</li>
+<li>hostManager – 主要是配置主机</li>
+</ol>
+</li>
+<li><p>备份还原相关角色</p>
+<ol>
+<li>backup – 备份操作</li>
+<li>restore – 还原操作</li>
+</ol>
+</li>
+<li><p>针对所有DB的角色</p>
+<ol>
+<li>readAnyDatabase – 可读取所有的数据库</li>
+<li>readWriteAnyDatabase – 可读写所有的数据库</li>
+<li>userAdminAnyDatabase – 所有db的用户管理员</li>
+<li>dbAdminAnyDatabase – 所有db的DB管理员</li>
+</ol>
+</li>
+<li><p>超级管理员角色</p>
+<ol>
+<li>root – 超级超级管理员，最大权限了</li>
+</ol>
+</li>
+<li><p>内部角色</p>
+<ol>
+<li>__system – 既然是内部角色，我们就不要去用了</li>
+</ol>
+</li>
+</ul>
+<h3 id="1-2-2、自定义角色"><a href="#1-2-2、自定义角色" class="headerlink" title="1.2.2、自定义角色"></a>1.2.2、自定义角色</h3><p>除了系统角色之外，还可以自定义角色，能够更灵活的控制权限。</p>
+<p>详细，请参考：<a href="https://docs.mongodb.com/manual/reference/method/js-role-management/" target="_blank" rel="external">role-management</a></p>
+<h2 id="1-2、MongoDB用户管理"><a href="#1-2、MongoDB用户管理" class="headerlink" title="1.2、MongoDB用户管理"></a>1.2、MongoDB用户管理</h2><p>有了Role的知识，我们来看User，就很easy了。</p>
+<p>和一般的系统权限类似，MongoDB 也提供了诸多和用户相关的操作</p>
+<ol>
+<li>db.auth() – 用于登录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.auth( &#123;</div><div class="line">   user: &lt;username&gt;, -- 用户</div><div class="line">   pwd: &lt;password&gt;, -- 密码</div><div class="line">   mechanism: &lt;authentication mechanism&gt;,  -- 可选，认证机制</div><div class="line">   digestPassword: &lt;boolean&gt; </div><div class="line">&#125; )</div></pre></td></tr></table></figure>
+<ol>
+<li>db.createUser()  – 创建用户</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123; user: &quot;&lt;name&gt;&quot;, -- 用户名</div><div class="line">  pwd: &quot;&lt;cleartext password&gt;&quot;, -- 密码</div><div class="line">  customData: &#123; &lt;any information&gt; &#125;, -- 自定义的数据</div><div class="line">  roles: [ -- 配置角色，db角色，设置数据库， 否则直接写角色名</div><div class="line">    &#123; role: &quot;&lt;role&gt;&quot;, db: &quot;&lt;database&gt;&quot; &#125; | &quot;&lt;role&gt;&quot;,</div><div class="line">    ...</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>db.updateUser() – 更新用户</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">db.updateUser(</div><div class="line">   &quot;&lt;username&gt;&quot;, -- 要更新的用户名</div><div class="line">   &#123; -- 要更新的用户对象</div><div class="line">     customData : &#123; &lt;any information&gt; &#125;,</div><div class="line">     roles : [</div><div class="line">               &#123; role: &quot;&lt;role&gt;&quot;, db: &quot;&lt;database&gt;&quot; &#125; | &quot;&lt;role&gt;&quot;,</div><div class="line">               ...</div><div class="line">             ],</div><div class="line">     pwd: &quot;&lt;cleartext password&gt;&quot;</div><div class="line">    &#125;,</div><div class="line">    writeConcern: &#123; &lt;write concern&gt; &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+<p><strong>注：仅仅只需要更新role的话，考虑使用grantRolesToUser，revokeRolesFromUser</strong></p>
+<ol>
+<li>db.removeUser()</li>
+<li>db.dropAllUsers()</li>
+<li>db.dropUser()</li>
+<li>db.grantRolesToUser()</li>
+<li>db.revokeRolesFromUser()</li>
+<li>db.getUser()</li>
+<li>db.getUsers()</li>
+</ol>
+<p>其他用户方法都比较类似，查看详细： <a href="https://docs.mongodb.com/manual/reference/method/js-user-management/" target="_blank" rel="external">user-management</a></p>
+<h1 id="0x2、使用授权的MongoDB"><a href="#0x2、使用授权的MongoDB" class="headerlink" title="0x2、使用授权的MongoDB"></a>0x2、使用授权的MongoDB</h1><p>如果在 <code>MongoDB</code> 中配置了授权，那么连接到带授权的 <code>MongoDB</code> 也会有些许区别。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 简单的MongoDB Connection String</span></div><div class="line">mongodb://127.0.0.1/testdb</div><div class="line"></div><div class="line"><span class="comment"># 带端口的MongoDB</span></div><div class="line">mongodb://127.0.0.1:27018/testdb</div><div class="line"></div><div class="line"><span class="comment"># 带授权的MongoDB</span></div><div class="line">mongodb://user1:password1@127.0.0.1:27017/testdb</div><div class="line"></div><div class="line"><span class="comment"># 带授权，且User是admin的场景</span></div><div class="line">mongodb://user1:password1@127.0.0.1:27017/testdb/?authSource=admin</div></pre></td></tr></table></figure>
+<p>如果是 <code>shell</code>，则需要先执行 <code>db.auth(&#39;name&#39;, &#39;pwd&#39;)</code>，之后才能执行其他命令。</p>
+<h1 id="0x3、总结"><a href="#0x3、总结" class="headerlink" title="0x3、总结"></a>0x3、总结</h1><p>加强安全意识，人为预防常规安全风险。</p>
+<p><time>2017-1-21 16:09:48</time></p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/MongoDB入门基础/02_Mongo权限探索/" data-title="02_Mongo权限探索" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/MongoDB入门基础/02_Mongo权限探索/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

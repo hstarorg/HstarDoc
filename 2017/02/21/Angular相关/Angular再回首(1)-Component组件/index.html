@@ -1,0 +1,189 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、再谈组件Component(组件) 在 Angular1 就已经有雏形了，那就是指令。在 Angular2 中，组件的概念被大大的强化，甚至是Angular2的核心概念。
+在前端这么多年的演变中，组件也反哺到 Angular1，成为 Angular1 的一种重要特性，在此之前，我们仅仅可以用 D"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Angular再回首(1)-Component组件 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>Angular再回首(1)-Component组件</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、再谈组件"><span class="toc-number">1.</span> <span class="toc-text">0、再谈组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、Angular组件与指令"><span class="toc-number">2.</span> <span class="toc-text">1、Angular组件与指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、组件生命周期"><span class="toc-number">3.</span> <span class="toc-text">2、组件生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、属性绑定"><span class="toc-number">4.</span> <span class="toc-text">3、属性绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、给组件设定外部HTML"><span class="toc-number">5.</span> <span class="toc-text">4、给组件设定外部HTML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1、传递单个HTML片段"><span class="toc-number">5.1.</span> <span class="toc-text">4.1、传递单个HTML片段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2、传递多个HTML片段"><span class="toc-number">5.2.</span> <span class="toc-text">4.2、传递多个HTML片段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、组件-require"><span class="toc-number">6.</span> <span class="toc-text">5、组件 require</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、小结"><span class="toc-number">7.</span> <span class="toc-text">6、小结</span></a></li></ol></div><h2 id="0、再谈组件"><a href="#0、再谈组件" class="headerlink" title="0、再谈组件"></a>0、再谈组件</h2><p><code>Component(组件)</code> 在 <code>Angular1</code> 就已经有雏形了，那就是指令。在 <code>Angular2</code> 中，组件的概念被大大的强化，甚至是Angular2的核心概念。</p>
+<p>在前端这么多年的演变中，组件也反哺到 <code>Angular1</code>，成为 <code>Angular1</code> 的一种重要特性，在此之前，我们仅仅可以用 <code>Directive</code> 来实现类似组件的效果。</p>
+<h2 id="1、Angular组件与指令"><a href="#1、Angular组件与指令" class="headerlink" title="1、Angular组件与指令"></a>1、Angular组件与指令</h2><p>在 <code>Angular 1.5.x</code> 中，新增加了 <code>angular.component</code> 方法，用于实现组件的构造。</p>
+<p>在此之前，我们可能用 <code>angular.directive</code> 来实现类似的效果。</p>
+<p>这个时候我们可能就会疑惑，它们有什么区别呢？</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Directive</th>
+<th>Component</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bindings</td>
+<td>No</td>
+<td>Yes (binds to controller)</td>
+</tr>
+<tr>
+<td>bindToController</td>
+<td>Yes</td>
+<td>(default: false)    No (use bindings instead)</td>
+</tr>
+<tr>
+<td>compile function</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>controller</td>
+<td>Yes</td>
+<td>Yes (default function() {})</td>
+</tr>
+<tr>
+<td>controllerAs</td>
+<td>Yes</td>
+<td>(default: false)    Yes (default: $ctrl)</td>
+</tr>
+<tr>
+<td>link functions</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>multiElement</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>require</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>restrict</td>
+<td>Yes</td>
+<td>No (restricted to elements only)</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>Yes (default: false)</td>
+<td>No (scope is always isolate)</td>
+</tr>
+<tr>
+<td>template</td>
+<td>Yes</td>
+<td>Yes, injectable</td>
+</tr>
+<tr>
+<td>templateNamespace</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>templateUrl</td>
+<td>Yes</td>
+<td>Yes, injectable</td>
+</tr>
+<tr>
+<td>terminal</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>transclude</td>
+<td>Yes (default: false)</td>
+<td>Yes (default: false)</td>
+</tr>
+</tbody>
+</table>
+<p>更多信息，请参考 <a href="https://docs.angularjs.org/guide/component" target="_blank" rel="external">Angular 官方说明</a></p>
+<p>从上表我们可以看出，对于 <code>Directive</code>，<code>Component</code> 从设计思路上更加完善，也更加纯粹。总得来说，组件显得更易理解，更简单易用。</p>
+<h2 id="2、组件生命周期"><a href="#2、组件生命周期" class="headerlink" title="2、组件生命周期"></a>2、组件生命周期</h2><p>在 <code>angular.directive()</code> 中，是没有生命周期这个概念的，我们无法在指令的特定阶段插入自己的逻辑。</p>
+<p>但是在 <code>angular.component()</code> 中，则是具有特定的生命周期，以方便我们进行控制。</p>
+<p>生命周期如下：</p>
+<ol>
+<li>$onInit  – 指令初始化时执行（放置初始化代码）</li>
+<li>$onChanges(changesObj)  – 组件数据变化时执行，并可获取变更对象</li>
+<li>$doCheck() – 执行变更检测时执行</li>
+<li>$onDestroy() – 组件释放时执行（放置清理代码）</li>
+<li>$postLink() – 类似后连接函数 （一般放置dom操作，因为此时组件已经渲染好）</li>
+</ol>
+<p>实例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">angular, <span class="built_in">window</span></span>) =&gt;</span> &#123;</div><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">AlertComponent</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    $onInit() &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'init'</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    $onChanges(changesObj)</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'change'</span>, changesObj);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    $doCheck() &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'check'</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    $onDestroy() &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'destroy'</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    $postLink() &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'post link'</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  AlertComponent.$inject = []; <span class="comment">// 配置依赖项</span></div><div class="line"></div><div class="line">  angular.module(<span class="string">'components'</span>).component(<span class="string">'jAlert'</span>, &#123;</div><div class="line">    <span class="attr">templateUrl</span>: <span class="string">'components/alert/alert.html'</span>,</div><div class="line">    <span class="comment">// scope绑定语法，&lt; 单向绑定（变量），@ 单向绑定（纯字符串）， = 双向绑定，&amp; 事件绑定</span></div><div class="line">    bindings: &#123;</div><div class="line">      <span class="attr">menuData</span>: <span class="string">'&lt;'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">controller</span>: AlertComponent,</div><div class="line">    <span class="attr">controllerAs</span>: <span class="string">'$ctrl'</span>,</div><div class="line">    <span class="attr">require</span>: <span class="string">''</span>,</div><div class="line">    <span class="attr">transclude</span>: <span class="literal">false</span></div><div class="line">  &#125;);</div><div class="line"></div><div class="line">&#125;)(<span class="built_in">window</span>.angular, <span class="built_in">window</span>);</div></pre></td></tr></table></figure>
+<p>在页面使用该指令后，可以在控制台看出如下输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">init</div><div class="line">check</div><div class="line">post link</div><div class="line">N个check（脏检查）</div></pre></td></tr></table></figure>
+<p>在切换路由，或者其他会删掉该组件的操作时，会看出控制台输出 <code>destroy</code>。</p>
+<p>如果中途有数据变化，控制台还会输出 <code>change</code>。 </p>
+<p>这就是整个组件的生命周期。</p>
+<h2 id="3、属性绑定"><a href="#3、属性绑定" class="headerlink" title="3、属性绑定"></a>3、属性绑定</h2><p>在 <code>directive</code> 中，我们要获取数据，一般会采用 <code>$scope</code> 传参，或者通过link函数来捕获参数。</p>
+<p>在新的组件申明中，我们只需要通过 <code>bindings</code> 就可以实现复杂的参数绑定。</p>
+<p>简单思考下，我们可能需要哪些绑定呢？</p>
+<ol>
+<li>双向绑定 （双向）</li>
+<li>单向绑定变量 （从外到内）</li>
+<li>单向绑定属性（字符串）（从外到内）</li>
+<li>输出绑定 （从内到外）</li>
+</ol>
+<p>在组件的 <code>bindings</code> 属性中，我们也刚好有四种语法，来一一对应这四种绑定。</p>
+<p>具体写法如下： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">bindings: &#123;</div><div class="line">  <span class="attr">model</span>: <span class="string">'='</span>,  <span class="comment">// 双向绑定</span></div><div class="line">  title: <span class="string">'@'</span>,  <span class="comment">// 单项绑定字符串（直接用组件上的属性值）</span></div><div class="line">  key: <span class="string">'&lt;'</span>,  <span class="comment">// 单项绑定变量，取到属性值，然后返回$scope[属性值]</span></div><div class="line">  onClick: <span class="string">'&amp;'</span>  <span class="comment">// 输出绑定，执行外部函数</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>假设组件标签为 <code>&lt;j-test&gt;</code>，那么用法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$scope = &#123;</div><div class="line">  <span class="attr">model</span>: <span class="string">'1'</span>,</div><div class="line">  <span class="attr">key</span>: <span class="string">'abc'</span>,</div><div class="line">  <span class="attr">onClick</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">j-test</span> <span class="attr">model</span>=<span class="string">"model"</span> <span class="attr">key</span>=<span class="string">"key"</span> <span class="attr">title</span>=<span class="string">"Title"</span> <span class="attr">on-click</span>=<span class="string">"onClick()"</span>&gt;</span><span class="tag">&lt;/<span class="name">j-test</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>此时，我们在组件中，就能获取到对应的值： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">model</span>: <span class="number">1</span>, <span class="comment">// 从scope中取</span></div><div class="line">  key: <span class="string">'abc'</span>, <span class="comment">// 从scope中取</span></div><div class="line">  title: <span class="string">'Title'</span>, <span class="comment">// 直接用string</span></div><div class="line">  onClick: fn <span class="comment">// 执行该onClick会触发外部函数$scope.onClick</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注意：关于输出函数传递参数，需要有特定的写法（一定要注意！！！）</strong></p>
+<p><em>在组件中的写法</em></p>
+<p>在组件中，要给该函数传参，必须使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.onClick(&#123;</div><div class="line">  <span class="attr">param1</span>: <span class="string">'xxx'</span>,</div><div class="line">  <span class="attr">param2</span>: <span class="string">'BBB'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>的写法，并建议参数名使用 <code>$</code> 开头，如：<code>$event</code>。</p>
+<p><em>在组件绑定中的写法</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">j-test</span> <span class="attr">model</span>=<span class="string">"model"</span> <span class="attr">key</span>=<span class="string">"key"</span> <span class="attr">title</span>=<span class="string">"Title"</span> <span class="attr">on-click</span>=<span class="string">"onClick(param1, param2)"</span>&gt;</span><span class="tag">&lt;/<span class="name">j-test</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>注意onClick的写法，里面的参数名称，必须和组件中参数对象中的key匹配。</p>
+<h2 id="4、给组件设定外部HTML"><a href="#4、给组件设定外部HTML" class="headerlink" title="4、给组件设定外部HTML"></a>4、给组件设定外部HTML</h2><p>在使用组件过程中，我相信很容易遇到需要使用外部html的组件，如 <code>Tabs, Panel</code> 等，那我们给组件内部传入自定义的HTML呢？</p>
+<p>这个时候，我们可以使用 <code>ng-transclude</code></p>
+<h3 id="4-1、传递单个HTML片段"><a href="#4-1、传递单个HTML片段" class="headerlink" title="4.1、传递单个HTML片段"></a>4.1、传递单个HTML片段</h3><p>首先，主要在注册组件时，开启 <code>transclude</code>（设置transclude为true），然后我们就可以在组件html中，设定占位符，有如下两种方式：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 占位符1 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-transclude</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 占位符2 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ng-transclude</span>&gt;</span><span class="tag">&lt;/<span class="name">ng-transclude</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>然后在使用组件的地方，就可以直接把要使用的HTML放在组件标记中，如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">j-test</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>我会被传递到主键内部<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">j-test</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="4-2、传递多个HTML片段"><a href="#4-2、传递多个HTML片段" class="headerlink" title="4.2、传递多个HTML片段"></a>4.2、传递多个HTML片段</h3><p>以上，我们知道了如何传递单个HTML片段，但传递多个HTML片段也是非常有必要的，如 <code>Dialog</code>组件，<br>我们很可能会传递 <code>dialog-header</code>, <code>dialog-body</code> 等等，那此时又应如何呢？</p>
+<p>这个场景，我们可以借助 <code>ng-transclude</code> 的 <code>slot</code> 功能实现，</p>
+<p>首先，是占位符的变化，如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 占位符1 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-transclude</span>=<span class="string">"header"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-transclude</span>=<span class="string">"body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 占位符2 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ng-transclude</span> <span class="attr">ng-transclude-slot</span>=<span class="string">"header"</span>&gt;</span><span class="tag">&lt;/<span class="name">ng-transclude</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ng-transclude</span> <span class="attr">ng-transclude-slot</span>=<span class="string">"body"</span>&gt;</span><span class="tag">&lt;/<span class="name">ng-transclude</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>其次是组件配置的变化，因为有多个 <code>transclude</code>，那么仅仅设置为 <code>true</code>，就不太能满足需求了。<br>需要修改如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">transclude: &#123;</div><div class="line">  <span class="attr">header</span>: <span class="string">'?panelHeader'</span>, <span class="comment">// panelHeader表示内部标签，?表示是可选的</span></div><div class="line">  body: <span class="string">'panelBody'</span> <span class="comment">// 没有问号，表示该节点必选</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来，就应该是调用时的改变，调用如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">j-panel</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">panel-header</span>&gt;</span></div><div class="line">    我是Panel Header（可选）</div><div class="line">  <span class="tag">&lt;/<span class="name">panel-header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">panel-body</span>&gt;</span></div><div class="line">    我是Panel Body（必须）</div><div class="line">  <span class="tag">&lt;/<span class="name">panel-body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">j-panel</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="5、组件-require"><a href="#5、组件-require" class="headerlink" title="5、组件 require"></a>5、组件 <code>require</code></h2><p>同 <code>Directive</code> 一样，组件也可以相互依赖，只需要在注册组件时，设置require属性即可，写法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>: &#123;</div><div class="line">  <span class="attr">componentCtrl</span>: <span class="string">'^parentComponent'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="6、小结"><a href="#6、小结" class="headerlink" title="6、小结"></a>6、小结</h2><p>新增的 <code>angular.component</code> 就是这么一个东西，比起 <code>directive</code> 更加纯粹，更加强大，更加易用。<br>建议在后续使用中，多多尝试该方式。</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/Angular相关/Angular再回首(1)-Component组件/" data-title="Angular再回首(1)-Component组件" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/Angular相关/Angular再回首(1)-Component组件/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

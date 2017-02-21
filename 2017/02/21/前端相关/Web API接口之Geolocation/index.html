@@ -1,0 +1,114 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、关于GeolocationGeolocation，地理位置API。用于获取用户的位置信息。它不算是现有的HTML5标准的“直系”成员，但是是W3C的一个标准。它几乎就是一个真正的JavaScript API！
+1、位置相关1.1、经纬度表示位置要想知道用户的位置，就需要有一个坐标系统，这就是我们"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Web API接口之Geolocation · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>Web API接口之Geolocation</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、关于Geolocation"><span class="toc-number">1.</span> <span class="toc-text">0、关于Geolocation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、位置相关"><span class="toc-number">2.</span> <span class="toc-text">1、位置相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、经纬度表示位置"><span class="toc-number">2.1.</span> <span class="toc-text">1.1、经纬度表示位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2、API如何确定你的位置"><span class="toc-number">2.2.</span> <span class="toc-text">1.2、API如何确定你的位置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、如何使用Geolocation"><span class="toc-number">3.</span> <span class="toc-text">2、如何使用Geolocation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1、获取位置"><span class="toc-number">3.1.</span> <span class="toc-text">2.1、获取位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2、监控位置变化"><span class="toc-number">3.2.</span> <span class="toc-text">2.2、监控位置变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-清除监控"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 清除监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4、如何计算距离？"><span class="toc-number">3.4.</span> <span class="toc-text">2.4、如何计算距离？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、扩展"><span class="toc-number">4.</span> <span class="toc-text">3、扩展</span></a></li></ol></div><h2 id="0、关于Geolocation"><a href="#0、关于Geolocation" class="headerlink" title="0、关于Geolocation"></a>0、关于Geolocation</h2><p>Geolocation，地理位置API。用于获取用户的位置信息。它不算是现有的HTML5标准的“直系”成员，但是是W3C的一个标准。它几乎就是一个真正的JavaScript API！</p>
+<h2 id="1、位置相关"><a href="#1、位置相关" class="headerlink" title="1、位置相关"></a>1、位置相关</h2><h3 id="1-1、经纬度表示位置"><a href="#1-1、经纬度表示位置" class="headerlink" title="1.1、经纬度表示位置"></a>1.1、经纬度表示位置</h3><p>要想知道用户的位置，就需要有一个坐标系统，这就是我们的经纬度。一般我们用度/分/秒表示经纬度，如果需要将经纬度转换为小数，可以使用如下函数：</p>
+<pre><code>function degreesToDecimal(degrees, minutes, seconds){
+  return degrees + (minutes / 60) + (seconds / 3600);
+}
+</code></pre><h3 id="1-2、API如何确定你的位置"><a href="#1-2、API如何确定你的位置" class="headerlink" title="1.2、API如何确定你的位置"></a>1.2、API如何确定你的位置</h3><p>浏览器要获取你的位置信息，并不要求你非得使用最新的智能手机，即使桌面浏览器也能获取你的位置。那么是如何获取到位置的呢？</p>
+<p>其实，获取位置信息的方式有很多，比如：</p>
+<ol>
+<li>IP地址 –通过ip地址库获取你的位置</li>
+<li>GPS  –通过全球定位系统获取你的位置（高精度）</li>
+<li>蜂窝电话  –通过三角定位获取你的位置</li>
+<li>Wi-Fi  – 同样适用类似蜂窝电话的三角定位获取位置</li>
+</ol>
+<p>我们没办法知道设备是使用的何种方法获取我们的位置信息，一些聪明的浏览器很可能会使用多种方式来确定你的位置。</p>
+<h2 id="2、如何使用Geolocation"><a href="#2、如何使用Geolocation" class="headerlink" title="2、如何使用Geolocation"></a>2、如何使用Geolocation</h2><p>在使用Geolocation之前，我们需要先是否支持，通过如下代码：</p>
+<pre><code>if(navigator.geolocation){
+  //Supported.
+} else {
+  window.alert(&apos;No geolocation support.&apos;);
+}
+</code></pre><h3 id="2-1、获取位置"><a href="#2-1、获取位置" class="headerlink" title="2.1、获取位置"></a>2.1、获取位置</h3><p>获取位置信息的方法是一个异步方法，我们应该如下来使用它：</p>
+<pre><code>if(navigator.geolocation){
+  var callback = function(pos){
+    console.log(&apos;你的位置是：&apos;, pos);
+  };
+  navigator.geolocation.getCurrentPosition(callback);
+} else {
+  window.alert(&apos;No geolocation support.&apos;);
+}
+</code></pre><p>其中pos长什么样呢？大概是如下这个样子的：</p>
+<pre><code>{
+  coords： { // Coordinates
+    accuracy: 137082,
+    altitude: null,
+    altitudeAccuracy: null,
+    heading: null,
+    latitude: 24.1848198,
+    longitude: 120.63149479999998,
+    speed: null
+  },
+  timestamp: 1453877895563
+}
+</code></pre><p>其中latitude和longitude就是我们的经纬度了。</p>
+<p>该方法的语法是：navigator.geolocation.getCurrentPosition(success[, error[, options]])，具体参数含义，请接着往下看。</p>
+<h3 id="2-2、监控位置变化"><a href="#2-2、监控位置变化" class="headerlink" title="2.2、监控位置变化"></a>2.2、监控位置变化</h3><p>在2.1中，我们知道如何获取位置，那如何监控位置变化呢？很容易相当的办法，就是我们定时去获取位置信息，然后比对。那么有没有更好的方式呢？当然，Geolocation API已经帮我们考虑好了。如下：</p>
+<pre><code>//正常时，会获取到一个地理位置信息
+var watchSuccess = function(pos){
+  var latitude = pos.coords.latitude;
+  var longitude = pos.coords.longitude;
+  console.log(&apos;你的经纬度是：&apos;, latitude, longitude);
+};
+//错误时，函数会接收一个错误对象
+var watchError = function(err){
+  console.warn(err, err.code, err.message);
+};
+var watcherId = navigator.geolocation.watchPosition(watchSuccess, watchError);
+</code></pre><p>watchPosition方法的语法是：id = navigator.geolocation.watchPosition(success[, error[, options]])。所以，我们还可以针对这个方法设置参数：</p>
+<pre><code>var options = {
+  enableHighAccuracy: false, //默认false，为true时，则选择最高的精度获取位置
+  timeout: 5000, //每次获取位置信息的最长时间，默认是无限的
+  maximumAge: 0 // 缓存时间（毫秒），如果为0，则每次获取最新的
+};
+</code></pre><h3 id="2-3-清除监控"><a href="#2-3-清除监控" class="headerlink" title="2.3 清除监控"></a>2.3 清除监控</h3><p>既然我们有监控方法，那么该如何停止呢？这就要借助清除监控的方法了，代码如下：</p>
+<pre><code>navigator.geolocation.clearWatch(watcherId);
+</code></pre><p>watcherId是2.2中监控时的返回值。</p>
+<h3 id="2-4、如何计算距离？"><a href="#2-4、如何计算距离？" class="headerlink" title="2.4、如何计算距离？"></a>2.4、如何计算距离？</h3><p>给予两个坐标点，如何计算两者之间的距离呢？一般采用半正矢（Haversine）公式，具体代码如下：</p>
+<p>  function degreesToRadians(degrees){<br>    var radians = (degrees * Math.PI) / 180;<br>    return radians;<br>  }</p>
+<p>  function computeDistince(startCoords, destCoords){<br>    var Radius = 6371; //每度在地球上的距离（km）</p>
+<pre><code>var startLatRads = degreesToRadians(startCoords.latitude);
+var startLongRads = degreesToRadians(startCoords.longitude);
+var destLatRads = degreesToRadians(destCoords.latitude);
+var destLongRads = degreesToRadians(destCoords.longitude);
+
+var distince = Math.acos(
+  Math.sin(startLatRads) * Math.sin(destLatRads) + 
+  Math.cos(startLatRads) * Math.cos(destLatRads) * 
+  Math.cos(startLongRads - destLongRads)
+) * Radius;
+return distince;
+</code></pre><p>  }</p>
+<h2 id="3、扩展"><a href="#3、扩展" class="headerlink" title="3、扩展"></a>3、扩展</h2><p>地理位置API单独使用意义不大，一般来说，结合地图就可以实现很复杂的功能了。</p>
+<p>待续…</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/Web API接口之Geolocation/" data-title="Web API接口之Geolocation" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/Web API接口之Geolocation/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

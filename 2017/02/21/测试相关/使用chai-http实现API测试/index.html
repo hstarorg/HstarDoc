@@ -1,0 +1,41 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0x1、导言一个前后端分离的完整的项目中，一般少不了 API TEST，那我们如何来做API相关的测试呢？
+我们可以使用客户端工具（如PostMan），来进行模拟请求，还可以写一个小程序来请求待测试的API。
+既然也算是测试，为什么我们不直接和一般的 unit test 使用同样的工具呢？
+在我们使"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>使用chai-http实现API测试 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>使用chai-http实现API测试</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1、导言"><span class="toc-number">1.</span> <span class="toc-text">0x1、导言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2、关于-chai-http"><span class="toc-number">2.</span> <span class="toc-text">0x2、关于 chai-http</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x3、API测试演示"><span class="toc-number">3.</span> <span class="toc-text">0x3、API测试演示</span></a></li></ol></div><h1 id="0x1、导言"><a href="#0x1、导言" class="headerlink" title="0x1、导言"></a>0x1、导言</h1><p>一个前后端分离的完整的项目中，一般少不了 <code>API TEST</code>，那我们如何来做API相关的测试呢？</p>
+<p>我们可以使用客户端工具（如PostMan），来进行模拟请求，还可以写一个小程序来请求待测试的API。</p>
+<p>既然也算是测试，为什么我们不直接和一般的 <code>unit test</code> 使用同样的工具呢？</p>
+<p>在我们使用 <code>mocha</code> 测试工具函数的同时，我们也可以结合 <code>chai-http</code> 来实现API的测试。</p>
+<h1 id="0x2、关于-chai-http"><a href="#0x2、关于-chai-http" class="headerlink" title="0x2、关于 chai-http"></a>0x2、关于 <code>chai-http</code></h1><p><code>chai-http</code> 官方定义是：一个HTTP响应的断言库，是 <code>Chai</code> 断言库的一个补充。（原文：HTTP Response assertions for the Chai Assertion Library. ）</p>
+<p>使用它，我们可以模拟发起HTTP请求，然后使用断言语法来判断响应是否满足需求。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">chai.request(<span class="string">'rootpath'</span>)</div><div class="line">  .put(<span class="string">'/user/me'</span>)</div><div class="line">  .send(&#123; <span class="attr">password</span>: <span class="string">'123'</span>, <span class="attr">confirmPassword</span>: <span class="string">'123'</span> &#125;)</div><div class="line">  .end(<span class="function"><span class="keyword">function</span> (<span class="params">err, res</span>) </span>&#123;</div><div class="line">     expect(err).to.be.null;</div><div class="line">     expect(res).to.have.status(<span class="number">200</span>);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
+<h1 id="0x3、API测试演示"><a href="#0x3、API测试演示" class="headerlink" title="0x3、API测试演示"></a>0x3、API测试演示</h1><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/测试相关/使用chai-http实现API测试/" data-title="使用chai-http实现API测试" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/测试相关/使用chai-http实现API测试/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

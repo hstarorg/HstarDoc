@@ -1,0 +1,185 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、导言在上篇《JavaScript之毒瘤》中，列举了一些在JavaScript中难以避免的问题特性。本篇将会展示JavaScript中有问题的特性，但我们很容易就能便面它们。通过这些简单的做法，让JavaScript称为一门更好的语言。
+1、==JavaScript有两组相等运算符。 === 和 "><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript之糟粕 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>JavaScript之糟粕</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、"><span class="toc-number">2.</span> <span class="toc-text">1、==</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、with语句"><span class="toc-number">3.</span> <span class="toc-text">2、with语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、eval"><span class="toc-number">4.</span> <span class="toc-text">3、eval</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、continue"><span class="toc-number">5.</span> <span class="toc-text">4、continue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、switch"><span class="toc-number">6.</span> <span class="toc-text">5、switch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、缺少块的语句"><span class="toc-number">7.</span> <span class="toc-text">6、缺少块的语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、-–"><span class="toc-number">8.</span> <span class="toc-text">7、++ –</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、位运算符"><span class="toc-number">9.</span> <span class="toc-text">8、位运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9、function语句-与-function表达式"><span class="toc-number">10.</span> <span class="toc-text">9、function语句 与 function表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10、类型的包装对象"><span class="toc-number">11.</span> <span class="toc-text">10、类型的包装对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11、new"><span class="toc-number">12.</span> <span class="toc-text">11、new</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12、void"><span class="toc-number">13.</span> <span class="toc-text">12、void</span></a></li></ol></div><h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>在上篇《JavaScript之毒瘤》中，列举了一些在JavaScript中难以避免的问题特性。本篇将会展示JavaScript中有问题的特性，但我们很容易就能便面它们。通过这些简单的做法，让JavaScript称为一门更好的语言。</p>
+<h2 id="1、"><a href="#1、" class="headerlink" title="1、=="></a>1、==</h2><p>JavaScript有两组相等运算符。 === 和 !==，以及 == 和 !==。 === 和 !== 不会进行类型转换，一般会按照你期望的方式工作。由于JavaScript的类型转换系统相当复杂，如果要确保==和 != 不出错，就必须要牢记转换规则。另外==运算符缺乏传递性。</p>
+<pre><code>//关于传递性
+if a === b, b === c then a === c;
+if a == b, b == c then a 不一定等于 c，破坏了传递性
+</code></pre><p><strong>小测验</strong>：</p>
+<pre><code>&apos;&apos; == &apos;0&apos;
+0 == &apos;&apos;
+0 == &apos;0&apos;
+
+false == &apos;false&apos;
+false == &apos;0&apos;
+
+false == undefined
+false == null
+null == undefined
+
+&apos;\t\t\n&apos; == 0
+</code></pre><p><strong>总结</strong>：推荐使用===和!==，尽量避免使用==和!=。</p>
+<h2 id="2、with语句"><a href="#2、with语句" class="headerlink" title="2、with语句"></a>2、with语句</h2><p>JavaScript提供了一个with语句，本意是用它来快速访问对象，不幸的是，它的结果可能有时不可预料。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>window.a = 1;
+var obj={};
+with(obj){
+  console.log(a);
+}
+obj.a = 2;
+with(obj){
+  console.log(a);
+}
+</code></pre><p><strong>结论</strong>：避免使用with。</p>
+<h2 id="3、eval"><a href="#3、eval" class="headerlink" title="3、eval"></a>3、eval</h2><p>eval函数传递一个字符串给JavaScript<em>编译器</em>，并且执行结果。有问题问题呢？首先是代码难以阅读，另外需要运行编译器，导致性能低下；同时，还减弱了程序的安全性。<strong>注：</strong>Function构造函数，setTimeout、setInterval的字符串参数形式和eval是执行方式一致。</p>
+<p><strong>结论</strong>：避免使用eval，setTimeout、setInterval的字符串参数和Function构造函数。</p>
+<h2 id="4、continue"><a href="#4、continue" class="headerlink" title="4、continue"></a>4、continue</h2><p>continue语句跳到循环顶部，性能比较低下。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>var counter = 10;
+console.time(&apos;t1&apos;);
+var sum = 0;
+for(var i = 0; i &lt; counter; i++){
+  if(i % 3 !== 0){
+    continue;
+  }
+  sum = sum + i;
+}
+console.log(sum);
+console.timeEnd(&apos;t1&apos;);
+
+console.time(&apos;t2&apos;);
+var sum = 0;
+for(var i = 0; i &lt; counter; i++){
+  if(i % 3 === 0){
+    sum = sum + i;
+  }
+}
+
+console.log(sum);
+console.timeEnd(&apos;t2&apos;);
+</code></pre><p><strong>结论</strong>：尽量优化代码，减少continue的使用。</p>
+<h2 id="5、switch"><a href="#5、switch" class="headerlink" title="5、switch"></a>5、switch</h2><p>switch语句中，除非明确的中断流程，否则每次条件判断后，都可以穿越到下一个case条件。这很容易造成bug。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>var a = 15;
+switch(a){
+  case a * 1 :
+    console.log(&apos;a*1&apos;);
+  case a / 1:
+    console.log(&apos;a/1&apos;);
+  default:
+    console.log(&apos;a&apos;);
+}
+</code></pre><p><strong>结论</strong>：不要刻意的使用case条件穿越。</p>
+<h2 id="6、缺少块的语句"><a href="#6、缺少块的语句" class="headerlink" title="6、缺少块的语句"></a>6、缺少块的语句</h2><p>if、while、do或for可以接受代码块，也可以接受单行语句。单行语句的形式是一种带刺的玫瑰。虽然它可以节约2个字节，但它模糊了程序的结构。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>if(1 == &apos;0&apos;)
+  console.log(&apos;1 == 0&apos;);
+  console.log(&apos;my god&apos;);
+
+// VS
+if(1 == &apos;0&apos;){
+  console.log(&apos;1 == 0&apos;);
+}
+console.log(&apos;my god&apos;);
+</code></pre><p><strong>结论</strong>：避免使用模糊程序结构的单行语句。</p>
+<h2 id="7、-–"><a href="#7、-–" class="headerlink" title="7、++ –"></a>7、++ –</h2><p>递增和递减使得可以用非常简洁的风格去编码。但是它可能造成缓冲区溢出、同时往往让代码变得拥挤也不易于理解。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>var a = 1;
+a = a++ + ++a;
+console.log(a);
+a = 1;
+a = a++ + a++;
+console.log(a);
+</code></pre><p><strong>结论</strong>：避免使用++ –。</p>
+<h2 id="8、位运算符"><a href="#8、位运算符" class="headerlink" title="8、位运算符"></a>8、位运算符</h2><p>JavaScript有着和Java相同的一套位运算符。Java中位运算符处理整数，非常快。在JavaScript中，只有双精度浮点数，所以位运算非常慢。另外，&amp;非常容易误写为&amp;&amp;，使得bug容易被隐藏起来。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>var counter = 10000;
+var a = 5;
+var sum = 0;
+console.time(&apos;t1&apos;);
+for(var i = 0; i &lt; counter; i++){
+  sum += a &lt;&lt; 1;
+}
+console.log(sum);
+console.timeEnd(&apos;t1&apos;);
+
+sum = 0;
+console.time(&apos;t2&apos;);
+for(var i = 0; i &lt; counter; i++){
+  sum += a * 2;
+}
+console.log(sum);
+console.timeEnd(&apos;t2&apos;);
+</code></pre><p><strong>结论</strong>：避免使用位运算符。</p>
+<h2 id="9、function语句-与-function表达式"><a href="#9、function语句-与-function表达式" class="headerlink" title="9、function语句 与 function表达式"></a>9、function语句 与 function表达式</h2><p>JavaScript中既有function语句，也有function表达式，这令人困惑，似乎看起来也差不多。function语句在解析时会产生变量提升，放宽了函数必须先申明后使用的的要求。同时，JS在if语句中使用function语句也是被禁止的，但实际上大多数浏览器允许在if中使用function语句，这有可能会导致兼容性问题。</p>
+<p>由于一个语句不能以一个函数表达式开头，如下如下写法，可以改写为另外一种形式。</p>
+<pre><code>function (){}(); //Error 
+
+(function(){}()); // Right
+</code></pre><p><strong>小测验</strong>：</p>
+<pre><code>// function语句
+function fun(){}
+
+// function表达式
+var fun = function(){};
+</code></pre><p><strong>结论</strong>：合理使用function语句和function表达式。</p>
+<h2 id="10、类型的包装对象"><a href="#10、类型的包装对象" class="headerlink" title="10、类型的包装对象"></a>10、类型的包装对象</h2><p>JavaScript有一种类型的包装对象，如 new Number(1);这很容易令人困惑。</p>
+<p><strong>小测验</strong>:</p>
+<pre><code>var num1 = new Number(1);
+var num2 = 1;
+console.log(typeof num1);
+console.log(num1 === num2);
+</code></pre><p><strong>结论</strong>：避免使用包装对象，如new Boolean(),new String(),new Number()等</p>
+<h2 id="11、new"><a href="#11、new" class="headerlink" title="11、new"></a>11、new</h2><p>new运算符创建一个继承于其原型的新对象，并将新创建的对象绑定给this。但是，如果忘记使用new，那么就得到一个普通的函数调用，对象属性也会被绑定到全局对象上。这不会导致什么编译警告，也没有运行警告。</p>
+<p>根据惯例，需要用new的函数，以首字母大写命名。这能部分程度上便于我们发现错误。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>function Person(){
+  this.name = &apos;Default&apos;;
+  this.sex = undefiend;
+}
+
+Person();
+new Person();
+
+//更好的实现
+function Person(){
+  if(this === window){
+    return new Person();
+  }
+  this.name = &apos;Default&apos;;
+  this.sex = undefiend;
+}
+</code></pre><p><strong>结论</strong>：合理的避免使用new。另外可以先判断this，再做对应处理。</p>
+<h2 id="12、void"><a href="#12、void" class="headerlink" title="12、void"></a>12、void</h2><p>大部分语言中，void是一种类型，在Js中，void是一种运算符，接收一个运算数，并返回undefined</p>
+<p><strong>小测验</strong>：<br>    void 0<br>    void true</p>
+<p><strong>结论</strong>：有限的使用void</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/JS札记/JavaScript之糟粕/" data-title="JavaScript之糟粕" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/JS札记/JavaScript之糟粕/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、导言很多时候，我们可能会遇到这样一类需求：
+
+浏览器关闭时，弹出一个新页面
+浏览器关闭时，发送统计信息（如页面浏览时长）
+浏览器关闭时，让用户二次确认
+
+这个时候，我们就需要考虑如何判断浏览器关闭，如何阻止浏览器关闭，如何在浏览器关闭时，还是执行特定操作。
+1、浏览器关闭与刷新判断对于关闭与刷新"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>浏览器关闭事件分析 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>浏览器关闭事件分析</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1、浏览器关闭与刷新判断"><span class="toc-number">2.</span> <span class="toc-text">1、浏览器关闭与刷新判断</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、阻止浏览器关闭"><span class="toc-number">3.</span> <span class="toc-text">2、阻止浏览器关闭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、浏览器关闭-刷新时发送统计数据"><span class="toc-number">4.</span> <span class="toc-text">3、浏览器关闭/刷新时发送统计数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、相关资料"><span class="toc-number">5.</span> <span class="toc-text">4、相关资料</span></a></li></ol></div><h1 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h1><p>很多时候，我们可能会遇到这样一类需求：</p>
+<ol>
+<li>浏览器关闭时，弹出一个新页面</li>
+<li>浏览器关闭时，发送统计信息（如页面浏览时长）</li>
+<li>浏览器关闭时，让用户二次确认</li>
+</ol>
+<p>这个时候，我们就需要考虑如何判断浏览器关闭，如何阻止浏览器关闭，如何在浏览器关闭时，还是执行特定操作。</p>
+<h1 id="1、浏览器关闭与刷新判断"><a href="#1、浏览器关闭与刷新判断" class="headerlink" title="1、浏览器关闭与刷新判断"></a>1、浏览器关闭与刷新判断</h1><p>对于关闭与刷新判断，一般有以下几种做法：</p>
+<p>首先基础都是通过监听 <code>onbeforeunload</code>、<code>onunload</code> 等相关事件。</p>
+<p>然后判断刷新与关闭：</p>
+<ol>
+<li>判断鼠标坐标</li>
+<li>判断键盘操作</li>
+<li>判断事件间隔时长</li>
+</ol>
+<p>其中，1和2一般是合起来使用。但也并不保险。关闭和刷新的快捷操作是可以自定义的。而且实现逻辑复杂。</p>
+<p><strong>在这里，我就重点来测试线通过判断事件间隔的方式来处理关闭与刷新的判断。</strong> </p>
+<p>我们编写了如下测试代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onbeforeunload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onbeforeunload'</span>, <span class="built_in">Date</span>.now());</div><div class="line">  <span class="keyword">debugger</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">window</span>.onunload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onunload'</span>, <span class="built_in">Date</span>.now());</div><div class="line">  <span class="keyword">debugger</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>分别在浏览器上刷新和关闭，得到如下结果：</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th style="text-align:center">关闭/刷新</th>
+<th style="text-align:center">onbeforeunload</th>
+<th style="text-align:center">onunload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td style="text-align:center">刷洗</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[]</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>IE11</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>IE11</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+</tbody>
+</table>
+<p>Edge关闭时，unload是否触发，还并不太确定（不太好验证）。</p>
+<p>接下来，我们来验证两个时间的触发时间，测试代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onbeforeunload = <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onbeforeunload'</span>, <span class="built_in">Date</span>.now());</div><div class="line">  <span class="keyword">if</span> (navigator.sendBeacon) &#123;</div><div class="line">    navigator.sendBeacon(<span class="string">'http://localhost:9999/?t=onbeforeunload'</span>, <span class="string">'onbeforeunload'</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">window</span>.start = <span class="built_in">Date</span>.now();</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">window</span>.onunload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onunload'</span>, <span class="built_in">Date</span>.now());</div><div class="line">  <span class="keyword">if</span> (navigator.sendBeacon) &#123;</div><div class="line">    navigator.sendBeacon(<span class="string">`http://localhost:9999/?t=onunload&amp;ts=<span class="subst">$&#123;<span class="built_in">Date</span>.now() - <span class="built_in">window</span>.start&#125;</span>`</span>, <span class="string">'onunload'</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">window</span>.open(<span class="string">'http://10.16.85.170:8000/'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过 <code>navigator.sendBeacon</code> 将间隔时间发送到后台进行查看。遗憾的是，IE和Edge并不支持该方法。</p>
+<p>测试得出如下表格：</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th style="text-align:center">关闭/刷新</th>
+<th style="text-align:center">onbeforeunload</th>
+<th style="text-align:center">onunload</th>
+<th style="text-align:center">时间间隔</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome52</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&lt; 5ms</td>
+</tr>
+<tr>
+<td>Chrome52</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&gt; 20ms</td>
+</tr>
+<tr>
+<td>Firefox46</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&gt; 200ms</td>
+</tr>
+<tr>
+<td>Firefox46</td>
+<td style="text-align:center">刷洗</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">10~100ms</td>
+</tr>
+<tr>
+<td>Edge13</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[]</td>
+<td style="text-align:center">N/A</td>
+</tr>
+<tr>
+<td>Edge13</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&lt; 5ms</td>
+</tr>
+<tr>
+<td>IE11</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&gt; 10ms</td>
+</tr>
+<tr>
+<td>IE11</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&lt; 5ms</td>
+</tr>
+</tbody>
+</table>
+<p>根据这个表格，然后在按照自己的需要，就可以选择一个分割点来判断是刷新还是关闭。</p>
+<p><strong>当前未发现100%能判断清楚的方法，以上请酌情使用。</strong></p>
+<h1 id="2、阻止浏览器关闭"><a href="#2、阻止浏览器关闭" class="headerlink" title="2、阻止浏览器关闭"></a>2、阻止浏览器关闭</h1><p>有一些场景，要求在浏览器关闭的时候，再次弹出一个确认框，那这个又应该如何实现呢？</p>
+<p>关闭时询问，是一个比较标准化的处理了，只需要我们对 <code>unbeforeunload</code> 事件的 <code>event</code> 参数设置返回值，即可达到再次确认的效果。实现代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'beforeunload'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>)</span>&#123;</div><div class="line">  evt.returnValue =  <span class="string">'您确定要离开了么？'</span>;</div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p><strong>注意：火狐为了避免不必要的弹窗，如果页面没有交互，是不会进行二次确认的，通过不会显示returnValue给用户。相关链接： <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/WindowEventHandlers/onbeforeunload" target="_blank" rel="external">https://developer.mozilla.org/zh-TW/docs/Web/API/WindowEventHandlers/onbeforeunload</a></strong></p>
+<h1 id="3、浏览器关闭-刷新时发送统计数据"><a href="#3、浏览器关闭-刷新时发送统计数据" class="headerlink" title="3、浏览器关闭/刷新时发送统计数据"></a>3、浏览器关闭/刷新时发送统计数据</h1><p>很多时候，我们想在浏览器关闭/刷新时发送一些统计数据，之前的话，我们可以采用如下一些做法：</p>
+<ol>
+<li>在 <code>onbeforeunload</code> 中使用同步Ajax</li>
+<li>发送Ajax，然后使用死循环，阻塞一个该事件。</li>
+</ol>
+<p>这个功能作为一个比较大众化的需求，W3C中也有了一个针对性的草案，那就是浏览器对象的 <code>sendBeacon</code> 方法。</p>
+<p>函数签名如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">navigator.sendBeacon(url, data);</div></pre></td></tr></table></figure>
+<p>有了这个方法，我们就可以在合适的地方（诸如onbeforeunload）发送我们的统计数据，日志数据等等。</p>
+<p><strong>注意：该方法还是草案阶段，当前IE和EDGE暂不可用。</strong></p>
+<h1 id="4、相关资料"><a href="#4、相关资料" class="headerlink" title="4、相关资料"></a>4、相关资料</h1><ol>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/WindowEventHandlers/onbeforeunload" target="_blank" rel="external">MDN WindowEventHandlers.onbeforeunload</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon" target="_blank" rel="external">MDN Navigator.sendBeacon()</a></li>
+</ol>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/浏览器关闭事件分析/" data-title="浏览器关闭事件分析" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/浏览器关闭事件分析/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

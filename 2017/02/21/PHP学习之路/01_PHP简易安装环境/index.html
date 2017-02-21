@@ -1,0 +1,92 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、导言PHP 是啥，我想应该不用解释了吧。
+最近发布的最新版本 PHP7 ，提供之前版本的2倍速度提升，感觉很有吸引力哈。在看到2016年编程语言趋势和想到之前也想体验一下 PHP 的情况下，就说干就干，直接来简单学习下这门语言。
+1、PHP简易环境搭建1.1、PHP安装PHP 的安装相当简单，打"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>01_PHP简易安装环境 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>01_PHP简易安装环境</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、PHP简易环境搭建"><span class="toc-number">2.</span> <span class="toc-text">1、PHP简易环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、PHP安装"><span class="toc-number">2.1.</span> <span class="toc-text">1.1、PHP安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2、IDE的选择"><span class="toc-number">2.2.</span> <span class="toc-text">1.2、IDE的选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3、依赖管理工具"><span class="toc-number">2.3.</span> <span class="toc-text">1.3、依赖管理工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4、Server程序"><span class="toc-number">2.4.</span> <span class="toc-text">1.4、Server程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Hello-PHP"><span class="toc-number">3.</span> <span class="toc-text">2、Hello PHP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、Other"><span class="toc-number">4.</span> <span class="toc-text">3、Other</span></a></li></ol></div><h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p><strong>PHP</strong> 是啥，我想应该不用解释了吧。</p>
+<p>最近发布的最新版本 <code>PHP7</code> ，提供之前版本的2倍速度提升，感觉很有吸引力哈。在看到2016年编程语言趋势和想到之前也想体验一下 <code>PHP</code> 的情况下，就说干就干，直接来简单学习下这门语言。</p>
+<h2 id="1、PHP简易环境搭建"><a href="#1、PHP简易环境搭建" class="headerlink" title="1、PHP简易环境搭建"></a>1、PHP简易环境搭建</h2><h3 id="1-1、PHP安装"><a href="#1-1、PHP安装" class="headerlink" title="1.1、PHP安装"></a>1.1、PHP安装</h3><p><code>PHP</code> 的安装相当简单，打开 <code>PHP</code> 的下载地址：<a href="http://php.net/downloads.php" target="_blank" rel="external">http://php.net/downloads.php</a>，可以看到它的版本下载。</p>
+<p>我这里是 Windows 环境，就点击 【Windows downloads】 进入Windows版本的PHP下载地址： <a href="http://windows.php.net/download#php-7.0" target="_blank" rel="external">http://windows.php.net/download#php-7.0</a> 。在这里找到对应的版本下载即可。</p>
+<p><strong>注意：请下载对应x86,x64的zip包，不要下载Debug Pack包。至于Non Thread Safe 与 Thread Safe，由于本人刚接触，不知道有什么区别，随意下载一个就行。</strong> </p>
+<p>我是Win10 x64版本，所以直接下载的：【VC14 x64 Non Thread Safe (2016-May-25 23:02:13)】（有最新版本下载最新版本即可）。</p>
+<p>下载好之后，是一个压缩包。解压到目录中，在环境变量中配置 <code>Path</code> 为该目录。</p>
+<p>打开 <code>cmd</code> 窗口，执行 <code>php -v</code> ，如果输出 <code>PHP</code> 的版本号，则表示安装成功！</p>
+<h3 id="1-2、IDE的选择"><a href="#1-2、IDE的选择" class="headerlink" title="1.2、IDE的选择"></a>1.2、IDE的选择</h3><p>PHP有比较多IDE，这里推荐 <a href="https://www.jetbrains.com/phpstorm/" target="_blank" rel="external">PhpStorm</a> 和 <a href="https://code.visualstudio.com/" target="_blank" rel="external">VsCode</a>。</p>
+<p>本人使用的 <code>VsCode</code>，足够轻量。</p>
+<h3 id="1-3、依赖管理工具"><a href="#1-3、依赖管理工具" class="headerlink" title="1.3、依赖管理工具"></a>1.3、依赖管理工具</h3><p>一个成熟的语言，一定会有很多现成的包，如C#的Nuget，Node的npm。在PHP中，也有同样的工具：Composer。</p>
+<p><em>如何在Windows下使用：Composer？</em></p>
+<p>首先，进入Composer下载地址：<a href="https://getcomposer.org/download/" target="_blank" rel="external">https://getcomposer.org/download/</a>，找到【Composer-Setup.exe】，然后下载安装。</p>
+<p>安装成功之后在控制台执行：<code>composer</code> 会输出一系列命令，则证明安装成功。</p>
+<p>然后就可以通过 <code>composer install &lt;package&gt;</code> 来安装依赖包了。 想了解更多 <code>composer</code> 命令，请查询：<a href="https://getcomposer.org/doc/" target="_blank" rel="external">https://getcomposer.org/doc/</a>。</p>
+<p><strong>注意，我在Windows中使用composer安装时，先使用了 <code>composer config disable-tls true</code> 和 <code>composer config secure-http false</code> 才得以成功安装依赖。</strong></p>
+<h3 id="1-4、Server程序"><a href="#1-4、Server程序" class="headerlink" title="1.4、Server程序"></a>1.4、Server程序</h3><p>PHP自带有一个命令行的Server，用于开发测试已经足够使用了。所以，我直接使用了该Server。</p>
+<p>只需要在php项目的根目录，打开cmd，执行 <code>php -S localhost:9999</code> 就可以启动一个PHP Server了。</p>
+<p>想了解更多关于PHP自带的Web Server，请参考 <a href="http://php.net/features.commandline.webserver" target="_blank" rel="external">http://php.net/features.commandline.webserver</a></p>
+<h2 id="2、Hello-PHP"><a href="#2、Hello-PHP" class="headerlink" title="2、Hello PHP"></a>2、Hello PHP</h2><p>新建一个目录，创建 <code>index.php</code>，输入以下内容：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">  mb_internal_encoding(<span class="string">'UTF-8'</span>);</div><div class="line"></div><div class="line">  mb_http_output(<span class="string">'UTF-8'</span>);</div><div class="line"><span class="meta">?&gt;</span></div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;Php Info&lt;/title&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    <span class="meta">&lt;?php</span></div><div class="line">      phpinfo();</div><div class="line">    <span class="meta">?&gt;</span></div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>打开控制台，使用 <code>php -S localhost:9999</code> 启动WebServer。</p>
+<p>用浏览器访问 <a href="http://localhost:9999" target="_blank" rel="external">http://localhost:9999</a>，就可以看到当前服务器的PHP环境信息了。</p>
+<h2 id="3、Other"><a href="#3、Other" class="headerlink" title="3、Other"></a>3、Other</h2><p>3.1、推荐资料： <a href="http://laravel-china.github.io/php-the-right-way/" target="_blank" rel="external">PHP之道</a></p>
+<p>3.2、PHP的编码问题，一般在php的页面上，我们都需要设置：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">  mb_internal_encoding(<span class="string">'UTF-8'</span>); <span class="comment">//内部编码为UTF-8</span></div><div class="line"></div><div class="line">  mb_http_output(<span class="string">'UTF-8'</span>); <span class="comment">//服务器输出内容编码为UTF-8</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>要想用Server运行含有该代码的PHP页面。需要特别配置一下 <code>php.ini</code> 文件。</p>
+<p>在PHP的解压目录，找到 <code>php.ini-development</code>，复制一份为 <code>php.ini</code>，然后找到 <code>extension_dir</code>，设置为：<code>extension_dir = &quot;你的PHP解压目录\ext&quot;</code>，然后找到 <code>;extension=php_mbstring.dll</code> 去掉前面的注释。</p>
+<p>3.3、PHP框架推荐</p>
+<ul>
+<li>Yaf 官方框架，超高性能</li>
+</ul>
+<p><a href="http://www.laruence.com/manual/index.html" target="_blank" rel="external">http://www.laruence.com/manual/index.html</a></p>
+<p><a href="http://php.net/manual/zh/yaf.installation.php" target="_blank" rel="external">http://php.net/manual/zh/yaf.installation.php</a></p>
+<ul>
+<li>LazyPHP 超级简单的框架，建议读源码</li>
+</ul>
+<p><a href="https://github.com/easychen/LazyPHP" target="_blank" rel="external">https://github.com/easychen/LazyPHP</a></p>
+<ul>
+<li>Slim 据说还不错</li>
+</ul>
+<p><a href="http://www.slimframework.com/" target="_blank" rel="external">http://www.slimframework.com/</a></p>
+<ul>
+<li>Laravel 高人气框架</li>
+</ul>
+<p><a href="https://laravel.com/" target="_blank" rel="external">https://laravel.com/</a></p>
+<p><a href="https://lumen.laravel.com/" target="_blank" rel="external">https://lumen.laravel.com/</a>  专注API开发的PHP。</p>
+<ul>
+<li>ThinkPHP 中文</li>
+</ul>
+<p><a href="http://www.thinkphp.cn/" target="_blank" rel="external">http://www.thinkphp.cn/</a></p>
+<ul>
+<li>InitPHP (A PHP Framework) - (from github)</li>
+</ul>
+<p><a href="http://www.initphp.com/" target="_blank" rel="external">http://www.initphp.com/</a></p>
+<ul>
+<li>TinyMVC (from github)</li>
+</ul>
+<p><a href="https://github.com/mohrt/tinymvc-php" target="_blank" rel="external">https://github.com/mohrt/tinymvc-php</a></p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/PHP学习之路/01_PHP简易安装环境/" data-title="01_PHP简易安装环境" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/PHP学习之路/01_PHP简易安装环境/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

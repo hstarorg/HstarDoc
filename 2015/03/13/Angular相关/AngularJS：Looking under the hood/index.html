@@ -1,0 +1,166 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="原文地址：https://www.binpress.com/tutorial/angular-js-looking-under-the-hood/153
+用AngularJS写得越多，你就越惊叹于它的神奇。我对Angular能做的一些奇妙的事情非常好奇，然后我决定分析它的源代码，看看我能否揭示它的一"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AngularJS：Looking under the hood · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>AngularJS：Looking under the hood</h1><span class="post-meta">写于<time> 2015 年 03 月 13 日 11 时 24 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 16 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、Dependency-Injection-annotation-process"><span class="toc-number">1.</span> <span class="toc-text">1、Dependency Injection annotation process</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法参数"><span class="toc-number">1.1.</span> <span class="toc-text">方法参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inject-对象"><span class="toc-number">1.2.</span> <span class="toc-text">$inject 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-Arguments"><span class="toc-number">1.3.</span> <span class="toc-text">Array Arguments</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Factory-vs-Service"><span class="toc-number">2.</span> <span class="toc-text">2、Factory vs Service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、New-scope-creation-from-rootScope"><span class="toc-number">3.</span> <span class="toc-text">3、New $scope creation from $rootScope</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、Digest-Cycle"><span class="toc-number">4.</span> <span class="toc-text">4、Digest Cycle</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#未完…待续…"><span class="toc-number">4.1.</span> <span class="toc-text">未完…待续…</span></a></li></ol></li></ol></div><p>原文地址：<a href="https://www.binpress.com/tutorial/angular-js-looking-under-the-hood/153" target="_blank" rel="external">https://www.binpress.com/tutorial/angular-js-looking-under-the-hood/153</a></p>
+<p><strong>用AngularJS写得越多，你就越惊叹于它的神奇。我对Angular能做的一些奇妙的事情非常好奇，然后我决定分析它的源代码，看看我能否揭示它的一些秘密。我记录了我在23000多行Angular源码中发现的真正有用的，能够解释Angular先进（和隐藏）的方面的一些内容。</strong></p>
+<h2 id="1、Dependency-Injection-annotation-process"><a href="#1、Dependency-Injection-annotation-process" class="headerlink" title="1、Dependency Injection annotation process"></a>1、Dependency Injection annotation process</h2><p>依赖注入（DI）是除开用代码获取或创建依赖之外的一条不同的请求依赖的方式。简单的说，依赖是作为一个注入对象传递给我们的。Angular允许我们在我们的应用程序中通过像Controllers和Directives的方法来使用DI。我们能创建自己的依赖，同时允许Angular在请求它们的时候被注入。</p>
+<p>在Angular中，一个最常用的被请求的依赖是 <em>$scope</em>。例如：</p>
+<pre><code>function MainCtrl ($scope){
+    //access to $scope
+}
+angular.module(&apos;app&apos;).controller(&apos;MainCtrl&apos;, MainCtrl);
+</code></pre><p>对于没有使用过Angular提供的依赖注入的JavaScript开发者来说，这看起来像一个局部变量名。实际上，它仅仅是我们所请求的依赖名称的一个占位符。Angular查找这些占位符，然后通过DI将它们转换为真正的依赖对象，让我们来仔细看看。</p>
+<h3 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h3><p>直到我们压缩我们的应用前，方法参数都运行正常。当你压缩你的代码，你的方法定义将会用字符表示参数而不是单词-这意味着Angular不能找到你想要的！Angular使用了一个方式来解决，调用function的 <em>toString()</em> 方法。这将返回函数的字符串形式！接下来我们就能访问正在被请求的参数。Angular</p>
+<pre><code>var FN_ARGS = /^function\s*[^\(]*\(\s*([^\)]*)\)/m;
+var FN_ARG_SPLIT = /,/;
+var FN_ARG = /^\s*(_?)(\S+?)\1\s*$/;
+var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
+</code></pre><p>Angular做的第一件事就是将函数转换为字符串，这是JavaScript中非常有用的一个特性。这将给我们一个字符串类型的函数，如：</p>
+<pre><code>&apos;function MainCtrl ($scope) {...}&apos;
+</code></pre><p>接下来，Angular使用如下方法，移除所有的注释：</p>
+<pre><code>fnText = fn.toString().replace(STRIP_COMMENTS, &apos;&apos;);
+</code></pre><p>紧接着，Angular从处理好的function中分割参数来创建真正有用的部分，</p>
+<pre><code>argDecl = fnText.match(FN_ARGS);
+</code></pre><p>Angular接下来使用 <em>.split()</em> 来移除空白字符，同时返回我们请求的参数数组。为了更完美，Angular使用了一个内部的forEach方法来迭代这个数组，并匹配参数名称然后将它们添加到 <em>$inject</em> 数组中。</p>
+<pre><code>forEach(argDecl[1].split(FN_ARG_SPLIT), function(arg) {
+  arg.replace(FN_ARG, function(all, underscore, name) {
+    $inject.push(name);
+  });
+});
+</code></pre><p>这是你能想象的一个昂贵的处理流程。对每个函数的4个正则查找和一很多转换会造成性能损耗。当我们得到了Angular抽象的 <em>$inject</em> 数组，我们可以直接切入且田填充 <em>$inject</em> 数组来保存Angular困难和开销时间长的操作。</p>
+<h3 id="inject-对象"><a href="#inject-对象" class="headerlink" title="$inject 对象"></a>$inject 对象</h3><p>我们可以通过在函数上添加 <em>$inject</em>属性来指定依赖自身，其中，如果存在的话，Angular使用DI注解。这是很容易的最可读的语法。例子如下：</p>
+<pre><code>function SomeCtrl ($scope) {
+}
+SomeCtrl.$inject = [&apos;$scope&apos;];
+angular.module(&apos;app&apos;, [])
+    .controller(&apos;SomeCtrl&apos;, [&apos;$scope&apos;, SomeCtrl]);
+</code></pre><p>这样节省了Angular的许多工作-替代了检查方法参数，或者是操纵数组（详情请查看下一章节：Array Arguments）,它仅仅返回和运行指定的 <em>$inject</em> 数组。简单，高性能。</p>
+<p>理想情况下，由于依赖注入在我们自己的时间和Angular的转换时间上开销很大，我们可以使用任务运行工具如Grunt.js或者是Gulp.js 来自动化注入任务或者是数组语法。</p>
+<p><strong>Note：这个并没有实例化被依赖的所有服务，Angular所做的只是标注相关的名字-框架的其他部分关心对象注入。</strong></p>
+<h3 id="Array-Arguments"><a href="#Array-Arguments" class="headerlink" title="Array Arguments"></a>Array Arguments</h3><p>最后一个例子使用了我们通常看见的数组索引对应函数参数序号的语法，例如：</p>
+<pre><code>[&apos;$scope&apos;, function($scope){}]
+</code></pre><p>数组的顺序是非常重要的，因为函数的参数将会按照同样的顺序，以此来避免依赖被错误的实例化和可能引发的错误。</p>
+<pre><code>function SomeCtrl ($scope, $rootScope) {    
+}    
+angular.module(&apos;app&apos;, [])
+    .controller(&apos;SomeCtrl&apos;, [&apos;$scope&apos;, ‘$rootScope’, SomeCtrl]);
+</code></pre><p>我们需要做的是传递函数作为数组的最后一个项，Angular会删除这个函数，并遍历数组所注明的依赖名称，就好像我们创建的 <em>$inject</em> 属性。当Angular解析一个方法的时候，它会检查参数是不是一个数组，如果是，那么最后一项是函数，其他的则是依赖。</p>
+<pre><code>else if (isArray(fn)) {
+  last = fn.length - 1;
+  assertArgFn(fn[last], &apos;fn&apos;);
+  $inject = fn.slice(0, last);
+}
+</code></pre><h2 id="2、Factory-vs-Service"><a href="#2、Factory-vs-Service" class="headerlink" title="2、Factory vs Service"></a>2、Factory vs Service</h2><p>Factory 和 Service 非常类似，但往往开发人员都难以理解它们。</p>
+<p>当 <em>.service()</em> 已经实例化，那么 <em>new Service()</em> 将被引擎调用，返回一个新实例给我们。本质上，<em>。.service()</em> 是作为构造函数被使用的。</p>
+<p>service 基本上是一个 factory，然而它是创建时被实例化，因为，你需要在 service 中使用this来注册变量和函数，来替代在factory中返回一个对象的方式。</p>
+<p>factory 是非常接近面向对象中的“工厂模式”，当你注入了这个 factory ,你就获得了完整的方法，允许你创建你需要的新的实例-本质上是通过一个对象创建多个新对象。</p>
+<p>你可以看下在Angular源码中的内部的工作：</p>
+<pre><code>function factory(name, factoryFn) { 
+    return provider(name, { $get: factoryFn }); 
+}
+function service(name, constructor) {
+    return factory(name, [&apos;$injector&apos;, function($injector) {
+        return $injector.instantiate(constructor);
+    }]);
+}
+</code></pre><h2 id="3、New-scope-creation-from-rootScope"><a href="#3、New-scope-creation-from-rootScope" class="headerlink" title="3、New $scope creation from $rootScope"></a>3、New $scope creation from $rootScope</h2><p>Angular中所有的scope都是 <em>$rootScope</em> 的下级。 <em>$rootScope</em> 是通过 <em>new Scope()</em>创建的，进一步的子 scope 是通过 <em>$scope.$new()</em> 创建的。</p>
+<pre><code>var $rootScope = new Scope();
+</code></pre><p>在 <em>$new</em> 方法里面，Angular设置了一个原型链来允许允许 scope 引用它们的父亲，它们的自己跟踪（作为生命周期），和以前的兄弟 scope 。</p>
+<p>从下面的代码，如果你请求了一个隔离的 scope ，它会创建一个 <em>new Scope()</em> ,否则，它会创建一个从父级继承的子 scope 。</p>
+<p>我省略了一些不必要的代码，但这里的是重点：</p>
+<pre><code>$new: function(isolate) {
+    var child;
+
+    if (isolate) {
+      child = new Scope();
+      child.$root = this.$root;
+    } else {
+      // Only create a child scope class if somebody asks for one,
+      // but cache it to allow the VM to optimize lookups.
+      if (!this.$$ChildScope) {
+        this.$$ChildScope = function ChildScope() {
+          this.$$watchers = null;
+        };
+        this.$$ChildScope.prototype = this;
+      }
+      child = new this.$$ChildScope();
+    }
+    child[&apos;this&apos;] = child;
+    child.$parent = this;
+    return child;
+  }
+</code></pre><p>当你使用<em>$scope.$new()</em>来测试Controller的时候，这也是非常好的能了解测试目的。这有助于明确对我来说Angular是如何创建新的scope的，为什么用Angular mocks 模块来嘲笑测试驱动开发（TDD）。</p>
+<h2 id="4、Digest-Cycle"><a href="#4、Digest-Cycle" class="headerlink" title="4、Digest Cycle"></a>4、Digest Cycle</h2><p>Digest Cycle 经常作为 <em>$digest</em> 被我们看到，这是Angular双向绑定的能力。当一个模型值更新的时候，它会运行，检查它最后已知的值，如果值有变化，呼叫适当的监听器。这是基本的脏检查 - 它针对所有有可能的值来检查，如果是脏值，那么呼叫相关的监听器，直到他没有脏值。我们快速看一下它是如何工作的：</p>
+<pre><code>$scope.name = &apos;Todd&apos;;
+
+$scope.$watch(function() {
+    return $scope.name;
+}, function (newValue, oldValue) {
+    console.log(&apos;$scope.name was updated!&apos;);
+} );
+</code></pre><p>当你调用 <em>$scope.$watch</em>，你注册了两件事。参数一是一个函数，返回你想要监视的值（当你提供一个字符串的时候，Angualr会将他转换为函数）。当 $digest 运行时，监视的参数将被调用，返回任何你想要的值。参数二是当你的参数一变化时，想要执行的函数。看一下Angular是怎样注册watch的。</p>
+<pre><code>$watch: function(watchExp, listener, objectEquality) {
+    var get = $parse(watchExp);
+
+    if (get.$$watchDelegate) {
+      return get.$$watchDelegate(this, listener, objectEquality, get);
+    }
+    var scope = this,
+        array = scope.$$watchers,
+        watcher = {
+          fn: listener,
+          last: initWatchVal,
+          get: get,
+          exp: watchExp,
+          eq: !!objectEquality
+        };
+
+    lastDirtyWatch = null;
+
+    if (!isFunction(listener)) {
+      watcher.fn = noop;
+    }
+
+    if (!array) {
+      array = scope.$$watchers = [];
+    }
+    // we use unshift since we use a while loop in $digest for speed.
+    // the while loop reads in reverse order.
+    array.unshift(watcher);
+
+    return function deregisterWatch() {
+      arrayRemove(array, watcher);
+      lastDirtyWatch = null;
+    };
+ }
+</code></pre><p>这个函数推送你提供的参数到 scope 的 <em>$$watchers</em> 数组中，同时，返回一个方法允许你停止watch。</p>
+<p>然后，每当<em>$scope.$apply</em>或者<em>$scope.$digest</em> 运行时，digest cycle将被运行。</p>
+<h3 id="未完…待续…"><a href="#未完…待续…" class="headerlink" title="未完…待续…"></a>未完…待续…</h3><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2015/03/13/Angular相关/AngularJS：Looking under the hood/" data-title="AngularJS：Looking under the hood" data-url="http://hstarorg.github.io/blog/blog/2015/03/13/Angular相关/AngularJS：Looking under the hood/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

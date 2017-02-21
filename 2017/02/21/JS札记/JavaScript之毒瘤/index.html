@@ -1,0 +1,49 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、导言JavaScript中有许多难以避免的问题特性。接下来就一一揭示。
+1、全局变量在所有JavaScript的糟糕特性中，最为糟糕的就是全局变量的依赖。全局变量使得在同一个程序中运行独立的子程序变得更难。
+2、作用域JavaScript是类C的语法，但是却没有提供类C的块级作用域。
+3、自动插"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript之毒瘤 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>JavaScript之毒瘤</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、全局变量"><span class="toc-number">2.</span> <span class="toc-text">1、全局变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、作用域"><span class="toc-number">3.</span> <span class="toc-text">2、作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、自动插入分号"><span class="toc-number">4.</span> <span class="toc-text">3、自动插入分号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、保留字"><span class="toc-number">5.</span> <span class="toc-text">4、保留字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、Unicode字符"><span class="toc-number">6.</span> <span class="toc-text">5、Unicode字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、typeof"><span class="toc-number">7.</span> <span class="toc-text">6、typeof</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、parseInt"><span class="toc-number">8.</span> <span class="toc-text">7、parseInt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、运算符（-）"><span class="toc-number">9.</span> <span class="toc-text">8、运算符（+）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9、-浮点数"><span class="toc-number">10.</span> <span class="toc-text">9、 浮点数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10、NaN"><span class="toc-number">11.</span> <span class="toc-text">10、NaN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11、伪数组"><span class="toc-number">12.</span> <span class="toc-text">11、伪数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12、假值"><span class="toc-number">13.</span> <span class="toc-text">12、假值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13、hasOwnProperty"><span class="toc-number">14.</span> <span class="toc-text">13、hasOwnProperty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14、对象"><span class="toc-number">15.</span> <span class="toc-text">14、对象</span></a></li></ol></div><h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>JavaScript中有许多难以避免的问题特性。接下来就一一揭示。</p>
+<h2 id="1、全局变量"><a href="#1、全局变量" class="headerlink" title="1、全局变量"></a>1、全局变量</h2><p>在所有JavaScript的糟糕特性中，最为糟糕的就是全局变量的依赖。全局变量使得在同一个程序中运行独立的子程序变得更难。</p>
+<h2 id="2、作用域"><a href="#2、作用域" class="headerlink" title="2、作用域"></a>2、作用域</h2><p>JavaScript是类C的语法，但是却没有提供类C的块级作用域。</p>
+<h2 id="3、自动插入分号"><a href="#3、自动插入分号" class="headerlink" title="3、自动插入分号"></a>3、自动插入分号</h2><p>JavaScript有一个自动修复机制，会试图通过自动插入分号来修正有缺损的程序，但是它有可能掩盖更为严重的错误。</p>
+<h2 id="4、保留字"><a href="#4、保留字" class="headerlink" title="4、保留字"></a>4、保留字</h2><p>有太多的单词在JavaScript中被保留，它们不能用来命名变量或者函数（在大部分执行环境下，部分关键字是可用的）。</p>
+<h2 id="5、Unicode字符"><a href="#5、Unicode字符" class="headerlink" title="5、Unicode字符"></a>5、Unicode字符</h2><p>JavaScript设计之初，Unicode预计只会有65536个字符。实际上，到现在Unicode有多大百万个字符。这也就导致了JavaScript会认为一对字符是两个不同的字符（Unicode把一对字符视为一个单一的字符）</p>
+<h2 id="6、typeof"><a href="#6、typeof" class="headerlink" title="6、typeof"></a>6、typeof</h2><p>不要指望typeof返回的类型。比如null或者是检测对象，另外检测正则可能会返回function或者是object。</p>
+<h2 id="7、parseInt"><a href="#7、parseInt" class="headerlink" title="7、parseInt"></a>7、parseInt</h2><p>parseInt把一个字符串转换为整数，会在遇到非数字时停止解析。另外如果第一个字符是0，还会按照8进制来取值。</p>
+<h2 id="8、运算符（-）"><a href="#8、运算符（-）" class="headerlink" title="8、运算符（+）"></a>8、运算符（+）</h2><p>+运算符可以用于加法运算或者是字符串连接，究竟如何执行会取决于其参数类型。</p>
+<h2 id="9、-浮点数"><a href="#9、-浮点数" class="headerlink" title="9、 浮点数"></a>9、 浮点数</h2><p>二进制浮点数不能正确的处理十进制小数，因此0.1+0.2 不等于0.3。</p>
+<h2 id="10、NaN"><a href="#10、NaN" class="headerlink" title="10、NaN"></a>10、NaN</h2><p>NaN是一个特殊的数量值，它表示不是一个数字。也是唯一一个不等于自身的JavaScript数值。</p>
+<h2 id="11、伪数组"><a href="#11、伪数组" class="headerlink" title="11、伪数组"></a>11、伪数组</h2><p>JavaScript没有真正的数组，就连Array也是通过object来模拟的，如果完全达不到真正的数组的地步。同时typeof运算符也不能辨别数组和对象。</p>
+<h2 id="12、假值"><a href="#12、假值" class="headerlink" title="12、假值"></a>12、假值</h2><p>JavaScript中包含诸多的假值，如: 0, NaN, ‘’, false, null, undefined</p>
+<h2 id="13、hasOwnProperty"><a href="#13、hasOwnProperty" class="headerlink" title="13、hasOwnProperty"></a>13、hasOwnProperty</h2><p>hasOwnProperty方法被用做一个过滤器来避开for..in语句的隐患，但hasOwnProperty是一个普通的方法，所以是可以被重写的。</p>
+<h2 id="14、对象"><a href="#14、对象" class="headerlink" title="14、对象"></a>14、对象</h2><p>JavaScript的对象，永远不会是真的空对象，因为可以从原形链取得成员属性。</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/JS札记/JavaScript之毒瘤/" data-title="JavaScript之毒瘤" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/JS札记/JavaScript之毒瘤/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

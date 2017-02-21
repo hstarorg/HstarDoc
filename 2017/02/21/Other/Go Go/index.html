@@ -1,0 +1,69 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="题记
+学习是进步的源泉
+
+在这个云计算、多核盛行的时代，学习一门与之相配合的语言也就无可厚非了。那么对多核与并行计算原生支持的Go就是我的选择了…
+关于GO的好坏，我不会去深究，在每个人眼中，这都是主观的。喜欢就会觉得好，不喜欢好也是坏。当然，它本身的优势与劣势是值得我们关注了，这决定了它的适用性。"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Go Go · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>Go Go</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题记"><span class="toc-number">1.</span> <span class="toc-text">题记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1、准备工作"><span class="toc-number">2.</span> <span class="toc-text">1、准备工作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、搭建环境"><span class="toc-number">3.</span> <span class="toc-text">2、搭建环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、永远的经典：Hello-World"><span class="toc-number">4.</span> <span class="toc-text">3、永远的经典：Hello World</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#或许你还有疑问"><span class="toc-number">4.1.</span> <span class="toc-text">或许你还有疑问</span></a></li></ol></li></ol></div><h1 id="题记"><a href="#题记" class="headerlink" title="题记"></a>题记</h1><blockquote>
+<p>学习是进步的源泉</p>
+</blockquote>
+<p>在这个云计算、多核盛行的时代，学习一门与之相配合的语言也就无可厚非了。那么对多核与并行计算原生支持的Go就是我的选择了…</p>
+<p>关于GO的好坏，我不会去深究，在每个人眼中，这都是主观的。喜欢就会觉得好，不喜欢好也是坏。当然，它本身的优势与劣势是值得我们关注了，这决定了它的适用性。</p>
+<p>工欲善其事必先利其器，本人学习一门语言之前，喜欢先寻找趁手的兵器。搜索之，继而找到了LiteIDE。由于偏爱集成开发环境，那么Sublime也就不是我的首选了。</p>
+<p>以上全是废话，下面开始搭建开发环境。</p>
+<h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><ol>
+<li>PC + Windows操作系统（我承认我只会玩Windows…）</li>
+<li>你得下载Go语言：<a href="https://golang.org/" target="_blank" rel="external">https://golang.org/</a> BTW：我下载的文件名是：go1.4.1.windows-amd64.msi</li>
+<li>LiteIDE：<a href="https://github.com/visualfc/liteide" target="_blank" rel="external">https://github.com/visualfc/liteide</a></li>
+</ol>
+<h1 id="2、搭建环境"><a href="#2、搭建环境" class="headerlink" title="2、搭建环境"></a>2、搭建环境</h1><p><span style="font-size:25px;font-weight:bold;">首</span>先，你需要安装Go语言。什么？你不会？双击msi(或者exe)，Next到手软就可以了。当然，最后应该是Finish。经过这个步骤，go就安装上了，什么环境变量啥的都给你配置好了。当然，安装成功不成功不是你说了算，那么打开cmd，输入一个go试试？如果报错，那么狠抱歉，请重试该步骤，或者检查环境变量。如果提示Go is a tool for managing Go source code ,那么恭喜你，安装已成功！</p>
+<p><span style="font-size:25px;font-weight:bold;">接</span>下面，安装LiteIDE，这货的下载地址在<a href="http://sourceforge.net/projects/liteide/files" target="_blank" rel="external">http://sourceforge.net/projects/liteide/files</a>，如果你爱折腾，那么直接下载源码编译也是OK的，请参考<a href="https://github.com/visualfc/liteide/blob/master/liteidex/deploy/welcome/en/install.md" target="_blank" rel="external">https://github.com/visualfc/liteide/blob/master/liteidex/deploy/welcome/en/install.md</a>。此处熊出没！liteide下载下来可不是exe或者msi文件哦。我下载的文件名是：liteidex27-1.windows.7z。既然这样，那么解压缩，找个地儿一扔就搞定，是不是更简单？</p>
+<h1 id="3、永远的经典：Hello-World"><a href="#3、永远的经典：Hello-World" class="headerlink" title="3、永远的经典：Hello World"></a>3、永远的经典：Hello World</h1><p>既然到了这里，想必以上两个小玩意已经安装好了。那么就应该开始写代码。据说程序员爱代码不爱妹子，这是真的么？</p>
+<p>找到liteIDE的安装目录，进行/bin目录，双击“liteide.exe”（PS：一看到这个丑丑的太极图标，我就在想，这货应该是一个国人开发的吧，呵呵，果真是！）。和一般IDE无异，File-&gt;New-&gt;Go1 Command Project(Not Use GOPATH)，当然其他也是可以选的，惊喜在等着你。输入必要的信息，那么一个项目就创建好了。</p>
+<p>打开main.go文件，输入代码（这段代码我是借鉴的，肯定不是copy的）：</p>
+<pre><code>// demo1 project main.go
+package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func main() {
+    fmt.Println(&quot;Hello World!&quot;)
+}
+</code></pre><p>然后点击工具栏上的FR(File Run),这坑爹的按钮，简直反人类。。我点了N次Go按钮之后，才发现这货才是运行。。在右下方区域就能看到输出了。。Hello World~</p>
+<p><strong>后记：</strong> 至此，一个简单的Go开发环境已经搭建好了。</p>
+<h2 id="或许你还有疑问"><a href="#或许你还有疑问" class="headerlink" title="或许你还有疑问"></a>或许你还有疑问</h2><ol>
+<li>如果生成可执行文件呢？ <strong>可以利用LiteIDE的Build按钮，或者是控制台命令 <code>go build</code></strong></li>
+<li>如果我是64位系统，如何生成32位可执行程序呢？ <strong>我也不知道，只能给你关键字“交叉编译”</strong></li>
+<li>更多，就留给你慢慢发掘吧。Over！</li>
+</ol>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/Other/Go Go/" data-title="Go Go" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/Other/Go Go/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

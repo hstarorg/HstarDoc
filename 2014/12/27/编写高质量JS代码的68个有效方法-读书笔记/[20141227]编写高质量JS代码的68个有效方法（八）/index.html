@@ -1,0 +1,209 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="##NO.36、只将实例状态存储在实例对象中Tips：
+
+共享可变数据可能会出问题，因为原型是被其所有的实例共享的
+将可变的实例存储在实例对象中
+
+一般来说，由于原型属性指向的对象是所有实例共享的。所以不建议在原型指向的对象中存储共享数据。下面给一个简单的例子：
+var Person = funct"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>编写高质量JS代码的68个有效方法（八） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>编写高质量JS代码的68个有效方法（八）</h1><span class="post-meta">写于<time> 2014 年 12 月 27 日 00 时 00 分</time><br>更新于<time> 2017 年 02 月 21 日 13 时 59 分</time></span><div class="article-toc"><strong>大纲</strong></div><p>##NO.36、只将实例状态存储在实例对象中<br><strong>Tips：</strong></p>
+<ol>
+<li>共享可变数据可能会出问题，因为原型是被其所有的实例共享的</li>
+<li>将可变的实例存储在实例对象中</li>
+</ol>
+<p>一般来说，由于原型属性指向的对象是所有实例共享的。所以不建议在原型指向的对象中存储共享数据。下面给一个简单的例子：</p>
+<pre><code>var Person = function(name){
+    this.name = name;
+};
+Person.prototype = {
+    children: [],
+    addChild: function(childName){
+        this.children.push(childName);
+    },
+    getChildren: function(){
+        return this.children;
+    }
+};
+
+var p1 = new Person(&apos;P1&apos;);
+var p2 = new Person(&apos;P2&apos;);
+p2.addChild(&apos;P2_C1&apos;);
+console.log(p1.getChildren());
+</code></pre><p>结果比较明显。p2的孩子成p1的了。标准做法是将children存储在实例对象中。</p>
+<pre><code>var Person = function(name){
+    this.name = name;
+    this.children = [];
+};
+Person.prototype = {
+    addChild: function(childName){
+        this.children.push(childName);
+    },
+    getChildren: function(){
+        return this.children;
+    }
+};
+</code></pre><p>##No.37、认识到this变量的隐式绑定问题<br><strong>Tips：</strong></p>
+<ol>
+<li>this变量的作用域总是有其最近的封闭函数所确定</li>
+<li>使用一个局部变量（通常命名为self,me,that）使得this的绑定对于内部函数是可用的。</li>
+</ol>
+<p>老规矩，看一个简单的示例：</p>
+<pre><code>var testObj = {
+    a1: 0,
+    fun1: function(){
+        function fun2(){
+            console.log(this.a1);
+        }
+        fun2();
+    }
+};
+testObj.fun1();
+</code></pre><p>为什么会这样呢？因为this变量是以不同的方式被绑定的。每个函数都有一个this变量的隐式绑定。this变量是隐式的绑定到最近的封闭函数。针对以上的问题，可以有集中方法来处理，参考如下：</p>
+<pre><code>//通过将this用变量self保存的方式实现
+var testObj = {
+    a1: 0,
+    fun1: function(){
+        var self = this;
+        function fun2(){
+            console.log(self.a1);
+        }
+        fun2();
+    }
+};
+testObj.fun1();
+
+//通过call方法指定接收者（也可以用apply）
+var testObj = {
+    a1: 0,
+    fun1: function(){
+        function fun2(){
+            console.log(this.a1);
+        }
+        fun2.call(this);
+    }
+};
+testObj.fun1();
+
+//通过bind来实现
+var testObj = {
+    a1: 1,
+    fun1: function(){
+        function fun2(){
+            console.log(this.a1);
+        }
+        fun2.bind(this)();
+    }
+};
+testObj.fun1();
+</code></pre><p>##No.38、在子类的构造函数中调用父类的构造函数<br><strong>Tips：</strong></p>
+<ol>
+<li>在子类构造函数中显式地传入this作为显式的接收者调用父类的构造函数</li>
+<li>使用Object.create函数来构造子类的原型对象以避免调用父类的构造</li>
+</ol>
+<p>JS中实现的继承：</p>
+<pre><code>var Animal = function(){
+    this.weight = 50;
+};
+Animal.prototype.eat = function(){
+    console.log(&apos;eat food...&apos;);
+};
+
+var Dog = function(){
+    Animal.call(this);
+    Dog.prototype = Object.create(Animal.prototype);
+};
+
+var dog = new Dog();
+console.log(dog.weight);
+</code></pre><p>##No.39、不要重用父类的属性名<br><strong>Tips：</strong></p>
+<ol>
+<li>留意父类使用的所有属性名</li>
+<li>不要再子类中重用父类的属性名</li>
+</ol>
+<p>由于JS中，属性都是key-value存储，那么同名的属性指向同样的地址，所以以下代码：</p>
+<pre><code>var Animal = function(){
+    this.weight = 50;
+    this.id = ++Animal.nextId;
+};
+Animal.nextId = 0;
+Animal.prototype.eat = function(){
+    console.log(&apos;eat food...&apos;);
+};
+
+var Dog = function(){
+    Animal.call(this);
+    this.id = ++ Dog.nextId;
+    Dog.prototype = Object.create(Animal.prototype);
+};
+Dog.nextId = 0;
+
+var dog = new Dog();
+console.log(dog.id);
+</code></pre><p>两个类都试图给实例属性id写数据。</p>
+<p>##No.40、避免继承标准类<br><strong>Tips：</strong></p>
+<ol>
+<li>继承标准类往往会由于一些特殊的内部属性（如[[Class]]）而被破坏</li>
+<li>使用属性委托优于继承标准类</li>
+</ol>
+<p>扩展标注库使得其功能更强大是很有诱惑力的，但不幸的是它们的定义具有很多特殊的行为，所以很难写出正确的子类。</p>
+<pre><code>var ArrayEx = function(){
+    for(var i = 0, len = arguments.length; i&lt;len ; i++){
+        this[i] = arguments[i];
+    }
+};
+ArrayEx.prototype = Object.create(Array.prototype);
+
+var ar = new ArrayEx(&apos;1&apos;, &apos;2&apos;);
+console.log(ar.length) //猜猜结果是什么？
+</code></pre><p>原因分析：length属性只对在内部标记为“真正的”数组对象才起作用。直接继承的对象并没有继承<br>Array的标记标签属性[[Class]]。测试如下：</p>
+<pre><code>var ar = new ArrayEx(&apos;1&apos;, &apos;2&apos;);
+console.log(Object.prototype.toString.call(ar)); //[object Object]
+console.log(Object.prototype.toString.call([])); //[object Array]
+</code></pre><p>ECMAScript标准库中干掉大多数构造函数都有类似的问题。基于这个原因，最好避免继承一下的标准类：<br>Array,Boolean,Date,Function,Number,RegExp或String。</p>
+<p>要想实现类似的功能，可以采用属性委托的方式：</p>
+<pre><code>var ArrayEx = function(){
+    this.array = []
+    for(var i = 0, len = arguments.length; i&lt;len ; i++){
+        this.array[i] = arguments[i];
+    }
+};
+ArrayEx.prototype.forEach = function(f, thisArg){
+    if(typeof thisArg === &apos;undefined&apos;){
+        thisArg = this;
+    }
+    this.array.forEach(f, thisArg);
+};
+
+var ar = new ArrayEx(&apos;1sfdfsd&apos;, &apos;2fdsfs&apos;);
+ar.forEach(function(item, i){
+    console.log(item);
+});
+</code></pre><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2014/12/27/编写高质量JS代码的68个有效方法-读书笔记/[20141227]编写高质量JS代码的68个有效方法（八）/" data-title="编写高质量JS代码的68个有效方法（八）" data-url="http://hstarorg.github.io/blog/blog/2014/12/27/编写高质量JS代码的68个有效方法-读书笔记/[20141227]编写高质量JS代码的68个有效方法（八）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

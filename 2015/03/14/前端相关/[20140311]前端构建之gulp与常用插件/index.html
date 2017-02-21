@@ -1,0 +1,294 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="##gulp是什么？
+http://gulpjs.com/ 相信你会明白的！
+与著名的构建工具grunt相比，有什么优势呢？
+
+易于使用，代码优于配置
+高效，不会产生过多的中间文件，减少I/O压力
+易于学习，API非常少，你能在很短的事件内学会gulp
+
+##那些常用的gulp插件
+###No.1、"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>前端构建之gulp与常用插件 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>前端构建之gulp与常用插件</h1><span class="post-meta">写于<time> 2015 年 03 月 14 日 13 时 56 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 14 分</time></span><div class="article-toc"><strong>大纲</strong></div><p>##gulp是什么？</p>
+<p><a href="http://gulpjs.com/" target="_blank" rel="external">http://gulpjs.com/</a> 相信你会明白的！</p>
+<p>与著名的构建工具grunt相比，有什么优势呢？</p>
+<ol>
+<li>易于使用，代码优于配置</li>
+<li>高效，不会产生过多的中间文件，减少I/O压力</li>
+<li>易于学习，API非常少，你能在很短的事件内学会gulp</li>
+</ol>
+<p>##那些常用的gulp插件</p>
+<p>###No.1、run-sequence</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/run-sequence" target="_blank" rel="external">https://www.npmjs.com/package/run-sequence</a></p>
+<p><strong>作用</strong>：让gulp任务，可以相互独立，解除任务间的依赖，增强task复用</p>
+<p><strong>推荐指数</strong>：★★★★★</p>
+<p>###No.2、browser-sync</p>
+<p><strong>Links</strong>: <a href="http://www.browsersync.io/" target="_blank" rel="external">http://www.browsersync.io/</a></p>
+<p><strong>作用</strong>：静态文件服务器，同时也支持浏览器自动刷新</p>
+<p><strong>推荐指数</strong>：★★★★★</p>
+<p>###No.3、del</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/del" target="_blank" rel="external">https://www.npmjs.com/package/del</a></p>
+<p><strong>作用</strong>：删除文件/文件夹</p>
+<p><strong>推荐指数</strong>：★★★★★</p>
+<p>###No.4、gulp-coffee</p>
+<p><strong>Links</strong>: <a href="https://github.com/wearefractal/gulp-coffee" target="_blank" rel="external">https://github.com/wearefractal/gulp-coffee</a></p>
+<p><strong>作用</strong>：编译coffee代码为Js代码，使用coffeescript必备</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.5、coffee-script</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/coffee-script" target="_blank" rel="external">https://www.npmjs.com/package/coffee-script</a></p>
+<p><strong>作用</strong>：gulpfile默认采用js后缀，如果要使用gulpfile.coffee来编写，那么需要此模块</p>
+<p><strong>推荐指数</strong>：★★★</p>
+<p>###No.6、gulp-nodemon</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/gulp-nodemon" target="_blank" rel="external">https://www.npmjs.com/package/gulp-nodemon</a></p>
+<p><strong>作用</strong>：自动启动/重启你的node程序，开发node服务端程序必备</p>
+<p><strong>推荐指数</strong>：★★★★★</p>
+<p>###No.7、yargs</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/yargs" target="_blank" rel="external">https://www.npmjs.com/package/yargs</a></p>
+<p><strong>作用</strong>：用于获取启动参数，针对不同参数，切换任务执行过程时需要</p>
+<p><strong>推荐指数</strong>：★★★</p>
+<p>###No.8、gulp-util</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/gulp-util" target="_blank" rel="external">https://www.npmjs.com/package/gulp-util</a></p>
+<p><strong>作用</strong>：gulp常用的工具库</p>
+<p><strong>推荐指数</strong>：★★★★★</p>
+<p>###No.9、gulp-uglify</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/gulp-uglify" target="_blank" rel="external">https://www.npmjs.com/package/gulp-uglify</a></p>
+<p><strong>作用</strong>：通过UglifyJS来压缩JS文件</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.9、gulp-concat</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/gulp-concat" target="_blank" rel="external">https://www.npmjs.com/package/gulp-concat</a></p>
+<p><strong>作用</strong>：合并JS</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.10、gulp-sourcemaps</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/gulp-sourcemaps" target="_blank" rel="external">https://www.npmjs.com/package/gulp-sourcemaps</a></p>
+<p><strong>作用</strong>：处理JS时，生成SourceMap</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.11、gulp-less</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/gulp-less" target="_blank" rel="external">https://www.npmjs.com/package/gulp-less</a></p>
+<p><strong>作用</strong>：将less预处理为css</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.12、gulp-sass</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/gulp-sass" target="_blank" rel="external">https://www.npmjs.com/package/gulp-sass</a></p>
+<p><strong>作用</strong>：将sass预处理为css</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.13、gulp-autoprefixer</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/gulp-autoprefixer" target="_blank" rel="external">https://www.npmjs.com/package/gulp-autoprefixer</a></p>
+<p><strong>作用</strong>：使用Autoprefixer来补全浏览器兼容的css。</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.14、gulp-minify-css</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/gulp-minify-css" target="_blank" rel="external">https://www.npmjs.com/package/gulp-minify-css</a></p>
+<p><strong>作用</strong>：压缩css。</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.15、connect-history-api-fallback</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/connect-history-api-fallback" target="_blank" rel="external">https://www.npmjs.com/package/connect-history-api-fallback</a></p>
+<p><strong>作用</strong>：开发angular应用必须，用于支持HTML5 history API.</p>
+<p><strong>推荐指数</strong>：★★★</p>
+<p>##一般的gulpfile文件（采用coffee编写）</p>
+<p>首先是，node应用程序：</p>
+<pre><code>gulp = require(&apos;gulp&apos;)
+runSequence = require(&apos;run-sequence&apos;)
+
+coffee = require(&apos;gulp-coffee&apos;)
+gutil = require(&apos;gulp-util&apos;)
+del = require(&apos;del&apos;)
+nodemon = require(&apos;gulp-nodemon&apos;)
+argv = require(&apos;yargs&apos;).argv
+rename = require(&apos;gulp-rename&apos;)
+browserSync = require(&apos;browser-sync&apos;)
+reload = browserSync.reload
+
+# 处理参数
+isDebug = not (argv.r || false)
+
+# --入口任务-----------------------------------------------------------------
+gulp.task(&apos;default&apos;, (callback)-&gt;
+  runSequence(
+    [&apos;clean&apos;]
+    [&apos;coffee-server&apos;, &apos;copy-server&apos;, &apos;copy-client&apos;, &apos;coffee-client&apos;, &apos;copy-views&apos;]
+    &apos;serve&apos;
+    [&apos;browserSync&apos;, &apos;watch&apos;]
+    callback
+  )
+)
+# --构建相关任务---------------------------------------
+gulp.task(&apos;clean&apos;, (callback)-&gt;
+  del([&apos;./dist/&apos;], callback)
+)
+
+gulp.task(&apos;coffee-server&apos;, -&gt;
+  gulp.src([
+    &apos;./src/**/*.coffee&apos;
+    &apos;!./src/public/**/*.coffee&apos;
+    &apos;!./src/views/**&apos;
+  ])
+  .pipe(coffee({bare: true}).on(&apos;error&apos;, gutil.log))
+  .pipe(gulp.dest(&apos;./dist/&apos;))
+)
+
+gulp.task(&apos;copy-server&apos;, -&gt;
+  gulp.src([
+    &apos;./src/config*/*.json&apos;
+    &apos;./src/database*/*.*&apos;
+  ])
+  .pipe(gulp.dest(&apos;./dist/&apos;))
+)
+
+gulp.task(&apos;copy-client&apos;, -&gt;
+  gulp.src([
+    &apos;./src/public*/**/*&apos;
+    &apos;!./src/public*/**/*.coffee&apos;
+  ])
+  .pipe(gulp.dest(&apos;./dist/&apos;))
+)
+
+gulp.task(&apos;coffee-client&apos;, -&gt;
+  gulp.src([
+    &apos;./src/public*/**/*.coffee&apos;
+  ])
+  .pipe(coffee({bare: true}).on(&apos;error&apos;, gutil.log))
+  .pipe(gulp.dest(&apos;./dist/&apos;))
+)
+
+gulp.task(&apos;copy-views&apos;, -&gt;
+  gulp.src(&apos;./src/views/**/*.html&apos;)
+  .pipe(rename({extname: &apos;.vash&apos;}))
+  .pipe(gulp.dest(&apos;./dist/views&apos;))
+)
+
+
+# --启动程序,打开浏览器任务----------------------------------------------------
+nodemon_instance = undefined
+gulp.task(&apos;serve&apos;, (callback)-&gt;
+  called = false
+  if not nodemon_instance
+    nodemon_instance = nodemon({
+      script: &apos;./dist/index.js&apos;
+      ext: &apos;none&apos;
+    })
+    .on(&apos;restart&apos;, -&gt;
+      console.log(&apos;restart server......................&apos;)
+    )
+    .on(&apos;start&apos;, -&gt;
+      if not called
+        called = true
+        callback()
+    )
+  else
+    nodemon_instance.emit(&quot;restart&quot;)
+    callback()
+  nodemon_instance
+)
+
+gulp.task(&apos;browserSync&apos;, -&gt;
+  browserSync({
+    proxy: &apos;localhost:3000&apos;
+    port: 8888
+  #files: [&apos;./src/public/**/*&apos;]
+    open: true
+    notify: true
+    reloadDelay: 500 # 延迟刷新
+  })
+)
+
+
+
+# --监视任务------------------------------------------------
+gulp.task(&apos;watch&apos;, -&gt;
+  gulp.watch([
+    &apos;./src/**/*.*&apos;
+    &apos;!./src/**/*.coffee&apos;
+  ], [&apos;reload-client&apos;])
+  gulp.watch(&apos;./src/**/*.coffee&apos;, [&apos;reload-server&apos;])
+)
+
+gulp.task(&apos;reload-client&apos;, (callback) -&gt;
+  runSequence(
+    [&apos;copy-client&apos;, &apos;coffee-client&apos;, &apos;copy-views&apos;]
+    &apos;bs-reload&apos;
+    callback
+  )
+)
+
+gulp.task(&apos;reload-server&apos;, (callback) -&gt;
+  runSequence(
+    [&apos;copy-server&apos;, &apos;coffee-server&apos;]
+    &apos;serve&apos;
+    &apos;bs-reload&apos;
+    callback
+  )
+)
+
+gulp.task(&apos;bs-reload&apos;, -&gt;
+  browserSync.reload()
+)
+</code></pre><p>接下来是前端网站：</p>
+<pre><code>gulp = require(&apos;gulp&apos;)
+gutil = require(&apos;gulp-util&apos;)
+coffee = require(&apos;gulp-coffee&apos;)
+del = require(&apos;del&apos;)
+runSequence = require(&apos;run-sequence&apos;)
+browserSync = require(&apos;browser-sync&apos;)
+historyApiFallback = require(&apos;connect-history-api-fallback&apos;)
+# 入口点
+gulp.task(&apos;default&apos;, -&gt;
+  runSequence(
+    [&apos;clean&apos;]
+    [&apos;copy&apos;]
+    [&apos;serve&apos;]
+  )
+)
+
+gulp.task(&apos;copy&apos;, -&gt;
+  gulp.src([
+    &apos;./src/**/*.*&apos;
+    &apos;!./src/**/*.coffee&apos;
+    &apos;!./src/**/*.less&apos;
+  ])
+  .pipe(gulp.dest(&apos;./dist&apos;))
+)
+
+gulp.task(&apos;clean&apos;, (callback)-&gt;
+  del([&apos;./dist/&apos;], callback)
+)
+
+gulp.task(&apos;serve&apos;, -&gt;
+  browserSync({
+    server: {
+      baseDir: &quot;./dist&quot;
+      middleware: [historyApiFallback]
+    }
+    port: 2222
+  })
+)
+
+gulp.task(&apos;watch&apos;, -&gt;
+  # do something...
+)
+</code></pre><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2015/03/14/前端相关/[20140311]前端构建之gulp与常用插件/" data-title="前端构建之gulp与常用插件" data-url="http://hstarorg.github.io/blog/blog/2015/03/14/前端相关/[20140311]前端构建之gulp与常用插件/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

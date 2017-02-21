@@ -1,0 +1,57 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="##章节一：Angular 禅道##
+###本章生词###    serve = 提供    take a brief = 先简要的    introduction = 介绍    concept = 概念    a lot of = 许多    material = 材料    cover = 概"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>用AngularJS开发Web应用程序 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>用AngularJS开发Web应用程序</h1><span class="post-meta">写于<time> 2015 年 03 月 13 日 11 时 24 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 17 分</time></span><div class="article-toc"><strong>大纲</strong></div><p>##章节一：Angular 禅道##</p>
+<p>###本章生词###<br>    serve = 提供<br>    take a brief = 先简要的<br>    introduction = 介绍<br>    concept = 概念<br>    a lot of = 许多<br>    material = 材料<br>    cover = 概括<br>    painless = 无痛的<br>    plenty = 丰富、大量<br>    unique = 独特的<br>    doubt = 疑问<br>    shape = 塑造<br>    explain = 解释<br>    expect = 预计<br>    get familiar with = 熟悉<br>    become aware = 察觉<br>    sophisticated = 复杂<br>    dependency injection = 依赖注入nuance<br>    nuance = 细微之处<br>    general = 一般<br>    purpose = 目的<br>    shines = 耀眼<br>    recent = 最近<br>    addition = 此外<br>    mostly = 主要的<br>    due = 由于<br>    innovative = 创新<br>    yet = 但<br>    attract = 吸引<br>    ease = 缓解<br>    solid = 扎实<br>    engineering = 工程<br>    practice = 实践<br>    indeed = 的确<br>    respects = 方面<br>    explicit = 明确的<br>    capable = 能<br>    figure out = 弄清楚<br>    interesting = 有趣的<br>    interpret = 解析<br>    mistaken = 错误，谬<br>    several = 几个，数个<br>    typically = 通常<br>    treasure = 宝藏<br>    testability = 可测试性<br>    built-in support 内置支持<br>    thoroughly = 彻底的<br>    relatively = 比较的<br>    actor = 演员<br>    personal = 个人的<br>    turned out = 横空出世</p>
+<hr>
+<p>这个章节介绍了AngularJS，包括框架和它背后的项目。首先，我们先简要的了解项目本身：谁become aware驱动了它，在哪儿可以找到源代码和文档，如何寻求帮助等等。</p>
+<p>这个章节的大部分是介绍AngularJS框架，它的核心概念和编码模式。包含有许多概括（总结）性的材料，使得学习进程快速无障碍，同时也有丰富的代码示例。</p>
+<p>AngularJS是一个独特的框架，毫无疑问的引领一个Web开发潮流。这也是为什么章节的最后部分解释了是什么让AngularJS如此特别，它和其它外部框架之间的差异和我们能在未来如何设想它。</p>
+<p>这个章节包含了以下几个主题：</p>
+<ol>
+<li>如何用AngularJS书写一个简单的Hello World 程序。在做这个的过程中，你将了解到在哪儿找到框架源代码、文档以及社区。</li>
+<li>熟悉AngularJS应用程序的基本构造块：Templates、Directives、Scopes和Controllers。</li>
+<li>察觉AngularJS复杂的依赖注入系统以及它所有的细微之处。</li>
+<li>理解AngularJS与其他框架或库（特别是jQuery）之间的差异，是什么使得它如此特别。</li>
+</ol>
+<p>###AngularJS简介###<br>AngularJS是一个用JavaScript编写的客户端MVC框架，它运行于Web浏览器，能够极大的帮助我们（开发者）编写模块化，单页面，Ajax风格的Web Applications。它是一个平常的框架，不过如果用于编写CRUD类型的web app，那么它将非常耀眼。</p>
+<p>###熟悉框架###<br>AngularJS是最近的客户端mvc框架的例外，但是它吸引了许多注意力，主要是由于它创新的模板系统，减轻了开发，同时有很扎实的工程实践。的确，它的模板系统独特于许多方面：</p>
+<ol>
+<li>使用HTML作为模板语言</li>
+<li>不要求明确的DOM刷新，AngularJS 能跟踪用户操作、浏览器事件和模型变化，来选择何时和那个模板将被刷新</li>
+<li>它有非常有趣的和可扩展的组件子系统，它能教会浏览器如何解析新的HTML标签和属性</li>
+</ol>
+<p>模板子系统可能是AngularJS中最常见的部分，但是不要错误的认为AngularJS是单页Web程序所需要的包含数个工具和常用服务的完整框架包。</p>
+<p>AngularJS同样有一些隐藏的宝藏，依赖注入（DI=dependency injection）和可测试特性的强烈关注。DI的内置支持能够非常容易的访问从一个极小的、彻底的可测试服务创建的web app。</p>
+<p>###项目发展路线###<br>AngularJS是客户端MVC框架中比较新的成员；它的1.0版本发布于2012年6月。实际上，这个框架作为谷歌雇员Misko Hevery的个人项目开始于2009年。最初的idea是如此的好，在写作本文的同时，这个项目已经被Google正式支持，并且有Google的完整团队全职维护这个框架。</p>
+<p>AngularJS是托管在<a href="https://github.com/angular/angular.js" target="_blank" rel="external">GitHub</a>上的，基于MIT协议的开源项目</p>
+<p>###社区###</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2015/03/13/Angular相关/用AngularJS开发Web应用程序/" data-title="用AngularJS开发Web应用程序" data-url="http://hstarorg.github.io/blog/blog/2015/03/13/Angular相关/用AngularJS开发Web应用程序/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

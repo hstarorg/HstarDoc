@@ -1,0 +1,287 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="##前言##随着ES6标准的定稿，众多的特性也趋于稳定，各大浏览器也在逐步实现这些特性，那么对ES6有更多的了解就无可厚非了。
+##准备##在学习ES6之前，我们需要有一个环境来测试ES6代码。在这里我推荐使用node的分支io.js。
+
+如何安装？
+
+下载地址：https://iojs.org/e"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>简单学ES6 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>简单学ES6</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong></div><p>##前言##<br>随着ES6标准的定稿，众多的特性也趋于稳定，各大浏览器也在逐步实现这些特性，那么对ES6有更多的了解就无可厚非了。</p>
+<p>##准备##<br>在学习ES6之前，我们需要有一个环境来测试ES6代码。在这里我推荐使用node的分支io.js。</p>
+<ol>
+<li><p>如何安装？</p>
+<ol>
+<li>下载地址：<a href="https://iojs.org/en/index.html" target="_blank" rel="external">https://iojs.org/en/index.html</a>，如果各位小伙伴不习惯英文，可以把url中的en修改为cn。</li>
+<li>然后根据自己的操作系统版本，下载合适的安装包（主要指Windows系统）进行安装。</li>
+<li>安装过程就不一一赘述了，和一般软件一样。</li>
+</ol>
+</li>
+<li><p>如何验证安装成功？</p>
+<ol>
+<li>打开cmd，然后输入<code>iojs -v</code>,如果输出一个版本号，那么就代表io.js安装成功。（PS：我现在使用的是v1.2.0）</li>
+<li>也可以输入<code>iojs -p process.versions.v8</code>查看iojs所使用的V8（PS：不是V8发动机）的版本。（PS:我这儿显示4.1.0.14）</li>
+</ol>
+</li>
+</ol>
+<p>##小窥ES6##<br>在测试ES6代码前，我们可以先看下io.js对ES6的支持：<a href="https://iojs.org/cn/es6.html" target="_blank" rel="external">https://iojs.org/cn/es6.html</a>。</p>
+<p><strong>接下来，开始我们的ES6-Class之旅：</strong></p>
+<p>###1、class 基础 ###</p>
+<p>大家应该知道，在大部分面向对象的语言中，都有class的说法，那么在早期的Js中，面向对象的实现比较特殊，我们必须要用function来模拟。如：</p>
+<pre><code>//ES5及以下
+function Point(x, y){
+  this.x = x;
+  this.y = y;
+}
+var p1 = new Point(100, 100);
+</code></pre><p>然而在ES6中，我们可以直接使用class关键字，如：</p>
+<pre><code>//ES6
+&apos;use strict&apos; //不能去掉，要不然iojs会提示不认识class。
+class Point{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+  }
+}
+var p1 = new Point(100, 100);
+console.log(p1);
+</code></pre><p>将以上代码保存为1.js,那么执行如下命令：<strong><code>iojs --es_staging 1.js</code></strong> 就可以看到”{x:100, y: 100}”这个结果了。（PS:注意要在1.js的目录打开cmd）。</p>
+<p>接下来，看一个复杂点的，继承：</p>
+<pre><code>//ES6
+&apos;use strict&apos;
+class Point{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+  }
+}
+var p1 = new Point(100, 100);
+console.log(p1);
+
+class ColorPoint extends Point{
+  constructor(x, y, color){
+    super(x, y);
+    this.color = color;
+  }
+}
+var cp = new ColorPoint(50, 50, &apos;red&apos;);
+console.log(cp);
+
+//输出继承关系
+console.log(cp instanceof ColorPoint); //true
+console.log(cp instanceof Point);  //true
+</code></pre><p>可以看到，和大部分语言的继承都很类似，如果你有其他面向对象语言的基础，那么很容易就能理解。</p>
+<p>对Point和ColorPoint进行typeof，结果很明显也能看到是function。</p>
+<pre><code>console.log(typeof Point);  // function
+console.log(typeof ColorPoint);  // function
+</code></pre><p>那如果对class进行函数调用呢？</p>
+<pre><code>Point(100, 100); //Error
+</code></pre><p>如上，必须通过new调用class，直接使用函数调用则会报错。</p>
+<p>再来对比以下代码：</p>
+<pre><code>//标准的函数可以先写调用语句，后写申明语句。因为会定义前置
+foo();
+function foo(){}
+//如果是class呢?
+new Foo(); //Error,Foo is not defined
+class Foo{}
+</code></pre><p>如上，如果是定义的class，那么必须要定义语句在前，调用在后。</p>
+<p>再来看以下的情形：</p>
+<pre><code>function funThatUseBar(){
+  new Bar();
+}
+//funThatUseBar(); //Error,Bar is not defined
+class Bar{}
+funThatUseBar(); //ok
+</code></pre><p>如上，如果先使用了Bar，那么也是会报错的。必须要优先定义class。</p>
+<p>附上以上所有的js，会报错的语句，进行了注释。</p>
+<pre><code>//ES6
+&apos;use strict&apos;
+class Point{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+  }
+}
+var p1 = new Point(100, 100);
+console.log(p1);
+
+class ColorPoint extends Point{
+  constructor(x, y, color){
+    super(x, y);
+    this.color = color;
+  }
+}
+var cp = new ColorPoint(50, 50, &apos;red&apos;);
+console.log(cp);
+
+//*********************************************
+
+//输出继承关系
+console.log(cp instanceof ColorPoint); //true
+console.log(cp instanceof Point);  //true
+
+console.log(typeof Point);  // function
+console.log(typeof ColorPoint);  // function
+
+//Point(100, 100); //Error
+
+//************************************
+//标准的函数可以先写调用语句，后写申明语句。因为会定义前置
+foo();
+function foo(){}
+
+//如果是class呢?
+//new Foo(); //Error,Foo is not defined
+class Foo{}
+
+
+//*******************************************
+
+function funThatUseBar(){
+  new Bar();
+}
+//funThatUseBar(); //Error,Bar is not defined
+class Bar{}
+funThatUseBar(); //ok
+</code></pre><p>###2、类中的主体</p>
+<p>ES6中、class的主体只能包含方法，不能包含数据属性。如果在类中包含变量定义，则会报错。class中的方法有三种类型：构造函数、静态方法、原型方法，如：</p>
+<pre><code>class Class1{
+  //构造
+  constructor(options){
+
+  }
+
+  // 静态方法，静态方法用static修饰
+  static staticMethod(){
+    return &apos;static method&apos;;
+  }
+
+  prototypeMethod(){
+    return &apos;prototype method&apos;;
+  }
+}
+</code></pre><p>其中，每个class和class原型的constructor都是相等的，同时class本质也是function</p>
+<pre><code>console.log(Class1 === Class1.prototype.constructor) // true
+console.log(typeof Class1)  // function
+</code></pre><p>然后我们对类中的方法做测试</p>
+<pre><code>var p = console.log;
+p(typeof Class1.prototype.prototypeMethod); 
+Class1.prototype.prototypeMethod() // 原型方法调用方式
+p(typeof Class1.staticMethod);  
+Class1.staticMethod() //静态方法调用方式
+</code></pre><p>Getters 和 Setters 的用法</p>
+<pre><code>class Class2{
+  get name(){
+    return &apos;jay&apos;;
+  }
+  set name(value){
+    console.log(&apos;set name = &apos; + value);
+  }
+}
+
+var c2 = new Class2();
+c2.name = &apos;hu&apos;;  // &quot;set name = hu&quot;
+console.log(c2.name); // &quot;jay&quot;
+</code></pre><p>当使用了get和set时，那么针对属性的get和set会自动调用class中相关的方法。</p>
+<p>贴出所有Js代码：</p>
+<pre><code>&apos;use strict&apos;
+class Class1{
+  //构造
+  constructor(options){
+
+  }
+
+  // 静态方法
+  static staticMethod(){
+    return &apos;static method&apos;;
+  }
+
+  prototypeMethod(){
+    return &apos;prototype method&apos;;
+  }
+}
+
+console.log(Class1 === Class1.prototype.constructor);
+console.log(typeof Class1);
+
+var p = console.log;
+p(typeof Class1.prototype.prototypeMethod);
+p(typeof Class1.staticMethod);
+
+class Class2{
+  get name(){
+    return &apos;jay&apos;;
+  }
+  set name(value){
+    console.log(&apos;set name = &apos; + value);
+  }
+}
+
+var c2 = new Class2();
+c2.name = &apos;hu&apos;;
+console.log(c2.name);
+</code></pre><p>###3、类的继承</p>
+<p>简单的继承关系，如下：</p>
+<pre><code>&apos;use strict&apos;
+class Class1{
+  toString(){
+    return &apos;parent class.&apos;;
+  }
+}
+
+class SubClass extends Class1{
+  toString(){
+    return &apos;sub class.&apos;;
+  }
+}
+
+var sc = new SubClass();
+console.log(sc.toString()); // &quot;sub class&quot;
+</code></pre><p>其中，sc是Class1的实例，也是SubClass的实例：</p>
+<pre><code>console.log(sc instanceof Class1); //true
+console.log(sc instanceof SubClass); //true
+</code></pre><p>如果要调用父类的方法，怎么办呢？</p>
+<pre><code>class SubClass2 extends Class1{
+  toString(){
+    return super.toString();
+  }
+}
+
+var sc2 = new SubClass2();
+console.log(sc2.toString());
+</code></pre><p>在继承关系中，子类的原型等于父类：</p>
+<pre><code>console.log(Object.getPrototypeOf(SubClass2) === Class1); //true
+</code></pre><p>在子类中访问父类构造，使用super即可。</p>
+<p>##其他##</p>
+<ol>
+<li>如果想一览所有的ES6新特性，可以参考<a href="https://github.com/lukehoban/es6features" target="_blank" rel="external">https://github.com/lukehoban/es6features</a></li>
+<li>如果想系统的学习ES6，那么推荐<a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">http://es6.ruanyifeng.com/</a></li>
+<li>想了解更多Classes in ECMAScript 6，可参考<a href="http://www.2ality.com/2015/02/es6-classes-final.html" target="_blank" rel="external">http://www.2ality.com/2015/02/es6-classes-final.html</a></li>
+</ol>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/简单学ES6/" data-title="简单学ES6" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/简单学ES6/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

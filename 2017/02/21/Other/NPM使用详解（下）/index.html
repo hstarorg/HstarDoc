@@ -1,0 +1,136 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="在浏览本文之前，建议您先浏览《NPM使用详解（上）》
+在上一文中，罗列出了最常用的NPM命令，那么本文将继续分解剩下的NPM命令
+
+1、access2、adduser//用于启动在指定的git仓库添加用户的向导
+npm adduser [--registry=url] [--scope=@orgna"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>NPM使用详解（下） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>NPM使用详解（下）</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、access"><span class="toc-number">1.</span> <span class="toc-text">1、access</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、adduser"><span class="toc-number">2.</span> <span class="toc-text">2、adduser</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、bin"><span class="toc-number">3.</span> <span class="toc-text">3、bin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、bugs"><span class="toc-number">4.</span> <span class="toc-text">4、bugs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、build"><span class="toc-number">5.</span> <span class="toc-text">5、build</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、bundle-已过期"><span class="toc-number">6.</span> <span class="toc-text">6、bundle(已过期)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7、completion"><span class="toc-number">7.</span> <span class="toc-text">7、completion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8、dedupe"><span class="toc-number">8.</span> <span class="toc-text">8、dedupe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9、deprecate"><span class="toc-number">9.</span> <span class="toc-text">9、deprecate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10、dist-tag"><span class="toc-number">10.</span> <span class="toc-text">10、dist-tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11、docs"><span class="toc-number">11.</span> <span class="toc-text">11、docs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12、edit"><span class="toc-number">12.</span> <span class="toc-text">12、edit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13、explore"><span class="toc-number">13.</span> <span class="toc-text">13、explore</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14、help"><span class="toc-number">14.</span> <span class="toc-text">14、help</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15、help-search"><span class="toc-number">15.</span> <span class="toc-text">15、help-search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16、link"><span class="toc-number">16.</span> <span class="toc-text">16、link</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17、logout"><span class="toc-number">17.</span> <span class="toc-text">17、logout</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18、ls"><span class="toc-number">18.</span> <span class="toc-text">18、ls</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19、npm"><span class="toc-number">19.</span> <span class="toc-text">19、npm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20、outdated-☆☆☆☆☆"><span class="toc-number">20.</span> <span class="toc-text">20、outdated(☆☆☆☆☆)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21、owner"><span class="toc-number">21.</span> <span class="toc-text">21、owner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22、pack-☆☆☆☆☆"><span class="toc-number">22.</span> <span class="toc-text">22、pack(☆☆☆☆☆)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23、prefix"><span class="toc-number">23.</span> <span class="toc-text">23、prefix</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24、prune-☆☆☆☆☆"><span class="toc-number">24.</span> <span class="toc-text">24、prune(☆☆☆☆☆)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#25、publish"><span class="toc-number">25.</span> <span class="toc-text">25、publish</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26、rebuild"><span class="toc-number">26.</span> <span class="toc-text">26、rebuild</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#27、repo"><span class="toc-number">27.</span> <span class="toc-text">27、repo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#28、restart"><span class="toc-number">28.</span> <span class="toc-text">28、restart</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#29、rm"><span class="toc-number">29.</span> <span class="toc-text">29、rm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#30、root"><span class="toc-number">30.</span> <span class="toc-text">30、root</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#31、run-script"><span class="toc-number">31.</span> <span class="toc-text">31、run-script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32、search"><span class="toc-number">32.</span> <span class="toc-text">32、search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#33、shrinkwrap"><span class="toc-number">33.</span> <span class="toc-text">33、shrinkwrap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#34、star"><span class="toc-number">34.</span> <span class="toc-text">34、star</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#35、stars"><span class="toc-number">35.</span> <span class="toc-text">35、stars</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#36、start"><span class="toc-number">36.</span> <span class="toc-text">36、start</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#37、stop"><span class="toc-number">37.</span> <span class="toc-text">37、stop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#38、tag"><span class="toc-number">38.</span> <span class="toc-text">38、tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#39、test"><span class="toc-number">39.</span> <span class="toc-text">39、test</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#40、unpublish"><span class="toc-number">40.</span> <span class="toc-text">40、unpublish</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#41、version"><span class="toc-number">41.</span> <span class="toc-text">41、version</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#42、view"><span class="toc-number">42.</span> <span class="toc-text">42、view</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#43、whoami"><span class="toc-number">43.</span> <span class="toc-text">43、whoami</span></a></li></ol></div><p>在浏览本文之前，建议您先浏览《NPM使用详解（上）》</p>
+<p>在上一文中，罗列出了最常用的NPM命令，那么本文将继续分解剩下的NPM命令</p>
+<hr>
+<h4 id="1、access"><a href="#1、access" class="headerlink" title="1、access"></a>1、access</h4><h4 id="2、adduser"><a href="#2、adduser" class="headerlink" title="2、adduser"></a>2、adduser</h4><pre><code>//用于启动在指定的git仓库添加用户的向导
+npm adduser [--registry=url] [--scope=@orgname] [--always-auth]
+//eg:
+npm adduser --registry=http://registry.npmjs.org
+</code></pre><h4 id="3、bin"><a href="#3、bin" class="headerlink" title="3、bin"></a>3、bin</h4><pre><code>//打印出npm执行安装的文件夹
+npm bin
+</code></pre><h4 id="4、bugs"><a href="#4、bugs" class="headerlink" title="4、bugs"></a>4、bugs</h4><pre><code>//查看某个包的issue列表
+npm bugs &lt;pkgname&gt;
+//eg:（将会用浏览器打开https://github.com/sindresorhus/del/issues）
+npm bugs del 
+// 可以直接在一个包的文件夹中执行无参数的命令，将自动打开该包的issue列表
+//eg:(在del文件夹下执行cmd)
+npm bugs
+</code></pre><h4 id="5、build"><a href="#5、build" class="headerlink" title="5、build"></a>5、build</h4><h4 id="6、bundle-已过期"><a href="#6、bundle-已过期" class="headerlink" title="6、bundle(已过期)"></a>6、bundle(已过期)</h4><h4 id="7、completion"><a href="#7、completion" class="headerlink" title="7、completion"></a>7、completion</h4><h4 id="8、dedupe"><a href="#8、dedupe" class="headerlink" title="8、dedupe"></a>8、dedupe</h4><pre><code>//
+npm dedupe [package names...]
+//可简化为如下调用
+npm ddp [package names...]
+</code></pre><h4 id="9、deprecate"><a href="#9、deprecate" class="headerlink" title="9、deprecate"></a>9、deprecate</h4><pre><code>//为指定版本的包添加过期警告
+npm deprecate &lt;name&gt;[@&lt;version&gt;] &lt;message&gt;
+// eg:
+npm deprecate my-thing@&quot;&lt; 0.2.3&quot; &quot;critical bug fixed in v0.2.3&quot;
+</code></pre><h4 id="10、dist-tag"><a href="#10、dist-tag" class="headerlink" title="10、dist-tag"></a>10、dist-tag</h4><pre><code>npm dist-tag add &lt;pkg&gt;@&lt;version&gt; [&lt;tag&gt;]
+npm dist-tag rm &lt;pkg&gt; &lt;tag&gt;
+npm dist-tag ls [&lt;pkg&gt;]
+</code></pre><h4 id="11、docs"><a href="#11、docs" class="headerlink" title="11、docs"></a>11、docs</h4><pre><code>//打开包的文档页面
+npm docs [&lt;pkgname&gt; [&lt;pkgname&gt; ...]]
+npm docs (with no args in a package dir)
+// 打开包的首页readme
+npm home [&lt;pkgname&gt; [&lt;pkgname&gt; ...]]
+npm home (with no args in a package dir)
+</code></pre><h4 id="12、edit"><a href="#12、edit" class="headerlink" title="12、edit"></a>12、edit</h4><pre><code>npm edit &lt;name&gt;[@&lt;version&gt;]
+</code></pre><h4 id="13、explore"><a href="#13、explore" class="headerlink" title="13、explore"></a>13、explore</h4><pre><code>npm explore &lt;name&gt; [ -- &lt;cmd&gt;]
+</code></pre><h4 id="14、help"><a href="#14、help" class="headerlink" title="14、help"></a>14、help</h4><pre><code>//打开本地npm的帮助文件
+npm help &lt;topic&gt;
+npm help some search terms
+//eg:(打开config的本地帮助)
+npm help config
+</code></pre><h4 id="15、help-search"><a href="#15、help-search" class="headerlink" title="15、help-search"></a>15、help-search</h4><pre><code>//从npm的markdown文档中查询所有的term，并展示
+npm help-search some search terms
+</code></pre><h4 id="16、link"><a href="#16、link" class="headerlink" title="16、link"></a>16、link</h4><pre><code>npm link (in package folder)
+npm link [@&lt;scope&gt;/]&lt;pkgname&gt;
+npm ln (with any of the previous argument usage)
+</code></pre><h4 id="17、logout"><a href="#17、logout" class="headerlink" title="17、logout"></a>17、logout</h4><pre><code>//从指定的仓库登出
+npm logout [--registry=url] [--scope=@orgname]
+</code></pre><h4 id="18、ls"><a href="#18、ls" class="headerlink" title="18、ls"></a>18、ls</h4><pre><code>//列举当前文件夹下的所有包
+npm list [[@&lt;scope&gt;/]&lt;pkg&gt; ...]
+npm ls [[@&lt;scope&gt;/]&lt;pkg&gt; ...]
+npm la [[@&lt;scope&gt;/]&lt;pkg&gt; ...]
+npm ll [[@&lt;scope&gt;/]&lt;pkg&gt; ...]
+</code></pre><h4 id="19、npm"><a href="#19、npm" class="headerlink" title="19、npm"></a>19、npm</h4><pre><code>npm &lt;command&gt; [args]
+</code></pre><h4 id="20、outdated-☆☆☆☆☆"><a href="#20、outdated-☆☆☆☆☆" class="headerlink" title="20、outdated(☆☆☆☆☆)"></a>20、outdated(☆☆☆☆☆)</h4><pre><code>//检查当前文件夹中的包版本（当前，需要，最新）
+npm outdated [&lt;name&gt; [&lt;name&gt; ...]]
+</code></pre><h4 id="21、owner"><a href="#21、owner" class="headerlink" title="21、owner"></a>21、owner</h4><pre><code>//管理包的拥有者
+npm owner ls &lt;package name&gt;
+npm owner add &lt;user&gt; &lt;package name&gt;
+npm owner rm &lt;user&gt; &lt;package name&gt;
+</code></pre><h4 id="22、pack-☆☆☆☆☆"><a href="#22、pack-☆☆☆☆☆" class="headerlink" title="22、pack(☆☆☆☆☆)"></a>22、pack(☆☆☆☆☆)</h4><pre><code>//压缩包文件夹
+npm pack [&lt;pkg&gt; [&lt;pkg&gt; ...]]
+//eg：在del目录中直接执行
+npm pack
+//或者在项目目录中，执行
+npm pack del
+</code></pre><h4 id="23、prefix"><a href="#23、prefix" class="headerlink" title="23、prefix"></a>23、prefix</h4><pre><code>//打印本地前缀到控制台，如果-g，则打印全局的前缀
+</code></pre><h4 id="24、prune-☆☆☆☆☆"><a href="#24、prune-☆☆☆☆☆" class="headerlink" title="24、prune(☆☆☆☆☆)"></a>24、prune(☆☆☆☆☆)</h4><pre><code>//删除多余的包(如果指定包名，则删除指定的包)
+npm prune [&lt;name&gt; [&lt;name ...]]
+npm prune [&lt;name&gt; [&lt;name ...]] [--production]
+</code></pre><h4 id="25、publish"><a href="#25、publish" class="headerlink" title="25、publish"></a>25、publish</h4><pre><code>//发布包
+npm publish &lt;tarball&gt; [--tag &lt;tag&gt;] [--access &lt;public|restricted&gt;]
+npm publish &lt;folder&gt; [--tag &lt;tag&gt;] [--access &lt;public|restricted&gt;]
+</code></pre><h4 id="26、rebuild"><a href="#26、rebuild" class="headerlink" title="26、rebuild"></a>26、rebuild</h4><pre><code>//重新编译包
+npm rebuild [&lt;name&gt; [&lt;name&gt; ...]]
+npm rb [&lt;name&gt; [&lt;name&gt; ...]]
+</code></pre><h4 id="27、repo"><a href="#27、repo" class="headerlink" title="27、repo"></a>27、repo</h4><pre><code>//在浏览器中打开包的仓库地址
+npm repo &lt;pkgname&gt;
+npm repo (with no args in a package dir)
+</code></pre><h4 id="28、restart"><a href="#28、restart" class="headerlink" title="28、restart"></a>28、restart</h4><pre><code>//重新启动包
+npm restart [-- &lt;args&gt;]
+</code></pre><h4 id="29、rm"><a href="#29、rm" class="headerlink" title="29、rm"></a>29、rm</h4><pre><code>//移除包
+npm rm &lt;name&gt;
+npm r &lt;name&gt;
+npm uninstall &lt;name&gt;
+npm un &lt;name&gt;
+</code></pre><h4 id="30、root"><a href="#30、root" class="headerlink" title="30、root"></a>30、root</h4><pre><code>//打印node_modules文件夹到控制台
+npm root
+</code></pre><h4 id="31、run-script"><a href="#31、run-script" class="headerlink" title="31、run-script"></a>31、run-script</h4><pre><code>//运行任意的包脚本
+npm run-script [command] [-- &lt;args&gt;]
+npm run [command] [-- &lt;args&gt;]
+</code></pre><h4 id="32、search"><a href="#32、search" class="headerlink" title="32、search"></a>32、search</h4><h4 id="33、shrinkwrap"><a href="#33、shrinkwrap" class="headerlink" title="33、shrinkwrap"></a>33、shrinkwrap</h4><h4 id="34、star"><a href="#34、star" class="headerlink" title="34、star"></a>34、star</h4><pre><code>//给指定的包加star
+npm star &lt;pkgname&gt; [&lt;pkg&gt;, ...]
+npm unstar &lt;pkgname&gt; [&lt;pkg&gt;, ...]
+</code></pre><h4 id="35、stars"><a href="#35、stars" class="headerlink" title="35、stars"></a>35、stars</h4><pre><code>//查看指定用户的stars
+npm stars
+npm stars [username]
+</code></pre><h4 id="36、start"><a href="#36、start" class="headerlink" title="36、start"></a>36、start</h4><h4 id="37、stop"><a href="#37、stop" class="headerlink" title="37、stop"></a>37、stop</h4><h4 id="38、tag"><a href="#38、tag" class="headerlink" title="38、tag"></a>38、tag</h4><h4 id="39、test"><a href="#39、test" class="headerlink" title="39、test"></a>39、test</h4><h4 id="40、unpublish"><a href="#40、unpublish" class="headerlink" title="40、unpublish"></a>40、unpublish</h4><h4 id="41、version"><a href="#41、version" class="headerlink" title="41、version"></a>41、version</h4><pre><code>npm version [&lt;newversion&gt; | major | minor | patch | premajor | preminor | prepatch | prerelease]
+
+//查看项目相关信息
+npm version
+npm version major
+</code></pre><h4 id="42、view"><a href="#42、view" class="headerlink" title="42、view"></a>42、view</h4><h4 id="43、whoami"><a href="#43、whoami" class="headerlink" title="43、whoami"></a>43、whoami</h4><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/Other/NPM使用详解（下）/" data-title="NPM使用详解（下）" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/Other/NPM使用详解（下）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

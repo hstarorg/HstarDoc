@@ -1,0 +1,145 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="##No.16、避免使用eval创建局部变量Tips：
+
+避免使用eval函数创建的变量污染调用者作用域。
+如果eval函数代码可能创建全局变量，将此调用封装到嵌套的函数中已防止作用域污染。
+
+执行eval时，eval中的变量才会被加到作用域中（函数作用域）
+function fun1(){
+   "><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>编写高质量JS代码的68个有效方法（四） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>编写高质量JS代码的68个有效方法（四）</h1><span class="post-meta">写于<time> 2014 年 11 月 29 日 00 时 00 分</time><br>更新于<time> 2017 年 02 月 21 日 13 时 59 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#No-17、间接调用eval函数优于直接调用"><span class="toc-number">1.</span> <span class="toc-text">No.17、间接调用eval函数优于直接调用</span></a></li></ol></div><p>##No.16、避免使用eval创建局部变量<br><strong>Tips：</strong></p>
+<ol>
+<li>避免使用eval函数创建的变量污染调用者作用域。</li>
+<li>如果eval函数代码可能创建全局变量，将此调用封装到嵌套的函数中已防止作用域污染。</li>
+</ol>
+<p>执行eval时，eval中的变量才会被加到作用域中（函数作用域）</p>
+<pre><code>function fun1(){
+    eval(&apos;var y = 1;&apos;);
+    console.log(&apos;fun1-&gt;y:&apos;+y); // &apos;fun-&gt;y:1&apos;
+}
+fun1();
+console.log(&apos;global-&gt;y:&apos;+y); //throw Error
+</code></pre><p>不要直接将不可控参数交给eval执行，可能会改变作用域对象。</p>
+<pre><code>//Bad code
+var g = &apos;global&apos;;
+function fun2(code){
+    eval(code);
+}
+fun2(&apos;var g=&quot;local&quot;&apos;);
+console.log(g) //&apos;local&apos;
+
+//Right code
+var g = &apos;global&apos;;
+function fun2(code){
+    (function(){
+        eval(code);
+    })();
+}
+fun2(&apos;var g=&quot;local&quot;&apos;);
+console.log(g) //&apos;global&apos;,嵌套作用域
+</code></pre><p>以上Right Code，如果执行不带var的变量申明，那么也是会影响全局的g对象的。</p>
+<h2 id="No-17、间接调用eval函数优于直接调用"><a href="#No-17、间接调用eval函数优于直接调用" class="headerlink" title="No.17、间接调用eval函数优于直接调用"></a>No.17、间接调用eval函数优于直接调用</h2><p><strong>Tips：</strong></p>
+<ol>
+<li>将eval函数同一个毫无意义的字面量包裹在序列表达式中以达到强制使用间接调用eval函数的目的</li>
+<li>尽可能间接调用eval函数，而不要直接调用eval函数</li>
+</ol>
+<p>直接调用eval，那么编译器无法优化JS代码。<br>如何间接调用eval？</p>
+<pre><code>(0,eval)(code) 
+</code></pre><p>##No.18、理解函数的调用、方法调用及构造函数调用之间的不同<br><strong>Tips：</strong></p>
+<ol>
+<li>方法调用将被查找方法属性的对象作用调用接收者</li>
+<li>函数调用将全局对象作为其接受者。一般很少使用该函数调用语法来调用方法</li>
+<li>构造函数需要通过new运算符调用，并产生一个新的对象作为其接收者</li>
+</ol>
+<p>在全局对象上直接定义的function被称为函数，调用则是函数调用</p>
+<pre><code>var fun1 = function(p){
+    console.log(p);
+};
+
+function fun2(p){
+    console.log(p);
+}
+//函数调用
+fun1(&apos;p1&apos;);
+fun2(&apos;p2&apos;);
+</code></pre><p>如果对象的属性是函数，那么称之为方法，使用模式则是方法调用</p>
+<pre><code>var obj = {
+    name: &apos;Hello &apos;,
+    fun1: function(name){
+        console.log(this.name + name);
+    }
+};
+//方法调用
+obj.fun1(&apos;Jay&apos;);
+</code></pre><p><strong>注意：fun1中通过this来访问obj的name属性</strong></p>
+<p>构造函数调用将一个全新的对象作为this变量的值</p>
+<pre><code>fucntion User(name, age){
+    this.Name = name;
+    this.Age = age;
+}
+//此时，user是一个全新的对象
+var user = new User(&apos;Jay&apos;, 23);
+</code></pre><p>##No.19、熟练掌握高阶函数<br><strong>Tips：</strong></p>
+<ol>
+<li>高阶函数是那些将函数作为参数或返回值的函数</li>
+<li>熟练掌握现有库的高阶函数</li>
+<li>学会发现可以被高阶函数所取代的常见编码模式</li>
+</ol>
+<p>需求：将数组元素全部转换为大写</p>
+<pre><code>//常规做法
+var arr = [&apos;abc&apos;, &apos;test&apos;, &apos;123&apos;];
+for(var i =0, len = arr.length; i &lt; len; i++){
+    arr[i] = arr[i].toUpperCase();
+}
+console.log(arr);
+
+//高阶函数
+var arr = [&apos;abc&apos;, &apos;test&apos;, &apos;123&apos;];
+arr = arr.map(function(item){
+    return item.toUpperCase();
+});
+console.log(arr);
+</code></pre><p><strong>注意：需要注意高阶函数使用时的返回值，有些是更改原始对象，有些是返回新对象</strong></p>
+<p>##No.20、使用call方法自定义接收者来调用方法<br><strong>Tips：</strong></p>
+<ol>
+<li>使用call方法自定义接收者（个人理解为作用域）来调用函数</li>
+<li>使用call方法可以调用在给定对象中不存在的方法</li>
+<li><p>使用call方法定义高阶函数允许使用者给回调函数指定接收者</p>
+<p> function fun1(){</p>
+<pre><code>this.name = &apos;Test&apos;;
+</code></pre><p> }<br> var obj = {</p>
+<pre><code>name: &apos;Jay&apos;
+</code></pre><p> };<br> console.log(obj.name);<br> fun1.call(obj);<br> console.log(obj.name);</p>
+</li>
+</ol>
+<p>call函数的调用方式：</p>
+<pre><code>f.call(obj, p1, p2, p3);
+</code></pre><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2014/11/29/编写高质量JS代码的68个有效方法-读书笔记/[20141129]编写高质量JS代码的68个有效方法（四）/" data-title="编写高质量JS代码的68个有效方法（四）" data-url="http://hstarorg.github.io/blog/blog/2014/11/29/编写高质量JS代码的68个有效方法-读书笔记/[20141129]编写高质量JS代码的68个有效方法（四）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

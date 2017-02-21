@@ -1,0 +1,167 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、导言最近从coffee切换到js，代码量一下子变大了不少，也多了些许陌生感。
+为了在JS代码中，更合理的使用ES6的新特性，特在此对ES6的特性做一个简单的总览。
+1、模块(Module - Chrome测试不可用)
+在ES6中，有class的概念，不过这只是语法糖，并没有解决模块化问题。Mod"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ES6入门系列三（特性总览下） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>ES6入门系列三（特性总览下）</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1、模块-Module-Chrome测试不可用"><span class="toc-number">2.</span> <span class="toc-text">1、模块(Module - Chrome测试不可用)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、模块加载器-Module-Loaders-Chrome测试不可用"><span class="toc-number">3.</span> <span class="toc-text">2、模块加载器(Module Loaders - Chrome测试不可用)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、图-集合-弱引用图-若引用集合-Map-Set-WeakMap-WeakSet"><span class="toc-number">4.</span> <span class="toc-text">3、图 + 集合 + 弱引用图 + 若引用集合(Map + Set + WeakMap + WeakSet)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、代理（Proxies）-Chrome测试不可用"><span class="toc-number">5.</span> <span class="toc-text">4、代理（Proxies） (Chrome测试不可用)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5、数据类型Symbols"><span class="toc-number">6.</span> <span class="toc-text">5、数据类型Symbols</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6、可以子类化的内置对象"><span class="toc-number">7.</span> <span class="toc-text">6、可以子类化的内置对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7、新增的API（Math-Number-String-Array-Object-APIs）"><span class="toc-number">8.</span> <span class="toc-text">7、新增的API（Math + Number + String + Array + Object APIs）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8、二进制和八进制字面量（Binary-and-Octal-Literals）"><span class="toc-number">9.</span> <span class="toc-text">8、二进制和八进制字面量（Binary and Octal Literals）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9、承诺（Promises）"><span class="toc-number">10.</span> <span class="toc-text">9、承诺（Promises）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10、参考资料"><span class="toc-number">11.</span> <span class="toc-text">10、参考资料</span></a></li></ol></div><h1 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h1><p>最近从coffee切换到js，代码量一下子变大了不少，也多了些许陌生感。</p>
+<p>为了在JS代码中，更合理的使用ES6的新特性，特在此对ES6的特性做一个简单的总览。</p>
+<h1 id="1、模块-Module-Chrome测试不可用"><a href="#1、模块-Module-Chrome测试不可用" class="headerlink" title="1、模块(Module - Chrome测试不可用)"></a>1、模块(Module - Chrome测试不可用)</h1><blockquote>
+<p>在ES6中，有class的概念，不过这只是语法糖，并没有解决模块化问题。Module功能则是为了解决模块化问题而提出的。</p>
+</blockquote>
+<p>我们可以使用如下方式定义模块：</p>
+<p>11_lib.js文件内容</p>
+<pre><code>// 导出属性和方法
+export var PI = 3.1415926;
+export function calcCircularArea(r){
+  return PI * r * r;
+}
+</code></pre><p>app.js文件内容</p>
+<pre><code>//导出所有，使用别名调用
+import * as lib from &apos;11_lib&apos;;
+console.log(lib.calcCircularArea(2));
+console.log(lib.PI);
+
+//导出属性和方法
+import {calcCircularArea, PI} from &apos;11_lib&apos;;
+console.log(calcCircularArea(2));
+console.log(PI);
+</code></pre><h1 id="2、模块加载器-Module-Loaders-Chrome测试不可用"><a href="#2、模块加载器-Module-Loaders-Chrome测试不可用" class="headerlink" title="2、模块加载器(Module Loaders - Chrome测试不可用)"></a>2、模块加载器(Module Loaders - Chrome测试不可用)</h1><p>既然用了定义module的规范，那么也就需要一个模块加载器，需要支持如下内容：</p>
+<ol>
+<li>动态加载</li>
+<li>状态隔离</li>
+<li>全局命名空间隔离</li>
+<li>编译钩子</li>
+<li>嵌套虚拟化</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">System.import(<span class="string">'11_lib'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">m</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(m.calcCircularArea(<span class="number">2</span>));</div><div class="line">  <span class="built_in">console</span>.log(m.PI);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h1 id="3、图-集合-弱引用图-若引用集合-Map-Set-WeakMap-WeakSet"><a href="#3、图-集合-弱引用图-若引用集合-Map-Set-WeakMap-WeakSet" class="headerlink" title="3、图 + 集合 + 弱引用图 + 若引用集合(Map + Set + WeakMap + WeakSet)"></a>3、图 + 集合 + 弱引用图 + 若引用集合(Map + Set + WeakMap + WeakSet)</h1><p>在ES6中，新增了几种数据结构。</p>
+<p><strong>Map</strong>是一种类似于Object的结构，Object本质上是键值对的集合，但是只能是字符串当做键，所以有一定的使用限制。Map的话，则可以拿任意类型来作为key。具体使用如下：</p>
+<pre><code>var map = new Map();
+var key = {key: &apos;hah&apos;};
+map.set(key, &apos;1&apos;); //设置key-value
+map.set(key, 2); //对已有key进行设置，表示覆盖
+console.log(map.get(key)); //获取key的值
+console.log(map.size);//获取map的元素个数
+map.has(key); //判断map中有指定的key
+map.delete(key); //删除map中指定的key
+map.clear(); //清空map
+</code></pre><p><strong>WeakMap</strong>和Map是比较类似的，唯一的区别是只接受对象作为键名（null除外），而且键名所指向的对象，不计入垃圾回收机制。</p>
+<p><strong>Set</strong>是一种类似于数组，但成员的值都是唯一（引用唯一）的一种数据结构。具体使用如下：</p>
+<pre><code>var set = new Set();//定义set
+set.add(1).add(2).add(1).add(&apos;2&apos;); //添加数据
+console.log(set.size);//查看set中元素的数量，结果应该是3，因为重复添加不计算，2和&apos;2&apos;不等。
+set.delete(1); //删除set的值（通过value删除）。
+set.has(1); //set是否包含某个value
+set.keys(); //返回set的所有key
+set.values(); //返回set的所有value
+set.clear();//清空set
+</code></pre><p><strong>WeakSet</strong>和Set也是比较类型的，和Set有两个区别，一个是成员只能是对象；二个是WeakSet是不可遍历的。</p>
+<h1 id="4、代理（Proxies）-Chrome测试不可用"><a href="#4、代理（Proxies）-Chrome测试不可用" class="headerlink" title="4、代理（Proxies） (Chrome测试不可用)"></a>4、代理（Proxies） (Chrome测试不可用)</h1><p>代理允许用宿主的行为来创建对象，能够实现拦截，对象的虚拟化，日志和分析等功能。</p>
+<h1 id="5、数据类型Symbols"><a href="#5、数据类型Symbols" class="headerlink" title="5、数据类型Symbols"></a>5、数据类型Symbols</h1><p>在ES5中，JS只有6中原始类型，在ES6中，新增了Symbols类型，成为了JS中的第7种原始类型。<br>该类型表示独一无二的值。使用如下：</p>
+<p>var key = Symbol(); //定义Symbol对象<br>console.log(typeof key); //symbol ，表示为类型，而且不是string类型的。<br>key = Symbol(‘这是一个说明’); //可以在定义Symbol的时候，添加一个说明</p>
+<p>Symbol不能与其他类型值进行运算，但是可以显式转换为字符串，和转换为布尔值</p>
+<pre><code>console.log(key.toString());
+console.log(String(key));
+
+if(key){
+  console.log(&apos;key is true&apos;);
+}
+</code></pre><p>在对象的内部，要使用Symbol值定义属性时，必须放在方括号中。</p>
+<pre><code>var obj = {
+  [key]: &apos;abc&apos;
+};
+</code></pre><h1 id="6、可以子类化的内置对象"><a href="#6、可以子类化的内置对象" class="headerlink" title="6、可以子类化的内置对象"></a>6、可以子类化的内置对象</h1><p>在ES6中，我们可以自定义类型来继承内置对象，这个时候，如果要自定义构造函数，必须要在构造函数中调用super(),来呼叫父类的构造。</p>
+<pre><code>&apos;use strict&apos;;
+class MyArray extends Array {
+    // 如果要定义constuctor，那么就必须要使用super来执行父类的构造
+    constructor(){
+      super();
+    }
+}
+
+var arr = new MyArray();
+arr[1] = 12;
+console.log(arr.length === 2);
+</code></pre><h1 id="7、新增的API（Math-Number-String-Array-Object-APIs）"><a href="#7、新增的API（Math-Number-String-Array-Object-APIs）" class="headerlink" title="7、新增的API（Math + Number + String + Array + Object APIs）"></a>7、新增的API（Math + Number + String + Array + Object APIs）</h1><p>如下代码，一目了然：</p>
+<pre><code>//数字类api
+Number.EPSILON; //增加常量e
+Number.isInteger(Infinity) // false
+Number.isNaN(&quot;NaN&quot;) // false
+
+//数学类api
+Math.acosh(3) // 1.762747174039086
+Math.hypot(3, 4) // 5
+Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2) // 2
+
+//字符串类api
+&quot;abcde&quot;.includes(&quot;cd&quot;) // true
+&quot;abc&quot;.repeat(3) // &quot;abcabcabc&quot;
+
+//数组api
+Array.from(document.querySelectorAll(&apos;*&apos;)) // Returns a real Array
+Array.of(1, 2, 3) // Similar to new Array(...), but without special one-arg behavior
+[0, 0, 0].fill(7, 1) // [0,7,7]
+[1, 2, 3].find(x =&gt; x == 3) // 3
+[1, 2, 3].findIndex(x =&gt; x == 2) // 1
+[1, 2, 3, 4, 5].copyWithin(3, 0) // [1, 2, 3, 1, 2]
+[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].entries() // iterator [0, &quot;a&quot;], [1,&quot;b&quot;], [2,&quot;c&quot;]
+[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].keys() // iterator 0, 1, 2
+[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].values() // iterator &quot;a&quot;, &quot;b&quot;, &quot;c&quot;
+
+//对象api
+Object.assign(Point, { origin: new Point(0,0) })
+</code></pre><h1 id="8、二进制和八进制字面量（Binary-and-Octal-Literals）"><a href="#8、二进制和八进制字面量（Binary-and-Octal-Literals）" class="headerlink" title="8、二进制和八进制字面量（Binary and Octal Literals）"></a>8、二进制和八进制字面量（Binary and Octal Literals）</h1><p>直接上示例：</p>
+<pre><code>var n1 = 0b111110101; //0b前缀，表示二进制字面量
+console.log(n1); //输出的时候，直接用10进制展示
+
+var n2 = 0o12345; //0o前缀，表示八进制字面量
+console.log(n2);
+</code></pre><h1 id="9、承诺（Promises）"><a href="#9、承诺（Promises）" class="headerlink" title="9、承诺（Promises）"></a>9、承诺（Promises）</h1><p><strong>Promise</strong>是ES6中新增的异步编程库。</p>
+<pre><code>//使用承诺定义一个异步任务
+var p = new Promise((resolve, reject)=&gt;{
+  return setTimeout(function(){
+    reject(&apos;ok&apos;);
+  }, 2000);
+});
+
+p.then((data)=&gt;{
+  console.log(data);
+}, (data)=&gt;{
+  console.log(&apos;error&apos; + data);
+}).then(()=&gt;{
+  console.log(&apos;throw err&apos;);
+  throw &apos;Error&apos;;
+}).catch(err =&gt; {
+  console.log(err);
+});
+</code></pre><h1 id="10、参考资料"><a href="#10、参考资料" class="headerlink" title="10、参考资料"></a>10、参考资料</h1><p>1、ECMAScript 6 features <a href="https://github.com/lukehoban/es6features" target="_blank" rel="external">https://github.com/lukehoban/es6features</a></p>
+<p>2、ECMAScript 6 入门 <a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">http://es6.ruanyifeng.com/</a></p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/ES6入门/ES6入门系列三（特性总览下）/" data-title="ES6入门系列三（特性总览下）" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/ES6入门/ES6入门系列三（特性总览下）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

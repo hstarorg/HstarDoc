@@ -1,0 +1,176 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、导言ES6中新增了不少的新特性，来点测试题热热身。具体题目来源请看：http://perfectionkills.com/javascript-quiz-es6/。
+以下将一题一题来解析what和why。
+1、题目一(function(x, f = () =&amp;gt; x) {
+  var x;
+"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ES6入门系列四（测试题分析） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>ES6入门系列四（测试题分析）</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、题目一"><span class="toc-number">2.</span> <span class="toc-text">1、题目一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、题目二"><span class="toc-number">3.</span> <span class="toc-text">2、题目二</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、题目三"><span class="toc-number">4.</span> <span class="toc-text">3、题目三</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、题目四"><span class="toc-number">5.</span> <span class="toc-text">4、题目四</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、题目五"><span class="toc-number">6.</span> <span class="toc-text">5、题目五</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、题目六"><span class="toc-number">7.</span> <span class="toc-text">6、题目六</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、题目七"><span class="toc-number">8.</span> <span class="toc-text">7、题目七</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、题目八"><span class="toc-number">9.</span> <span class="toc-text">8、题目八</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9、题目九"><span class="toc-number">10.</span> <span class="toc-text">9、题目九</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10、题目十"><span class="toc-number">11.</span> <span class="toc-text">10、题目十</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11、题目十一"><span class="toc-number">12.</span> <span class="toc-text">11、题目十一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12、题目十二"><span class="toc-number">13.</span> <span class="toc-text">12、题目十二</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13、题目十三"><span class="toc-number">14.</span> <span class="toc-text">13、题目十三</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14、题目答案"><span class="toc-number">15.</span> <span class="toc-text">14、题目答案</span></a></li></ol></div><h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>ES6中新增了不少的新特性，来点测试题热热身。具体题目来源请看：<a href="http://perfectionkills.com/javascript-quiz-es6/" target="_blank" rel="external">http://perfectionkills.com/javascript-quiz-es6/</a>。</p>
+<p>以下将一题一题来解析what和why。</p>
+<h2 id="1、题目一"><a href="#1、题目一" class="headerlink" title="1、题目一"></a>1、题目一</h2><pre><code>(function(x, f = () =&gt; x) {
+  var x;
+  var y = x;
+  x = 2;
+  return [x, y, f()];
+})(1)
+
+A、 [2, 1, 1]
+B、 [2, undefined, 1]
+C、 [2, 1, 2]
+D、 [2, undefined, 2]
+</code></pre><p><strong>解析：</strong>本题主要考察的知识点是1、参数值与函数体内定义的重名变量的优先级；2、ES6的默认参数；3、箭头函数。<br>在本题中，先执行x的定义，然后函数参数x=1，接着是y = x = 1,接着再x = 2，第三个是执行f函数，箭头函数如果只是表达式，那么等价于return 表达式，由于箭头函数的作用域等于定义时的作用域，那么函数定义时x=1，所以最后的return x 等价于 return 1</p>
+<h2 id="2、题目二"><a href="#2、题目二" class="headerlink" title="2、题目二"></a>2、题目二</h2><pre><code>(function() {
+  return [
+    (() =&gt; this.x).bind({ x: &apos;inner&apos; })(),
+    (() =&gt; this.x)()
+  ]
+}).call({ x: &apos;outer&apos; });
+
+A、 [&apos;inner&apos;, &apos;outer&apos;]
+B、 [&apos;outer&apos;, &apos;outer&apos;]
+C、 [undefined, undefined]
+D、 Error
+</code></pre><p><strong>解析：</strong>本题主要考察的是箭头函数的作用域问题，箭头函数的作用域等于定义时的作用域，所以通过bind设置的this是无效的。那么结果就显而易见了。</p>
+<h2 id="3、题目三"><a href="#3、题目三" class="headerlink" title="3、题目三"></a>3、题目三</h2><pre><code>let x, { x: y = 1 } = { x }; y;
+
+A、 undefined
+B、 1
+C、 { x: 1 }
+D、 Error
+</code></pre><p><strong>解析：</strong>本题主要考察的是对象赋值，先定义x，然后在赋值的时候会执行一次y=1，最后返回y的值。</p>
+<h2 id="4、题目四"><a href="#4、题目四" class="headerlink" title="4、题目四"></a>4、题目四</h2><pre><code>(function() {
+  let f = this ? class g { } : class h { };
+  return [
+    typeof f,
+    typeof h
+  ];
+})();
+
+A、 [&quot;function&quot;, &quot;undefined&quot;]
+B、 [&quot;function&quot;, &quot;function&quot;]
+C、 [&quot;undefined&quot;, &quot;undefined&quot;]
+D、 Error
+</code></pre><p><strong>解析：</strong>本题主要考察定义函数变量时，命名函数的名称作用域问题。在定义函数变量时，函数名称只能在函数体中生效。</p>
+<h2 id="5、题目五"><a href="#5、题目五" class="headerlink" title="5、题目五"></a>5、题目五</h2><pre><code>(typeof (new (class { class () {} })))
+
+A、 &quot;function&quot;
+B、 &quot;object&quot;
+C、 &quot;undefined&quot;
+D、 Error
+</code></pre><p><strong>解析：</strong>本题主要考察对象的类型，和原型方法。该提可以分解如下：</p>
+<pre><code>// 定义包含class原型方法的类。
+var Test = class{
+  class(){}
+};
+var test = new Test(); //定义类的实例
+typeof test; //出结果
+</code></pre><h2 id="6、题目六"><a href="#6、题目六" class="headerlink" title="6、题目六"></a>6、题目六</h2><pre><code>typeof (new (class F extends (String, Array) { })).substring
+
+A、 &quot;function&quot;
+B、 &quot;object&quot;
+C、 &quot;undefined&quot;
+D、 Error
+</code></pre><p><strong>解析：</strong>本题主要考察ES6中class的继承，以及表达式的返回值和undefined的类型。题目其实可以按照如下方式分解：</p>
+<pre><code>//由于JS的class没有多继承的概念，所以括号被当做表达式来看
+(String, Array) //Array,返回最后一个值
+(class F extends Array); //class F继承成Array
+(new (class F extends Array)); //创建一个F的实例
+(new (class F extends (String, Array) { })).substring; //取实例的substring方法，由于没有继承String，Array没有substring方法，那么返回值为undefined
+typeof (new (class F extends (String, Array) { })).substring; //对undefined取typeof
+</code></pre><h2 id="7、题目七"><a href="#7、题目七" class="headerlink" title="7、题目七"></a>7、题目七</h2><pre><code>[...[...&apos;...&apos;]].length
+
+A、 1
+B、 3
+C、 6
+D、 Error
+</code></pre><p><strong>解析：</strong>本题主要考察的是扩展运算符…的作用。扩展运算符是将后面的对象转换为数组，具体用法是：</p>
+<pre><code>[...&lt;数据&gt;] 比如 [...&apos;abc&apos;]等价于[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+</code></pre><h2 id="8、题目八"><a href="#8、题目八" class="headerlink" title="8、题目八"></a>8、题目八</h2><pre><code>typeof (function* f() { yield f })().next().next()
+
+A、 &quot;function&quot;
+B、 &quot;generator&quot;
+C、 &quot;object&quot;
+D、 Error
+</code></pre><p><strong>解析：</strong>本题主要考察ES6的生成器。题目可以如下分解：</p>
+<pre><code>function* f() { yield f }; //定义一个生成器
+var g = f(); //执行生成器
+var temp = g.next(); //返回第一次yield的值
+console.log(temp); //测试，查看temp，其实是一个object
+temp.next()；//对对象调用next方法，无效
+</code></pre><h2 id="9、题目九"><a href="#9、题目九" class="headerlink" title="9、题目九"></a>9、题目九</h2><pre><code>typeof (new class f() { [f]() { }, f: { } })[`${f}`]
+
+A、 &quot;function&quot;
+B、 &quot;undefined&quot;
+C、 &quot;object&quot;
+D、 Error
+</code></pre><p><strong>解析：</strong>本题主要考察ES6的class，以及动态属性和模板字符串等。 实际上这个题动态属性和模板字符串都是烟雾弹，在执行new class f()的时候，就已经有语法错误了。</p>
+<h2 id="10、题目十"><a href="#10、题目十" class="headerlink" title="10、题目十"></a>10、题目十</h2><pre><code>typeof `${{Object}}`.prototype
+
+A、 &quot;function&quot;
+B、 &quot;undefined&quot;
+C、 &quot;object&quot;
+D、 Error
+</code></pre><p><strong>解析：</strong>本题考察的知识点相对单一，就是模板字符串。分解如下：</p>
+<pre><code>var o = {Object},
+  str = `${o}`;
+typeof str.prototype; 
+</code></pre><h2 id="11、题目十一"><a href="#11、题目十一" class="headerlink" title="11、题目十一"></a>11、题目十一</h2><pre><code>((...x, xs)=&gt;x)(1,2,3)
+
+A、 1
+B、 3
+C、 [1,2,3]
+D、 Error
+</code></pre><p><strong>解析：</strong>本题主要考察的是Rest参数的用法，在ES6中，Rest参数只能放在末尾，所以该用法的错误的。</p>
+<h2 id="12、题目十二"><a href="#12、题目十二" class="headerlink" title="12、题目十二"></a>12、题目十二</h2><pre><code>let arr = [ ];
+for (let { x = 2, y } of [{ x: 1 }, 2, { y }]) { 
+  arr.push(x, y);
+}
+arr;
+
+A、 [2, { x: 1 }, 2, 2, 2, { y }]
+B、 [{ x: 1 }, 2, { y }]
+C、 [1, undefined, 2, undefined, 2, undefined]
+D、 Error
+</code></pre><p><strong>解析：</strong>本题看起来是考察let的作用域和of迭代的用法。实则是考察let的语法，let之后是一个参数名称。所以，语法错误</p>
+<h2 id="13、题目十三"><a href="#13、题目十三" class="headerlink" title="13、题目十三"></a>13、题目十三</h2><pre><code>(function() {
+  if (false) {
+    let f = { g() =&gt; 1 };
+  }
+  return typeof f;
+})()
+
+A、 &quot;function&quot;
+B、 &quot;undefined&quot;
+C、 &quot;object&quot;
+D、 Error
+</code></pre><p><strong>解析：</strong>本题非常有迷惑性，看似考察的let的作用域问题，实则考察了箭头函数的语法问题。</p>
+<h2 id="14、题目答案"><a href="#14、题目答案" class="headerlink" title="14、题目答案"></a>14、题目答案</h2><p>相信大家看过题目的解析，对题目答案已经了然。为了完善本文，还是在最后贴出所有题目的答案：</p>
+<p>ABBAB CBDDB DDD</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/ES6入门/ES6入门系列四（测试题分析）/" data-title="ES6入门系列四（测试题分析）" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/ES6入门/ES6入门系列四（测试题分析）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>

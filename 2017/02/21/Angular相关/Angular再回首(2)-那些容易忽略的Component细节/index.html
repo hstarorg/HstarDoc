@@ -1,0 +1,95 @@
+<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、前言在 Angular 1.5.x 中，增加的组件方法，相当实用和易用。但也有许多小细节问题值得注意，以下为本人在组件实践过程中遇到的问题，或者是需要注意的小细节。
+1、问题/小细节（需要注意的点）1.1、如何判断是否添加了可选的 transclude 元素？在很多时候，我们会给一个组件设定多个"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Angular再回首(2)-那些容易忽略的Component细节 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>Angular再回首(2)-那些容易忽略的Component细节</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、前言"><span class="toc-number">1.</span> <span class="toc-text">0、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、问题-小细节（需要注意的点）"><span class="toc-number">2.</span> <span class="toc-text">1、问题/小细节（需要注意的点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、如何判断是否添加了可选的-transclude-元素？"><span class="toc-number">2.1.</span> <span class="toc-text">1.1、如何判断是否添加了可选的 transclude 元素？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2、如何监控绑定属性的变更？"><span class="toc-number">2.2.</span> <span class="toc-text">1.2、如何监控绑定属性的变更？</span></a></li></ol></li></ol></div><h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>在 <code>Angular 1.5.x</code> 中，增加的组件方法，相当实用和易用。但也有许多小细节问题值得注意，<br>以下为本人在组件实践过程中遇到的问题，或者是需要注意的小细节。</p>
+<h2 id="1、问题-小细节（需要注意的点）"><a href="#1、问题-小细节（需要注意的点）" class="headerlink" title="1、问题/小细节（需要注意的点）"></a>1、问题/小细节（需要注意的点）</h2><h3 id="1-1、如何判断是否添加了可选的-transclude-元素？"><a href="#1-1、如何判断是否添加了可选的-transclude-元素？" class="headerlink" title="1.1、如何判断是否添加了可选的 transclude 元素？"></a>1.1、如何判断是否添加了可选的 <code>transclude</code> 元素？</h3><p>在很多时候，我们会给一个组件设定多个 <code>transclude</code>，可能其中有一部分是可选的，那如何判断可选的 <code>transclude</code> 被用户设置了值呢？</p>
+<p>此时，我们可以依靠 <code>$transclude</code> 来进行判断：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">XXXComponent</span></span>&#123;</div><div class="line">  <span class="keyword">constructor</span>($transclude)&#123;</div><div class="line">    <span class="keyword">this</span>.$transclude = $transclude;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  $onInit()&#123;</div><div class="line">    <span class="comment">// 判断transclude是否存在</span></div><div class="line">    <span class="keyword">let</span> transcludeName = <span class="string">'xxx'</span>;</div><div class="line">    <span class="keyword">let</span> hasXXX = <span class="keyword">this</span>.$transclude.isSlotFilled(transcludeName);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">XXXComponent.$inject = [<span class="string">'$transclude'</span>];</div></pre></td></tr></table></figure>
+<h3 id="1-2、如何监控绑定属性的变更？"><a href="#1-2、如何监控绑定属性的变更？" class="headerlink" title="1.2、如何监控绑定属性的变更？"></a>1.2、如何监控绑定属性的变更？</h3><p>属性绑定，分为一次性绑定(@)（也算是单向绑定），单向绑定(&lt;)，双向绑定(=)。</p>
+<p><strong># 监控单向绑定属性</strong></p>
+<p>对于单向绑定的属性，可以通过生命周期钩子 <code>$onChanges(changesObj)</code> 来进行监控。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">XXXController</span></span>&#123;</div><div class="line">  $onChanges(changesObj)&#123;</div><div class="line">    <span class="built_in">console</span>.log(changesObj);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中参数 <code>changesObj</code> 是所有变更属性的一个汇总，数据结构如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">changesObj = &#123;</div><div class="line">  key1: &#123; // 有变更的绑定属性</div><div class="line">    currentValue: any // 当前值 （变化后的值）</div><div class="line">    previousValue: any // 上一次的值 （变化前的值）</div><div class="line">    isFirstChange(): fn // 方法，用于判断是否是第一次变更。 </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注意：<code>$onChanges</code> 无法监控双向绑定属性，切记！</strong></p>
+<p><strong># 监控双向绑定</strong></p>
+<p>由于 <code>$onChanges</code> 无法监控双向绑定属性，那么我们就必须另外想办法来进行监控，可以有以下几种方案：</p>
+<p><em>方案一：利用 <code>$interval</code></em></p>
+<p>既然是双向绑定，那么肯定变化是直接生效的，关键就在于我们无法监视到，这个时候我们可以利用 <code>$interval</code> 来实现定时监控。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">XXXController</span></span>&#123;</div><div class="line">  <span class="keyword">constructor</span>($interval)&#123;</div><div class="line">    <span class="keyword">this</span>.$interval = $interval;</div><div class="line">    <span class="keyword">this</span>.init();</div><div class="line">  &#125;</div><div class="line">  init()&#123;</div><div class="line">    <span class="keyword">let</span> previousValue = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">this</span>.$interval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span>(previousValue !== <span class="keyword">this</span>.value)&#123;</div><div class="line">        previousValue = <span class="keyword">this</span>.value;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'value changed'</span>);</div><div class="line">      &#125;</div><div class="line">    &#125;, <span class="number">200</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">XXXController.$inject = [<span class="string">'$interval'</span>];</div><div class="line"></div><div class="line">angular.module(<span class="string">'xxx'</span>).component(<span class="string">'xxx'</span>, &#123;</div><div class="line">  <span class="attr">bindings</span>: &#123;</div><div class="line">    <span class="attr">value</span>: <span class="string">'='</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">controller</span>: XXXController,</div><div class="line">  <span class="attr">controllerAs</span>: <span class="string">'vm'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>优点：</p>
+<ol>
+<li>易于理解</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>浪费资源</li>
+<li>需要自己书写逻辑</li>
+</ol>
+<p>推荐指数： ☆</p>
+<p><em>方案二：利用 <code>$scope.$watch(keyString)</code></em></p>
+<p>组件也有独立的 <code>$scope</code>，那么借助 <code>$scope.$watch</code> 也可以实现监听属性变化，代码如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class XXXController&#123;</div><div class="line">  constructor($scope)&#123;</div><div class="line">    this.$scope = $scope;</div><div class="line">    this.init();</div><div class="line">  &#125;</div><div class="line">  init()&#123;</div><div class="line">    this.$scope.$watch('vm.value', (newVal, oldVal) =&gt; &#123;</div><div class="line">      console.log('value changed);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">XXXController.$inject = ['$scope'];</div><div class="line"></div><div class="line">angular.module('xxx').component('xxx', &#123;</div><div class="line">  bindings: &#123;</div><div class="line">    value: '=' // 双向绑定属性</div><div class="line">  &#125;,</div><div class="line">  controller: XXXController,</div><div class="line">  controllerAs: 'vm'</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>优点：</p>
+<ol>
+<li>使用简单</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>字符串形式的 <code>$watch</code>,依赖 <code>controllerAs</code>,不易理解 </li>
+<li>实质仍然是定时器，只不过是使用的 <code>angular</code> 自身的 <code>$diget</code> 循环</li>
+</ol>
+<p>推荐指数： ☆☆</p>
+<p><em>方案三：利用 <code>$scope.$watch(fn)</code></em></p>
+<p><code>$scope.$watch</code> 也接受函数类型的参数，相对于字符串形式，没有 <code>controllerAs</code> 的相关性，而且更灵活，代码如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class XXXController&#123;</div><div class="line">  constructor($scope)&#123;</div><div class="line">    this.$scope = $scope;</div><div class="line">    this.init();</div><div class="line">  &#125;</div><div class="line">  init()&#123;</div><div class="line">    this.$scope.$watch(() =&gt; this.value, (newVal, oldVal) =&gt; &#123;</div><div class="line">      console.log('value changed);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">XXXController.$inject = ['$scope'];</div><div class="line"></div><div class="line">angular.module('xxx').component('xxx', &#123;</div><div class="line">  bindings: &#123;</div><div class="line">    value: '=' // 双向绑定属性</div><div class="line">  &#125;,</div><div class="line">  controller: XXXController,</div><div class="line">  controllerAs: 'vm'</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>优点：</p>
+<ol>
+<li>使用简单</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>实质仍然是定时器，只不过是使用的 <code>angular</code> 自身的 <code>$diget</code> 循环</li>
+</ol>
+<p>推荐指数： ☆☆☆☆</p>
+<p><em>方案四：利用 <code>getter &amp; setter</code></em></p>
+<p>因为我们使用了 <code>ES6 Class</code>，那么 <code>ES6</code> 的 <code>getter setter</code> 特性，我们也是能够使用的，方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">XXXController</span></span>&#123;</div><div class="line"></div><div class="line">  set value(val)&#123;</div><div class="line">    <span class="keyword">this</span>._value = val;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'value changed'</span>);</div><div class="line">  &#125;</div><div class="line">  get value()&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._value;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">XXXController.$inject = [];</div><div class="line"></div><div class="line">angular.module(<span class="string">'xxx'</span>).component(<span class="string">'xxx'</span>, &#123;</div><div class="line">  <span class="attr">bindings</span>: &#123;</div><div class="line">    <span class="attr">value</span>: <span class="string">'='</span> <span class="comment">// 双向绑定属性</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">controller</span>: XXXController,</div><div class="line">  <span class="attr">controllerAs</span>: <span class="string">'vm'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>优点：</p>
+<ol>
+<li>没有额外的开销，性能高</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>使用相对较为复杂</li>
+</ol>
+<p>推荐指数： ☆☆☆☆</p>
+<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/Angular相关/Angular再回首(2)-那些容易忽略的Component细节/" data-title="Angular再回首(2)-那些容易忽略的Component细节" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/Angular相关/Angular再回首(2)-那些容易忽略的Component细节/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
+duoshuoQuery["short_name"] = _shortName;
+(function() {
+    var ds = document.createElement("script");
+    ds.type = "text/javascript";
+    ds.async = true;
+    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+    ds.charset = "utf-8";
+    (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0]).appendChild(ds);
+})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
+    $("header").backstretch("/images/header.jpeg");
+
+    $("figure.highlight").each(function(i, block) {
+        $(block).removeClass("highlight");
+        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
+        $(block).next().find("code").text((block.innerText || block.textContent));
+        $(block).remove();
+    });
+    $(".__tobehl").each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    $("article.full img").each(function() {
+        $(this).parent().css("text-align", "center");
+    });
+
+    if($(".article-toc").children().length < 2) {
+        $(".article-toc").css("display", "none");
+    }
+});</script></body></html>
