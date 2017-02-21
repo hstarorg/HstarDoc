@@ -1,3 +1,8 @@
+---
+title: AngularJS教程：1W字综合指南
+date: 2015/3/13 11:24:39
+---
+
 # AngularJSj教程：1W字指南（译）
 **原文地址：**[http://www.airpair.com/angularjs](http://www.airpair.com/angularjs)
 

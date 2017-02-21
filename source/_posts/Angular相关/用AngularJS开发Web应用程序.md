@@ -1,3 +1,8 @@
+---
+title: 用AngularJS开发Web应用程序
+date: 2015/3/13 11:24:39
+---
+
 ##章节一：Angular 禅道##
 ###本章生词###
 	serve = 提供
