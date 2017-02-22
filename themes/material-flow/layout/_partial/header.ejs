@@ -1,0 +1,43 @@
+<header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='<%= url_for("/") %>' >
+				<%- config.title %>
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					<% (site.data.menu||[]).forEach(function(value){ %>
+						<li>
+							<a class='flat-box nav-<%=value.slug%>' href='<%=url_for(value.url)%>'>
+								<%=value.name%>
+							</a>
+						</li>
+					<%})%>
+				</ul>
+				<div class='underline'></div>
+			</div>
+			<% if (theme.search.enable === true) { %>
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			<% } %>
+			<ul class='switcher h-list'>
+				<% if (theme.search.enable === true) { %>
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				<% } %>
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				<% (site.data.menu||[]).forEach(function(value, key) {
+							if (value.url && value.slug && value.name) { %>
+					<a href="<%= url_for(value.url) %>" class="nav-<%= value.slug %> nav">
+						<%= value.name %>
+					</a>
+				<% } }); %>
+			</nav>
+		</aside>
+</header>

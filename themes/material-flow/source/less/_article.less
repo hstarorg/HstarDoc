@@ -1,0 +1,266 @@
+.article {
+    color: lighten(@black, 2%);
+    font-size: 1rem;
+    line-height: 1.6;
+    word-break: break-all;
+    word-wrap: break-word;
+    em {
+        position: relative;
+        &:before {
+            position: absolute;
+            top: 0.65em;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+        }
+    }
+    img {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        background: white;
+        transition: all 0.24s ease;
+        @media (max-width: @on-phone) {
+            box-shadow: none;
+        }
+    }
+    hr {
+        border: 0;
+        border-bottom: 1px solid #ddd;
+    }
+    p.small-img,
+    div.small-img {
+        img {
+            width: auto;
+            max-width: 100%;
+            margin: 0;
+            box-shadow: none;
+        }
+    }
+    p {
+        margin: 20px 0px;
+    }
+    ul,
+    ol {
+        list-style: initial;
+        padding-left: 20px;
+        & > li{
+          list-style: initial;
+        }
+        margin: 20px 0px;
+    }
+    a {
+        color: darken(@accent-color, 2%);
+        &:hover {
+            color: darken(@accent-color, 3%);
+            background: fade(@accent-color, 10%);
+        }
+        &:active {
+            background: fade(@accent-color, 20%);
+            color: @white;
+        }
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        position: relative;
+        font-family: @base-font-family;
+        font-weight: normal;
+        margin: 20px auto 10px;
+        left: 20px;
+        &::before {
+            position: absolute;
+            left: -20px;
+            top: 0px;
+            content: "#";
+            color: @secondary-color;
+            font-weight: normal;
+        }
+        &.title {
+            left: 0;
+            &:before {
+                content: none;
+            }
+        }
+    }
+    figure {
+        figcaption {
+            span {
+                display: inline-block;
+                margin-right: 5px;
+            }
+        }
+    }
+    blockquote {
+        position: relative;
+        width: 100%;
+        margin: 20px 0px;
+        padding: 0px 20px;
+        border-left: 4px solid @material-green;
+        footer {
+            strong {
+                margin-right: 7px;
+            }
+        }
+    }
+    pre {
+        display: block;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: @code-font-family;
+    }
+    code {
+        font-family: @code-font-family;
+        color: @secondary-color;
+        padding: 3px 5px;
+        margin: 0px 2px;
+        border-radius: 2px;
+        font-size: 1em;
+        background: lighten(@background-color, 5%);
+    }
+    .readmore {
+        // display: none; // howtodesign?
+        font-size: 1.2rem;
+        margin-top: @gap;
+        a {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 2rem;
+        }
+    }
+    .tags {
+        position: relative;
+        padding-top: @gap/2;
+        padding-bottom: @gap/2;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin-top: @gap;
+        background: @qoute-background-color;
+        &.article-tags {
+            background: transparent;
+        }
+        word-spacing: @gap/2;
+        a {
+            position: relative;
+            display: inline-block;
+            word-spacing: 0;
+            // &+a{
+            //   margin-left: @gap/2;
+            // }
+            .enable-trans(.1s);
+            //background:@material-light-grey;
+            color: @grey-color;
+            &:hover {
+                color: @accent-color;
+                background: transparent;
+            }
+            &::before {
+                content: "#";
+            }
+        }
+    }
+    table:not('.highlight table') {
+        width: 100%;
+        td,
+        th {
+            padding: 12px 24px
+        }
+        tr {
+            border-bottom: 1px solid #ddd;
+        }
+        &>thead>th {
+            border-bottom-width: 2px;
+        }
+    }
+    @media (max-width: @on-phone) {
+        h1,
+        h2,
+        h3 {
+            margin: 20px 0px;
+        }
+        h4,
+        h5,
+        h6 {
+            margin: 10px 0px;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+        h2 {
+            font-size: 1.4em;
+        }
+        h3 {
+            font-size: 1.3em;
+        }
+        h4 {
+            font-size: 1.2em;
+        }
+        h5 {
+            font-size: 1.1em;
+        }
+        h6 {
+            font-size: 1em;
+        }
+        figure {
+            font-size: 13px;
+            line-height: 1.6em;
+        }
+    }
+}
+/* Tomorrow Night Eighties Theme */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+.tomorrow-comment, pre .comment, pre .title {
+  color: #999999;
+}
+
+.tomorrow-red, pre .variable, pre .attribute, pre .tag, pre .regexp, pre .ruby .constant, pre .xml .tag .title, pre .xml .pi, pre .xml .doctype, pre .html .doctype, pre .css .id, pre .css .class, pre .css .pseudo {
+  color: #f2777a;
+}
+
+.tomorrow-orange, pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+  color: #f99157;
+}
+
+.tomorrow-yellow, pre .class, pre .ruby .class .title, pre .css .rules .attribute {
+  color: #ffcc66;
+}
+
+.tomorrow-green, pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+  color: #99cc99;
+}
+
+.tomorrow-aqua, pre .css .hexcolor {
+  color: #66cccc;
+}
+
+.tomorrow-blue, pre .function, pre .python .decorator, pre .python .title, pre .ruby .function .title, pre .ruby .title .keyword, pre .perl .sub, pre .javascript .title, pre .coffeescript .title {
+  color: #6699cc;
+}
+
+.tomorrow-purple, pre .keyword, pre .javascript .function {
+  color: #cc99cc;
+}
+
+.highlight {
+  width: 100%;
+  margin: 20px 0px;
+  overflow: auto;
+  display: block;
+  background: #2d2d2d;
+  color: #cccccc;
+  font-size: .9rem;
+  font-family:@code-font-family;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  padding: 10px;
+  .gutter{
+    color: #fff;
+    padding-right: 8px;
+  }
+}

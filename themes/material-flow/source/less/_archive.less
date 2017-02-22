@@ -1,0 +1,33 @@
+#archive-page {
+  margin-bottom: @gap * 2;
+  .archive {
+    position: relative;
+    padding: @gap;
+    .archive-year {
+      font-size: 16px;
+      margin: 10px 0px;
+      a{
+        color: @black;
+      }
+    }
+    .archive-post {
+      a{
+        display:flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      time {
+        color: @black;
+        flex:none;
+        font-size: 12px;
+        padding-right: 10px;
+      }
+      .title {
+        flex:auto;
+        font-size: 14px;
+        color: @accent-color;
+      }
+    }
+  }
+}

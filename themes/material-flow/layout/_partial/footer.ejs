@@ -1,0 +1,18 @@
+<footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	<% if (theme.social) { %>
+      <% theme.social.forEach(function(value, key) {
+           if (value.url && value.slug) { %>
+        <a href="<%= value.url %>" class="social <%= value.slug %>"
+          target="_blank" rel="external">
+          <span class="icon icon-<%= value.slug %>"></span>
+        </a>
+      <% } }); %>
+    <% } %>
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+

@@ -1,0 +1,42 @@
+<% if (is_tag()) { %>
+	<section class="page-header tag banner waves-image">
+    <h1>Tag : <span><%= page.tag %></span></h1>
+  </section>
+<% } else if (is_archive()) { %>
+	<section class="page-header archive banner waves-image">
+    <h1>Year : <span><%= page.year %><%= page.month ? '.' + page.month : '' %></span></h1>
+  </section>
+<% } else if (is_category()) { %>
+	<section class="page-header category banner waves-image">
+    <h1>Category : <span><%= page.category %></span></h1>
+  </section>
+<% } else { %>
+  <section class="page-header category banner waves-image">
+    <h1 id='hitokoto'></h1>
+  </section>
+<% } %>
+<section class="post-list">
+	<% page.posts.each(function(post){ %>
+    <div class='post-wrapper'>
+      <%- partial('post', {post: post}) %>
+    </div>
+  <% }) %>
+</section>
+
+<% if (page.total > 1) { %>
+  <nav id="page-nav">
+    <% if (page.prev != 0) { %>
+    <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
+    </a>
+    <% } %>
+    <% if (page.next != 0) { %>
+    <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
+    <% } %>
+  </nav>
+  
+<% } %>
