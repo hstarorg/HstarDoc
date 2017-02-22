@@ -1,0 +1,14 @@
+<% if (site.tags.length){ %>
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <%- tagcloud(site.tags, {
+            min_font: 14, 
+            max_font: 20, 
+            color: true, 
+            start_color: 'gray', 
+            end_color: 'black'
+        }) %>
+    </div>
+</div>
+<% } %>

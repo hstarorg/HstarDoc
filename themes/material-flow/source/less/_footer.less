@@ -1,0 +1,49 @@
+#footer {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+	color: @white;
+  margin: 0px auto;
+  font-size: 14px;
+  overflow: hidden;
+  text-align: center;
+	background: @black;
+	.codename {
+		color: @secondary-color;
+	}
+	.social-wrapper {
+		padding-top: 20px;
+	}
+  a {
+    color: fade(@white,80%);
+
+    &:hover {
+      background: fade(@accent-color, 10%);
+      color: darken(@accent-color, 3%);
+    }
+    &.social {
+	    position: relative;
+	    display: inline-block;
+	    text-align: center;
+	    font-size: 16px;
+	    margin: 0px 5px;
+
+	  	&:hover {
+		  	background: transparent;
+		  	color: @accent-color;
+	  	}
+	  	&.github:hover {
+		  	color: @github-color;
+	  	}
+	  	&.google:hover {
+		  	color: @google-color;
+	  	}
+	  	&.twitter:hover {
+		  	color: @twitter-color;
+	  	}
+	  	&.weibo:hover {
+		  	color: @weibo-color;
+	  	}
+    }
+  }
+}
