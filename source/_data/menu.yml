@@ -1,0 +1,9 @@
+- name: 首页
+  slug: home
+  url: /
+- name: 归档
+  slug: archives
+  url: /archives
+- name: 关于我
+  slug: about
+  url: /about
