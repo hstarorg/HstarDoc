@@ -6,7 +6,11 @@
 title: 幻☆精灵的Blog
 subtitle: Love life, love coding~
 description: 幻☆精灵的Blog站点
+keywords:
+  - 幻精灵
 author: Jay.M.Hu
+avatar: https://avatars1.githubusercontent.com/u/4043284?v=3&s=460  # the avatar image in the sidebar
+favicon: /images/favicon.ico # the favicon
 language:
 timezone:
 
@@ -63,14 +67,14 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-xnew
+theme: material-flow
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
 
-# Theme Configuration
+# Xnew Theme Configuration
 logo: https://avatars1.githubusercontent.com/u/4043284?v=3&s=460
 han_type: zh-Hant
 menu:
@@ -87,3 +91,67 @@ icon:
   github: hstarorg
   weibo: hstarorg
   zhihu: hstar
+
+# Material-flow Theme Configuration
+# if your search is enable && search service is 'hexo'
+social:
+- slug: github
+  url: https://github.com/YOUR_GITHUB_ID
+- slug: twitter
+  url: https://twitter.com/YOUR_TWTTIER_ID
+- slug: rss
+  url: /atom.xml
+
+search:
+  path: search.xml
+  field: post
+
+# Generator json content
+jsonContent:
+  meta: false
+  keywords: false
+  pages:
+    title: true
+    slug: false
+    date: false
+    updated: false
+    comments: false
+    path: false
+    link: false
+    permalink: true
+    excerpt: false
+    keywords: false
+    text: true
+    raw: false
+    content: false
+  posts:
+    title: true
+    slug: false
+    date: false
+    updated: false
+    comments: false
+    path: false
+    link: false
+    permalink: true
+    excerpt: false
+    keywords: false
+    text: true
+    raw: false
+    content: false
+    categories: false
+    tags: false
+
+# auto prefixer
+autoprefixer:
+  exclude:
+    - '*.min.css'
+  browsers:
+    - 'last 2 versions'
+
+# rss
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
