@@ -1,22 +1,855 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="幻☆精灵的Blog站点"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Archives: 2014/12 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><script>window.location.href = "http://hstarorg.github.io/blog/blog//pigeonhole";
-</script></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Archives: 2014/12 | 幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="幻☆精灵的Blog站点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="幻☆精灵的Blog">
+<meta property="og:url" content="http://hstarorg.github.io/blog/archives/2014/12/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="幻☆精灵的Blog站点">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="幻☆精灵的Blog">
+<meta name="twitter:description" content="幻☆精灵的Blog站点">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
 
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
-
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
     }
-});</script></body></html>
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        
+	
+	<section class="page-header archive banner waves-image">
+    <h1>Year : <span>2014.12</span></h1>
+  </section>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/12/27/编写高质量JS代码的68个有效方法-读书笔记/[20141227]编写高质量JS代码的68个有效方法（八）/">
+        编写高质量JS代码的68个有效方法（八）
+      </a>
+    </h2>
+    
+    <time>
+      Dec 27, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##NO.36、只将实例状态存储在实例对象中<br><strong>Tips：</strong></p>
+<ol>
+<li>共享可变数据可能会出问题，因为原型是被其所有的实例共享的</li>
+<li>将可变的实例存储在实例对象中</li>
+</ol>
+<p>一般来说，由于原型属性指向的对象是所有实例共享的。所以不建议在原型指向的对象中存储共享数据。下面给一个简单的例子：</p>
+<pre><code>var Person = function(name){
+    this.name = name;
+};
+Person.prototype = {
+    children: [],
+    addChild: function(childName){
+        this.children.push(childName);
+    },
+    getChildren: function(){
+        return this.children;
+    }
+};
+
+var p1 = new Person(&apos;P1&apos;);
+var p2 = new Person(&apos;P2&apos;);
+p2.addChild(&apos;P2_C1&apos;);
+console.log(p1.getChildren());
+</code></pre><p>结果比较明显。p2的孩子成p1的了。标准做法是将children存储在实例对象中。</p>
+<pre><code>var Person = function(name){
+    this.name = name;
+    this.children = [];
+};
+Person.prototype = {
+    addChild: function(childName){
+        this.children.push(childName);
+    },
+    getChildren: function(){
+        return this.children;
+    }
+};
+</code></pre><p>##No.37、认识到this变量的隐式绑定问题<br><strong>Tips：</strong></p>
+<ol>
+<li>this变量的作用域总是有其最近的封闭函数所确定</li>
+<li>使用一个局部变量（通常命名为self,me,that）使得this的绑定对于内部函数是可用的。</li>
+</ol>
+<p>老规矩，看一个简单的示例：</p>
+<pre><code>var testObj = {
+    a1: 0,
+    fun1: function(){
+        function fun2(){
+            console.log(this.a1);
+        }
+        fun2();
+    }
+};
+testObj.fun1();
+</code></pre><p>为什么会这样呢？因为this变量是以不同的方式被绑定的。每个函数都有一个this变量的隐式绑定。this变量是隐式的绑定到最近的封闭函数。针对以上的问题，可以有集中方法来处理，参考如下：</p>
+<pre><code>//通过将this用变量self保存的方式实现
+var testObj = {
+    a1: 0,
+    fun1: function(){
+        var self = this;
+        function fun2(){
+            console.log(self.a1);
+        }
+        fun2();
+    }
+};
+testObj.fun1();
+
+//通过call方法指定接收者（也可以用apply）
+var testObj = {
+    a1: 0,
+    fun1: function(){
+        function fun2(){
+            console.log(this.a1);
+        }
+        fun2.call(this);
+    }
+};
+testObj.fun1();
+
+//通过bind来实现
+var testObj = {
+    a1: 1,
+    fun1: function(){
+        function fun2(){
+            console.log(this.a1);
+        }
+        fun2.bind(this)();
+    }
+};
+testObj.fun1();
+</code></pre><p>##No.38、在子类的构造函数中调用父类的构造函数<br><strong>Tips：</strong></p>
+<ol>
+<li>在子类构造函数中显式地传入this作为显式的接收者调用父类的构造函数</li>
+<li>使用Object.create函数来构造子类的原型对象以避免调用父类的构造</li>
+</ol>
+<p>JS中实现的继承：</p>
+<pre><code>var Animal = function(){
+    this.weight = 50;
+};
+Animal.prototype.eat = function(){
+    console.log(&apos;eat food...&apos;);
+};
+
+var Dog = function(){
+    Animal.call(this);
+    Dog.prototype = Object.create(Animal.prototype);
+};
+
+var dog = new Dog();
+console.log(dog.weight);
+</code></pre><p>##No.39、不要重用父类的属性名<br><strong>Tips：</strong></p>
+<ol>
+<li>留意父类使用的所有属性名</li>
+<li>不要再子类中重用父类的属性名</li>
+</ol>
+<p>由于JS中，属性都是key-value存储，那么同名的属性指向同样的地址，所以以下代码：</p>
+<pre><code>var Animal = function(){
+    this.weight = 50;
+    this.id = ++Animal.nextId;
+};
+Animal.nextId = 0;
+Animal.prototype.eat = function(){
+    console.log(&apos;eat food...&apos;);
+};
+
+var Dog = function(){
+    Animal.call(this);
+    this.id = ++ Dog.nextId;
+    Dog.prototype = Object.create(Animal.prototype);
+};
+Dog.nextId = 0;
+
+var dog = new Dog();
+console.log(dog.id);
+</code></pre><p>两个类都试图给实例属性id写数据。</p>
+<p>##No.40、避免继承标准类<br><strong>Tips：</strong></p>
+<ol>
+<li>继承标准类往往会由于一些特殊的内部属性（如[[Class]]）而被破坏</li>
+<li>使用属性委托优于继承标准类</li>
+</ol>
+<p>扩展标注库使得其功能更强大是很有诱惑力的，但不幸的是它们的定义具有很多特殊的行为，所以很难写出正确的子类。</p>
+<pre><code>var ArrayEx = function(){
+    for(var i = 0, len = arguments.length; i&lt;len ; i++){
+        this[i] = arguments[i];
+    }
+};
+ArrayEx.prototype = Object.create(Array.prototype);
+
+var ar = new ArrayEx(&apos;1&apos;, &apos;2&apos;);
+console.log(ar.length) //猜猜结果是什么？
+</code></pre><p>原因分析：length属性只对在内部标记为“真正的”数组对象才起作用。直接继承的对象并没有继承<br>Array的标记标签属性[[Class]]。测试如下：</p>
+<pre><code>var ar = new ArrayEx(&apos;1&apos;, &apos;2&apos;);
+console.log(Object.prototype.toString.call(ar)); //[object Object]
+console.log(Object.prototype.toString.call([])); //[object Array]
+</code></pre><p>ECMAScript标准库中干掉大多数构造函数都有类似的问题。基于这个原因，最好避免继承一下的标准类：<br>Array,Boolean,Date,Function,Number,RegExp或String。</p>
+<p>要想实现类似的功能，可以采用属性委托的方式：</p>
+<pre><code>var ArrayEx = function(){
+    this.array = []
+    for(var i = 0, len = arguments.length; i&lt;len ; i++){
+        this.array[i] = arguments[i];
+    }
+};
+ArrayEx.prototype.forEach = function(f, thisArg){
+    if(typeof thisArg === &apos;undefined&apos;){
+        thisArg = this;
+    }
+    this.array.forEach(f, thisArg);
+};
+
+var ar = new ArrayEx(&apos;1sfdfsd&apos;, &apos;2fdsfs&apos;);
+ar.forEach(function(item, i){
+    console.log(item);
+});
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/12/20/编写高质量JS代码的68个有效方法-读书笔记/[20141220]编写高质量JS代码的68个有效方法（七）/">
+        编写高质量JS代码的68个有效方法（七）
+      </a>
+    </h2>
+    
+    <time>
+      Dec 20, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.30、理解prototype、getPrototypeOf和<strong>proto</strong>之间的不同<br><strong>Tips：</strong></p>
+<ol>
+<li>C.prototype属性是new C() 创建的对象的原型</li>
+<li>Object.getPrototypeOf(obj)是ES5中检索对象原型的标准函数</li>
+<li>obj.<strong> proto</strong>是检索对象原型的非标准方法</li>
+<li>类是由一个构造函数和一个关联的原型组成的一种设计模式</li>
+</ol>
+<p>简单点说，就是prototype属性直接是创建的对象的原型；getPrototypeOf()是一个标准函数，来获取对象原型；而<strong> proto</strong>则是不标准的原型属性。</p>
+<pre><code>//定义一个类型
+function User(name, age){
+    this.name = name;
+    this.age = age;
+}
+//实例化类型
+var user = new User(&apos;Jay&apos;, 23);
+
+//原型属性prototype作用在类对象上
+User.prototype
+//非标准__proto__作用在对象实例上
+user.__proto__
+//getPrototypeOf则是Object的一个方法，参数为实例对象
+Object.getPrototypeOf(user)
+
+Object.getPrototypeOf(user) === User.prototype; // true
+User.prototype === user.__proto__; // true
+</code></pre><p>##No.31、使用Object.getPrototypeOf()函数而不要使用<strong> proto</strong>属性<br><strong>Tips：</strong></p>
+<ol>
+<li>使用符合标准的Object.getPrototypeOf()函数而不要使用非标准的<strong> proto</strong>属性</li>
+<li>在支持<strong> proto</strong>属性的非ES5环境中实现Object.getPrototypeOf()函数</li>
+</ol>
+<p>由于非标准属性不具有完全兼容性，所以容易出一些奇奇怪怪的问题，不建议使用。<br>在支持<strong> proto</strong>的非ES5标准环境下，使用下面代码来实现Object.getPrototypeOf()函数：</p>
+<pre><code>if(typeof Object.getPrototypeOf === &apos;undefined&apos;){
+    Object.getPrototypeOf = function(obj){
+        var t = typeof obj;
+        if(!obj || (t !== &apos;object&apos; &amp;&amp; t !== &apos;function&apos;)){
+            throw new TypeError(&apos;Not an object.&apos;);
+        }
+        return obj.__proto__;
+    }
+}
+</code></pre><p>##No.32、始终不要修改<strong> proto</strong>属性<br><strong>Tips：</strong></p>
+<ol>
+<li>始终不要修改<strong> proto</strong>属性</li>
+<li>使用Object.create函数给对象设置自定义原型</li>
+</ol>
+<p><strong> proto</strong>很特殊，具有修改对象原型链的能力。修改了<strong> proto</strong>属性可能会造成以下几个问题：</p>
+<ol>
+<li>可移植性问题。并不是所有平台都支持改变对象原型的特性</li>
+<li>性能问题。会使得引擎对JS代码的优化失效</li>
+<li>行为不可预测。修改了<strong> proto</strong>可能会破坏原有的继承体系</li>
+</ol>
+<p>##No.33、使构造函数和new操作符无关<br><strong>Tips：</strong></p>
+<ol>
+<li>通过使用new操作符或Object.create方法在构造函数中调用自身使得该构造函数与调用语法无关</li>
+<li>当一个函数期望使用new操作符调用时，清晰地文档化该函数</li>
+</ol>
+<p>同31，我们来看一下User对象：</p>
+<pre><code>function User(name, age){
+    this.name = name;
+    this.age = age;
+}
+//如果使用new，那么会创建全新对象
+var user = new User(&apos;Jay&apos;, 23);
+
+//如果忘记使用new呢？
+var user = User(&apos;Jay&apos;, 23)
+//这个时候，该句代码，相当于调用函数，此时this在一般情况下是window，在ES5严格模式下是undefined。
+//当是window的时候，则会污染全局变量name和age，造成无法预期的问题。
+//当是undefined的时候，则会直接导致一个即时错误。
+//由于User没有显式return，导致等号左边的user的值为undefined。
+</code></pre><p>为了避免以上问题，可能使用以下两种方式：</p>
+<pre><code>//方式一：
+//通过在函数体判断，然后调用自身的方式来实现，一定会使用new。缺点是它需要额外的函数调用，对性能有影响。
+function User(name, age){
+    if(!(this instanceof User)){
+        return new User(name, age);
+    }
+    this.name = name;
+    this.age = age;
+}
+
+//方式二：
+//通过判断this，将正确的接收者赋值给self，其他函数体内需要用this的地方，全部用self代替。缺点是使用了再ES5环境中有效的Object.create()。
+function User(name, age){
+    var self = this instaceof User ? this : Object.create(User.prototype);
+    self.name = name;
+    self.age  =age; 
+}
+
+//方式二补充，由于Object.create()只在ES5中生效，为了在旧环境中使用的话，可以使用以下方式扩充Object.create()。
+if(typeof Object.create === &apos;undefined&apos;){
+    Object.create = function(prototype){
+        function C(){}
+        C.prototype = prototype;
+        return new C();
+    }
+}
+</code></pre><p>##No.34、在原型中存储方法<br><strong>Tips：</strong></p>
+<ol>
+<li>将方法存储在实例对象中将创建该函数的多个副本，因为每个实例都有一份副本</li>
+<li>将方法存储于原型中优于存储在实例对象中</li>
+</ol>
+<p>将方法存储在原型上，那么多个实例对象会共享该原型方法。如果存储在实例上的，每创建一个实例则会创建一个函数副本，会占用更多的内存。</p>
+<p>##No.35、使用闭包存储私有数据<br><strong>Tips：</strong></p>
+<ol>
+<li>闭包变量是私有的，只能通过局部引用获取</li>
+<li>将局部变量作为私有数据从而通过方法实现信息隐藏</li>
+</ol>
+<p>不多说，直接上代码：</p>
+<pre><code>function User(name, age){
+    // 私有对象
+    var privateObj = {
+        name: name,
+        age: age,
+        sex: &apos;男&apos;
+    }
+    // 公开属性
+    return {
+        name: privateObj.name,
+        age: privateObj.age,
+        setAge: function(age){
+            privateObj.age = age;
+        }
+    }
+}
+
+var user = new User(&apos;Jay&apos;, 23);
+console.log(user.name); // &apos;Jay&apos;
+console.log(user.age);  // 23
+console.log(user.sex);  // undefined
+user.setAge(25);        
+console.log(user.age);  // 23
+</code></pre><p>思考：为什么最后一个user.age 是 23？？？</p>
+<p>修改如下呢：</p>
+<pre><code>function User(name, age){
+    // 私有对象
+    var privateObj = {
+        name: name,
+        age: age,
+        sex: &apos;男&apos;
+    }
+    // 公开属性
+    return {
+        name: privateObj.name,
+        age: function(){
+            return privateObj.age;
+        }
+        setAge: function(age){
+            privateObj.age = age;
+        }
+    }
+}
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/12/13/编写高质量JS代码的68个有效方法-读书笔记/[20141213]编写高质量JS代码的68个有效方法（六）/">
+        编写高质量JS代码的68个有效方法（六）
+      </a>
+    </h2>
+    
+    <time>
+      Dec 13, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.26、使用bind方法实现函数柯里化<br><strong>Tips：</strong></p>
+<ol>
+<li>使用bind方法实现函数柯里化，即创建一个固定需求参数子集的委托函数</li>
+<li>传入null或undefined作为接收者的参数来实现函数柯里化，从而忽略其接收者</li>
+</ol>
+<p><strong>什么是函数柯里化？</strong></p>
+<p><strong>将函数与其参数的一个子集绑定的技术称为函数柯里化，它是一种简洁的、使用更少引用来实现函数委托的方式。</strong></p>
+<pre><code>//有一个组装URL的JS函数
+function bulidURL(protocol, domain, path){
+    return protocol + &apos;://&apos; + domain + &apos;/&apos; + path;
+}
+
+//需要一个path数组转换为url数组，那么一般做法是：
+var urls = paths.map(function(path){
+    return bulidURL(&apos;http&apos;, &apos;www.hstar.org&apos;, path);
+});
+
+如果用bind实现函数柯里化，则是：
+var buildURL2 = buildURL.bind(null, &apos;http&apos;, &apos;www.hstar.org&apos;);
+var urls = paths.map(buildURL2);
+
+其中由于buildURL不引用this，那么在bind中使用null，忽略函数本身的接收者，然后用bind实现柯里化。
+使用buildURL.bind的参数+buildURL2的参数结合起来调用buildURL方法。
+可以在bulidURL中写console(arguments)来查看参数合集。
+</code></pre><p>##No.27、使用闭包而不是字符串来封装代码<br><strong>Tips：</strong></p>
+<ol>
+<li>当将字符串传递给eval函数以执行它们的API时，绝不要在字符串中包含局部变量引用</li>
+<li>接受函数调用的API优于使用eval函数执行字符串的API</li>
+</ol>
+<p>JS中，函数是一个将代码作为数据结构存储的便利方式，这些代码可以后面被执行。所以可以在JS中编写富有表现力的高阶函数，如map，forEach。</p>
+<p>比较不好的设计，使用eval函数执行字符串。</p>
+<pre><code>//定义一个函数，使用eval执行字符串
+function fun1(code){
+    eval(code);
+}
+
+//用法一：
+var val = 0;
+fun1(&apos;console.log(val)&apos;);
+
+//用法二：
+function fun2(){
+    var val = 1;
+    fun1(&apos;console.log(val)&apos;);
+}
+fun2(); //Error:val is not defined
+</code></pre><p><strong>警告：在使用eval的时候，作用域是全局作用域（window），如用法一的调用，刚好能够出正常结果；如果转移到函数体内，如用法二的调用，则会出现错误；最坏的情况是用法二调用时，全局作用域上刚好有个同名的变量（本例中为val），那么将会让结果无法预期。</strong></p>
+<p>好的做法，就是直接传递函数</p>
+<pre><code>function fun1(){
+
+}
+function fun2(p, action){
+    if(p === 1){
+        action();
+    }
+}
+
+fun2();
+</code></pre><p>##No.28、不要依赖函数对象的toString方法<br><strong>Tips：</strong></p>
+<ol>
+<li>调用函数的toString方法时，并没有要求JavaScript引擎能够精确的获取到函数的源代码</li>
+<li>由于在不同的引擎下调用toString方法的结果可能不同，所以绝不要信赖函数源代码的详细细节</li>
+<li>toString方法的执行结果并不会暴露存储在闭包中的局部变量值</li>
+<li>通常情况下，应该避免使用函数对象的toString方法</li>
+</ol>
+<p>JavaScript函数有一个非凡的特性，即将其源代码重现为字符串的能力。但是ECMAScript标准对toString返回的字符串没有任何要求，所以不同引擎产生的结果可能不同。甚至返回到字符串和该函数并不相关</p>
+<p>##No.29、避免使用非标准的栈检查属性<br><strong>Tips：</strong></p>
+<ol>
+<li>避免使用非标准的arguments.caller和arguments.callee属性，因为它们不具备良好的移植性</li>
+<li>避免使用非标准的函数对象caller属性，因为在包含全部栈信息方面，它是不可靠的</li>
+</ol>
+<p>基本错误（不推荐使用）</p>
+<pre><code>function getCallStack(){
+    var stack = [];
+    for(var f = getCallStack.caller; f; f = f.caller){
+        stack.push(f);
+    }
+    return stack;
+}
+</code></pre><p><strong>警告：该函数非常脆弱，如果某函数叜调用栈中出现了不止一次，那么栈检查会陷入死循环。同时使用caller在ES5的严格模式下会error。</strong></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/12/05/编写高质量JS代码的68个有效方法-读书笔记/[20141205]编写高质量JS代码的68个有效方法（五）/">
+        编写高质量JS代码的68个有效方法（五）
+      </a>
+    </h2>
+    
+    <time>
+      Dec 5, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.21、使用apply方法通过不同数量的参数调用函数<br><strong>Tips：</strong></p>
+<ol>
+<li>使用apply方法自定一个可计算的参数数组来调用可变参数的函数</li>
+<li><p>使用apply方法的第一个参数给可变参数的方法提供一个接收者</p>
+<p> //示例：计算给定数据的最大值<br> function getMaxNum(){</p>
+<pre><code>var max = arguments[0];
+for(var i = 1, len = arguments.length;i &lt; len; i++){
+    if(max &lt; arguments[i]){
+        max = arguments[i];
+    }
+}
+return max;
+</code></pre><p> }<br> getMaxNum.apply(null,[1,3,4]);</p>
+</li>
+</ol>
+<p><strong>该方法和call()方法功能基本类似，差别在于参数写法不一样。</strong></p>
+<p>##No.22、使用arguments创建可变参数的函数<br><strong>Tips:</strong></p>
+<ol>
+<li>使用隐式的arguments对象实现可变参数的函数</li>
+<li>考虑对可变参数的函数提供一个额外的固定元数的版本，从而使用者无需借助apply方法。</li>
+</ol>
+<p>每一个函数内部都有一个arguments对象包含所有传递的参数</p>
+<pre><code>function fun1(){
+    console.log(arguments);
+}
+fun1(&apos;1&apos;);
+fun1(1,&apos;2&apos;,&apos;str&apos;);
+</code></pre><p>##No.23、永远不要修改arguments的值<br><strong>Tips：</strong></p>
+<ol>
+<li>永远不要修改arguments的值</li>
+<li>使用[].slice.call(arguments)将arguments对象赋值到一个真正的数组中再进行修改</li>
+</ol>
+<p>arguments看起来像是数组，但是它并不是标准的数组，所以不支持数组的原型方法</p>
+<pre><code>function fun1(nums){
+    var lastParam = arguments.pop(); //报错，undefined is not a function。
+    console.log(arguments);
+}
+
+fun1([1, 2, 3]);
+</code></pre><p>正确的做法是，将arguments转换为真正的数组，再进行操作，代码如下：</p>
+<pre><code>function fun1(nums){
+    var argArr = [].slice.call(arguments);
+    var lastParam = argArr.pop();
+    console.log(arguments);
+}
+
+fun1([1, 2, 3]);
+</code></pre><p><strong>注意：永远不要修改arguments对象是更为安全的。</strong></p>
+<p>##No.24、使用变量保存arguments的引用<br><strong>Tips：</strong></p>
+<ol>
+<li>当引用arguments时当心函数嵌套层级</li>
+<li>绑定一个明确作用域的引用到arguments变量，从而可以再嵌套的函数中引用它</li>
+</ol>
+<p>首先，先来看一段代码的输出：</p>
+<pre><code>function fun1(){
+    var i = 0;
+    console.log(arguments);
+    return {
+        next:function(){
+            return arguments[i++]; 
+        }
+    }
+}
+var f = fun1(1,2,3,4);
+console.log(f.next()); //猜猜是啥？
+</code></pre><p>arguments是函数中的隐式变量，每个函数都会有这样的一个隐式对象。所以最后一个console的结果可想而知。所以遇到这种场景，是建议用变量保存arguments的引用，也能让嵌套函数正确的进行对象引用，正确代码如下：</p>
+<pre><code>function fun1(){
+    var i = 0;
+    var args = arguments;
+    return {
+        next:function(){
+            return args[i++]; 
+        }
+    }
+}
+var f = fun1(1,2,3,4);
+console.log(f.next());
+</code></pre><p>##No.25、使用bind方法提取具有确定接收者的方法<br><strong>Tips：</strong></p>
+<ol>
+<li>要注意，提取一个方法不会将方法的接收者绑定到该方法的对象上</li>
+<li>当给高阶函数传递对象方法时，使用匿名函数在适当的接收者上调用该方法</li>
+<li>使用bind方法创建绑定到适当接收者的函数</li>
+</ol>
+<p>老规矩，看代码：（代码1）</p>
+<pre><code>var buffer = {
+    entries: [],
+    add: function(value){
+        this.entries.push(value);
+    },
+    concat: function(){
+        return this.entries.join(&apos;&apos;);
+    }
+};
+</code></pre><p>该代码在直接使用时是没有问题的，思考下，由于高阶函数将函数/方法作为变量传递，那么可以有如下用法：（代码2）</p>
+<pre><code>var arr = [&apos;Jay&apos;, &apos;.M&apos;, &apos;.Hu&apos;];
+arr.forEach(buffer.add);
+console.log(buffer.concat()); //思考下这个结果是什么？
+</code></pre><p>以上代码在arr.forEach处已经报错，Cannot read property ‘push’ of undefined。因为这个时候的涉及到this的指向问题。我们可以改造下buffer代码，输出this让我们看看：（代码3）</p>
+<pre><code>var buffer = {
+    entries: [],
+    add: function(value){
+        console.log(this);
+        this.entries.push(value);
+    },
+    concat: function(){
+        return this.entries.join(&apos;&apos;);
+    }
+};
+</code></pre><p>从输出结果我们可以看到这个this，在（代码2）的执行环境中，指向的是window对象，所以导致了报错，那么如何避免这样的问题呢？针对forEach，我们有三个方法：(代码4)</p>
+<pre><code>//方式一，去掉this，直接用buffer对象引用
+var buffer = {
+    entries: [],
+    add: function(value){
+        buffer.entries.push(value);
+    },
+    concat: function(){
+        return buffer.entries.join(&apos;&apos;);
+    }
+};
+
+//方式二，指定接收者，forEach方法提供，其他方法不一定提供
+var arr = [&apos;Jay&apos;, &apos;.M&apos;, &apos;.Hu&apos;];
+arr.forEach(buffer.add, buffer);
+console.log(buffer.concat());
+
+//方式三，通过用函数包装调用，来实现指定接收者
+var arr = [&apos;Jay&apos;, &apos;.M&apos;, &apos;.Hu&apos;];
+arr.forEach(function(s){
+    buffer.add(s);
+});
+console.log(buffer.concat());
+</code></pre><p>针对这样的问题，ES5标准库中提供了一个bind()函数来实现这样的方法。只需要如下代码：</p>
+<pre><code>var arr = [&apos;Jay&apos;, &apos;.M&apos;, &apos;.Hu&apos;];
+arr.forEach(buffer.add.bind(buffer));
+console.log(buffer.concat());
+</code></pre><p>该bind()函数，利用buffer.add.bind(buffer)创建了一个新函数而不是修改了buffer.add函数。新函数行为就像原来函数的行为，但它的接收者被重新指定了。所以调用bind方法是安全的，即使是一个可能在程序的其他部分被共享的函数。</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
+
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

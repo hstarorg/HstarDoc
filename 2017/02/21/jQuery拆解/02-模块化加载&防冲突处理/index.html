@@ -1,7 +1,145 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、模块化加载jQuery 在之前的版本（具体不记得是哪个版本以前了）中，是不支持模块化加载的。
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>02-模块化加载&amp;防冲突处理 | 幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0、模块化加载jQuery 在之前的版本（具体不记得是哪个版本以前了）中，是不支持模块化加载的。
 当前，模块化作为一个趋势，jQuery 也增加了对模块化的支持，当今最流行的的模块规范是 UMD，简单点说就是判断各种环境，然后选择合适的方式加载。
 来看下具体的实现：
-1234567891011121"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>02-模块化加载&amp;防冲突处理 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>02-模块化加载&amp;防冲突处理</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、模块化加载"><span class="toc-number">1.</span> <span class="toc-text">0、模块化加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、防冲突处理"><span class="toc-number">2.</span> <span class="toc-text">1、防冲突处理</span></a></li></ol></div><h2 id="0、模块化加载"><a href="#0、模块化加载" class="headerlink" title="0、模块化加载"></a>0、模块化加载</h2><p><code>jQuery</code> 在之前的版本（具体不记得是哪个版本以前了）中，是不支持模块化加载的。</p>
+123456789101112131415161718192021222324252627282930313233//首先是一个II">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02-模块化加载&防冲突处理">
+<meta property="og:url" content="http://hstarorg.github.io/blog/2017/02/21/jQuery拆解/02-模块化加载&防冲突处理/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="0、模块化加载jQuery 在之前的版本（具体不记得是哪个版本以前了）中，是不支持模块化加载的。
+当前，模块化作为一个趋势，jQuery 也增加了对模块化的支持，当今最流行的的模块规范是 UMD，简单点说就是判断各种环境，然后选择合适的方式加载。
+来看下具体的实现：
+123456789101112131415161718192021222324252627282930313233//首先是一个II">
+<meta property="og:updated_time" content="2017-02-21T07:07:32.553Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="02-模块化加载&防冲突处理">
+<meta name="twitter:description" content="0、模块化加载jQuery 在之前的版本（具体不记得是哪个版本以前了）中，是不支持模块化加载的。
+当前，模块化作为一个趋势，jQuery 也增加了对模块化的支持，当今最流行的的模块规范是 UMD，简单点说就是判断各种环境，然后选择合适的方式加载。
+来看下具体的实现：
+123456789101112131415161718192021222324252627282930313233//首先是一个II">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        <article id="post-jQuery拆解/02-模块化加载&amp;防冲突处理"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/blog/2017/02/21/jQuery拆解/02-模块化加载&防冲突处理/">
+    	02-模块化加载&amp;防冲突处理
+    </a>
+  </h2>
+	<time>
+	  Feb 21, 2017
+	</time>
+	
+	</section>
+	
+		<section class="tog"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、模块化加载"><span class="toc-number">1.</span> <span class="toc-text">0、模块化加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、防冲突处理"><span class="toc-number">2.</span> <span class="toc-text">1、防冲突处理</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<h2 id="0、模块化加载"><a href="#0、模块化加载" class="headerlink" title="0、模块化加载"></a>0、模块化加载</h2><p><code>jQuery</code> 在之前的版本（具体不记得是哪个版本以前了）中，是不支持模块化加载的。</p>
 <p>当前，模块化作为一个趋势，<code>jQuery</code> 也增加了对模块化的支持，当今最流行的的模块规范是 <code>UMD</code>，简单点说就是判断各种环境，然后选择合适的方式加载。</p>
 <p>来看下具体的实现：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//首先是一个IIFE，避免污染全局变量</span></div><div class="line">( <span class="function"><span class="keyword">function</span>(<span class="params"> global, factory </span>) </span>&#123;</div><div class="line"><span class="meta">  "use strict"</span>;</div><div class="line">  <span class="comment">// 判断是否是模块化加载</span></div><div class="line">  <span class="comment">// 如果是CMD加载器，那么会有 module 和 module.exports 属性</span></div><div class="line">  <span class="keyword">if</span> ( <span class="keyword">typeof</span> <span class="built_in">module</span> === <span class="string">"object"</span> &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">module</span>.exports === <span class="string">"object"</span> ) &#123;</div><div class="line">    <span class="comment">// 如果有document，那就算是浏览器环境，那么直接导出jQuery</span></div><div class="line">    <span class="built_in">module</span>.exports = global.document ?</div><div class="line">    <span class="comment">// 注意， factory第二个参数是true，也就是说不会挂载到全局变量上（模块化加载不需要挂载到window上）</span></div><div class="line">      factory( global, <span class="literal">true</span> ) :</div><div class="line">      <span class="comment">// 虽然看起来是模块化加载，但是没有找到window对象，这个时候就导出一个factory,需要手动传入window对象。</span></div><div class="line">      <span class="function"><span class="keyword">function</span>(<span class="params"> w </span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> ( !w.document ) &#123;</div><div class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>( <span class="string">"jQuery requires a window with a document"</span> );</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> factory( w );</div><div class="line">      &#125;;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">// 如果不是加载器加载，那么就直接把window或者this传递给 jQuery factory</span></div><div class="line">    factory( global );</div><div class="line">  &#125;</div><div class="line"></div><div class="line"><span class="comment">// Pass this if window is not defined yet</span></div><div class="line">&#125; )( <span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">"undefined"</span> ? <span class="built_in">window</span> : <span class="keyword">this</span>, <span class="function"><span class="keyword">function</span>(<span class="params"> window, noGlobal </span>) </span>&#123;</div><div class="line">  <span class="comment">// jQuery本身的逻辑代码</span></div><div class="line"></div><div class="line">  <span class="comment">// 注意，jQuery也支持了AMD方式加载。</span></div><div class="line">  <span class="keyword">if</span> ( <span class="keyword">typeof</span> define === <span class="string">"function"</span> &amp;&amp; define.amd ) &#123;</div><div class="line">    define( <span class="string">"jquery"</span>, [], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> jQuery;</div><div class="line">    &#125; );</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -10,34 +148,101 @@
 <p>比如说 <code>jQuery</code> 会挂载到 <code>window.jQuery</code> 和 <code>window.$</code> 上，那万一这两个属性已经被其他库使用了，那我们引入 <code>jQuery</code> 不就把别人的库覆盖了么。</p>
 <p>作为一个完备的库，<code>jQuery</code> 也处理了这种场景。那就是防冲突方法。</p>
 <p>看一下具体的实现：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在实现防冲突时，要注意代码的顺序</span></div><div class="line"></div><div class="line"><span class="comment">// 首先先用局部变量，把要挂载的属性备份一次。</span></div><div class="line"><span class="keyword">var</span></div><div class="line"><span class="comment">// Map over jQuery in case of overwrite</span></div><div class="line">  _jQuery = <span class="built_in">window</span>.jQuery,</div><div class="line"></div><div class="line">  <span class="comment">// Map over the $ in case of overwrite</span></div><div class="line">  _$ = <span class="built_in">window</span>.$;</div><div class="line"></div><div class="line"><span class="comment">// 实现一个冲突方法，当调用该方法时，就会把之前保存的全局变量进行还原。</span></div><div class="line"><span class="comment">// deep的意思就是是否要还原jQuery这个属性，因为jQuery并不是一个常用的属性，所以一般不会被其他库占用。</span></div><div class="line">jQuery.noConflict = <span class="function"><span class="keyword">function</span>(<span class="params">deep</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.$ === jQuery) &#123;</div><div class="line">    <span class="built_in">window</span>.$ = _$;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (deep &amp;&amp; <span class="built_in">window</span>.jQuery === jQuery) &#123;</div><div class="line">    <span class="built_in">window</span>.jQuery = _jQuery;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 冲突之后，总要挂载吧，通过return jQuery，就能返回jQuery，这个时候可以任意挂载到你想要的属性。</span></div><div class="line">	<span class="comment">// 实例代码： window.abcde = jQuery.noConflict();</span></div><div class="line">  <span class="keyword">return</span> jQuery;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// Expose jQuery and $ identifiers, even in AMD</span></div><div class="line"><span class="comment">// (#7102#comment:10, https://github.com/jquery/jquery/pull/557)</span></div><div class="line"><span class="comment">// and CommonJS for browser emulators (#13566)</span></div><div class="line"><span class="comment">// 如果不是非全局（如果是双重否定，实际就是如果是全局）</span></div><div class="line"><span class="keyword">if</span> (!noGlobal) &#123;</div><div class="line">	<span class="comment">// 那么就设置到全局变量，这个时候已经把全局属性覆盖了。</span></div><div class="line">  <span class="built_in">window</span>.jQuery = <span class="built_in">window</span>.$ = jQuery;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> jQuery;</div></pre></td></tr></table></figure><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/jQuery拆解/02-模块化加载&amp;防冲突处理/" data-title="02-模块化加载&amp;防冲突处理" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/jQuery拆解/02-模块化加载&amp;防冲突处理/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
-duoshuoQuery["short_name"] = _shortName;
-(function() {
-    var ds = document.createElement("script");
-    ds.type = "text/javascript";
-    ds.async = true;
-    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
-    ds.charset = "utf-8";
-    (document.getElementsByTagName("head")[0] ||
-        document.getElementsByTagName("body")[0]).appendChild(ds);
-})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在实现防冲突时，要注意代码的顺序</span></div><div class="line"></div><div class="line"><span class="comment">// 首先先用局部变量，把要挂载的属性备份一次。</span></div><div class="line"><span class="keyword">var</span></div><div class="line"><span class="comment">// Map over jQuery in case of overwrite</span></div><div class="line">  _jQuery = <span class="built_in">window</span>.jQuery,</div><div class="line"></div><div class="line">  <span class="comment">// Map over the $ in case of overwrite</span></div><div class="line">  _$ = <span class="built_in">window</span>.$;</div><div class="line"></div><div class="line"><span class="comment">// 实现一个冲突方法，当调用该方法时，就会把之前保存的全局变量进行还原。</span></div><div class="line"><span class="comment">// deep的意思就是是否要还原jQuery这个属性，因为jQuery并不是一个常用的属性，所以一般不会被其他库占用。</span></div><div class="line">jQuery.noConflict = <span class="function"><span class="keyword">function</span>(<span class="params">deep</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.$ === jQuery) &#123;</div><div class="line">    <span class="built_in">window</span>.$ = _$;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (deep &amp;&amp; <span class="built_in">window</span>.jQuery === jQuery) &#123;</div><div class="line">    <span class="built_in">window</span>.jQuery = _jQuery;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 冲突之后，总要挂载吧，通过return jQuery，就能返回jQuery，这个时候可以任意挂载到你想要的属性。</span></div><div class="line">	<span class="comment">// 实例代码： window.abcde = jQuery.noConflict();</span></div><div class="line">  <span class="keyword">return</span> jQuery;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// Expose jQuery and $ identifiers, even in AMD</span></div><div class="line"><span class="comment">// (#7102#comment:10, https://github.com/jquery/jquery/pull/557)</span></div><div class="line"><span class="comment">// and CommonJS for browser emulators (#13566)</span></div><div class="line"><span class="comment">// 如果不是非全局（如果是双重否定，实际就是如果是全局）</span></div><div class="line"><span class="keyword">if</span> (!noGlobal) &#123;</div><div class="line">	<span class="comment">// 那么就设置到全局变量，这个时候已经把全局属性覆盖了。</span></div><div class="line">  <span class="built_in">window</span>.jQuery = <span class="built_in">window</span>.$ = jQuery;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> jQuery;</div></pre></td></tr></table></figure>
+  	</div>
+	  
+	</section>
+	
+</article>
 
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
 
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
 
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
-    }
-});</script></body></html>
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

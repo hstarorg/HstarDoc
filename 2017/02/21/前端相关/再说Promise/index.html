@@ -1,6 +1,145 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、导言在JavaScript，由于天生的回调机制，当业务逻辑嵌套较多的时候，就很容易产生回调地狱。
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>再说Promise | 幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0、导言在JavaScript，由于天生的回调机制，当业务逻辑嵌套较多的时候，就很容易产生回调地狱。
 为了避免回调地狱，在JS中可以使用 co, Promise, async await 等等方式。
-在当前ES6开始流行的情况下，Promise 则是主流，就算是 async await ，也需要和P"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>再说Promise · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>再说Promise</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、原生Promise"><span class="toc-number">2.</span> <span class="toc-text">1、原生Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Promise原理浅析"><span class="toc-number">3.</span> <span class="toc-text">2、Promise原理浅析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol></div><h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>在JavaScript，由于天生的回调机制，当业务逻辑嵌套较多的时候，就很容易产生回调地狱。</p>
+在当前ES6开始流行的情况下，Promise 则是主流，就算是 async await ，也需要和Promise搭配，那我们就来看下 Promise 到底是怎么工作的！
+1、原生Promise打开Ch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="再说Promise">
+<meta property="og:url" content="http://hstarorg.github.io/blog/2017/02/21/前端相关/再说Promise/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="0、导言在JavaScript，由于天生的回调机制，当业务逻辑嵌套较多的时候，就很容易产生回调地狱。
+为了避免回调地狱，在JS中可以使用 co, Promise, async await 等等方式。
+在当前ES6开始流行的情况下，Promise 则是主流，就算是 async await ，也需要和Promise搭配，那我们就来看下 Promise 到底是怎么工作的！
+1、原生Promise打开Ch">
+<meta property="og:updated_time" content="2017-02-21T07:07:32.745Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="再说Promise">
+<meta name="twitter:description" content="0、导言在JavaScript，由于天生的回调机制，当业务逻辑嵌套较多的时候，就很容易产生回调地狱。
+为了避免回调地狱，在JS中可以使用 co, Promise, async await 等等方式。
+在当前ES6开始流行的情况下，Promise 则是主流，就算是 async await ，也需要和Promise搭配，那我们就来看下 Promise 到底是怎么工作的！
+1、原生Promise打开Ch">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        <article id="post-前端相关/再说Promise"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/blog/2017/02/21/前端相关/再说Promise/">
+    	再说Promise
+    </a>
+  </h2>
+	<time>
+	  Feb 21, 2017
+	</time>
+	
+	</section>
+	
+		<section class="tog"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、原生Promise"><span class="toc-number">2.</span> <span class="toc-text">1、原生Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Promise原理浅析"><span class="toc-number">3.</span> <span class="toc-text">2、Promise原理浅析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>在JavaScript，由于天生的回调机制，当业务逻辑嵌套较多的时候，就很容易产生回调地狱。</p>
 <p>为了避免回调地狱，在JS中可以使用 <code>co</code>, <code>Promise</code>, <code>async await</code> 等等方式。</p>
 <p>在当前ES6开始流行的情况下，<code>Promise</code> 则是主流，就算是 <code>async await</code> ，也需要和Promise搭配，那我们就来看下 <code>Promise</code> 到底是怎么工作的！</p>
 <h2 id="1、原生Promise"><a href="#1、原生Promise" class="headerlink" title="1、原生Promise"></a>1、原生Promise</h2><p>打开Chrome控制台，输入 <code>Promise.</code> 然后可以看到Promise的一些静态方法如下：</p>
@@ -27,34 +166,101 @@
 <li><a href="https://promisesaplus.com/" target="_blank" rel="external">Promise A+ 规范</a></li>
 <li><a href="https://tc39.github.io/ecma262/#sec-promise-objects" target="_blank" rel="external">ECMA262 Promise</a></li>
 </ol>
-<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/再说Promise/" data-title="再说Promise" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/再说Promise/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
-duoshuoQuery["short_name"] = _shortName;
-(function() {
-    var ds = document.createElement("script");
-    ds.type = "text/javascript";
-    ds.async = true;
-    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
-    ds.charset = "utf-8";
-    (document.getElementsByTagName("head")[0] ||
-        document.getElementsByTagName("body")[0]).appendChild(ds);
-})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
 
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
+  	</div>
+	  
+	</section>
+	
+</article>
 
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
 
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
-    }
-});</script></body></html>
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
+
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

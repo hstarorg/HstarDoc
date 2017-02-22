@@ -1,22 +1,989 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="幻☆精灵的Blog站点"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Archives: 2017/2 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><script>window.location.href = "http://hstarorg.github.io/blog/blog//pigeonhole";
-</script></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Archives: 2017/2 | 幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="幻☆精灵的Blog站点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="幻☆精灵的Blog">
+<meta property="og:url" content="http://hstarorg.github.io/blog/archives/2017/02/page/3/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="幻☆精灵的Blog站点">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="幻☆精灵的Blog">
+<meta name="twitter:description" content="幻☆精灵的Blog站点">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
 
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
-
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
     }
-});</script></body></html>
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        
+	
+	<section class="page-header archive banner waves-image">
+    <h1>Year : <span>2017.2</span></h1>
+  </section>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/Webpack小抄/">
+        Webpack小抄
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>此文用于记载在使用webpack打包过程中的点点滴滴！（仅适用于 <code>webpack1.x</code>）</p>
+<h2 id="1、动态指定loader"><a href="#1、动态指定loader" class="headerlink" title="1、动态指定loader"></a>1、动态指定loader</h2><p><code>webpack</code> 的config文件中的loader，一般针对特定的后缀文件，当我们要对单个文件进行独立配置的时候，就不太好满足需求了，此时我们就需要在 <code>import</code> 或者 <code>require</code> 中指定文件的loader。</p>
+<p>指定loader的时候，有如下几种场景：</p>
+<ol>
+<li>需要使用自定义loader，此时的import应该按照如下方式编写：<code>require(&#39;./loader!./xxx.js)</code> ，使用当前目录下的 <code>loader.js</code> 来处理 <code>xxx.js</code> 。</li>
+<li>需要在全局loader（这里指在config中配置的loader）之前做一些处理（插入loader），那我们可以如下处理：<code>import &#39;jade!./template.jade&#39;</code>，使用 <code>jade-loader</code> 来处理template.jade文件。</li>
+<li>需要覆盖全局的loader，可以如下使用：<code>import &#39;!style!css!less!./test.less&#39;</code>，使用 <code>less-loader</code> <code>css-loader</code> <code>style-loader</code> 来处理test.less文件。</li>
+</ol>
+<p><strong>注意1：插入loader与覆盖loader，差别在于第一个字符是不是!(感叹号)。</strong></p>
+<p><strong>注意2：当指定loader的时候，需要记住loader是从右往左依次执行的，一定要注意顺序。</strong></p>
+<h2 id="2、打包项目为类库"><a href="#2、打包项目为类库" class="headerlink" title="2、打包项目为类库"></a>2、打包项目为类库</h2><p>当我们要把项目打包为类库的时候，我们需要在entry中进行如下配置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  entry: &#123;</div><div class="line">    libraryTarget: 'umd', //可选var：直接全局变量，amd: AMD风格的库，cmd: CMD风格的库</div><div class="line">    library: 'xxx' //挂载到window上的名称</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3、webpack-dev-server部署IP访问"><a href="#3、webpack-dev-server部署IP访问" class="headerlink" title="3、webpack-dev-server部署IP访问"></a>3、webpack-dev-server部署IP访问</h2><p>使用默认的选项，只能使用 <code>localhost</code> 访问，如果想通过 <code>IP</code> 访问，那么需要设定配置如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">devServer: &#123;</div><div class="line">  <span class="attr">contentBase</span>: <span class="string">'./'</span>,</div><div class="line">  <span class="attr">port</span>: <span class="number">7410</span>,</div><div class="line">  <span class="attr">host</span>: <span class="string">'0.0.0.0'</span> <span class="comment">// 设定host属性，绑定到 0.0.0.0，则可允许IP访问</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4、Webpack使用外部依赖"><a href="#4、Webpack使用外部依赖" class="headerlink" title="4、Webpack使用外部依赖"></a>4、Webpack使用外部依赖</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">externals: &#123;</div><div class="line">  <span class="string">'@angular/common'</span> : <span class="string">'ng.common'</span>,</div><div class="line">  <span class="string">'@angular/compiler'</span> : <span class="string">'ng.compiler'</span>,</div><div class="line">  <span class="string">'@angular/core'</span> : <span class="string">'ng.core'</span>,</div><div class="line">  <span class="string">'@angular/http'</span> : <span class="string">'ng.http'</span>,</div><div class="line">  <span class="string">'@angular/platform-browser'</span> : <span class="string">'ng.platformBrowser'</span>,</div><div class="line">  <span class="string">'@angular/platform-browser-dynamic'</span> : <span class="string">'ng.platformBrowserDynamic'</span>,</div><div class="line">  <span class="string">'@angular/router'</span> : <span class="string">'ng.router'</span>,</div><div class="line">  <span class="string">'@angular/forms'</span> : <span class="string">'ng.forms'</span>,</div><div class="line">  <span class="string">'rxjs'</span> : <span class="string">'Rx'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5、Webpack多入口点，打包为library"><a href="#5、Webpack多入口点，打包为library" class="headerlink" title="5、Webpack多入口点，打包为library"></a>5、Webpack多入口点，打包为library</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">  <span class="attr">path</span>: <span class="string">'./dist'</span>,</div><div class="line">  <span class="attr">publicPath</span>: <span class="string">'http://10.16.85.170:9999/'</span>,</div><div class="line">  <span class="attr">filename</span>: <span class="string">'newkit.[name].js'</span>,</div><div class="line">  <span class="attr">library</span>: [<span class="string">'newkit'</span>, <span class="string">'[name]'</span>],</div><div class="line">  <span class="attr">liabraryTarget</span>: <span class="string">'umd'</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<h2 id="6、和gulp配合使用"><a href="#6、和gulp配合使用" class="headerlink" title="6、和gulp配合使用"></a>6、和gulp配合使用</h2><p>尽量使用 <code>const webpack = require(&#39;webpack&#39;)</code> 。</p>
+<p>用法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> showWebpackError = <span class="function">(<span class="params">err, stats</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> gutil.PluginError(<span class="string">'webpack'</span>, err);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">let</span> statColor = stats.compilation.warnings.length &lt; <span class="number">1</span> ? <span class="string">'green'</span> : <span class="string">'yellow'</span>;</div><div class="line">  <span class="keyword">if</span> (stats.compilation.warnings.length &gt; <span class="number">0</span>) &#123;</div><div class="line">    stats.compilation.errors.forEach(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</div><div class="line">      statColor = <span class="string">'red'</span>;</div><div class="line">    &#125;);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    gutil.log(stats.toString(&#123;</div><div class="line">      <span class="attr">colors</span>: gutil.colors.supportsColor,</div><div class="line">      <span class="attr">hash</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">timings</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">chunks</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">chunkModules</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">modules</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">children</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">version</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">cached</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">cachedAssets</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">reasons</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">source</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">errorDetails</span>: <span class="literal">false</span></div><div class="line">    &#125;));</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">webpack(opt).watch(<span class="number">200</span>, (err, stats) =&gt; &#123;</div><div class="line">	showWebpackError(err, stats);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/Yarn vs. Npm/">
+        Yarn vs. Npm
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h1 id="0、什么是-Yarn"><a href="#0、什么是-Yarn" class="headerlink" title="0、什么是 Yarn ?"></a>0、什么是 <code>Yarn</code> ?</h1><p>官方解释是：<strong>FAST, RELIABLE, AND SECURE DEPENDENCY MANAGEMENT（快速，可靠和安全的依赖管理器）</strong>。</p>
+<p>它是 <code>facebook</code> 开源的一个 <code>npm</code> 替代品。我们主要用它来进行依赖管理工作。</p>
+<h1 id="1、为什么需要-Yarn"><a href="#1、为什么需要-Yarn" class="headerlink" title="1、为什么需要 Yarn ?"></a>1、为什么需要 <code>Yarn</code> ?</h1><p>对于 <code>Yarn</code>，其实一开始我是拒绝的。</p>
+<p>为啥？</p>
+<ol>
+<li>发布第二天时我就去体验，结果发现安装它自身比较麻烦，而且安装依赖还慢，还非常容易崩溃。</li>
+<li>命令和 <code>npm</code> 不一样，增加了学习成本</li>
+<li><code>yarn</code> 安装依赖进度条在windows上不友好（是npm之前旧版本的样式）</li>
+<li>觉得赶超 <code>npm</code> 还需要一定的时间</li>
+</ol>
+<p>那为什么又开始推荐 <code>yarn</code> 呢？</p>
+<ol>
+<li><code>npm</code> 安装依赖慢，是个长久的问题</li>
+<li>再次体验 <code>yarn</code>, 发现之前遇到的一些问题都不见了</li>
+<li>使用 <code>yarn</code> 安装依赖，速度有很大的提升<br>4、<code>yarn</code> 比 <code>npm</code> 提供更多更易用的功能 </li>
+</ol>
+<p>综上，我觉得现在可以开始尝试使用 <code>yarn</code>，说不定过不了多久，还真能完全替代 <code>npm</code>。</p>
+<h1 id="2、yarn-cli-使用手册（对比npm）"><a href="#2、yarn-cli-使用手册（对比npm）" class="headerlink" title="2、yarn-cli 使用手册（对比npm）"></a>2、<code>yarn-cli</code> 使用手册（对比npm）</h1><p>首先，要使用 <code>yarn-cli</code>，需要先执行 <code>npm install -g yarn</code> 来全局安装 <code>yarn</code>（莫名的想到，IE浏览器最大的作用就是下载其他浏览器），通过 <code>yarn --version</code> 来查看 <code>yarn</code> 的版本。</p>
+<p>如 <code>npm</code> 一样，<code>yarn</code> 也提供了较多的命令。其中最常用的命令如下：</p>
+<ol>
+<li>yarn init ($ npm init)</li>
+<li>yarn install ($ npm install) </li>
+<li>yarn add ($ npm install –save)</li>
+<li>yarn remove ($ npm uninstall –save) </li>
+<li>yarn publish ($ npm publish)</li>
+</ol>
+<p><strong>注意：下文中仅仅会列出本人觉得比较有代表性/常用的命令，并不是所有的命令</strong></p>
+<h3 id="2-1、yarn-init"><a href="#2-1、yarn-init" class="headerlink" title="2.1、yarn init"></a>2.1、<code>yarn init</code></h3><p><code>yarn init</code> 用于初始化 <code>package.json</code> 文件，效果和 <code>npm init</code> 类似。</p>
+<p>同样也支持直接创建，不询问。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 初始化package.json，带交互</span></div><div class="line">npm init  =&gt;  yarn init</div><div class="line"></div><div class="line"><span class="comment"># 初始化package.json，直接创建</span></div><div class="line">npm init <span class="_">-f</span>/--force  =&gt;  yarn init -y/--yes</div></pre></td></tr></table></figure>
+<h3 id="2-2、yarn-install"><a href="#2-2、yarn-install" class="headerlink" title="2.2、yarn install"></a>2.2、<code>yarn install</code></h3><p><code>yarn install</code> 该命令和 <code>npm install</code> 一样，用于根据 <code>package.json</code> 来初始化项目依赖。</p>
+<p>和 <code>npm</code> 对比如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装所有依赖</span></div><div class="line">npm install =&gt; yarn install</div><div class="line"></div><div class="line"><span class="comment"># 安装项目依赖（对比开发依赖，上产线时的依赖）</span></div><div class="line">npm install --production =&gt; yarn install --production/--prod</div></pre></td></tr></table></figure>
+<p>除此之外，<code>yarn install</code> 还有一些新的参数设置，正是这些设置，让 <code>yarn</code> 比 <code>npm</code> 有着更强大的功能。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 强制安装所有的包，就算是已经安装过的</span></div><div class="line">yarn install --force</div><div class="line"></div><div class="line"><span class="comment"># 不会读取和生成lockfile</span></div><div class="line">yarn install --no-lockfile</div><div class="line"></div><div class="line"><span class="comment"># 不生成lockfile</span></div><div class="line">yarn install --pure-lockfile</div></pre></td></tr></table></figure>
+<h3 id="2-3、yarn-add"><a href="#2-3、yarn-add" class="headerlink" title="2.3、yarn add"></a>2.3、<code>yarn add</code></h3><p><code>yarn add &lt;package&gt;</code> 等同于 <code>npm install &lt;package&gt;</code>，用于安装指定包，它和 <code>npm</code> 的区别如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 仅安装依赖包</span></div><div class="line">npm install &lt;package&gt; --save  =&gt;  N/A</div><div class="line"></div><div class="line"><span class="comment"># 安装依赖包，并写入 dependencies 属性</span></div><div class="line">npm install &lt;package&gt; --save  =&gt;  yarn add &lt;package&gt;  </div><div class="line"></div><div class="line"><span class="comment"># 安装依赖包，并写入 devDependencies 属性</span></div><div class="line">npm install &lt;package&gt; --save-dev  =&gt;  yarn add &lt;package&gt; --dev</div><div class="line"></div><div class="line"><span class="comment"># 安装依赖包，并写入 peerDependencies 属性</span></div><div class="line">N/A  =&gt;  yarn add &lt;package&gt; --peer</div><div class="line"></div><div class="line"><span class="comment"># 安装依赖包，并写入 optionalDependencies 属性</span></div><div class="line">npm install &lt;package&gt; --save-optional  =&gt;  yarn add &lt;package&gt; --optional</div><div class="line"></div><div class="line"><span class="comment"># 安装精确的版本号的依赖包</span></div><div class="line"><span class="comment"># 什么意思呢？简单点说，就是在 package.json中写入的版本号规则不一样。</span></div><div class="line"><span class="comment"># 默认场景下，是会写： "xxx":"^1.1.0"，允许使用同一主版本的包，如1.2.0</span></div><div class="line"><span class="comment"># 当设置该参数之后，就会变成： "xxx": "1.1.0"，（只能使用该版本号的包）</span></div><div class="line">npm install &lt;package&gt;[@version] --save-exact  =&gt; yarn add &lt;package&gt;[@version] --exact</div><div class="line"></div><div class="line"><span class="comment"># 安装具有相同次版本号的依赖包</span></div><div class="line">N/A  =&gt;  yarn add &lt;package&gt;[@version] --tilde</div></pre></td></tr></table></figure>
+<p>除此之外，还有一个比较常见的安装包方式，那就是全局安装安装，在 <code>yarn</code> 中又该如何使用呢？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 全局安装依赖包</span></div><div class="line">npm install &lt;package&gt; -g/--global  =&gt; yarn global add &lt;package&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-4、yarn-remove"><a href="#2-4、yarn-remove" class="headerlink" title="2.4、yarn remove"></a>2.4、<code>yarn remove</code></h3><p>该命令和 <code>npm uninstall</code> 比较类似，用于删除依赖包。但和 <code>npm uninstall</code> 又有点不同。</p>
+<p>因为它没法直接删除包，而不更新 <code>package.json</code>。</p>
+<p>当 <code>remove</code> 一个包时，它会同时更新 <code>package.json</code> 中对它的所有引用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yarn remove &lt;package&gt; = npm uninstall &lt;package&gt; --save | --save-dev | save-exact | save-optional</div></pre></td></tr></table></figure>
+<p>和 <code>yarn add</code> 类似，如果要移除全局安装包，需要用 <code>yarn global remove &lt;package&gt;</code></p>
+<h3 id="2-5、yarn-publish"><a href="#2-5、yarn-publish" class="headerlink" title="2.5、yarn publish"></a>2.5、<code>yarn publish</code></h3><p>用于将包发布到仓库（当前是npm仓库）上。类似于 <code>npm publish</code></p>
+<h1 id="3、其他重要的命令"><a href="#3、其他重要的命令" class="headerlink" title="3、其他重要的命令"></a>3、其他重要的命令</h1><h3 id="3-1、yarn-run"><a href="#3-1、yarn-run" class="headerlink" title="3.1、yarn run"></a>3.1、<code>yarn run</code></h3><p>该命令和 <code>npm run</code> 没啥区别，用户执行 <code>package.json</code> 中 <code>script</code> 节点中定义的命令。</p>
+<h3 id="3-2、yarn-self-update"><a href="#3-2、yarn-self-update" class="headerlink" title="3.2、yarn self-update"></a>3.2、<code>yarn self-update</code></h3><p>用于更新自身，如果是 <code>npm</code>，则是： <code>npm install -g npm</code></p>
+<h3 id="3-3、yarn-outdated"><a href="#3-3、yarn-outdated" class="headerlink" title="3.3、yarn outdated"></a>3.3、<code>yarn outdated</code></h3><p>检查依赖版本情况，类似 <code>npm outdated</code></p>
+<h3 id="3-4、yarn-upgrade"><a href="#3-4、yarn-upgrade" class="headerlink" title="3.4、yarn upgrade"></a>3.4、<code>yarn upgrade</code></h3><p>用于更新版本，类似于 <code>npm update</code></p>
+<h3 id="3-5、yarn-config"><a href="#3-5、yarn-config" class="headerlink" title="3.5、yarn config"></a>3.5、<code>yarn config</code></h3><p>该命令用于管理 <code>yarn</code> 的配置数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看配置数据</span></div><div class="line">npm config list  =&gt;  yarn config list </div><div class="line"></div><div class="line"><span class="comment"># 查看指定的key值</span></div><div class="line">npm config get &lt;key&gt;  =&gt;  yarn config get &lt;key&gt;</div><div class="line"></div><div class="line"><span class="comment"># 删除指定的Key</span></div><div class="line">npm config delete &lt;key&gt;  =&gt;  yarn config delete &lt;key&gt;</div><div class="line"></div><div class="line"><span class="comment"># 设置指定的key - value</span></div><div class="line">npm config <span class="built_in">set</span> &lt;key&gt; &lt;value&gt; =&gt; yarn config <span class="built_in">set</span> &lt;key&gt; &lt;value&gt;</div></pre></td></tr></table></figure>
+<p><strong>由于国内的环境，强烈建议将 <code>registry</code>设置为： <code>https://registry.npm.taobao.org/</code>，命令如下：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yarn config <span class="built_in">set</span> registry https://registry.npm.taobao.org/ -g</div></pre></td></tr></table></figure>
+<h1 id="4、参考资料"><a href="#4、参考资料" class="headerlink" title="4、参考资料"></a>4、参考资料</h1><ol>
+<li><a href="https://yarnpkg.com/en/docs/cli/" target="_blank" rel="external">yarn 文档</a></li>
+<li><a href="https://docs.npmjs.com/cli/" target="_blank" rel="external">npm 文档</a></li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/Web API接口之FileReader/">
+        Web API接口之FileReader
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>在给网站编写 JavaScript 代码时，也有很多可用的 API。 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API" target="_blank" rel="external">WEB API 参考</a>。</p>
+<h2 id="1、FileReader"><a href="#1、FileReader" class="headerlink" title="1、FileReader"></a>1、FileReader</h2><p>使用FileReader对象,web应用程序可以异步的读取存储在用户计算机上的文件(或者原始数据缓冲)内容。兼容IE10+，FF和Chrome。Safari和Opera不支持。</p>
+<h2 id="2、如何读取文件？"><a href="#2、如何读取文件？" class="headerlink" title="2、如何读取文件？"></a>2、如何读取文件？</h2><pre><code>var readFile = function(file, callback) {
+  var fileReader = new FileReader(); //实例化FileReader
+  fileReader.onloadend = function() { //加载完成后执行
+    var result = null; 
+    if (fileReader.readyState === FileReader.DONE) { //判断操作是否完成
+      result = fileReader.result; //获取结果
+    }
+    if (callback) {
+      callback(result);
+    }
+  };
+  fileReader.readAsBinaryString(file); //以二进制的方式读取文件
+};
+</code></pre><p>调用的话，就可以通过如下代码调用</p>
+<pre><code>readFile(file, function(result){
+  // do something
+});
+</code></pre><p>其中file既可以是blob对象也可以是一个File对象。一般我们常用的是File对象，如何来获取一个简单的File对象呢？</p>
+<pre><code>&lt;input type=&quot;file&quot; id=&quot;file_input&quot;&gt;
+</code></pre><p>JS:</p>
+<pre><code>var fileEl = document.getElementById(&apos;#file_input&apos;);
+var file = fileEl.files[0]; //files是数组对象
+</code></pre><h2 id="3、FileReader-API"><a href="#3、FileReader-API" class="headerlink" title="3、FileReader API"></a>3、FileReader API</h2><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol>
+<li>void abort(); </li>
+<li>void readAsArrayBuffer(in Blob blob);</li>
+<li>void readAsBinaryString(in Blob blob);</li>
+<li>void readAsDataURL(in Blob blob);</li>
+<li>void readAsText(in Blob blob, [optional] in DOMString encoding);</li>
+</ol>
+<p>其中1是终止读取操作，2~4是将数据读取为不同的格式。</p>
+<h3 id="状态常量"><a href="#状态常量" class="headerlink" title="状态常量"></a>状态常量</h3><ol>
+<li>EMPTY 还没有加载任何数据</li>
+<li>LOADING 数据正在被加载</li>
+<li>DONE 已完成全部的读取请求</li>
+</ol>
+<h3 id="属性（属性全部都是只读的）"><a href="#属性（属性全部都是只读的）" class="headerlink" title="属性（属性全部都是只读的）"></a>属性（属性全部都是只读的）</h3><ol>
+<li>error 读取文件时发生的错误</li>
+<li>readyState FileReader对象的当前状态</li>
+<li>result 读取到的文件内容</li>
+</ol>
+<h2 id="4、用途"><a href="#4、用途" class="headerlink" title="4、用途"></a>4、用途</h2><ol>
+<li>客户端校验文件内容</li>
+<li>预览图片</li>
+<li>客户端导出</li>
+</ol>
+<h2 id="5、参考文档"><a href="#5、参考文档" class="headerlink" title="5、参考文档"></a>5、参考文档</h2><ol>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob" target="_blank" rel="external">MDN - Blob</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank" rel="external">MDN - FileReader</a></li>
+</ol>
+<h2 id="6、后续补充"><a href="#6、后续补充" class="headerlink" title="6、后续补充"></a>6、后续补充</h2><h3 id="2016-2-17日追加"><a href="#2016-2-17日追加" class="headerlink" title="2016-2-17日追加"></a>2016-2-17日追加</h3><p>FileReader的API方法readAsBinaryString在IE11中无法使用，为了兼容IE11，我们需要使用另外的API或者使用猴子补丁的方式实现该API。</p>
+<p>参考<a href="http://stackoverflow.com/questions/31391207/javascript-readasbinarystring-function-on-e11" target="_blank" rel="external">http://stackoverflow.com/questions/31391207/javascript-readasbinarystring-function-on-e11</a></p>
+<p>补丁代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(!FileReader.prototype.readAsBinaryString)&#123;</div><div class="line">   FileReader.prototype.readAsBinaryString = <span class="function"><span class="keyword">function</span> (<span class="params">blob</span>) </span>&#123;</div><div class="line">     <span class="keyword">var</span> binary = <span class="string">''</span>;</div><div class="line">     <span class="keyword">var</span> self = <span class="keyword">this</span>;</div><div class="line">     <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</div><div class="line">     reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">       <span class="keyword">var</span> bytes = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(reader.result); </div><div class="line">       <span class="keyword">var</span> length = bytes.byteLength;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</div><div class="line">         binary += <span class="built_in">String</span>.fromCharCode(bytes[i]);</div><div class="line">       &#125;</div><div class="line">       self.result = binary;</div><div class="line">       $(pt).trigger(<span class="string">'onload'</span>);</div><div class="line">     &#125;;</div><div class="line">     reader.readAsArrayBuffer(blob);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/Google JavaScript Style Guide（上）/">
+        Google JavaScript Style Guide（上）
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>JavaScript是一套灵活的语言，所以我们可以用各种风格来编写代码。但为了更好的编写JavaScript代码，有些共同的规范是需要我们去遵循的。以下是Google提供的JavaScript代码风格指南，值得我们学习。<br>可以到 <a href="http://google.github.io/styleguide/javascriptguide.xml" target="_blank" rel="external">原文链接</a> 查看原文英文版。</p>
+<h2 id="JavaScript-语言规则"><a href="#JavaScript-语言规则" class="headerlink" title="JavaScript 语言规则"></a>JavaScript 语言规则</h2><p>1、 <code>var</code></p>
+<p>总是使用 <code>var</code> 来定义变量，如果你没这样做，那么定义的变量很可能会污染全局变量，导致不必要的问题。</p>
+<p><strong>注：在ES6中，我们还可以使用let来定义变量，该方式定义的变量具有词法作用域，没有变量提升的风险。</strong></p>
+<p>2、Constants（常量）</p>
+<ol>
+<li>使用NANES_LIKE _THIS这种全大写，下划线分割风格来定义常量</li>
+<li>使用@const来注释你的常量</li>
+<li>不要使用 <code>const</code> 关键字来定义常量，IE不支持</li>
+</ol>
+<p><strong>注：在支持ES6的环境下，建议直接通过 <code>const</code> 关键字来定义常量</strong></p>
+<p>3、Semicolons（分号）</p>
+<p>由于JavaScript的自动补全分号机制，可能会导致意料之外的结果，所以建议总是使用分号。</p>
+<p>错误实例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Error 1</span></div><div class="line"><span class="keyword">var</span> fun1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125; <span class="comment">//此处缺少分号，由于JavaScript的优先级，会导致优先和后面的括号结果，当成函数调用。</span></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'abc'</span>);</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="comment">// Error 2</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="number">-1</span> == <span class="number">0</span> || <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log(arr); <span class="comment">//输出1</span></div></pre></td></tr></table></figure>
+<p><strong>注：函数和分号，函数申明不需要分号，函数表达式需要使用分号</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;;  <span class="comment">//函数表达式需要分号</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo2</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;  <span class="comment">//函数申明不需要分号</span></div></pre></td></tr></table></figure></p>
+<p>4、嵌套函数</p>
+<p>嵌套函数在大多数时候是非常有用的，可以随意的使用给它们。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> x = <span class="string">'local'</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">g</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(x);</div><div class="line">  &#125;</div><div class="line">  g(); <span class="comment">//可以在函数内部访问到，但没有对外公开</span></div><div class="line">&#125;</div><div class="line">f();</div></pre></td></tr></table></figure></p>
+<p>5、在块中定义函数</p>
+<p>不要在块中定义函数，JavaScript是函数作用域。</p>
+<p><strong>注：我们可以在块中使用函数表达式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//就算if为false，foo函数同样会被申明</span></div><div class="line"><span class="keyword">if</span>(<span class="literal">false</span>)&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'foo'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">foo &amp;&amp; foo(); </div><div class="line"></div><div class="line"><span class="comment">//此处满足需求，if为false，则bar未定义</span></div><div class="line"><span class="keyword">if</span>(<span class="literal">false</span>)&#123;</div><div class="line">  <span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'bar'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">bar &amp;&amp; bar();</div></pre></td></tr></table></figure>
+<p>6、异常</p>
+<p>异常基本上是无法避免的，可以考虑使用完善的开发框架。</p>
+<p>7、自定义异常</p>
+<p>建议使用自定义异常，如果没这样做，函数返回的异常信息可能是很不友好的。同时会暴露原始异常信息，所以建议使用自定义异常来屏蔽技术细节。</p>
+<p>8、标准功能</p>
+<p>标准功能总是由于非标准功能，为了最大的可移植性和兼容性，尽量使用标准功能。</p>
+<p>9、基本类型的包装对象</p>
+<p>没必要对基本类型进行包装，而且很容易产生错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>);</div><div class="line"><span class="keyword">if</span> (x) &#123; <span class="comment">//此处x为真，所以会执行到内部的代码</span></div><div class="line">  alert(<span class="string">'hi'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>10、多级层次原型</p>
+<p>多级原型继承不是首选，建议使用 <a href="https://github.com/google/closure-library/" target="_blank" rel="external">Closure</a> 或者类似的库。</p>
+<p>11、方法和属性定义</p>
+<p>虽然有很多种方式可以创建函数，但是优先选择使用函数表达式，以属性或者变量的方式存在。如果是要定义类，那么还是采用方法申明的方式。</p>
+<p><strong>注：ES6可以使用 <code>class</code> 关键字定义类</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//常规使用函数</span></div><div class="line"><span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  </div><div class="line">&#125;;</div><div class="line"><span class="comment">//类函数定义</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  </div><div class="line">&#125;</div><div class="line"><span class="comment">//使用class申明类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo2</span></span>&#123;</div><div class="line">  <span class="keyword">constructor</span>()&#123;</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>11、delete（关键字）</p>
+<p>优先将无用的属性设置为null，而不是delete。因为在JavaScript引擎中，改变一个对象的属性数目要比重新设置属性值慢得多。</p>
+<p>12、闭包</p>
+<p>可以使用，但是要当心。闭包使用不当，容易导致内存泄露。实例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 内存泄露，每次点击将使用到a和b，导致循环引用（ERROR）</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">element, a, b</span>) </span>&#123;</div><div class="line">  element.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">    <span class="comment">/* uses a and b */</span> </div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 内存泄露修复</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">element, a, b</span>) </span>&#123;</div><div class="line">  element.onclick = bar(a, b);</div><div class="line">&#125;</div><div class="line"><span class="comment">//通过函数隔离，onclick事件不在对原始的a和b引用，所以避免的循环引用。</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">    <span class="comment">/* uses a and b */</span> </div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>13、eval()</p>
+<p>尽量避免使用eval，一个是性能低下，二个是很容易被攻击</p>
+<p>14、with(){}</p>
+<p>不要使用with，with会让你的代码难以理解，而且结果具有不确定性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//foo是否包含x属性，将会导致不同的结果</span></div><div class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">x1</span>: <span class="number">1</span>&#125;; <span class="comment">// &#123;x: 1&#125;</span></div><div class="line"><span class="keyword">var</span> x = <span class="number">3</span>;</div><div class="line"><span class="keyword">with</span> (foo) &#123;</div><div class="line">  <span class="built_in">console</span>.log(x);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>15、this</p>
+<p>建议仅在对象构造函数，方法和配置闭包中使用 <code>this</code> 。因为this在不同的地方，指向的对象不一样，这些很容易引发错误。</p>
+<p>16、for-in 循环</p>
+<p>建议在object/map/hash这种key-value结构中使用 for-in 循环，其他地方还是用for吧。另外for-in循环并不能保证key的顺序，所以在要顺序要求的地方也不要使用for-in。</p>
+<p><strong>注：ES5中新增了Object.keys可以用来替代for-in，在ES6中可以用for of遍历可迭代对象</strong></p>
+<p>17、关联数组</p>
+<p>不要使用数组作为 <code>map/hash/关联数组</code> 。关联数组不允许使用非数字索引。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//关联数组</span></div><div class="line"><span class="keyword">var</span> arr = &#123;&#125;;</div><div class="line"><span class="comment">//添加元素</span></div><div class="line">arr[<span class="string">'one'</span>] = <span class="string">'abc'</span>;</div><div class="line">arr[<span class="string">'two'</span>] = <span class="string">'def'</span>;</div><div class="line"><span class="comment">//删除元素</span></div><div class="line"><span class="keyword">delete</span> arr[<span class="string">'one'</span>];</div><div class="line"><span class="comment">//访问元素</span></div><div class="line"><span class="built_in">console</span>.log(arr[<span class="string">'two'</span>]);</div></pre></td></tr></table></figure>
+<p>18、多行字符（行尾\反斜杠）</p>
+<p>应避免使用多行字符，在每行开始处的空白无法被编译，反斜杠也可能会导致错误的空白，另外，它不是ECMAScript的一部分。我们可以使用字符串连接来替代</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str1 = <span class="string">'AA \</span></div><div class="line">            BB';</div><div class="line"><span class="keyword">var</span> str2 = <span class="string">'AA '</span> + </div><div class="line">           <span class="string">'BB'</span>;</div><div class="line"><span class="comment">//ES6用法</span></div><div class="line"><span class="keyword">var</span> str3 = <span class="string">`AA</span></div><div class="line">BB`;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(str1);</div><div class="line"><span class="built_in">console</span>.log(str2);</div><div class="line"><span class="built_in">console</span>.log(str3);</div></pre></td></tr></table></figure>
+<p>19、数组和对象字面量</p>
+<p>总是使用数组和对象字面量。数组构造是很容易出错的，new Array(‘a’)表示一个长度的数组，new Array(5)表示5个长度的数组。具体如何返回结果，取决于第一个参数的类型。</p>
+<p>20、不要修改内置对象的原型</p>
+<p>对于Object和Array原型的修改是严格禁止的。修改其他内置对象的原型虽然不那么危险，但仍然会导致难以调试，应当避免。</p>
+<p>21、IE条件注释</p>
+<p>不要使用IE条件注释。会阻碍自动化工具处理js代码，也有可能会在运行时改变语法树。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">/*@cc_on if (@_jscript) &#123; return 2* @*/</span>  <span class="number">3</span>; <span class="comment">/*@ &#125; @*/</span></div><div class="line">&#125;;</div><div class="line"><span class="built_in">console</span>.log(f());</div></pre></td></tr></table></figure>
+<h2 id="未完，待续"><a href="#未完，待续" class="headerlink" title="未完，待续"></a>未完，待续</h2>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/Web前端基础测试题/">
+        Web前端基础测试题
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="1、HTML篇"><a href="#1、HTML篇" class="headerlink" title="1、HTML篇"></a>1、HTML篇</h2><h4 id="1、HTML是一种（）。"><a href="#1、HTML是一种（）。" class="headerlink" title="1、HTML是一种（）。"></a>1、HTML是一种（）。</h4><p>A、标记语言  </p>
+<p>B、编程语言  </p>
+<p>C、自然语言  </p>
+<p>D、描述语言</p>
+<h4 id="2、HTML的后缀名是（）。"><a href="#2、HTML的后缀名是（）。" class="headerlink" title="2、HTML的后缀名是（）。"></a>2、HTML的后缀名是（）。</h4><p>A、 .h </p>
+<p>B、.ht  </p>
+<p>C、.htm  </p>
+<p>D、.html</p>
+<h4 id="3、HTML5新增的元素有（）。"><a href="#3、HTML5新增的元素有（）。" class="headerlink" title="3、HTML5新增的元素有（）。"></a>3、HTML5新增的元素有（）。</h4><p>A、 p</p>
+<p>B、 ruby</p>
+<p>C、 canvas</p>
+<p>D、 span</p>
+<h4 id="4、HTML5中，使用（）可以播放视频？"><a href="#4、HTML5中，使用（）可以播放视频？" class="headerlink" title="4、HTML5中，使用（）可以播放视频？"></a>4、HTML5中，使用（）可以播放视频？</h4><p>A、 audio</p>
+<p>B、 mark</p>
+<p>C、 video</p>
+<p>D、 source</p>
+<h2 id="2、CSS篇"><a href="#2、CSS篇" class="headerlink" title="2、CSS篇"></a>2、CSS篇</h2><p>####5、以下html代码中，用（）可设置Home的颜色的元素。</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+  &lt;p class=&quot;about&quot;&gt;
+    &lt;a href=&quot;#&quot; id=&quot;home-link&quot;&gt;Home&lt;/a&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p>A、 #home-link{}</p>
+<p>B、 .container .about{}</p>
+<p>C、 .container &gt; a{}</p>
+<p>D、 .about a{}</p>
+<h4 id="6、要对Me设置样式，应该使用（）。"><a href="#6、要对Me设置样式，应该使用（）。" class="headerlink" title="6、要对Me设置样式，应该使用（）。"></a>6、要对Me设置样式，应该使用（）。</h4><pre><code>&lt;div&gt;
+    &lt;span id=&quot;id&quot;&gt;&lt;/span&gt;
+    &lt;span&gt;Me&lt;/span&gt;
+&lt;/div&gt;
+</code></pre><p>A、 #id &gt; span{}</p>
+<p>B、 #id + span{}</p>
+<p>C、 #id span{}</p>
+<p>D、 #id ~ span{}</p>
+<h4 id="7、如果对文本的第一个字符进行设置样式？"><a href="#7、如果对文本的第一个字符进行设置样式？" class="headerlink" title="7、如果对文本的第一个字符进行设置样式？()"></a>7、如果对文本的第一个字符进行设置样式？()</h4><p>A、 :after{}</p>
+<p>B、 :before{}</p>
+<p>C、 :first-letter{}</p>
+<p>D、 :first-line{}</p>
+<h4 id="8、在CSS的border-box盒子模型中，border-width-2px-width-100px-padding-5px-margin-1px-那么，该元素占用的宽度为（）"><a href="#8、在CSS的border-box盒子模型中，border-width-2px-width-100px-padding-5px-margin-1px-那么，该元素占用的宽度为（）" class="headerlink" title="8、在CSS的border-box盒子模型中，border-width: 2px; width: 100px; padding: 5px; margin: 1px;那么，该元素占用的宽度为（）"></a>8、在CSS的border-box盒子模型中，border-width: 2px; width: 100px; padding: 5px; margin: 1px;那么，该元素占用的宽度为（）</h4><p>A、 100px</p>
+<p>B、 102px</p>
+<p>C、 108px</p>
+<p>D、 116px</p>
+<h4 id="9、如何对span设置width？（）"><a href="#9、如何对span设置width？（）" class="headerlink" title="9、如何对span设置width？（）"></a>9、如何对span设置width？（）</h4><p>A、 span{width: 100px; display: inline-block;}</p>
+<p>B、 span{width: 100px; display: inline;}</p>
+<p>C、 span{width: 100px; display: block;}</p>
+<p>D、 span{width: 100px;}</p>
+<h4 id="10、当position设置为（）时，可以让元素钉在浏览器窗口上，不随滚动条滚动而滚动。"><a href="#10、当position设置为（）时，可以让元素钉在浏览器窗口上，不随滚动条滚动而滚动。" class="headerlink" title="10、当position设置为（）时，可以让元素钉在浏览器窗口上，不随滚动条滚动而滚动。"></a>10、当position设置为（）时，可以让元素钉在浏览器窗口上，不随滚动条滚动而滚动。</h4><p>A、 absolute</p>
+<p>B、 static</p>
+<p>C、 relative</p>
+<p>D、 fixed</p>
+<h4 id="11、以下哪些是CSS的预处理器（）"><a href="#11、以下哪些是CSS的预处理器（）" class="headerlink" title="11、以下哪些是CSS的预处理器（）"></a>11、以下哪些是CSS的预处理器（）</h4><p>A、 Less</p>
+<p>B、 Sass</p>
+<p>C、 Stylus</p>
+<p>D、 Dart</p>
+<h2 id="3、JavaScript篇"><a href="#3、JavaScript篇" class="headerlink" title="3、JavaScript篇"></a>3、JavaScript篇</h2><h4 id="12、以下变量定义不正确的是（）。"><a href="#12、以下变量定义不正确的是（）。" class="headerlink" title="12、以下变量定义不正确的是（）。"></a>12、以下变量定义不正确的是（）。</h4><p>A、 var a, var b;</p>
+<p>B、 var a = b = 1;</p>
+<p>C、 var a, b, c;</p>
+<p>D、 var class = 1;</p>
+<h4 id="13、假定今天是2015年11月1日，如下代码的输出结果是（）"><a href="#13、假定今天是2015年11月1日，如下代码的输出结果是（）" class="headerlink" title="13、假定今天是2015年11月1日，如下代码的输出结果是（）"></a>13、假定今天是2015年11月1日，如下代码的输出结果是（）</h4><pre><code>new Date().getMonth()
+</code></pre><p>A、 111</p>
+<p>B、 10</p>
+<p>C、 11</p>
+<p>D、 2015</p>
+<h4 id="14、当表单填写完毕，鼠标单击提交按钮时，触发的是（）事件"><a href="#14、当表单填写完毕，鼠标单击提交按钮时，触发的是（）事件" class="headerlink" title="14、当表单填写完毕，鼠标单击提交按钮时，触发的是（）事件"></a>14、当表单填写完毕，鼠标单击提交按钮时，触发的是（）事件</h4><p>A、onblur</p>
+<p>B、onmouseleave</p>
+<p>C、onmouseenter</p>
+<p>D、onsubmit</p>
+<h4 id="15、以下哪些是JavaScript的中间语言？"><a href="#15、以下哪些是JavaScript的中间语言？" class="headerlink" title="15、以下哪些是JavaScript的中间语言？"></a>15、以下哪些是JavaScript的中间语言？</h4><p>A、 TypeScript</p>
+<p>B、 CoffeeScript</p>
+<p>C、 JScript</p>
+<p>D、 ActionScript</p>
+<h4 id="16、typeof-undefined-输出（）"><a href="#16、typeof-undefined-输出（）" class="headerlink" title="16、typeof undefined 输出（）"></a>16、typeof undefined 输出（）</h4><p>A、 “undefined”</p>
+<p>B、 “object”</p>
+<p>C、 “null”</p>
+<p>D、 Error</p>
+<h4 id="17、-typeof-Array-prototype-输出-（）"><a href="#17、-typeof-Array-prototype-输出-（）" class="headerlink" title="17、 typeof Array.prototype 输出 （）"></a>17、 typeof Array.prototype 输出 （）</h4><p>A、 “undefined”</p>
+<p>B、 “object”</p>
+<p>C、 “null”</p>
+<p>D、 Error</p>
+<h4 id="18、-undefined-null-NaN-NaN-输出（）"><a href="#18、-undefined-null-NaN-NaN-输出（）" class="headerlink" title="18、[undefined == null, NaN == NaN] 输出（）"></a>18、[undefined == null, NaN == NaN] 输出（）</h4><p>A、 [true, true]</p>
+<p>B、 [false false]</p>
+<p>C、 [true, false]</p>
+<p>D、 [false, true]</p>
+<h4 id="19、以下代码输出（）"><a href="#19、以下代码输出（）" class="headerlink" title="19、以下代码输出（）"></a>19、以下代码输出（）</h4><pre><code>(function() {
+  var a = b = 5;
+})();
+console.log(b);
+</code></pre><p>A、 Error</p>
+<p>B、 null</p>
+<p>C、 undefined</p>
+<p>D、 5</p>
+<h4 id="20、以下代码输出（）"><a href="#20、以下代码输出（）" class="headerlink" title="20、以下代码输出（）"></a>20、以下代码输出（）</h4><pre><code>function test() {
+  console.log(a);
+  console.log(foo());
+  var a = 1;
+  function foo() {
+    return 2;
+  }
+} 
+test();
+</code></pre><p>A、 1 和 undefined</p>
+<p>B、 1 和 2</p>
+<p>C、 undefined 和 2</p>
+<p>D、 undefined 和 undefined</p>
+<h2 id="4、编程篇"><a href="#4、编程篇" class="headerlink" title="4、编程篇"></a>4、编程篇</h2><h4 id="21、请补全代码"><a href="#21、请补全代码" class="headerlink" title="21、请补全代码"></a>21、请补全代码</h4><pre><code>function sortArr(arr){
+  //Your code here... 
+}
+console.log(sortArr([1, 3, 0, 9, 7])); // Result: [9, 7, 3, 1, 0]
+</code></pre><h4 id="22、请补全代码"><a href="#22、请补全代码" class="headerlink" title="22、请补全代码"></a>22、请补全代码</h4><pre><code>function distinctArr(arr){
+  //Your code here... 
+}
+console.log(distinctArr([1, 5, 7, 3, 7, 5])); // Result: [1, 5, 7, 3]
+</code></pre><p>附参考答案：</p>
+<p>A<br>CD<br>BC<br>C<br>ABD<br>BD<br>C<br>B<br>AC<br>D<br>ABC<br>AD<br>B<br>D<br>AB<br>A<br>B<br>C<br>D<br>C</p>
+<p>21、<br>function sortArr(arr){<br>  var arrCopy = arr.slice(0);<br>  // 使用sort时，需要先复制一次arr，避免修改原本的数组。<br>  arrCopy.sort(function(a1, a2){<br>    return a2 - a1;<br>  });<br>  return arrCopy;<br>}</p>
+<p>22、<br>function distinctArr(arr){<br>  var resultArr = [];<br>  arr.forEach(function(item, i){<br>    if(resultArr.indexOf(item) === -1){<br>      resultArr.push(item);<br>    }<br>  });<br>  return resultArr;<br>}</p>
+<p>function distinctArr(arr){<br>  var tempArr = arr.filter(function(item, index, inputArray){<br>      return inputArray.indexOf(item) === index;<br>   });<br>  return tempArr;<br>}</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/那些年我们认识的iframe/">
+        那些年我们认识的iframe
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/一个元素实现3个回图形/">
+        一个元素实现3个回图形
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>如何用一个html元素实现三个回子类似的图形？</p>
+<h2 id="解题方案"><a href="#解题方案" class="headerlink" title="解题方案"></a>解题方案</h2><h3 id="方案一，利用outline和outline-offset结合伪元素来实现。"><a href="#方案一，利用outline和outline-offset结合伪元素来实现。" class="headerlink" title="方案一，利用outline和outline-offset结合伪元素来实现。"></a>方案一，利用outline和outline-offset结合伪元素来实现。</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.test</span>, <span class="selector-class">.test</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.test</span><span class="selector-pseudo">:after</span>&#123;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid blue;</div><div class="line">  <span class="attribute">outline</span>: <span class="number">1px</span> solid red;</div><div class="line">  <span class="attribute">outline-offset</span>: <span class="number">10px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.test</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.test</span><span class="selector-pseudo">::after</span>&#123;</div><div class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.test</span><span class="selector-pseudo">::before</span>&#123;</div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">150px</span>;  </div><div class="line">&#125;</div><div class="line"><span class="selector-class">.test</span><span class="selector-pseudo">::after</span>&#123;</div><div class="line">  <span class="attribute">margin-top</span>: -<span class="number">100px</span>;</div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">300px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="方案二，利用box-shadow来模拟边框实现"><a href="#方案二，利用box-shadow来模拟边框实现" class="headerlink" title="方案二，利用box-shadow来模拟边框实现"></a>方案二，利用box-shadow来模拟边框实现</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">.test&#123;</div><div class="line">  position:relative;</div><div class="line">  border: 1px solid red;</div><div class="line">  height: 150px;</div><div class="line">  width: 120px;</div><div class="line">  box-shadow: 275px 0px 0 0px white, 275px 0px 0 1px red;;</div><div class="line">&#125;</div><div class="line">.test::before&#123;</div><div class="line">  content: '';</div><div class="line">  position: absolute;</div><div class="line">  display: block;</div><div class="line">  width: 100px;</div><div class="line">  height: 100px;</div><div class="line">  left: 10px;</div><div class="line">  top: 25px;</div><div class="line">  border: 1px solid blue;</div><div class="line">  box-shadow:135px 0 0px 0px white, 135px 0 0px 1px blue,  275px 0px 0 0px white, 275px 0px 0 1px blue;;</div><div class="line">&#125;</div><div class="line">.test::after&#123;</div><div class="line">  content: '';</div><div class="line">  display: block;</div><div class="line">  position:absolute;</div><div class="line">  width: 120px;</div><div class="line">  height: 150px;</div><div class="line">  left: 135px;</div><div class="line">  top: 0;</div><div class="line">  border: 1px solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/探索Decorator/">
+        探索Decorator
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><h2 id="1、啥是Decorator？"><a href="#1、啥是Decorator？" class="headerlink" title="1、啥是Decorator？"></a>1、啥是Decorator？</h2><h2 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h2>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/前端模块化：RequireJS/">
+        前端模块化：RequireJS
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前端模块化能解决什么问题？</p>
+<ol>
+<li>模块的版本管理</li>
+<li>提高可维护性 – 通过模块化，可以让每个文件职责单一，非常有利于代码的维护</li>
+<li>按需加载 – 提高显示效率</li>
+<li>更好的依赖处理 – 传统的开发模式，如果B依赖A，那么必须在B文件前面先加载好A。如果使用了模块化，只需要在模块内部申明依赖即可。</li>
+</ol>
+<h2 id="AMD规范-amp-CMD规范"><a href="#AMD规范-amp-CMD规范" class="headerlink" title="AMD规范 &amp; CMD规范"></a>AMD规范 &amp; CMD规范</h2><p>说到前端模块化，就不得不提<strong>AMD规范</strong>（<a href="https://github.com/amdjs/amdjs-api/wiki/AMD-(%E4%B8%AD%E6%96%87%E7%89%88" target="_blank" rel="external">中文版</a>)、<a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank" rel="external">英文版</a>）和<strong>CMD规范</strong>（<a href="https://github.com/cmdjs/specification/blob/master/draft/module.md" target="_blank" rel="external">英文版</a>）</p>
+<p>它们的区别：</p>
+<p><a href="http://www.zhihu.com/question/20351507" target="_blank" rel="external">http://www.zhihu.com/question/20351507</a></p>
+<p><a href="http://www.cnblogs.com/tugenhua0707/p/3507957.html" target="_blank" rel="external">http://www.cnblogs.com/tugenhua0707/p/3507957.html</a></p>
+<p>AMD规范是 RequireJS 在推广过程中对模块定义的规范化产出，所以我在这里重点介绍下 AMD规范。</p>
+<p>AMD规范全名异步模块定义（Asynchronous Module Definition）规范，让模块和依赖可以异步加载。</p>
+<p>主要API：</p>
+<pre><code>define(id?, dependencies?, factory);
+</code></pre><p>id,字符串，定义中模块的名字，可选参数（没有提供，则默认为模块加载器请求的指定脚本的名字），如果提供，那么模块名必须是顶级和绝对的（不允许相对名字）</p>
+<p>dependencies，数组，模块的依赖，可选参数</p>
+<p>factory，函数或对象，必选参数。</p>
+<h2 id="RequireJS"><a href="#RequireJS" class="headerlink" title="RequireJS"></a>RequireJS</h2><p>RequireJS是一个JS的文件和模块加载器。专门为浏览器优化，同时也支持其他JS环境。</p>
+<h3 id="使用RequireJS"><a href="#使用RequireJS" class="headerlink" title="使用RequireJS"></a>使用RequireJS</h3><p>要想使用requireJS，首先需要在页面引入脚本：</p>
+<pre><code>&lt;script src=&quot;assets/vendor/require/require.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>接下来，书写脚本：</p>
+<pre><code>&lt;script&gt;
+    requirejs([&apos;js/a&apos;], function(a){
+        alert(a.test);
+    });  
+&lt;/script&gt;
+</code></pre><p>再来看看a.js:</p>
+<pre><code>define({
+  test: &apos;aa&apos;
+});
+</code></pre><p>html代码如下：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;RequireJS Demo&lt;/title&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;chrome=1&quot;&gt;
+        &lt;script src=&quot;assets/vendor/require/require.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script&gt;
+            requirejs([&apos;assets/js/a&apos;], function(a){
+                alert(a.test);
+            });  
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>在浏览器中打开后，弹出aa。</p>
+<p>在实践这个简单示例的时候，需要注意requireJS的<code>baseUrl</code> 设置：</p>
+<p><strong>细节之处</strong></p>
+<p>1、RequireJS 加载文件/模块都是相对于baseUrl的</p>
+<p>2、baseUrl默认使用data-main属性指定的脚本目录</p>
+<pre><code>//baseUrl=&quot;assets/&quot;
+&lt;script data-main=&quot;assets/main&quot; src=&quot;assets/vendor/require/require.js&quot;&gt;&lt;/script&gt;
+
+//baseUrl=&quot;assets/js/&quot;
+&lt;script data-main=&quot;assets/js/main&quot; src=&quot;assets/vendor/require/require.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>3、如果没有data-main属性，那么baseUrl等于该html所在的目录</p>
+<p>4、baseUrl可以通过RequireJS config进行设置</p>
+<p>5、优先级：config &gt; data-main属性 -&gt; html目录</p>
+<p>6、RequireJS加载JS时，可以不写js后缀</p>
+<p>7、加载文件/模块时，会自动包含前缀http或者https</p>
+<p>8、可以在config中使用paths配置，指定相对目录</p>
+<pre><code>//这是我的项目目录结构
+www/
+  index.html
+  assets/
+    js/
+      a.js
+    vendor/
+      require/
+        require.js
+    main.js
+
+//配置文件
+requirejs.config({
+    baseUrl: &apos;assets&apos;,
+    paths: {
+        js: &apos;js&apos;
+    }
+});
+
+//可以直接使用js来映射目录，进行文件引用
+requirejs([&apos;js/a&apos;], function(a){
+  alert(a.test);
+}); 
+</code></pre><p><strong>注意：</strong>一定要保证使用paths的时候，一定要放在config之后。通过在配置paths时，如果是直接子目录，不需要斜杠。</p>
+<p>9、data-main指定的文件，是requirejs的入口点</p>
+<h3 id="定义模块"><a href="#定义模块" class="headerlink" title="定义模块"></a>定义模块</h3><p>在requirejs中，我们可以采用多种方式定义模块，如下：</p>
+<p>1、简单的键值对:</p>
+<pre><code>define({
+  color: &apos;black&apos;,
+  size: &apos;18px&apos;
+});
+</code></pre><p>2、定义函数：</p>
+<pre><code>define(function(){
+  return {
+    color: &apos;black&apos;,
+    size: &apos;18px&apos;
+  };
+});
+</code></pre><p>3、定义函数并使用依赖：</p>
+<pre><code>define([&apos;a&apos;, &apos;b&apos;], function(a, b){
+  return {
+    color: &apos;black&apos;,
+    size: &apos;18px&apos;,
+    alert: function(){
+      return a.num + b.num;
+    }
+  };
+});
+</code></pre><p>4、将函数定义为模块：</p>
+<pre><code>define([&apos;a&apos;, &apos;b&apos;], function(a, b){
+  return function(title){
+    return title ? title : a.title + b.title;
+  };
+});
+</code></pre><p>5、通过简单的CommonJs包装器定义模块：</p>
+<pre><code>define(function(require, exports, module){
+  var a = require(&apos;a&apos;),
+      b = require(&apos;b&apos;);
+  return function(){}; 
+});
+</code></pre><p>6、定义包含名字的模块：</p>
+<pre><code>define(&apos;moduleA&apos;, [&apos;a&apos;, &apos;b&apos;], function(a, b){
+  //do something...
+});
+</code></pre><h3 id="配置项"><a href="#配置项" class="headerlink" title="配置项"></a>配置项</h3><pre><code>requirejs.config({
+  baseUrl: &apos;&apos;, //基地址
+  paths: { //路径映射
+    &apos;js&apos;: &apos;../js&apos;
+  },
+  bundles: { //
+    primary: [&apos;main&apos;, &apos;util&apos;],
+    secondary: [&apos;text!secondary.html&apos;]
+  },
+  shim: { //从非模块的js中，导出模块
+    jquery: {
+      deps: [],
+      exports: &apos;jQuery&apos;
+    }
+  },
+  map: { //方便版本控制
+    &apos;some/newmodule&apos;: {
+      &apos;foo&apos;: &apos;foo1.2&apos;
+    },
+    &apos;some/oldmodule&apos;: {
+      &apos;foo&apos;: &apos;foo1.0&apos;
+    }
+  },
+  config: { //配置module
+    bar: {
+      size: &apos;large&apos;
+    }
+  },
+  packages: [], //需要从CommonJS packages中加载的模块
+  nodeIdCompat: true,
+  waitSeconds: 15, // 加载脚本超时时间（秒）
+  context: &apos;&apos;, //设置上下文名称
+  deps:[], //需要加载的依赖
+  callback: function(){}, //当deps加载完时执行
+  enforceDefine: false, // 是否当脚本没有define时抛出错误
+  xhtml: false, //是否使用xhtml创建脚本元素
+  urlArgs: &apos;test=&apos; + (new Date()).getTime(), //配置url参数
+  scriptType: &apos;text/javascript&apos;, //设置加载脚本的脚本类型
+  skipDataMain: false //是否使用data-main属性
+});
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/再说Promise/">
+        再说Promise
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>在JavaScript，由于天生的回调机制，当业务逻辑嵌套较多的时候，就很容易产生回调地狱。</p>
+<p>为了避免回调地狱，在JS中可以使用 <code>co</code>, <code>Promise</code>, <code>async await</code> 等等方式。</p>
+<p>在当前ES6开始流行的情况下，<code>Promise</code> 则是主流，就算是 <code>async await</code> ，也需要和Promise搭配，那我们就来看下 <code>Promise</code> 到底是怎么工作的！</p>
+<h2 id="1、原生Promise"><a href="#1、原生Promise" class="headerlink" title="1、原生Promise"></a>1、原生Promise</h2><p>打开Chrome控制台，输入 <code>Promise.</code> 然后可以看到Promise的一些静态方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>.accept(); <span class="comment">// 【非标准】等价于Promise.resolve()</span></div><div class="line"><span class="built_in">Promise</span>.all(); <span class="comment">// 同时执行多个Promise，所有Promise都执行完毕（resolve, reject都算）之后，才会调用then方法。</span></div><div class="line"><span class="built_in">Promise</span>.defer(); <span class="comment">// 【非标准】返回一个Deferred对象</span></div><div class="line"><span class="built_in">Promise</span>.race(); <span class="comment">// 通过执行多个Promise，有一个成功就继续下一步。</span></div><div class="line"><span class="built_in">Promise</span>.reject(); <span class="comment">// 返回一个rejected的Promise</span></div><div class="line"><span class="built_in">Promise</span>.resolve(); <span class="comment">// 返回一个resolved的Promise</span></div></pre></td></tr></table></figure>
+<p>通过 <code>let p = Promise.defer().promise</code> 之后，使用 <code>p.</code>，可以看到 <code>Promise</code> 实例可用的一些方法（实际是原型方法）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">catch</span>(); <span class="comment">// 是onRejected的语法糖，注册onRejected方法。</span></div><div class="line">chain(); <span class="comment">// 【非标准】</span></div><div class="line">then(); <span class="comment">// 注册onFulfilled和onRejected方法。</span></div></pre></td></tr></table></figure>
+<p>至于具体如何用，看 <a href="http://liubin.org/promises-book" target="_blank" rel="external">Promise Book</a>。</p>
+<h2 id="2、Promise原理浅析"><a href="#2、Promise原理浅析" class="headerlink" title="2、Promise原理浅析"></a>2、Promise原理浅析</h2><p>光用还不够，在这里我们来分解一下Promise背后的原理。</p>
+<p>要去分析Promise的原理，首先就不得不提到两个规范。一个是 Promise A+ 规范（ES6 Promise的前身，是一个社区规范）和 ECMA Promise规范（标准化之后的规范）。它们约定了Promise的规则。</p>
+<p>在这里，我们就不按部就班的来对应该问题，我们就通过TDD的方式来实现一个Promise-polyfills。</p>
+<p>测试工具采用了 <a href="">ava</a>。</p>
+<p>为了避免浏览器干扰，我们把Promise取别名为Promise2。目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Promise2.js</div><div class="line">test/</div><div class="line">  promise.test.js</div></pre></td></tr></table></figure>
+<p>我们先完成第一个测试，验证Promise应该有的静态方法和原型方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">//promise.test.js</div><div class="line"></div><div class="line">&apos;use strict&apos;;</div><div class="line"></div><div class="line">let test = require(&apos;ava&apos;);</div><div class="line">let Promise2 = require(&apos;./../Promise2&apos;);</div><div class="line"></div><div class="line">// Promise2 is a function. </div><div class="line">test(t =&gt; t.is(&apos;function&apos;, typeof Promise2));</div><div class="line"></div><div class="line">// Promise2 has static function resolve</div><div class="line">test(t =&gt; t.is(&apos;function&apos;, typeof Promise2.resolve));</div><div class="line"></div><div class="line">// Promise2 has static function reject</div><div class="line">test(t =&gt; t.is(&apos;function&apos;, typeof Promise2.reject));</div><div class="line"></div><div class="line">// Promise2 has static function race</div><div class="line">test(t =&gt; t.is(&apos;function&apos;, typeof Promise2.race));</div><div class="line"></div><div class="line">// Promise2 has static function all</div><div class="line">test(t =&gt; t.is(&apos;function&apos;, typeof Promise2.all));</div><div class="line"></div><div class="line">let p1 = new Promise2();</div><div class="line"></div><div class="line">// new Promise2 is a Promise2 instance</div><div class="line">test(t =&gt; t.is(true, p1 instanceof Promise2));</div><div class="line"></div><div class="line">// Promise2 instace muse has function catch</div><div class="line">test(t =&gt; t.is(&apos;function&apos;, typeof p1.catch));</div><div class="line"></div><div class="line">// Promise2 instace muse has function then</div><div class="line">test(t =&gt; t.is(&apos;function&apos;,  typeof p1.then));</div></pre></td></tr></table></figure>
+<p>要让这些测试用例通过，编写了如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Promise2</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> all() &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> race() &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> reject() &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> resolve() &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">  then() &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">catch</span>() &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = Promise2;</div></pre></td></tr></table></figure>
+<p>至此，我们的一个程序基架已经ok了。接下来我们一步步的来继续完善测试和实现代码。</p>
+<p>接下来，我们看一下Promise的常规用法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'before resolve'</span>);</div><div class="line">    resolve();</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'after resolve'</span>);</div><div class="line">  &#125;, <span class="number">1000</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="external">MDN Promise</a></li>
+<li><a href="http://liubin.org/promises-book" target="_blank" rel="external">Promise Book</a></li>
+<li><a href="https://promisesaplus.com/" target="_blank" rel="external">Promise A+ 规范</a></li>
+<li><a href="https://tc39.github.io/ecma262/#sec-promise-objects" target="_blank" rel="external">ECMA262 Promise</a></li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+  <nav id="page-nav">
+    
+    <a class="prev" rel="prev" href="/blog/archives/2017/02/page/2/">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
+    </a>
+    
+    
+    <a class="next" rel="next" href="/blog/archives/2017/02/page/4/">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
+    
+  </nav>
+  
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
+
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

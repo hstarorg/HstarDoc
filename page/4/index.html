@@ -1,46 +1,1260 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="幻☆精灵的Blog站点"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>幻☆精灵的Blog · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="item"><a class="article" href="/blog/2017/02/21/前端相关/简单学ES6/"><h2 class="home-title">简单学ES6</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">##前言##随着ES6标准的定稿，众多的特性也趋于稳定，各大浏览器也在逐步实现这些特性，那么对ES6有更多的了解就无可厚非了。
-##准备##在学习ES6之前，我们需要有一个环境来测试ES6代码。在这里我推荐使用node的分支io.js。
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="幻☆精灵的Blog站点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="幻☆精灵的Blog">
+<meta property="og:url" content="http://hstarorg.github.io/blog/page/4/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="幻☆精灵的Blog站点">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="幻☆精灵的Blog">
+<meta name="twitter:description" content="幻☆精灵的Blog站点">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
 
-如何安装？
-
-下载地址：https://</p></article><article class="item"><a class="article" href="/blog/2017/02/21/前端相关/前端模块化：RequireJS/"><h2 class="home-title">前端模块化：RequireJS</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">前言前端模块化能解决什么问题？
-
-模块的版本管理
-提高可维护性 – 通过模块化，可以让每个文件职责单一，非常有利于代码的维护
-按需加载 – 提高显示效率
-更好的依赖处理 – 传统的开发模式，如果B依赖A，那么必须在B文件前面先加载好A。如果使用了模块化，只需要在模块内部申明依赖即</p></article><article class="item"><a class="article" href="/blog/2017/02/21/前端相关/再说Promise/"><h2 class="home-title">再说Promise</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、导言在JavaScript，由于天生的回调机制，当业务逻辑嵌套较多的时候，就很容易产生回调地狱。
-为了避免回调地狱，在JS中可以使用 co, Promise, async await 等等方式。
-在当前ES6开始流行的情况下，Promise 则是主流，就算是 async aw</p></article><article class="item"><a class="article" href="/blog/2017/02/21/前端相关/如何用Node编写命令行工具/"><h2 class="home-title">如何用Node编写命令行工具</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、 命令行工具当全局安装模块之后，我们可以在控制台下执行指定的命令来运行操作，如果npm一样。我把这样的模块称之为命令行工具模块（如理解有偏颇，欢迎指正）
-1、用Node编写命令行工具在Node中，我们很容易就能实现一个命令行工具。通过借助npm install -g安装，就能</p></article><article class="item"><a class="article" href="/blog/2017/02/21/前端相关/探索Decorator/"><h2 class="home-title">探索Decorator</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、前言1、啥是Decorator？2、</p></article><article class="item"><a class="article" href="/blog/2017/02/21/前端相关/浏览器 Pointer Events/"><h2 class="home-title">浏览器 Pointer Events</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">前言Pointer Events是一套触控输入处理规格，支持Pointer Events的浏览器包括了IE和Firefox，最近Chrome也宣布即将支持该处理规则。
-PointerEventPointEvent对象继承自MouseEvent，使用上也比较类似。
-
-mousedo</p></article><article class="item"><a class="article" href="/blog/2017/02/21/前端相关/浏览器关闭事件分析/"><h2 class="home-title">浏览器关闭事件分析</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、导言很多时候，我们可能会遇到这样一类需求：
-
-浏览器关闭时，弹出一个新页面
-浏览器关闭时，发送统计信息（如页面浏览时长）
-浏览器关闭时，让用户二次确认
-
-这个时候，我们就需要考虑如何判断浏览器关闭，如何阻止浏览器关闭，如何在浏览器关闭时，还是执行特定操作。
-1、浏览器关闭与刷</p></article><article class="item"><a class="article" href="/blog/2017/02/21/前端相关/浏览器内容安全策略解析/"><h2 class="home-title">浏览器内容安全策略解析</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt"></p></article><article class="item"><a class="article" href="/blog/2017/02/21/Vue实践之路/01_认识Vue/"><h2 class="home-title">01_认识Vue</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、关于VueVue 是当前非常流行的一款前端 MV 库（国人开发），结合 vue-router, vue-resource, vuex 等等，就形成了一套比较完善的前端 MV 开发框架。
-与它非常相似的框架是 Avalon ，都借鉴了当前流行的前端 MV* 库、框架，都是基于 </p></article><article class="item"><a class="article" href="/blog/2017/02/21/JS札记/ES6 Class如何管理私有数据/"><h2 class="home-title">ES6 Class如何管理私有数据</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、前言在ES5时代，要模拟对象的私有变量，是比较容易的，代码如下：
-123456789function Person()&amp;#123;  var _age = 20; //定义一个私有变量，外部无法访问。  this.setAge = function(value)&amp;#123; </p></article><div class="pagination"><a class="extend prev" rel="prev" href="/blog/page/3/">«</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/blog/page/5/">5</a><a class="page-number" href="/blog/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/13/">13</a><a class="extend next" rel="next" href="/blog/page/5/">»</a></div><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
-
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
-
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
     }
-});</script></body></html>
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        
+  <section class="page-header category banner waves-image">
+    <h1 id='hitokoto'></h1>
+  </section>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/如何用Node编写命令行工具/">
+        如何用Node编写命令行工具
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h1 id="0、-命令行工具"><a href="#0、-命令行工具" class="headerlink" title="0、 命令行工具"></a>0、 命令行工具</h1><p>当全局安装模块之后，我们可以在控制台下执行指定的命令来运行操作，如果npm一样。我把这样的模块称之为命令行工具模块（如理解有偏颇，欢迎指正）</p>
+<h1 id="1、用Node编写命令行工具"><a href="#1、用Node编写命令行工具" class="headerlink" title="1、用Node编写命令行工具"></a>1、用Node编写命令行工具</h1><p>在Node中，我们很容易就能实现一个命令行工具。通过借助npm install -g安装，就能直接调用命令行工具了。</p>
+<h3 id="1-1、创建项目"><a href="#1-1、创建项目" class="headerlink" title="1.1、创建项目"></a>1.1、创建项目</h3><p>首先，命令行也是一个node程序，那么首先通过npm init初始化一个Node项目。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// package.json</div><div class="line">&#123;</div><div class="line">  "name": "newkit-cli",</div><div class="line">  "version": "0.0.1",</div><div class="line">  "description": "Newkit Management Tools",</div><div class="line">  "main": "index.js",</div><div class="line">  "scripts": &#123;</div><div class="line">    "test": "test"</div><div class="line">  &#125;,</div><div class="line">  "author": "Jay",</div><div class="line">  "license": "MIT"</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="1-2、创建可执行代码"><a href="#1-2、创建可执行代码" class="headerlink" title="1.2、创建可执行代码"></a>1.2、创建可执行代码</h3><p>在项目目录下，创建src目录，并在其中创建index.js文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//src/index.js文件内容</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'cli'</span>);</div></pre></td></tr></table></figure>
+<p>通过<code>node src/index</code>就可以执行到段代码了，那如何用自定义命令来执行呢？ </p>
+<h3 id="1-3、在package-json中配置自定义命令"><a href="#1-3、在package-json中配置自定义命令" class="headerlink" title="1.3、在package.json中配置自定义命令"></a>1.3、在package.json中配置自定义命令</h3><p>在package.json中可以配置bin节点，当全局安装的时候，该节点内容将会被注册为自定义命令。<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"newkit-cli"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"0.0.1"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"Newkit Management Tools"</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="attr">"bin"</span>: &#123;</div><div class="line">    <span class="attr">"nc"</span>: <span class="string">"./src/index.js"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"test"</span>: <span class="string">"test"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">"Jay"</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"MIT"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="1-4、测试命令"><a href="#1-4、测试命令" class="headerlink" title="1.4、测试命令"></a>1.4、测试命令</h3><p>假设我们已经写好了命令行工具了，那我们应该如何测试呢？</p>
+<p>我们可以通过<code>npm install -g</code>将当前模块安装到全局模块中。然后再执行nc命令来测试。</p>
+<p>通过如上步骤，我们发现并不能执行我们的index.js，这是为什么呢？</p>
+<p>因为我们并没有指定用什么工具来执行这条命令，所以应该怎么做呢？打开index.js，然后加上一句代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env node </span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'cli'</span>);</div></pre></td></tr></table></figure>
+<p>这句代码什么意思呢？这句代码告诉系统，使用node来启动我们的命令。此时再安装，然后执行nc，你会发现，控制台会打印出cli。也就是我们index中代码的执行结果。</p>
+<p>至此，我们的一个最简单的命令行执行就开发成功了。</p>
+<h1 id="2、处理命令行参数"><a href="#2、处理命令行参数" class="headerlink" title="2、处理命令行参数"></a>2、处理命令行参数</h1><p>单纯的执行一个命令，似乎不满足我们的实际运用场景，大部分时候我们会使用<code>nc version</code>、<code>nc xxx -a --b</code>之类的方式来使用命令。那应该如何获取这些命令呢？</p>
+<h3 id="2-1、使用process来获取控制台参数"><a href="#2-1、使用process来获取控制台参数" class="headerlink" title="2.1、使用process来获取控制台参数"></a>2.1、使用process来获取控制台参数</h3><p>将index.js代码修改一下，如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env node </span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'cli'</span>);</div><div class="line"><span class="built_in">console</span>.log(process.argv);</div></pre></td></tr></table></figure></p>
+<p>安装之后，再次执行<code>nc xxx -a --b true</code>,会看到如下的输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cli</div><div class="line">[ &apos;C:\\Program Files\\nodejs\\node.exe&apos;,</div><div class="line">  &apos;C:\\Users\\jh3r\\AppData\\Roaming\\npm\\node_modules\\newkit-cli\\src\\index.js&apos;,</div><div class="line">  &apos;xxx&apos;,</div><div class="line">  &apos;-a&apos;,</div><div class="line">  &apos;--b&apos;,</div><div class="line">  &apos;true&apos; ]</div></pre></td></tr></table></figure>
+<p>从结果可以看到，我们所使用所有参数都会传递到程序中去，这个时候，我们就可以解析这些参数，来实现不同的输出了。</p>
+<h3 id="2-2、使用Commander来开发命令行工具"><a href="#2-2、使用Commander来开发命令行工具" class="headerlink" title="2.2、使用Commander来开发命令行工具"></a>2.2、使用Commander来开发命令行工具</h3><p>从上面的输出也可以看到，我们要手动去解析参数的话，还是一个比较复杂的操作。既然身处Node社区，那么完全使用社区流行的包来帮我们简化代码。</p>
+<p>Commander 是一款重量轻，表现力和强大的命令行框架。提供了用户命令行输入和参数解析强大功能。</p>
+<p>Commander的方便之处在于：自记录代码、自动生成帮助、合并短参数（“ABC”==“-A-B-C”）、默认选项、强制选项​​、命令解析、提示符</p>
+<p>我们可以在<a href="https://github.com/tj/commander.js/" target="_blank" rel="external">https://github.com/tj/commander.js/</a>找到Commander。</p>
+<p>继续改造index.js文件，修改内容为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env node </span></div><div class="line"><span class="keyword">var</span> program = <span class="built_in">require</span>(<span class="string">'commander'</span>);</div><div class="line"></div><div class="line">program</div><div class="line">  .version(<span class="string">'0.0.2'</span>) <span class="comment">//提供命令行工具的版本号，可以通过-V获取到</span></div><div class="line">  <span class="comment">// 使用option方法注册命令</span></div><div class="line">  .option(<span class="string">'-i, --init [type]'</span>, <span class="string">'Initial Newkit in current folder'</span>, (type) =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'process'</span>, type, program.init);</div><div class="line">  &#125;, <span class="literal">true</span>)</div><div class="line">  .option(<span class="string">'-u| --update &lt;module&gt;'</span>, <span class="string">'Update module.'</span>, (moduleName) =&gt; &#123;</div><div class="line">    <span class="comment">//使用program.update 来获取默认值，如果有命令行参数，那么会作为回调函数的参数</span></div><div class="line">    <span class="built_in">console</span>.log(moduleName, program.update);</div><div class="line">  &#125;, <span class="string">'app-common'</span>)</div><div class="line"></div><div class="line">  .parse(process.argv);</div></pre></td></tr></table></figure></p>
+<p><strong>注意：以上代码有较多注意的点</strong></p>
+<ol>
+<li>option方法参数是四个，第一个是命令，第二个是描述，第三个是回调，第四个是命令的默认值</li>
+<li>第一个参数中的-i和-u是短命令，–init和–update是长命令。长短命令之间的分隔符可以是<code>|</code>和<code>,</code>，如果使用逗号分隔，那么可以通过program.init来获取默认值。</li>
+<li>在代码中我们在命令中，注意到有<code>[type]</code>和<code>&lt;module&gt;</code>两种，前者是可选参数，后者的必选参数。</li>
+</ol>
+<p>除此之外，还可以使用command方法来实现Git风格的子命令，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">program</div><div class="line">  .command(<span class="string">'update &lt;module&gt;'</span>)</div><div class="line">  .action(<span class="function">(<span class="params"><span class="built_in">module</span>, options</span>) =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">module</span>);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
+<p><em>更多功能，请自行测试</em></p>
+<h3 id="2-3、使用yargs来开发命令行工具"><a href="#2-3、使用yargs来开发命令行工具" class="headerlink" title="2.3、使用yargs来开发命令行工具"></a>2.3、使用yargs来开发命令行工具</h3><p>具体代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env node </span></div><div class="line"><span class="keyword">var</span> argv = <span class="built_in">require</span>(<span class="string">'yargs'</span>)</div><div class="line">  .option(<span class="string">'i'</span>, &#123;</div><div class="line">    <span class="attr">alias</span> : <span class="string">'init'</span>,</div><div class="line">    <span class="attr">demand</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">default</span>: <span class="string">''</span>,</div><div class="line">    <span class="attr">describe</span>: <span class="string">'Project Init'</span>,</div><div class="line">    <span class="attr">type</span>: <span class="string">'string'</span></div><div class="line">  &#125;)</div><div class="line">  .usage(<span class="string">'Usage: nc init'</span>)</div><div class="line">  .example(<span class="string">'nc init'</span>, <span class="string">'Initial newkit project'</span>)</div><div class="line">  .help(<span class="string">'h'</span>)</div><div class="line">  .alias(<span class="string">'h'</span>, <span class="string">'help'</span>)</div><div class="line">  .epilog(<span class="string">'copyright 2015'</span>)</div><div class="line">  .argv;</div><div class="line"></div><div class="line"><span class="comment">//根据不同的参数来做处理</span></div></pre></td></tr></table></figure>
+<p>yargs更多信息请参阅：<a href="https://github.com/yargs/yargs" target="_blank" rel="external">https://github.com/yargs/yargs</a></p>
+<h1 id="3、注意事项"><a href="#3、注意事项" class="headerlink" title="3、注意事项"></a>3、注意事项</h1><ol>
+<li>根据Unix的传统，程序执行成功返回0，否则返回1</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(err)&#123;</div><div class="line">  <span class="keyword">return</span> process.exit(<span class="number">1</span>);</div><div class="line">&#125;</div><div class="line">process.exit(<span class="number">0</span>);</div></pre></td></tr></table></figure>
+<ol>
+<li>系统信号</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">process.on(<span class="string">'SIGINT'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Got a SIGINT'</span>);</div><div class="line">  process.exit(<span class="number">0</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//发送系统信号：$ kill -s SIGINT [process_id]</span></div></pre></td></tr></table></figure>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/浏览器内容安全策略解析/">
+        浏览器内容安全策略解析
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/浏览器 Pointer Events/">
+        浏览器 Pointer Events
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Pointer Events是一套触控输入处理规格，支持Pointer Events的浏览器包括了IE和Firefox，最近Chrome也宣布即将支持该处理规则。</p>
+<h2 id="PointerEvent"><a href="#PointerEvent" class="headerlink" title="PointerEvent"></a>PointerEvent</h2><p><code>PointEvent</code>对象继承自<code>MouseEvent</code>，使用上也比较类似。</p>
+<ol>
+<li>mousedown -&gt; pointerdown</li>
+<li>mouseenter -&gt; pointerenter</li>
+<li>mouseleave -&gt; pointerleave</li>
+<li>mousemove -&gt; pointermove</li>
+<li>mouseout -&gt; pointerout</li>
+<li>mouseover -&gt; pointerover</li>
+<li>mouseup -&gt; pointerup</li>
+</ol>
+<p>PointerEvent提供了多有预期的鼠标事件属性，并添加了通用的附加属性，来帮助您区分输入类型和特点。</p>
+<ol>
+<li>height</li>
+<li>isPrimary</li>
+<li>pointerId</li>
+<li>pointerType</li>
+<li>pressure</li>
+<li>tiltX</li>
+<li>tiltY</li>
+<li>width</li>
+</ol>
+<p>在现在的JS编码中，推荐使用特性检测（以前是浏览器检测）来编写代码，我们可以用以下代码检测浏览器是否支持该特性：</p>
+<pre><code>if (window.PointerEvent) {
+  // Pointer events are supported.
+}
+</code></pre><p>那接下来看一下具体的事件代码：</p>
+<pre><code>window.addEventListener(&apos;pointerdown&apos;, pointerdownHandler, false);
+
+function pointerdownHandler (evt) {
+    console.log(evt)
+}
+</code></pre><p>通过输出，可以更直观的看到PointerEvent的各个属性。</p>
+<p>通过浏览器的navigator对象的maxTouthPoints，可以拿到当前设备支持的最大多点触控的数量：</p>
+<pre><code>navigator.maxTouchPoints
+</code></pre><p>从win8开始，IE提供了默认的触摸事件处理，如果想全部由js代码控制触摸事件，那么可以使用：</p>
+<pre><code>touch-action: none;
+</code></pre><p>来禁用默认值。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://msdn.microsoft.com/en-us/library/ie/dn433244(v=vs.85" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/ie/dn433244(v=vs.85).aspx</a>.aspx)</p>
+<p><a href="http://www.w3.org/TR/pointerevents/" target="_blank" rel="external">http://www.w3.org/TR/pointerevents/</a></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/浏览器历史history对象/">
+        浏览器历史history对象
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h1 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h1><p>在单页应用时代，有一个非常重要的概念，那就是前端路由。那它到底是怎么实现的呢？</p>
+<p>路由一般有如下两种方式：</p>
+<ol>
+<li>HASH路由（控制浏览器hash变化）</li>
+<li>URL路由（URL直接变化）</li>
+</ol>
+<p><strong>本文主要关注URL变化这种路由实现。</strong> </p>
+<h1 id="1、History对象"><a href="#1、History对象" class="headerlink" title="1、History对象"></a>1、History对象</h1><p>当我们浏览网页时，我们会点击其中的一个链接进行跳转，其中一部分是直接替换掉当前页面，此时就产生了历史记录。</p>
+<p>在浏览器中，历史记录的存储我们无法直接控制，但是对于历史记录的使用，是可以通过 <code>window.history</code> 对象操作的。</p>
+<p>比如我们可以查看当前访问了多少个页面：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.history.length);</div></pre></td></tr></table></figure>
+<p>可以后退和前进：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.history.back();</div><div class="line"><span class="built_in">window</span>.history.forward();</div></pre></td></tr></table></figure>
+<p>也可以以当前页面为基准，跳转到前N个或者后N个页面：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.history.go(<span class="number">2</span>); <span class="comment">// 前进两页</span></div><div class="line"><span class="built_in">window</span>.history.go(<span class="number">-1</span>); <span class="comment">//后退1页</span></div></pre></td></tr></table></figure>
+<p><strong>注意：如果前进或者后退的索引上没有相对应的历史记录，那么将不会跳转，如 go(555)</strong></p>
+<h1 id="2、HTML5-history"><a href="#2、HTML5-history" class="headerlink" title="2、HTML5 history"></a>2、HTML5 history</h1><p>在HTML5， <code>history</code> 有了新的方法，允许我们逐条的添加和修改历史记录条目。</p>
+<p>这些方法协同 <code>window.onpopstate</code> 事件，就构成了我们URL路由的基石。</p>
+<p>以下，我们就来看看有哪些新增的方法。</p>
+<h2 id="2-1、pushState"><a href="#2-1、pushState" class="headerlink" title="2.1、pushState()"></a>2.1、pushState()</h2><p>使用该方法，可以推送一个状态到历史记录中去。函数使用方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.history.pushState(&#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">2</span>&#125;, <span class="string">''</span>, <span class="string">'/abc.html'</span>);</div></pre></td></tr></table></figure>
+<p>其中参数一是一个JS对象，关联在历史条目中；<br>参数二是标题字符串；（当前会被忽略，建议传递’’）<br>参数三是可选的页面地址（改变URL）</p>
+<p><strong>注意：参数三是一个字符串，但不能带有http://， 可以直接写 xx.html，也可以传入 /xx.html。</strong></p>
+<p><strong>注意2：虽然看起来效果有点类似 <code>window.location = &#39;#abc&#39;</code> ，但pushState()方法永远不会触发hashchange事件，即便新的地址只变更了hash</strong></p>
+<h2 id="2-2、replaceState"><a href="#2-2、replaceState" class="headerlink" title="2.2、replaceState()"></a>2.2、replaceState()</h2><p><code>replaceState</code> 和 <code>pushState</code> 非常类似，前者是修改，后者是新增。</p>
+<h2 id="2-3、history-state-属性"><a href="#2-3、history-state-属性" class="headerlink" title="2.3、history.state 属性"></a>2.3、history.state 属性</h2><p>当我们正处在一个 <code>state</code> 状态下的时候，我们可以通过 <code>history.state</code> 来查看当前的 <code>state</code> 对象。</p>
+<p>如上例中的 <code>{a:1, b:2}</code></p>
+<h2 id="2-4、window-onpopstate-事件"><a href="#2-4、window-onpopstate-事件" class="headerlink" title="2.4、window.onpopstate 事件"></a>2.4、window.onpopstate 事件</h2><p>如果仅仅只能推送状态到 <code>history</code> 中，那我们可实现的操作非常有效。但当结合 <code>onpopstate</code> 事件，我们就能够实现一个可控制URL变化的前端路由器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'popstate'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(evt);</div><div class="line">&#125;, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="built_in">window</span>.history.pushState(&#123;<span class="attr">key</span>: <span class="string">'k1'</span>&#125;, <span class="string">''</span>, <span class="string">'abc.html'</span>);</div></pre></td></tr></table></figure>
+<p>先执行以上代码，我们发现事件并没有触发，此时点击浏览器后退按钮，可以发现事件被触发。</p>
+<p><strong>注意：调用history.pushState()或者history.replaceState()不会触发popstate事件. popstate事件只会在其他浏览器操作时触发, 比如点击后退按钮(或者在JavaScript中调用history.back()方法)。</strong></p>
+<p><strong>注意2：当网页加载时,各浏览器对popstate事件是否触发有不同的表现,Chrome 和 Safari会触发popstate事件, 而Firefox不会。</strong></p>
+<p><strong>注意3：就算是进入非state页面（不是pushState或者replaceState作用过的），也会触发popstate事件。</strong></p>
+<h1 id="3、URL-Router"><a href="#3、URL-Router" class="headerlink" title="3、URL-Router"></a>3、URL-Router</h1><p>有了之前的这些基础，我们来看看，实现一个简单的前端路由需要多少代码？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">;<span class="function">(<span class="params">(</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">let</span> urlRouter = &#123;&#125;;</div><div class="line">  <span class="keyword">let</span> container;</div><div class="line">  <span class="keyword">let</span> routeMapCache;</div><div class="line"></div><div class="line">  <span class="keyword">let</span> getPage = <span class="function">(<span class="params">url, callback</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    xhr.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>);</div><div class="line">    xhr.setRequestHeader(<span class="string">'Accept'</span>, <span class="string">'text/plain'</span>);</div><div class="line">    xhr.onreadystatechange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span> (xhr.readyState === XMLHttpRequest.DONE) &#123;</div><div class="line">        callback &amp;&amp; callback(xhr.responseText);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    xhr.send();</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  urlRouter.init = <span class="function">(<span class="params">routeMap, options</span>) =&gt;</span> &#123;</div><div class="line">    routeMapCache = routeMap;</div><div class="line">    <span class="keyword">if</span> (options.container <span class="keyword">instanceof</span> HTMLElement) &#123;</div><div class="line">      container = options.container;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      container = <span class="built_in">document</span>.querySelector(options.container);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 处理状态变化</span></div><div class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'popstate'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</div><div class="line">      <span class="keyword">let</span> stateObj = history.state || evt.state;</div><div class="line">      <span class="built_in">console</span>.log(evt, stateObj);</div><div class="line">      <span class="keyword">if</span> (stateObj) &#123;</div><div class="line">        urlRouter.go(stateObj.state);</div><div class="line">      &#125;</div><div class="line">    &#125;, <span class="literal">false</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 初始化时，处理默认状态</span></div><div class="line">    <span class="keyword">let</span> path = <span class="built_in">window</span>.location.pathname;</div><div class="line">    <span class="keyword">let</span> stateKeys = <span class="built_in">Object</span>.keys(routeMapCache);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; stateKeys.length; i++) &#123;</div><div class="line">      <span class="keyword">let</span> stateObj = routeMapCache[stateKeys[i]];</div><div class="line">      <span class="keyword">if</span> (stateObj.url === path) &#123;</div><div class="line">        urlRouter.go(stateKeys[i]);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  urlRouter.go = <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> stateObj = routeMapCache[state];</div><div class="line">    <span class="keyword">if</span> (!stateObj) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'state not found.'</span>);</div><div class="line">    &#125;</div><div class="line">    stateObj.state = state;</div><div class="line">    <span class="built_in">window</span>.history.pushState(stateObj, <span class="string">''</span>, stateObj.url);</div><div class="line">    getPage(stateObj.path, (content) =&gt; &#123;</div><div class="line">      container.innerHTML = content;</div><div class="line">    &#125;);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="built_in">window</span>.urlRouter = urlRouter;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>如何使用？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> routeMap = &#123;</div><div class="line">  <span class="string">'page1'</span>: &#123; <span class="attr">url</span>: <span class="string">'/page1'</span>, <span class="attr">path</span>: <span class="string">'page1.html'</span> &#125;,</div><div class="line">  <span class="string">'page2'</span>: &#123; <span class="attr">url</span>: <span class="string">'/page2'</span>, <span class="attr">path</span>: <span class="string">'page2.html'</span> &#125;,</div><div class="line">  <span class="string">'page3'</span>: &#123; <span class="attr">url</span>: <span class="string">'/page3'</span>, <span class="attr">path</span>: <span class="string">'page3.html'</span> &#125;,</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 初始化路由</span></div><div class="line"><span class="built_in">window</span>.urlRouter.init(routeMap, &#123; <span class="attr">container</span>: <span class="string">'#page-content'</span> &#125;);</div><div class="line"></div><div class="line"><span class="comment">//路由跳转</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> links = [].slice.call(<span class="built_in">document</span>.querySelectorAll(<span class="string">'#page-menu li a'</span>));</div><div class="line">links.forEach(<span class="function"><span class="params">link</span> =&gt;</span> &#123;</div><div class="line">  link.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</div><div class="line">    evt.stopPropagation();</div><div class="line">    evt.preventDefault();</div><div class="line">    <span class="built_in">window</span>.urlRouter.go(evt.target.getAttribute(<span class="string">'href'</span>));</div><div class="line">  &#125;, <span class="literal">false</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>具体Demo地址：<a href="https://github.com/hstarorg/HstarDemoProject/tree/master/Javascript_demo/url-router" target="_blank" rel="external">URL-Router Demo</a></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/浏览器关闭事件分析/">
+        浏览器关闭事件分析
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h1 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h1><p>很多时候，我们可能会遇到这样一类需求：</p>
+<ol>
+<li>浏览器关闭时，弹出一个新页面</li>
+<li>浏览器关闭时，发送统计信息（如页面浏览时长）</li>
+<li>浏览器关闭时，让用户二次确认</li>
+</ol>
+<p>这个时候，我们就需要考虑如何判断浏览器关闭，如何阻止浏览器关闭，如何在浏览器关闭时，还是执行特定操作。</p>
+<h1 id="1、浏览器关闭与刷新判断"><a href="#1、浏览器关闭与刷新判断" class="headerlink" title="1、浏览器关闭与刷新判断"></a>1、浏览器关闭与刷新判断</h1><p>对于关闭与刷新判断，一般有以下几种做法：</p>
+<p>首先基础都是通过监听 <code>onbeforeunload</code>、<code>onunload</code> 等相关事件。</p>
+<p>然后判断刷新与关闭：</p>
+<ol>
+<li>判断鼠标坐标</li>
+<li>判断键盘操作</li>
+<li>判断事件间隔时长</li>
+</ol>
+<p>其中，1和2一般是合起来使用。但也并不保险。关闭和刷新的快捷操作是可以自定义的。而且实现逻辑复杂。</p>
+<p><strong>在这里，我就重点来测试线通过判断事件间隔的方式来处理关闭与刷新的判断。</strong> </p>
+<p>我们编写了如下测试代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onbeforeunload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onbeforeunload'</span>, <span class="built_in">Date</span>.now());</div><div class="line">  <span class="keyword">debugger</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">window</span>.onunload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onunload'</span>, <span class="built_in">Date</span>.now());</div><div class="line">  <span class="keyword">debugger</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>分别在浏览器上刷新和关闭，得到如下结果：</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th style="text-align:center">关闭/刷新</th>
+<th style="text-align:center">onbeforeunload</th>
+<th style="text-align:center">onunload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td style="text-align:center">刷洗</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[]</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>IE11</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+<tr>
+<td>IE11</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+</tr>
+</tbody>
+</table>
+<p>Edge关闭时，unload是否触发，还并不太确定（不太好验证）。</p>
+<p>接下来，我们来验证两个时间的触发时间，测试代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onbeforeunload = <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onbeforeunload'</span>, <span class="built_in">Date</span>.now());</div><div class="line">  <span class="keyword">if</span> (navigator.sendBeacon) &#123;</div><div class="line">    navigator.sendBeacon(<span class="string">'http://localhost:9999/?t=onbeforeunload'</span>, <span class="string">'onbeforeunload'</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">window</span>.start = <span class="built_in">Date</span>.now();</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">window</span>.onunload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onunload'</span>, <span class="built_in">Date</span>.now());</div><div class="line">  <span class="keyword">if</span> (navigator.sendBeacon) &#123;</div><div class="line">    navigator.sendBeacon(<span class="string">`http://localhost:9999/?t=onunload&amp;ts=<span class="subst">$&#123;<span class="built_in">Date</span>.now() - <span class="built_in">window</span>.start&#125;</span>`</span>, <span class="string">'onunload'</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">window</span>.open(<span class="string">'http://10.16.85.170:8000/'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过 <code>navigator.sendBeacon</code> 将间隔时间发送到后台进行查看。遗憾的是，IE和Edge并不支持该方法。</p>
+<p>测试得出如下表格：</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th style="text-align:center">关闭/刷新</th>
+<th style="text-align:center">onbeforeunload</th>
+<th style="text-align:center">onunload</th>
+<th style="text-align:center">时间间隔</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome52</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&lt; 5ms</td>
+</tr>
+<tr>
+<td>Chrome52</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&gt; 20ms</td>
+</tr>
+<tr>
+<td>Firefox46</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&gt; 200ms</td>
+</tr>
+<tr>
+<td>Firefox46</td>
+<td style="text-align:center">刷洗</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">10~100ms</td>
+</tr>
+<tr>
+<td>Edge13</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[]</td>
+<td style="text-align:center">N/A</td>
+</tr>
+<tr>
+<td>Edge13</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&lt; 5ms</td>
+</tr>
+<tr>
+<td>IE11</td>
+<td style="text-align:center">关闭</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&gt; 10ms</td>
+</tr>
+<tr>
+<td>IE11</td>
+<td style="text-align:center">刷新</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">[x]</td>
+<td style="text-align:center">&lt; 5ms</td>
+</tr>
+</tbody>
+</table>
+<p>根据这个表格，然后在按照自己的需要，就可以选择一个分割点来判断是刷新还是关闭。</p>
+<p><strong>当前未发现100%能判断清楚的方法，以上请酌情使用。</strong></p>
+<h1 id="2、阻止浏览器关闭"><a href="#2、阻止浏览器关闭" class="headerlink" title="2、阻止浏览器关闭"></a>2、阻止浏览器关闭</h1><p>有一些场景，要求在浏览器关闭的时候，再次弹出一个确认框，那这个又应该如何实现呢？</p>
+<p>关闭时询问，是一个比较标准化的处理了，只需要我们对 <code>unbeforeunload</code> 事件的 <code>event</code> 参数设置返回值，即可达到再次确认的效果。实现代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'beforeunload'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>)</span>&#123;</div><div class="line">  evt.returnValue =  <span class="string">'您确定要离开了么？'</span>;</div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p><strong>注意：火狐为了避免不必要的弹窗，如果页面没有交互，是不会进行二次确认的，通过不会显示returnValue给用户。相关链接： <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/WindowEventHandlers/onbeforeunload" target="_blank" rel="external">https://developer.mozilla.org/zh-TW/docs/Web/API/WindowEventHandlers/onbeforeunload</a></strong></p>
+<h1 id="3、浏览器关闭-刷新时发送统计数据"><a href="#3、浏览器关闭-刷新时发送统计数据" class="headerlink" title="3、浏览器关闭/刷新时发送统计数据"></a>3、浏览器关闭/刷新时发送统计数据</h1><p>很多时候，我们想在浏览器关闭/刷新时发送一些统计数据，之前的话，我们可以采用如下一些做法：</p>
+<ol>
+<li>在 <code>onbeforeunload</code> 中使用同步Ajax</li>
+<li>发送Ajax，然后使用死循环，阻塞一个该事件。</li>
+</ol>
+<p>这个功能作为一个比较大众化的需求，W3C中也有了一个针对性的草案，那就是浏览器对象的 <code>sendBeacon</code> 方法。</p>
+<p>函数签名如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">navigator.sendBeacon(url, data);</div></pre></td></tr></table></figure>
+<p>有了这个方法，我们就可以在合适的地方（诸如onbeforeunload）发送我们的统计数据，日志数据等等。</p>
+<p><strong>注意：该方法还是草案阶段，当前IE和EDGE暂不可用。</strong></p>
+<h1 id="4、相关资料"><a href="#4、相关资料" class="headerlink" title="4、相关资料"></a>4、相关资料</h1><ol>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/WindowEventHandlers/onbeforeunload" target="_blank" rel="external">MDN WindowEventHandlers.onbeforeunload</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon" target="_blank" rel="external">MDN Navigator.sendBeacon()</a></li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/简单学ES6/">
+        简单学ES6
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##前言##<br>随着ES6标准的定稿，众多的特性也趋于稳定，各大浏览器也在逐步实现这些特性，那么对ES6有更多的了解就无可厚非了。</p>
+<p>##准备##<br>在学习ES6之前，我们需要有一个环境来测试ES6代码。在这里我推荐使用node的分支io.js。</p>
+<ol>
+<li><p>如何安装？</p>
+<ol>
+<li>下载地址：<a href="https://iojs.org/en/index.html" target="_blank" rel="external">https://iojs.org/en/index.html</a>，如果各位小伙伴不习惯英文，可以把url中的en修改为cn。</li>
+<li>然后根据自己的操作系统版本，下载合适的安装包（主要指Windows系统）进行安装。</li>
+<li>安装过程就不一一赘述了，和一般软件一样。</li>
+</ol>
+</li>
+<li><p>如何验证安装成功？</p>
+<ol>
+<li>打开cmd，然后输入<code>iojs -v</code>,如果输出一个版本号，那么就代表io.js安装成功。（PS：我现在使用的是v1.2.0）</li>
+<li>也可以输入<code>iojs -p process.versions.v8</code>查看iojs所使用的V8（PS：不是V8发动机）的版本。（PS:我这儿显示4.1.0.14）</li>
+</ol>
+</li>
+</ol>
+<p>##小窥ES6##<br>在测试ES6代码前，我们可以先看下io.js对ES6的支持：<a href="https://iojs.org/cn/es6.html" target="_blank" rel="external">https://iojs.org/cn/es6.html</a>。</p>
+<p><strong>接下来，开始我们的ES6-Class之旅：</strong></p>
+<p>###1、class 基础 ###</p>
+<p>大家应该知道，在大部分面向对象的语言中，都有class的说法，那么在早期的Js中，面向对象的实现比较特殊，我们必须要用function来模拟。如：</p>
+<pre><code>//ES5及以下
+function Point(x, y){
+  this.x = x;
+  this.y = y;
+}
+var p1 = new Point(100, 100);
+</code></pre><p>然而在ES6中，我们可以直接使用class关键字，如：</p>
+<pre><code>//ES6
+&apos;use strict&apos; //不能去掉，要不然iojs会提示不认识class。
+class Point{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+  }
+}
+var p1 = new Point(100, 100);
+console.log(p1);
+</code></pre><p>将以上代码保存为1.js,那么执行如下命令：<strong><code>iojs --es_staging 1.js</code></strong> 就可以看到”{x:100, y: 100}”这个结果了。（PS:注意要在1.js的目录打开cmd）。</p>
+<p>接下来，看一个复杂点的，继承：</p>
+<pre><code>//ES6
+&apos;use strict&apos;
+class Point{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+  }
+}
+var p1 = new Point(100, 100);
+console.log(p1);
+
+class ColorPoint extends Point{
+  constructor(x, y, color){
+    super(x, y);
+    this.color = color;
+  }
+}
+var cp = new ColorPoint(50, 50, &apos;red&apos;);
+console.log(cp);
+
+//输出继承关系
+console.log(cp instanceof ColorPoint); //true
+console.log(cp instanceof Point);  //true
+</code></pre><p>可以看到，和大部分语言的继承都很类似，如果你有其他面向对象语言的基础，那么很容易就能理解。</p>
+<p>对Point和ColorPoint进行typeof，结果很明显也能看到是function。</p>
+<pre><code>console.log(typeof Point);  // function
+console.log(typeof ColorPoint);  // function
+</code></pre><p>那如果对class进行函数调用呢？</p>
+<pre><code>Point(100, 100); //Error
+</code></pre><p>如上，必须通过new调用class，直接使用函数调用则会报错。</p>
+<p>再来对比以下代码：</p>
+<pre><code>//标准的函数可以先写调用语句，后写申明语句。因为会定义前置
+foo();
+function foo(){}
+//如果是class呢?
+new Foo(); //Error,Foo is not defined
+class Foo{}
+</code></pre><p>如上，如果是定义的class，那么必须要定义语句在前，调用在后。</p>
+<p>再来看以下的情形：</p>
+<pre><code>function funThatUseBar(){
+  new Bar();
+}
+//funThatUseBar(); //Error,Bar is not defined
+class Bar{}
+funThatUseBar(); //ok
+</code></pre><p>如上，如果先使用了Bar，那么也是会报错的。必须要优先定义class。</p>
+<p>附上以上所有的js，会报错的语句，进行了注释。</p>
+<pre><code>//ES6
+&apos;use strict&apos;
+class Point{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+  }
+}
+var p1 = new Point(100, 100);
+console.log(p1);
+
+class ColorPoint extends Point{
+  constructor(x, y, color){
+    super(x, y);
+    this.color = color;
+  }
+}
+var cp = new ColorPoint(50, 50, &apos;red&apos;);
+console.log(cp);
+
+//*********************************************
+
+//输出继承关系
+console.log(cp instanceof ColorPoint); //true
+console.log(cp instanceof Point);  //true
+
+console.log(typeof Point);  // function
+console.log(typeof ColorPoint);  // function
+
+//Point(100, 100); //Error
+
+//************************************
+//标准的函数可以先写调用语句，后写申明语句。因为会定义前置
+foo();
+function foo(){}
+
+//如果是class呢?
+//new Foo(); //Error,Foo is not defined
+class Foo{}
+
+
+//*******************************************
+
+function funThatUseBar(){
+  new Bar();
+}
+//funThatUseBar(); //Error,Bar is not defined
+class Bar{}
+funThatUseBar(); //ok
+</code></pre><p>###2、类中的主体</p>
+<p>ES6中、class的主体只能包含方法，不能包含数据属性。如果在类中包含变量定义，则会报错。class中的方法有三种类型：构造函数、静态方法、原型方法，如：</p>
+<pre><code>class Class1{
+  //构造
+  constructor(options){
+
+  }
+
+  // 静态方法，静态方法用static修饰
+  static staticMethod(){
+    return &apos;static method&apos;;
+  }
+
+  prototypeMethod(){
+    return &apos;prototype method&apos;;
+  }
+}
+</code></pre><p>其中，每个class和class原型的constructor都是相等的，同时class本质也是function</p>
+<pre><code>console.log(Class1 === Class1.prototype.constructor) // true
+console.log(typeof Class1)  // function
+</code></pre><p>然后我们对类中的方法做测试</p>
+<pre><code>var p = console.log;
+p(typeof Class1.prototype.prototypeMethod); 
+Class1.prototype.prototypeMethod() // 原型方法调用方式
+p(typeof Class1.staticMethod);  
+Class1.staticMethod() //静态方法调用方式
+</code></pre><p>Getters 和 Setters 的用法</p>
+<pre><code>class Class2{
+  get name(){
+    return &apos;jay&apos;;
+  }
+  set name(value){
+    console.log(&apos;set name = &apos; + value);
+  }
+}
+
+var c2 = new Class2();
+c2.name = &apos;hu&apos;;  // &quot;set name = hu&quot;
+console.log(c2.name); // &quot;jay&quot;
+</code></pre><p>当使用了get和set时，那么针对属性的get和set会自动调用class中相关的方法。</p>
+<p>贴出所有Js代码：</p>
+<pre><code>&apos;use strict&apos;
+class Class1{
+  //构造
+  constructor(options){
+
+  }
+
+  // 静态方法
+  static staticMethod(){
+    return &apos;static method&apos;;
+  }
+
+  prototypeMethod(){
+    return &apos;prototype method&apos;;
+  }
+}
+
+console.log(Class1 === Class1.prototype.constructor);
+console.log(typeof Class1);
+
+var p = console.log;
+p(typeof Class1.prototype.prototypeMethod);
+p(typeof Class1.staticMethod);
+
+class Class2{
+  get name(){
+    return &apos;jay&apos;;
+  }
+  set name(value){
+    console.log(&apos;set name = &apos; + value);
+  }
+}
+
+var c2 = new Class2();
+c2.name = &apos;hu&apos;;
+console.log(c2.name);
+</code></pre><p>###3、类的继承</p>
+<p>简单的继承关系，如下：</p>
+<pre><code>&apos;use strict&apos;
+class Class1{
+  toString(){
+    return &apos;parent class.&apos;;
+  }
+}
+
+class SubClass extends Class1{
+  toString(){
+    return &apos;sub class.&apos;;
+  }
+}
+
+var sc = new SubClass();
+console.log(sc.toString()); // &quot;sub class&quot;
+</code></pre><p>其中，sc是Class1的实例，也是SubClass的实例：</p>
+<pre><code>console.log(sc instanceof Class1); //true
+console.log(sc instanceof SubClass); //true
+</code></pre><p>如果要调用父类的方法，怎么办呢？</p>
+<pre><code>class SubClass2 extends Class1{
+  toString(){
+    return super.toString();
+  }
+}
+
+var sc2 = new SubClass2();
+console.log(sc2.toString());
+</code></pre><p>在继承关系中，子类的原型等于父类：</p>
+<pre><code>console.log(Object.getPrototypeOf(SubClass2) === Class1); //true
+</code></pre><p>在子类中访问父类构造，使用super即可。</p>
+<p>##其他##</p>
+<ol>
+<li>如果想一览所有的ES6新特性，可以参考<a href="https://github.com/lukehoban/es6features" target="_blank" rel="external">https://github.com/lukehoban/es6features</a></li>
+<li>如果想系统的学习ES6，那么推荐<a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">http://es6.ruanyifeng.com/</a></li>
+<li>想了解更多Classes in ECMAScript 6，可参考<a href="http://www.2ality.com/2015/02/es6-classes-final.html" target="_blank" rel="external">http://www.2ality.com/2015/02/es6-classes-final.html</a></li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/记一次Bug排查（Spider）/">
+        记一次Bug排查（Spider）
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、写在之前"><a href="#0、写在之前" class="headerlink" title="0、写在之前"></a>0、写在之前</h2><h3 id="Spider是什么？"><a href="#Spider是什么？" class="headerlink" title="Spider是什么？"></a>Spider是什么？</h3><p>Spider是基于Express框架结合socket.io（现已切换为ws）和Echarts2实现的即时性能监视工具。整体结构为前后端分离，通过express的static中间件来处理静态请求，Express本身则处理api请求。</p>
+<p>用法上，只需要按照指定的格式post数据给Spider，那么当请求Spider展示时，将会自动将数据展示为图表。</p>
+<p>项目地址：<a href="http://trgit2/backend_framework/spider" target="_blank" rel="external">http://trgit2/backend_framework/spider</a></p>
+<p>展示地址：<a href="http://developer.newegg.org/spider" target="_blank" rel="external">http://developer.newegg.org/spider</a></p>
+<h3 id="Spider能做什么？"><a href="#Spider能做什么？" class="headerlink" title="Spider能做什么？"></a>Spider能做什么？</h3><p>Spider可以提供一段时间（最大30分钟）内特定操作的消耗时间统计图（散点图）。大概展示效果如下图：</p>
+<p><img src="http://7xit2j.com1.z0.glb.clouddn.com/test1.png" alt="散点图"></p>
+<h2 id="1、问题初现"><a href="#1、问题初现" class="headerlink" title="1、问题初现"></a>1、问题初现</h2><p>该项目从15年3月发布，由于用户量较少，一直稳定运行。</p>
+<p>近期，MPS团队使用它来监控业务请求各个阶段的耗时情况，用于定位性能问题。此时，问题出现，spider运行一段时间（10~30分钟）后将会消耗大量服务器内存，导致内存不足而崩溃。</p>
+<p>此时，用户使用场景：</p>
+<ol>
+<li>在c#程序中，收集各种类型操作的耗时数据，累计起来。</li>
+<li>每隔1s将数据提交到spider后端。</li>
+<li>打开监控页面，查看数据（可能会有多个监控端）</li>
+</ol>
+<p>spider处理过程：</p>
+<ol>
+<li>接收到请求数据之后，将数据进行处理，并存入内存；</li>
+<li>如果发现有监控端运行，那么推送数据给监控端（每次收到请求数据都会触发一次推送）</li>
+<li>监控端根据最新的数据绘制图表展示。</li>
+</ol>
+<h2 id="2、问题分析"><a href="#2、问题分析" class="headerlink" title="2、问题分析"></a>2、问题分析</h2><h3 id="猜想1：Node代码写法问题，导致内存泄露"><a href="#猜想1：Node代码写法问题，导致内存泄露" class="headerlink" title="猜想1：Node代码写法问题，导致内存泄露"></a>猜想1：Node代码写法问题，导致内存泄露</h3><p>因为JS的闭包容易内存泄露，首先怀疑代码写法问题。</p>
+<p><strong>验证：</strong>经过仔细排查代码，并对有可能有泄露代码进行改写</p>
+<p><strong>结果：</strong>问题未解决，未缓解</p>
+<h3 id="猜想2：缓存数据的代码有内存泄露"><a href="#猜想2：缓存数据的代码有内存泄露" class="headerlink" title="猜想2：缓存数据的代码有内存泄露"></a>猜想2：缓存数据的代码有内存泄露</h3><p>由于客户端提交的数据是直接写入内存的，而刚好又是消耗内存，那么开始怀疑缓存数据的代码。</p>
+<p><strong>验证：</strong>重写了数据缓存代码（参考正常运行的缓存代码实现）</p>
+<p><strong>结果：</strong>问题未解决，未缓解</p>
+<p><strong>此时，把最常见的情况都验证了，无解。思绪中断，接着做了哪些事情呢？</strong></p>
+<ol>
+<li>查找有可能导致JS内存泄露的情况，一一确认。</li>
+<li>安装JS的内存分析工具（条件苛刻，未安装成功）。</li>
+<li>安装Node程序的监控包，进行大量本地测试（很难复现问题）。</li>
+<li>此时陷入困境…</li>
+<li>再次想方设法安装内存分析工具，在本地测试，未果（问题很难复现）。</li>
+<li>线上测试，问题依旧，根据结果，发现大量字符串占用内存，导致内存不足。</li>
+<li>分析代码，查找该字符串初现的位置。</li>
+<li>开始新的猜测</li>
+</ol>
+<p>###猜想3：socket.io内存泄露</p>
+<p>从内存分析的结果来看，大量字符串占用了内存，该格式的字符串，是由socket.io分发到客户端的时候产生的。所以怀疑到了socket.io头上。</p>
+<p>通过查资料，发现socket.io确实有内存泄露的前科，一度认为这就是原因。</p>
+<p><strong>验证1：</strong>升级socket.io到最新的版本</p>
+<p><strong>结果1：</strong>有一定的好转，但不明显（坚持的时间稍微久一点，内存偶尔能回收一下）</p>
+<p>再次各种查资料，发现有提到强制node使用gc回收，可以处理非托管内存。</p>
+<p><strong>验证2：</strong>增加gc回收代码，定时执行</p>
+<p><strong>结果2：</strong>基本上看起来无效，和结果1并没有太大区别</p>
+<p><strong>此时，有点穷途末路了。问题还在，继续探索</strong></p>
+<p><strong>验证3：</strong>考虑到项目本身不大，重新使用了一个新的WebSocket(ws)包来推送数据</p>
+<p><strong>结果3：</strong>有明显好转，坚持的时间更长了（一度认为解决了问题）</p>
+<p><strong>可是好景不长，较长时间（几小时）后，问题再次出现</strong></p>
+<h3 id="猜想4：再度怀疑缓存代码"><a href="#猜想4：再度怀疑缓存代码" class="headerlink" title="猜想4：再度怀疑缓存代码"></a>猜想4：再度怀疑缓存代码</h3><p>此时未直接验证，切换到业界一个比较流行的缓存库(<a href="https://github.com/isaacs/node-lru-cache" target="_blank" rel="external">lru-cache</a>)。</p>
+<h3 id="猜想5：每次提交数据都会触发一次推送，推送频率较高，导致数据阻塞"><a href="#猜想5：每次提交数据都会触发一次推送，推送频率较高，导致数据阻塞" class="headerlink" title="猜想5：每次提交数据都会触发一次推送，推送频率较高，导致数据阻塞"></a>猜想5：每次提交数据都会触发一次推送，推送频率较高，导致数据阻塞</h3><p>这个猜想，算来后面总结的。一开始怀疑过这个问题，想过降低推送频率，但没有实施。经@James分析也猜测问题可能会出现在此处，因为大量字符串占用内存，也满足这个猜想。想到就做：</p>
+<p><strong>验证：</strong>将每次收到数据触发推送，修改为间隔一定时间（5s）推送一次。</p>
+<p><strong>结果：</strong>内存趋于平稳，及时性在接收范围内。</p>
+<p>至此，问题基本上算是解决了。</p>
+<h2 id="3、Bug分析"><a href="#3、Bug分析" class="headerlink" title="3、Bug分析"></a>3、Bug分析</h2><p>此次问题，是由于服务端推送数据量较大，而且频率较高，上次推送未完成，就触发了下一次推送。导致消息阻塞，越积越多，所以就耗尽内存而亡。</p>
+<h2 id="4、后续"><a href="#4、后续" class="headerlink" title="4、后续"></a>4、后续</h2><p>之后，spider运行一天多之后死掉过一次，但没有看到具体原因。重启之后，稳定运行至今。暂时性怀疑中途死掉的一次为意外（或者瞬时流量大增）</p>
+<h2 id="5、总结"><a href="#5、总结" class="headerlink" title="5、总结"></a>5、总结</h2><p>从发现该问题，到解决该问题，耗时大概在一周。虽然期间还处理了其他任务，但整体来说解决这个问题还是消耗了很长的时间。</p>
+<p><strong>究其原因：</strong></p>
+<ol>
+<li>对TCP底层传输数据不太熟悉</li>
+<li>没有处理大量数据高频率推送的经验</li>
+<li>发布时，只对程序进行了简单的本地测试，没有进行压力测试。</li>
+</ol>
+<p><strong>学到了什么：</strong></p>
+<ol>
+<li>对代码负责，以更严谨的态度来对待，减少出问题</li>
+<li>对WebSocket的负载和相关设计有了更深刻的理解</li>
+<li>多做一些测试，更稳定的保持代码质量</li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/说说如何部署node程序/">
+        说说如何部署node程序
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>Node作为时下流行的服务端运行时，我们就不得不接触另外一个方面的内容，那就是部署。此文就来说一下node的部署问题。</p>
+<h2 id="1、开发时部署"><a href="#1、开发时部署" class="headerlink" title="1、开发时部署"></a>1、开发时部署</h2><p>在开发阶段，我们可以随意部署，直接通过 <code>node xxx.js</code> 就能很方便的启动项目。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">这种方式有一个弊端，每次代码变更之后，我们需要手动去重启。</div><div class="line">这个时候，我们可以借助一些第三方工具来实现监控代码变更。</div><div class="line">如： gulp-develop-server、nodeman、node-supervisor等等。</div></pre></td></tr></table></figure>
+<h2 id="2、上线时如何部署？"><a href="#2、上线时如何部署？" class="headerlink" title="2、上线时如何部署？"></a>2、上线时如何部署？</h2><h3 id="2-1、原始做法"><a href="#2-1、原始做法" class="headerlink" title="2.1、原始做法"></a>2.1、原始做法</h3><p>既然开发时，可以用 <code>node xxx.js</code>，那上线时也一样。妥妥的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">弊端：会启动一个黑窗口，不能关闭，登录不能被注销</div><div class="line">``` </div><div class="line"></div><div class="line">### 2.1、原始做法，升级版</div><div class="line"></div><div class="line">在Windows下，通过 ``start /b node xxx.js`` ，让程序后台运行。</div><div class="line"></div><div class="line">在Linux下，通过 ``node xxx.js &amp;`` 或者 ``nohup node xxx.js &gt; xxx.log &amp;`` 来实现后台运行。</div></pre></td></tr></table></figure>
+<p>该方式，避免了阻塞当前控制台，但是其他弊端与2.1一致。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 2.2、使用进程管理器工具</div><div class="line"></div><div class="line">Node社区中，有比较多进程管理工具。如 [forever](https://github.com/foreverjs/forever) , [pm2](https://github.com/Unitech/pm2), [strongloop](https://github.com/strongloop/strongloop) 等等。</div><div class="line"></div><div class="line">我这里推荐 ``pm2``，功能强大，操作简单，监控，自动重启，多进程都能支持。</div><div class="line"></div><div class="line">以下以 ``pm2`` 为例，演示一下部署方式：</div><div class="line"></div><div class="line">通过 ``npm install pm2 -g`` 安装 ``pm2``</div><div class="line"></div><div class="line">通过 ``pm2 start xxx.js`` 启动程序</div><div class="line"></div><div class="line">通过 ``pm2 stop|restart|delete`` 来停止，重启，删除程序。</div><div class="line"></div><div class="line">通过 ``pm2 list`` 可以查看部署的程序。</div><div class="line"></div><div class="line">更多操作，请参考：[http://pm2.keymetrics.io/](http://pm2.keymetrics.io/)</div></pre></td></tr></table></figure></p>
+<p>这种部署方式，还有一个问题，服务器重启后，无法自动启动。<br>```</p>
+<h3 id="2-3、使用进程管理器工具，升级版"><a href="#2-3、使用进程管理器工具，升级版" class="headerlink" title="2.3、使用进程管理器工具，升级版"></a>2.3、使用进程管理器工具，升级版</h3><p>在Linux上，通过 <code>pm2 startup [platform]</code> 就能默认生成一个开机启动项。</p>
+<p>如果是Windows，我们可以通过 <a href="https://www.npmjs.com/package/pm2-windows-service" target="_blank" rel="external">pm2-windows-service</a> 或者是 <a href="https://www.npmjs.com/package/pm2-windows-startup" target="_blank" rel="external">pm2-windows-startup</a> 来把 <code>pm2</code> 做成Windows服务。</p>
+<p>了解更多：<a href="http://pm2.keymetrics.io/docs/usage/startup/" target="_blank" rel="external">http://pm2.keymetrics.io/docs/usage/startup/</a></p>
+<h3 id="2-4、Docker部署"><a href="#2-4、Docker部署" class="headerlink" title="2.4、Docker部署"></a>2.4、Docker部署</h3><p>借助Docker提供的独立环境，以上方式均可以在docker中实现，而且就算直接用 <code>node xxx.js</code> 来启动应用，在docker中也是没问题的。</p>
+<p>自动开机启动，则成了docker的问题，而不是部署程序的问题。</p>
+<h3 id="2-5、更多部署方式待探索…"><a href="#2-5、更多部署方式待探索…" class="headerlink" title="2.5、更多部署方式待探索…"></a>2.5、更多部署方式待探索…</h3>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/TypeScript札记/TypeScript札记：特性总览/">
+        TypeScript札记：特性总览
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/JS札记/JavaScript之糟粕/">
+        JavaScript之糟粕
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>在上篇《JavaScript之毒瘤》中，列举了一些在JavaScript中难以避免的问题特性。本篇将会展示JavaScript中有问题的特性，但我们很容易就能便面它们。通过这些简单的做法，让JavaScript称为一门更好的语言。</p>
+<h2 id="1、"><a href="#1、" class="headerlink" title="1、=="></a>1、==</h2><p>JavaScript有两组相等运算符。 === 和 !==，以及 == 和 !==。 === 和 !== 不会进行类型转换，一般会按照你期望的方式工作。由于JavaScript的类型转换系统相当复杂，如果要确保==和 != 不出错，就必须要牢记转换规则。另外==运算符缺乏传递性。</p>
+<pre><code>//关于传递性
+if a === b, b === c then a === c;
+if a == b, b == c then a 不一定等于 c，破坏了传递性
+</code></pre><p><strong>小测验</strong>：</p>
+<pre><code>&apos;&apos; == &apos;0&apos;
+0 == &apos;&apos;
+0 == &apos;0&apos;
+
+false == &apos;false&apos;
+false == &apos;0&apos;
+
+false == undefined
+false == null
+null == undefined
+
+&apos;\t\t\n&apos; == 0
+</code></pre><p><strong>总结</strong>：推荐使用===和!==，尽量避免使用==和!=。</p>
+<h2 id="2、with语句"><a href="#2、with语句" class="headerlink" title="2、with语句"></a>2、with语句</h2><p>JavaScript提供了一个with语句，本意是用它来快速访问对象，不幸的是，它的结果可能有时不可预料。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>window.a = 1;
+var obj={};
+with(obj){
+  console.log(a);
+}
+obj.a = 2;
+with(obj){
+  console.log(a);
+}
+</code></pre><p><strong>结论</strong>：避免使用with。</p>
+<h2 id="3、eval"><a href="#3、eval" class="headerlink" title="3、eval"></a>3、eval</h2><p>eval函数传递一个字符串给JavaScript<em>编译器</em>，并且执行结果。有问题问题呢？首先是代码难以阅读，另外需要运行编译器，导致性能低下；同时，还减弱了程序的安全性。<strong>注：</strong>Function构造函数，setTimeout、setInterval的字符串参数形式和eval是执行方式一致。</p>
+<p><strong>结论</strong>：避免使用eval，setTimeout、setInterval的字符串参数和Function构造函数。</p>
+<h2 id="4、continue"><a href="#4、continue" class="headerlink" title="4、continue"></a>4、continue</h2><p>continue语句跳到循环顶部，性能比较低下。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>var counter = 10;
+console.time(&apos;t1&apos;);
+var sum = 0;
+for(var i = 0; i &lt; counter; i++){
+  if(i % 3 !== 0){
+    continue;
+  }
+  sum = sum + i;
+}
+console.log(sum);
+console.timeEnd(&apos;t1&apos;);
+
+console.time(&apos;t2&apos;);
+var sum = 0;
+for(var i = 0; i &lt; counter; i++){
+  if(i % 3 === 0){
+    sum = sum + i;
+  }
+}
+
+console.log(sum);
+console.timeEnd(&apos;t2&apos;);
+</code></pre><p><strong>结论</strong>：尽量优化代码，减少continue的使用。</p>
+<h2 id="5、switch"><a href="#5、switch" class="headerlink" title="5、switch"></a>5、switch</h2><p>switch语句中，除非明确的中断流程，否则每次条件判断后，都可以穿越到下一个case条件。这很容易造成bug。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>var a = 15;
+switch(a){
+  case a * 1 :
+    console.log(&apos;a*1&apos;);
+  case a / 1:
+    console.log(&apos;a/1&apos;);
+  default:
+    console.log(&apos;a&apos;);
+}
+</code></pre><p><strong>结论</strong>：不要刻意的使用case条件穿越。</p>
+<h2 id="6、缺少块的语句"><a href="#6、缺少块的语句" class="headerlink" title="6、缺少块的语句"></a>6、缺少块的语句</h2><p>if、while、do或for可以接受代码块，也可以接受单行语句。单行语句的形式是一种带刺的玫瑰。虽然它可以节约2个字节，但它模糊了程序的结构。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>if(1 == &apos;0&apos;)
+  console.log(&apos;1 == 0&apos;);
+  console.log(&apos;my god&apos;);
+
+// VS
+if(1 == &apos;0&apos;){
+  console.log(&apos;1 == 0&apos;);
+}
+console.log(&apos;my god&apos;);
+</code></pre><p><strong>结论</strong>：避免使用模糊程序结构的单行语句。</p>
+<h2 id="7、-–"><a href="#7、-–" class="headerlink" title="7、++ –"></a>7、++ –</h2><p>递增和递减使得可以用非常简洁的风格去编码。但是它可能造成缓冲区溢出、同时往往让代码变得拥挤也不易于理解。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>var a = 1;
+a = a++ + ++a;
+console.log(a);
+a = 1;
+a = a++ + a++;
+console.log(a);
+</code></pre><p><strong>结论</strong>：避免使用++ –。</p>
+<h2 id="8、位运算符"><a href="#8、位运算符" class="headerlink" title="8、位运算符"></a>8、位运算符</h2><p>JavaScript有着和Java相同的一套位运算符。Java中位运算符处理整数，非常快。在JavaScript中，只有双精度浮点数，所以位运算非常慢。另外，&amp;非常容易误写为&amp;&amp;，使得bug容易被隐藏起来。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>var counter = 10000;
+var a = 5;
+var sum = 0;
+console.time(&apos;t1&apos;);
+for(var i = 0; i &lt; counter; i++){
+  sum += a &lt;&lt; 1;
+}
+console.log(sum);
+console.timeEnd(&apos;t1&apos;);
+
+sum = 0;
+console.time(&apos;t2&apos;);
+for(var i = 0; i &lt; counter; i++){
+  sum += a * 2;
+}
+console.log(sum);
+console.timeEnd(&apos;t2&apos;);
+</code></pre><p><strong>结论</strong>：避免使用位运算符。</p>
+<h2 id="9、function语句-与-function表达式"><a href="#9、function语句-与-function表达式" class="headerlink" title="9、function语句 与 function表达式"></a>9、function语句 与 function表达式</h2><p>JavaScript中既有function语句，也有function表达式，这令人困惑，似乎看起来也差不多。function语句在解析时会产生变量提升，放宽了函数必须先申明后使用的的要求。同时，JS在if语句中使用function语句也是被禁止的，但实际上大多数浏览器允许在if中使用function语句，这有可能会导致兼容性问题。</p>
+<p>由于一个语句不能以一个函数表达式开头，如下如下写法，可以改写为另外一种形式。</p>
+<pre><code>function (){}(); //Error 
+
+(function(){}()); // Right
+</code></pre><p><strong>小测验</strong>：</p>
+<pre><code>// function语句
+function fun(){}
+
+// function表达式
+var fun = function(){};
+</code></pre><p><strong>结论</strong>：合理使用function语句和function表达式。</p>
+<h2 id="10、类型的包装对象"><a href="#10、类型的包装对象" class="headerlink" title="10、类型的包装对象"></a>10、类型的包装对象</h2><p>JavaScript有一种类型的包装对象，如 new Number(1);这很容易令人困惑。</p>
+<p><strong>小测验</strong>:</p>
+<pre><code>var num1 = new Number(1);
+var num2 = 1;
+console.log(typeof num1);
+console.log(num1 === num2);
+</code></pre><p><strong>结论</strong>：避免使用包装对象，如new Boolean(),new String(),new Number()等</p>
+<h2 id="11、new"><a href="#11、new" class="headerlink" title="11、new"></a>11、new</h2><p>new运算符创建一个继承于其原型的新对象，并将新创建的对象绑定给this。但是，如果忘记使用new，那么就得到一个普通的函数调用，对象属性也会被绑定到全局对象上。这不会导致什么编译警告，也没有运行警告。</p>
+<p>根据惯例，需要用new的函数，以首字母大写命名。这能部分程度上便于我们发现错误。</p>
+<p><strong>小测验</strong>：</p>
+<pre><code>function Person(){
+  this.name = &apos;Default&apos;;
+  this.sex = undefiend;
+}
+
+Person();
+new Person();
+
+//更好的实现
+function Person(){
+  if(this === window){
+    return new Person();
+  }
+  this.name = &apos;Default&apos;;
+  this.sex = undefiend;
+}
+</code></pre><p><strong>结论</strong>：合理的避免使用new。另外可以先判断this，再做对应处理。</p>
+<h2 id="12、void"><a href="#12、void" class="headerlink" title="12、void"></a>12、void</h2><p>大部分语言中，void是一种类型，在Js中，void是一种运算符，接收一个运算数，并返回undefined</p>
+<p><strong>小测验</strong>：<br>    void 0<br>    void true</p>
+<p><strong>结论</strong>：有限的使用void</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+  <nav id="page-nav">
+    
+    <a class="prev" rel="prev" href="/blog/page/3/">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
+    </a>
+    
+    
+    <a class="next" rel="next" href="/blog/page/5/">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
+    
+  </nav>
+  
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
+
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

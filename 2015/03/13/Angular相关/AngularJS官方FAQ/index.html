@@ -1,5 +1,142 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="相关：最佳实践，反模式1、为什么会觉得jQuery插件缺失？请记住：当你在使用jQuery插件时，请在AngularJS之前加载jQuery库
-分析： 因为AngularJS自带jqLite（可以理解为jQuery的精简版），如果先引入AngularJS的话，那么AngularJS会采用jqLite"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AngularJS官方FAQ · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>AngularJS官方FAQ</h1><span class="post-meta">写于<time> 2015 年 03 月 13 日 11 时 24 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 15 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#相关：最佳实践，反模式"><span class="toc-number">1.</span> <span class="toc-text">相关：最佳实践，反模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、为什么会觉得jQuery插件缺失？"><span class="toc-number">1.1.</span> <span class="toc-text">1、为什么会觉得jQuery插件缺失？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、如何从一个Controller中访问DOM元素？"><span class="toc-number">1.2.</span> <span class="toc-text">2、如何从一个Controller中访问DOM元素？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、为什么Angular说-controller-directive等缺失？"><span class="toc-number">1.3.</span> <span class="toc-text">3、为什么Angular说 controller/directive等缺失？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、如何渲染未转义的数据？"><span class="toc-number">1.4.</span> <span class="toc-text">4、如何渲染未转义的数据？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、当array-object-resource-result变化时，应该如何监视？"><span class="toc-number">1.5.</span> <span class="toc-text">5、当array/object/$resource-result变化时，应该如何监视？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、怎样才能序列化表单数据提交？"><span class="toc-number">1.6.</span> <span class="toc-text">6、怎样才能序列化表单数据提交？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、总是在-ng-models-上使用-gt-最佳实践"><span class="toc-number">1.7.</span> <span class="toc-text">7、总是在 ng-models 上使用(.) =>最佳实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、应该如何从-service-中访问-scope-？"><span class="toc-number">1.8.</span> <span class="toc-text">8、应该如何从 service 中访问 scope ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、module-factory-和-module-service-不同点是什么？"><span class="toc-number">1.9.</span> <span class="toc-text">9、module().factory() 和 module().service() 不同点是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10、如何防止无样式的内容闪现（页面显示双大括号绑定表达式）？"><span class="toc-number">1.10.</span> <span class="toc-text">10、如何防止无样式的内容闪现（页面显示双大括号绑定表达式）？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11、为什么-lt-a-ng-click-quot-go-lt-￼5-gt-quot-gt-不工作？"><span class="toc-number">1.11.</span> <span class="toc-text">11、为什么 <a ng-click="go()"> 不工作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12、嵌套-routes-views"><span class="toc-number">1.12.</span> <span class="toc-text">12、嵌套 routes/views?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13、可以在行内指定模板或者是分部视图吗？"><span class="toc-number">1.13.</span> <span class="toc-text">13、可以在行内指定模板或者是分部视图吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14、-如何在-ngResource-地址中使用端口？"><span class="toc-number">1.14.</span> <span class="toc-text">14、 如何在 ngResource 地址中使用端口？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15、为什么插件触发的change事件似乎不工作？"><span class="toc-number">1.15.</span> <span class="toc-text">15、为什么插件触发的change事件似乎不工作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16、不要使用jQuery来切换crap-待定：无效元素-，在行内使用一些变量标记。"><span class="toc-number">1.16.</span> <span class="toc-text">16、不要使用jQuery来切换crap(待定：无效元素)，在行内使用一些变量标记。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17、如何从DOM检查上查看-scope-？"><span class="toc-number">1.17.</span> <span class="toc-text">17、如何从DOM检查上查看 scope ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18、你有一些好的指令示例-库吗？"><span class="toc-number">1.18.</span> <span class="toc-text">18、你有一些好的指令示例/库吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19、IE？"><span class="toc-number">1.19.</span> <span class="toc-text">19、IE？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20、必须对路由使用"><span class="toc-number">1.20.</span> <span class="toc-text">20、必须对路由使用#?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21、你应该在尝试用指令包装jQuery插件前，优先尝试使用AngularUI-Passthru-Directive-uiJq"><span class="toc-number">1.21.</span> <span class="toc-text">21、你应该在尝试用指令包装jQuery插件前，优先尝试使用AngularUI Passthru Directive (uiJq) </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22、为什么我的-scope-watch-递归触发"><span class="toc-number">1.22.</span> <span class="toc-text">22、为什么我的 $scope.$watch() 递归触发?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23、何时我需要使用-scope-apply"><span class="toc-number">1.23.</span> <span class="toc-text">23、何时我需要使用 $scope.$apply() ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24、启用了-html5Mode-，如何获取-lt-a-href-gt-的后退行为？"><span class="toc-number">1.24.</span> <span class="toc-text">24、启用了 html5Mode ，如何获取<a href />的后退行为？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25、如何-preventDefualt-或-stopPropagation"><span class="toc-number">1.25.</span> <span class="toc-text">25、如何 .preventDefualt() 或 .stopPropagation() ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#26、AngularJS在我的Chrome扩展中不工作！"><span class="toc-number">1.26.</span> <span class="toc-text">26、AngularJS在我的Chrome扩展中不工作！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#27、如何缓存-http-和html-分部视图"><span class="toc-number">1.27.</span> <span class="toc-text">27、如何缓存 $http 和html 分部视图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">2.</span> <span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、拒绝-解决一个-q-defer-不通过"><span class="toc-number">2.1.</span> <span class="toc-text">1、拒绝/解决一个 $q.defer() 不通过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Jasmine-spyOn-不执行-spy’d-功能"><span class="toc-number">2.2.</span> <span class="toc-text">2、Jasmine spyOn() 不执行 spy’d 功能</span></a></li></ol></li></ol></div><h2 id="相关：最佳实践，反模式"><a href="#相关：最佳实践，反模式" class="headerlink" title="相关：最佳实践，反模式"></a>相关：最佳实践，反模式</h2><h3 id="1、为什么会觉得jQuery插件缺失？"><a href="#1、为什么会觉得jQuery插件缺失？" class="headerlink" title="1、为什么会觉得jQuery插件缺失？"></a>1、为什么会觉得jQuery插件缺失？</h3><p>请记住：当你在使用jQuery插件时，请在AngularJS之前加载jQuery库</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>AngularJS官方FAQ | 幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="相关：最佳实践，反模式1、为什么会觉得jQuery插件缺失？请记住：当你在使用jQuery插件时，请在AngularJS之前加载jQuery库
+分析： 因为AngularJS自带jqLite（可以理解为jQuery的精简版），如果先引入AngularJS的话，那么AngularJS会采用jqLite，而不是完整的jQuery库。
+2、如何从一个Controller中访问DOM元素？不要从Contr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS官方FAQ">
+<meta property="og:url" content="http://hstarorg.github.io/blog/2015/03/13/Angular相关/AngularJS官方FAQ/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="相关：最佳实践，反模式1、为什么会觉得jQuery插件缺失？请记住：当你在使用jQuery插件时，请在AngularJS之前加载jQuery库
+分析： 因为AngularJS自带jqLite（可以理解为jQuery的精简版），如果先引入AngularJS的话，那么AngularJS会采用jqLite，而不是完整的jQuery库。
+2、如何从一个Controller中访问DOM元素？不要从Contr">
+<meta property="og:updated_time" content="2017-02-21T07:07:31.810Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS官方FAQ">
+<meta name="twitter:description" content="相关：最佳实践，反模式1、为什么会觉得jQuery插件缺失？请记住：当你在使用jQuery插件时，请在AngularJS之前加载jQuery库
+分析： 因为AngularJS自带jqLite（可以理解为jQuery的精简版），如果先引入AngularJS的话，那么AngularJS会采用jqLite，而不是完整的jQuery库。
+2、如何从一个Controller中访问DOM元素？不要从Contr">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        <article id="post-Angular相关/AngularJS官方FAQ"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/blog/2015/03/13/Angular相关/AngularJS官方FAQ/">
+    	AngularJS官方FAQ
+    </a>
+  </h2>
+	<time>
+	  Mar 13, 2015
+	</time>
+	
+	</section>
+	
+		<section class="tog"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#相关：最佳实践，反模式"><span class="toc-number">1.</span> <span class="toc-text">相关：最佳实践，反模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、为什么会觉得jQuery插件缺失？"><span class="toc-number">1.1.</span> <span class="toc-text">1、为什么会觉得jQuery插件缺失？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、如何从一个Controller中访问DOM元素？"><span class="toc-number">1.2.</span> <span class="toc-text">2、如何从一个Controller中访问DOM元素？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、为什么Angular说-controller-directive等缺失？"><span class="toc-number">1.3.</span> <span class="toc-text">3、为什么Angular说 controller/directive等缺失？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、如何渲染未转义的数据？"><span class="toc-number">1.4.</span> <span class="toc-text">4、如何渲染未转义的数据？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、当array-object-resource-result变化时，应该如何监视？"><span class="toc-number">1.5.</span> <span class="toc-text">5、当array/object/$resource-result变化时，应该如何监视？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、怎样才能序列化表单数据提交？"><span class="toc-number">1.6.</span> <span class="toc-text">6、怎样才能序列化表单数据提交？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、总是在-ng-models-上使用-gt-最佳实践"><span class="toc-number">1.7.</span> <span class="toc-text">7、总是在 ng-models 上使用(.) =>最佳实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、应该如何从-service-中访问-scope-？"><span class="toc-number">1.8.</span> <span class="toc-text">8、应该如何从 service 中访问 scope ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、module-factory-和-module-service-不同点是什么？"><span class="toc-number">1.9.</span> <span class="toc-text">9、module().factory() 和 module().service() 不同点是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10、如何防止无样式的内容闪现（页面显示双大括号绑定表达式）？"><span class="toc-number">1.10.</span> <span class="toc-text">10、如何防止无样式的内容闪现（页面显示双大括号绑定表达式）？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11、为什么-lt-a-ng-click-quot-go-lt-￼5-gt-quot-gt-不工作？"><span class="toc-number">1.11.</span> <span class="toc-text">11、为什么 <a ng-click="go()"> 不工作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12、嵌套-routes-views"><span class="toc-number">1.12.</span> <span class="toc-text">12、嵌套 routes/views?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13、可以在行内指定模板或者是分部视图吗？"><span class="toc-number">1.13.</span> <span class="toc-text">13、可以在行内指定模板或者是分部视图吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14、-如何在-ngResource-地址中使用端口？"><span class="toc-number">1.14.</span> <span class="toc-text">14、 如何在 ngResource 地址中使用端口？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15、为什么插件触发的change事件似乎不工作？"><span class="toc-number">1.15.</span> <span class="toc-text">15、为什么插件触发的change事件似乎不工作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16、不要使用jQuery来切换crap-待定：无效元素-，在行内使用一些变量标记。"><span class="toc-number">1.16.</span> <span class="toc-text">16、不要使用jQuery来切换crap(待定：无效元素)，在行内使用一些变量标记。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17、如何从DOM检查上查看-scope-？"><span class="toc-number">1.17.</span> <span class="toc-text">17、如何从DOM检查上查看 scope ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18、你有一些好的指令示例-库吗？"><span class="toc-number">1.18.</span> <span class="toc-text">18、你有一些好的指令示例/库吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19、IE？"><span class="toc-number">1.19.</span> <span class="toc-text">19、IE？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20、必须对路由使用"><span class="toc-number">1.20.</span> <span class="toc-text">20、必须对路由使用#?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21、你应该在尝试用指令包装jQuery插件前，优先尝试使用AngularUI-Passthru-Directive-uiJq"><span class="toc-number">1.21.</span> <span class="toc-text">21、你应该在尝试用指令包装jQuery插件前，优先尝试使用AngularUI Passthru Directive (uiJq) </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22、为什么我的-scope-watch-递归触发"><span class="toc-number">1.22.</span> <span class="toc-text">22、为什么我的 $scope.$watch() 递归触发?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23、何时我需要使用-scope-apply"><span class="toc-number">1.23.</span> <span class="toc-text">23、何时我需要使用 $scope.$apply() ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24、启用了-html5Mode-，如何获取-lt-a-href-gt-的后退行为？"><span class="toc-number">1.24.</span> <span class="toc-text">24、启用了 html5Mode ，如何获取<a href />的后退行为？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25、如何-preventDefualt-或-stopPropagation"><span class="toc-number">1.25.</span> <span class="toc-text">25、如何 .preventDefualt() 或 .stopPropagation() ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#26、AngularJS在我的Chrome扩展中不工作！"><span class="toc-number">1.26.</span> <span class="toc-text">26、AngularJS在我的Chrome扩展中不工作！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#27、如何缓存-http-和html-分部视图"><span class="toc-number">1.27.</span> <span class="toc-text">27、如何缓存 $http 和html 分部视图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">2.</span> <span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、拒绝-解决一个-q-defer-不通过"><span class="toc-number">2.1.</span> <span class="toc-text">1、拒绝/解决一个 $q.defer() 不通过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Jasmine-spyOn-不执行-spy’d-功能"><span class="toc-number">2.2.</span> <span class="toc-text">2、Jasmine spyOn() 不执行 spy’d 功能</span></a></li></ol></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<h2 id="相关：最佳实践，反模式"><a href="#相关：最佳实践，反模式" class="headerlink" title="相关：最佳实践，反模式"></a>相关：最佳实践，反模式</h2><h3 id="1、为什么会觉得jQuery插件缺失？"><a href="#1、为什么会觉得jQuery插件缺失？" class="headerlink" title="1、为什么会觉得jQuery插件缺失？"></a>1、为什么会觉得jQuery插件缺失？</h3><p>请记住：当你在使用jQuery插件时，请在AngularJS之前加载jQuery库</p>
 <p><strong>分析：</strong> 因为AngularJS自带jqLite（可以理解为jQuery的精简版），如果先引入AngularJS的话，那么AngularJS会采用jqLite，而不是完整的jQuery库。</p>
 <h3 id="2、如何从一个Controller中访问DOM元素？"><a href="#2、如何从一个Controller中访问DOM元素？" class="headerlink" title="2、如何从一个Controller中访问DOM元素？"></a>2、如何从一个Controller中访问DOM元素？</h3><p>不要从Controller中执行DOM的选择/遍历。HTML还没有被渲染。查一查”directive“</p>
 <h3 id="3、为什么Angular说-controller-directive等缺失？"><a href="#3、为什么Angular说-controller-directive等缺失？" class="headerlink" title="3、为什么Angular说 controller/directive等缺失？"></a>3、为什么Angular说 controller/directive等缺失？</h3><p>调用 <code>angular.module(&#39;myApp&#39;,[])</code> 总是会创建一个新的模块（同时干掉已有的重名模块）。相反，使用一个参数的方式调用 angular.module(‘myApp’) 来引用已经存在的模块。</p>
@@ -31,34 +168,101 @@
 <h3 id="27、如何缓存-http-和html-分部视图"><a href="#27、如何缓存-http-和html-分部视图" class="headerlink" title="27、如何缓存 $http 和html 分部视图"></a>27、如何缓存 $http 和html 分部视图</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用装饰器，添加缓存功能</span></div><div class="line">myAppModule.config(<span class="function"><span class="keyword">function</span>(<span class="params">$routeProvider, $provide</span>) </span>&#123;</div><div class="line">  $provide.decorator(<span class="string">'$http'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$delegate</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> get = $delegate.get;</div><div class="line">    $delegate.get = <span class="function"><span class="keyword">function</span>(<span class="params">url, config</span>)</span>&#123;</div><div class="line">      url += (url.indexOf(<span class="string">'?'</span>) !== <span class="number">-1</span>) ? <span class="string">'?'</span> : <span class="string">'&amp;'</span>;</div><div class="line">      url += <span class="string">'v='</span> + cacheBustVersion;</div><div class="line">      <span class="keyword">return</span> get(url, config);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> $delegate;</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="1、拒绝-解决一个-q-defer-不通过"><a href="#1、拒绝-解决一个-q-defer-不通过" class="headerlink" title="1、拒绝/解决一个 $q.defer() 不通过"></a>1、拒绝/解决一个 $q.defer() 不通过</h3><p>你必须在处理它们的时候添加 <code>$scope.$apply()</code></p>
 <h3 id="2、Jasmine-spyOn-不执行-spy’d-功能"><a href="#2、Jasmine-spyOn-不执行-spy’d-功能" class="headerlink" title="2、Jasmine spyOn() 不执行 spy’d 功能"></a>2、Jasmine spyOn() 不执行 spy’d 功能</h3><p>不一定是AngularJS的问题，但是你需要追加 <code>.addCallThrough()</code></p>
-<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2015/03/13/Angular相关/AngularJS官方FAQ/" data-title="AngularJS官方FAQ" data-url="http://hstarorg.github.io/blog/blog/2015/03/13/Angular相关/AngularJS官方FAQ/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
-duoshuoQuery["short_name"] = _shortName;
-(function() {
-    var ds = document.createElement("script");
-    ds.type = "text/javascript";
-    ds.async = true;
-    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
-    ds.charset = "utf-8";
-    (document.getElementsByTagName("head")[0] ||
-        document.getElementsByTagName("body")[0]).appendChild(ds);
-})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
 
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
+  	</div>
+	  
+	</section>
+	
+</article>
 
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
 
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
-    }
-});</script></body></html>
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
+
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

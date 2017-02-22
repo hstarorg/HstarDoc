@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>幻☆精灵的Blog</title>
+  <subtitle>Love life, love coding~</subtitle>
+  <link href="/blog/atom.xml" rel="self"/>
+  
+  <link href="http://hstarorg.github.io/blog/"/>
+  <updated>2017-02-21T07:07:32.674Z</updated>
+  <id>http://hstarorg.github.io/blog/</id>
+  
+  <author>
+    <name>Jay.M.Hu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VsCode简易配置手册</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/VsCode%E7%AE%80%E6%98%93%E9%85%8D%E7%BD%AE%E6%89%8B%E5%86%8C/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/VsCode简易配置手册/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.674Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0、什么是VsCode（Visual-Studio-Code-vsc）&quot;&gt;&lt;a href=&quot;#0、什么是VsCode（Visual-Studio-Code-vsc）&quot; class=&quot;headerlink&quot; title=&quot;0、什么是VsCode（Visual Stu
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>认识AMD、CMD、UMD、CommonJS</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/%E8%AE%A4%E8%AF%86AMD%E3%80%81CMD%E3%80%81UMD%E3%80%81CommonJS/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/认识AMD、CMD、UMD、CommonJS/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.793Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0、导言&quot;&gt;&lt;a href=&quot;#0、导言&quot; class=&quot;headerlink&quot; title=&quot;0、导言&quot;&gt;&lt;/a&gt;0、导言&lt;/h2&gt;&lt;p&gt;JavaScript的生态系统一直在稳步增长，当各种组件混合使用时，就可能会发现不是所有的组件都能“和平共处”，为了解决这些
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>那些容易出错的Dom操作</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/%E9%82%A3%E4%BA%9B%E5%AE%B9%E6%98%93%E5%87%BA%E9%94%99%E7%9A%84Dom%E6%93%8D%E4%BD%9C/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/那些容易出错的Dom操作/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.822Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0、导言&quot;&gt;&lt;a href=&quot;#0、导言&quot; class=&quot;headerlink&quot; title=&quot;0、导言&quot;&gt;&lt;/a&gt;0、导言&lt;/h2&gt;&lt;p&gt;在用惯了 &lt;code&gt;jQuery&lt;/code&gt; 这种利器之后，回到原生JS的Dom操作，一时间反而感觉有点陌生。&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>利用Karma、Mocha搭建测试环境</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E6%B5%8B%E8%AF%95%E7%9B%B8%E5%85%B3/%E5%88%A9%E7%94%A8Karma%E3%80%81Mocha%E6%90%AD%E5%BB%BA%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/测试相关/利用Karma、Mocha搭建测试环境/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.855Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用chai-http实现API测试</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E6%B5%8B%E8%AF%95%E7%9B%B8%E5%85%B3/%E4%BD%BF%E7%94%A8chai-http%E5%AE%9E%E7%8E%B0API%E6%B5%8B%E8%AF%95/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/测试相关/使用chai-http实现API测试/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.850Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;0x1、导言&quot;&gt;&lt;a href=&quot;#0x1、导言&quot; class=&quot;headerlink&quot; title=&quot;0x1、导言&quot;&gt;&lt;/a&gt;0x1、导言&lt;/h1&gt;&lt;p&gt;一个前后端分离的完整的项目中，一般少不了 &lt;code&gt;API TEST&lt;/code&gt;，那我们如何来做API相
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>利用Nightwatch.js实现e2e测试</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E6%B5%8B%E8%AF%95%E7%9B%B8%E5%85%B3/%E5%88%A9%E7%94%A8Nightwatch.js%E5%AE%9E%E7%8E%B0e2e%E6%B5%8B%E8%AF%95/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/测试相关/利用Nightwatch.js实现e2e测试/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.860Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MOCHA测试代码汇总</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E6%B5%8B%E8%AF%95%E7%9B%B8%E5%85%B3/MOCHA%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E6%B1%87%E6%80%BB/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/测试相关/MOCHA测试代码汇总/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.843Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;0x0、导言&quot;&gt;&lt;a href=&quot;#0x0、导言&quot; class=&quot;headerlink&quot; title=&quot;0x0、导言&quot;&gt;&lt;/a&gt;0x0、导言&lt;/h1&gt;&lt;p&gt;Mocha是应用最广泛的JS测试框架，但是现在，它的维护者公开说，Mocha快死了，&lt;a href=&quot;htt
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>从零开始H5（二）：HTML5新技术点</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BH5/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BH5%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHTML5%E6%96%B0%E6%8A%80%E6%9C%AF%E7%82%B9/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/从零开始H5/从零开始H5（二）：HTML5新技术点/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.610Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;现在，将我们的页面升级到HTML5了。为什么要这样去做呢？通过简单的升级我们没看到任何大的变化。&lt;/p&gt;
+&lt;p&gt;答案即将揭晓，&lt;strong&gt;升级到HTML5之后，我们可以使用如下技术：&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;1、不再需要插件，就有对音频-视频的内置支持
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>从零开始H5（一）：升级你的HTML到HTML5</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BH5/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BH5%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%8D%87%E7%BA%A7%E4%BD%A0%E7%9A%84HTML%E5%88%B0HTML5/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/从零开始H5/从零开始H5（一）：升级你的HTML到HTML5/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？&quot;&gt;&lt;a href=&quot;#现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？&quot; class=&quot;headerlink&quot; title=&quot;现有的网页大部分还是基于HTML
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JSONP详解</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/JSONP%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/JSONP详解/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.658Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0、关于JSONP&quot;&gt;&lt;a href=&quot;#0、关于JSONP&quot; class=&quot;headerlink&quot; title=&quot;0、关于JSONP&quot;&gt;&lt;/a&gt;0、关于JSONP&lt;/h2&gt;&lt;h3 id=&quot;什么的JSONP&quot;&gt;&lt;a href=&quot;#什么的JSONP&quot; class=&quot;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CORS详解</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/CORS%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/CORS详解/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.617Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0、关于CORS&quot;&gt;&lt;a href=&quot;#0、关于CORS&quot; class=&quot;headerlink&quot; title=&quot;0、关于CORS&quot;&gt;&lt;/a&gt;0、关于CORS&lt;/h2&gt;&lt;p&gt;说到CORS，就不得不先了解跨站HTTP请求（Cross-site HTTP request
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CSS布局（上）</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/CSS%E5%B8%83%E5%B1%80%EF%BC%88%E4%B8%8A%EF%BC%89/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/CSS布局（上）/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.623Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1、CSS布局之display&quot;&gt;&lt;a href=&quot;#1、CSS布局之display&quot; class=&quot;headerlink&quot; title=&quot;1、CSS布局之display&quot;&gt;&lt;/a&gt;1、CSS布局之display&lt;/h2&gt;&lt;h3 id=&quot;1-1、dispaly&quot;&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Iframe跨域通信的几种方式</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/Iframe%E8%B7%A8%E5%9F%9F%E9%80%9A%E4%BF%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/Iframe跨域通信的几种方式/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.649Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0、前言&quot;&gt;&lt;a href=&quot;#0、前言&quot; class=&quot;headerlink&quot; title=&quot;0、前言&quot;&gt;&lt;/a&gt;0、前言&lt;/h2&gt;&lt;p&gt;虽然iframe已经越来越不流行了，但是在某些特定的场景下，使用它可以大大减小我们的工作量。&lt;/p&gt;
+&lt;p&gt;当在页面内使用i
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CSS布局（下）</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/CSS%E5%B8%83%E5%B1%80%EF%BC%88%E4%B8%8B%EF%BC%89/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/CSS布局（下）/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.627Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1、CSS布局之浮动&quot;&gt;&lt;a href=&quot;#1、CSS布局之浮动&quot; class=&quot;headerlink&quot; title=&quot;1、CSS布局之浮动&quot;&gt;&lt;/a&gt;1、CSS布局之浮动&lt;/h2&gt;&lt;h3 id=&quot;1-1、float之图文混排&quot;&gt;&lt;a href=&quot;#1-1、flo
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx常规用法解析</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/Nginx%E5%B8%B8%E8%A7%84%E7%94%A8%E6%B3%95%E8%A7%A3%E6%9E%90/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/Nginx常规用法解析/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.664Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0、Nginx简介&quot;&gt;&lt;a href=&quot;#0、Nginx简介&quot; class=&quot;headerlink&quot; title=&quot;0、Nginx简介&quot;&gt;&lt;/a&gt;0、Nginx简介&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Nginx&lt;/code&gt; 是时下最流行的静态Web服务器之一，使用它能快
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Web API接口之Geolocation</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/Web%20API%E6%8E%A5%E5%8F%A3%E4%B9%8BGeolocation/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/Web API接口之Geolocation/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.686Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0、关于Geolocation&quot;&gt;&lt;a href=&quot;#0、关于Geolocation&quot; class=&quot;headerlink&quot; title=&quot;0、关于Geolocation&quot;&gt;&lt;/a&gt;0、关于Geolocation&lt;/h2&gt;&lt;p&gt;Geolocation，地理位置AP
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript配置文件tsconfig简析</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/TypeScript%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6tsconfig%E7%AE%80%E6%9E%90/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/TypeScript配置文件tsconfig简析/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.669Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0、前言&quot;&gt;&lt;a href=&quot;#0、前言&quot; class=&quot;headerlink&quot; title=&quot;0、前言&quot;&gt;&lt;/a&gt;0、前言&lt;/h2&gt;&lt;p&gt;在使用VsCode编写TypeScript时，VsCode提供了一个tsconfig.json辅助我们设置TypeScrip
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Webpack In Angular2</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/Webpack%20In%20Angular2/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/Webpack In Angular2/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.691Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0、前言&quot;&gt;&lt;a href=&quot;#0、前言&quot; class=&quot;headerlink&quot; title=&quot;0、前言&quot;&gt;&lt;/a&gt;0、前言&lt;/h2&gt;&lt;p&gt;当下Angular2是比较值得关注的技术了，想要把Angular2跑起来，还是比较容易的。但&lt;/p&gt;
+&lt;p&gt;在这里，我要做的
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Webpack初体验</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/Webpack%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/前端相关/Webpack初体验/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.697Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0、关于webpack&quot;&gt;&lt;a href=&quot;#0、关于webpack&quot; class=&quot;headerlink&quot; title=&quot;0、关于webpack&quot;&gt;&lt;/a&gt;0、关于webpack&lt;/h2&gt;&lt;p&gt;Webpack是灵活的、可扩展的、开源的模块打包工具。&lt;a href
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>重温设计模式（一）：工厂方法</title>
+    <link href="http://hstarorg.github.io/blog/2017/02/21/%E9%87%8D%E6%B8%A9%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%87%8D%E6%B8%A9%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/"/>
+    <id>http://hstarorg.github.io/blog/2017/02/21/重温设计模式/重温设计模式（一）：工厂方法/</id>
+    <published>2017-02-21T06:47:11.000Z</published>
+    <updated>2017-02-21T07:07:32.949Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;工厂方法模式（Factory method pattern），属于创建性模式。&lt;/strong&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

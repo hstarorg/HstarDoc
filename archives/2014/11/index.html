@@ -1,22 +1,586 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="幻☆精灵的Blog站点"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Archives: 2014/11 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><script>window.location.href = "http://hstarorg.github.io/blog/blog//pigeonhole";
-</script></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Archives: 2014/11 | 幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="幻☆精灵的Blog站点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="幻☆精灵的Blog">
+<meta property="og:url" content="http://hstarorg.github.io/blog/archives/2014/11/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="幻☆精灵的Blog站点">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="幻☆精灵的Blog">
+<meta name="twitter:description" content="幻☆精灵的Blog站点">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
 
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
-
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
     }
-});</script></body></html>
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        
+	
+	<section class="page-header archive banner waves-image">
+    <h1>Year : <span>2014.11</span></h1>
+  </section>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/11/29/编写高质量JS代码的68个有效方法-读书笔记/[20141129]编写高质量JS代码的68个有效方法（四）/">
+        编写高质量JS代码的68个有效方法（四）
+      </a>
+    </h2>
+    
+    <time>
+      Nov 29, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.16、避免使用eval创建局部变量<br><strong>Tips：</strong></p>
+<ol>
+<li>避免使用eval函数创建的变量污染调用者作用域。</li>
+<li>如果eval函数代码可能创建全局变量，将此调用封装到嵌套的函数中已防止作用域污染。</li>
+</ol>
+<p>执行eval时，eval中的变量才会被加到作用域中（函数作用域）</p>
+<pre><code>function fun1(){
+    eval(&apos;var y = 1;&apos;);
+    console.log(&apos;fun1-&gt;y:&apos;+y); // &apos;fun-&gt;y:1&apos;
+}
+fun1();
+console.log(&apos;global-&gt;y:&apos;+y); //throw Error
+</code></pre><p>不要直接将不可控参数交给eval执行，可能会改变作用域对象。</p>
+<pre><code>//Bad code
+var g = &apos;global&apos;;
+function fun2(code){
+    eval(code);
+}
+fun2(&apos;var g=&quot;local&quot;&apos;);
+console.log(g) //&apos;local&apos;
+
+//Right code
+var g = &apos;global&apos;;
+function fun2(code){
+    (function(){
+        eval(code);
+    })();
+}
+fun2(&apos;var g=&quot;local&quot;&apos;);
+console.log(g) //&apos;global&apos;,嵌套作用域
+</code></pre><p>以上Right Code，如果执行不带var的变量申明，那么也是会影响全局的g对象的。</p>
+<h2 id="No-17、间接调用eval函数优于直接调用"><a href="#No-17、间接调用eval函数优于直接调用" class="headerlink" title="No.17、间接调用eval函数优于直接调用"></a>No.17、间接调用eval函数优于直接调用</h2><p><strong>Tips：</strong></p>
+<ol>
+<li>将eval函数同一个毫无意义的字面量包裹在序列表达式中以达到强制使用间接调用eval函数的目的</li>
+<li>尽可能间接调用eval函数，而不要直接调用eval函数</li>
+</ol>
+<p>直接调用eval，那么编译器无法优化JS代码。<br>如何间接调用eval？</p>
+<pre><code>(0,eval)(code) 
+</code></pre><p>##No.18、理解函数的调用、方法调用及构造函数调用之间的不同<br><strong>Tips：</strong></p>
+<ol>
+<li>方法调用将被查找方法属性的对象作用调用接收者</li>
+<li>函数调用将全局对象作为其接受者。一般很少使用该函数调用语法来调用方法</li>
+<li>构造函数需要通过new运算符调用，并产生一个新的对象作为其接收者</li>
+</ol>
+<p>在全局对象上直接定义的function被称为函数，调用则是函数调用</p>
+<pre><code>var fun1 = function(p){
+    console.log(p);
+};
+
+function fun2(p){
+    console.log(p);
+}
+//函数调用
+fun1(&apos;p1&apos;);
+fun2(&apos;p2&apos;);
+</code></pre><p>如果对象的属性是函数，那么称之为方法，使用模式则是方法调用</p>
+<pre><code>var obj = {
+    name: &apos;Hello &apos;,
+    fun1: function(name){
+        console.log(this.name + name);
+    }
+};
+//方法调用
+obj.fun1(&apos;Jay&apos;);
+</code></pre><p><strong>注意：fun1中通过this来访问obj的name属性</strong></p>
+<p>构造函数调用将一个全新的对象作为this变量的值</p>
+<pre><code>fucntion User(name, age){
+    this.Name = name;
+    this.Age = age;
+}
+//此时，user是一个全新的对象
+var user = new User(&apos;Jay&apos;, 23);
+</code></pre><p>##No.19、熟练掌握高阶函数<br><strong>Tips：</strong></p>
+<ol>
+<li>高阶函数是那些将函数作为参数或返回值的函数</li>
+<li>熟练掌握现有库的高阶函数</li>
+<li>学会发现可以被高阶函数所取代的常见编码模式</li>
+</ol>
+<p>需求：将数组元素全部转换为大写</p>
+<pre><code>//常规做法
+var arr = [&apos;abc&apos;, &apos;test&apos;, &apos;123&apos;];
+for(var i =0, len = arr.length; i &lt; len; i++){
+    arr[i] = arr[i].toUpperCase();
+}
+console.log(arr);
+
+//高阶函数
+var arr = [&apos;abc&apos;, &apos;test&apos;, &apos;123&apos;];
+arr = arr.map(function(item){
+    return item.toUpperCase();
+});
+console.log(arr);
+</code></pre><p><strong>注意：需要注意高阶函数使用时的返回值，有些是更改原始对象，有些是返回新对象</strong></p>
+<p>##No.20、使用call方法自定义接收者来调用方法<br><strong>Tips：</strong></p>
+<ol>
+<li>使用call方法自定义接收者（个人理解为作用域）来调用函数</li>
+<li>使用call方法可以调用在给定对象中不存在的方法</li>
+<li><p>使用call方法定义高阶函数允许使用者给回调函数指定接收者</p>
+<p> function fun1(){</p>
+<pre><code>this.name = &apos;Test&apos;;
+</code></pre><p> }<br> var obj = {</p>
+<pre><code>name: &apos;Jay&apos;
+</code></pre><p> };<br> console.log(obj.name);<br> fun1.call(obj);<br> console.log(obj.name);</p>
+</li>
+</ol>
+<p>call函数的调用方式：</p>
+<pre><code>f.call(obj, p1, p2, p3);
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/11/21/JS札记/[20141121]JavaScript之Array常用功能汇总/">
+        JavaScript之Array常用功能汇总
+      </a>
+    </h2>
+    
+    <time>
+      Nov 21, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p><strong>导语：</strong>在JavaScript中，Array是一个使用比较频繁的对象，那么它到底有哪些常用的方法呢？</p>
+<p>首先，我们先看一下Array对象的类型：</p>
+<pre><code>typeof Array // &apos;function&apos;
+Array instanceof Object // true
+</code></pre><p>从上可以看出，Array本质是一个function，同样派生自Object，定义如下：</p>
+<pre><code>function Array(args) {}
+</code></pre><p>###接下来，我们来看Array自身的方法：</p>
+<h4 id="1、concat"><a href="#1、concat" class="headerlink" title="#1、concat()"></a>#1、concat()</h4><p>定义：原型方法，连接两个或更多的数组，并返回结果（新数组）。</p>
+<pre><code>Array.prototype.concat = function(items) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2];
+var arr2 = arr1.concat([3, 4]);
+var arr3 = arr2.concat([5, 6], [7, 8] ,10, {});
+console.log(arr1); // [1, 2]
+console.log(arr2); // [1, 2, 3, 4]
+console.log(arr3); // [1, 2, 3, 4, 5, 6, 7, 8,  10, Object]
+</code></pre><p><strong>注意：</strong>concat不仅可以连接单个对象，也可以连接多个对象，同时如果是参数为数组，那么会将数组元素拆分并连接，如果是对象，则直接将对象连接。<span style="color:red;"><b>该方法不会改变原始数组</b></span></p>
+<h4 id="2、join"><a href="#2、join" class="headerlink" title="#2、join()"></a>#2、join()</h4><p>定义：原型方法，把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。</p>
+<pre><code>Array.prototype.join = function(separator) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr = [1, 2, 3];
+console.log(arr.join(&apos;|&apos;)); // &apos;1|2|3&apos;
+console.log(arr.join(&apos;&apos;));  // &apos;123&apos;
+console.log(arr.join(&apos;---&apos;));  // &apos;1---2---3&apos;
+</code></pre><p><strong>注意：</strong>太常用了，没什么可注意的~</p>
+<h4 id="3、pop"><a href="#3、pop" class="headerlink" title="#3、pop()"></a>#3、pop()</h4><p>定义：原型方法，删除并返回数组的最后一个元素。</p>
+<pre><code>Array.prototype.pop = function() {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2, 3, 4];
+var lastOne = arr1.pop();
+console.log(lastOne);  // 4
+console.log(arr1);     // [1, 2, 3]
+</code></pre><p><strong>注意：</strong>该方法无参数，有返回值，返回数组最后一个元素。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="4、push"><a href="#4、push" class="headerlink" title="#4、push()"></a>#4、push()</h4><p>定义：原型方法，向数组的末尾添加一个或更多元素，并返回新的长度。</p>
+<pre><code>Array.prototype.push = function(items) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2];
+var len = arr1.push(3);
+var arr2 = arr1.push(4, 5);
+console.log(len);
+console.log(arr1);
+console.log(arr2);
+</code></pre><p><strong>注意：</strong>该方法的返回值会返回数组的新长度。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="5、reverse"><a href="#5、reverse" class="headerlink" title="#5、reverse()"></a>#5、reverse()</h4><p>定义：原型方法，颠倒数组中元素的顺序。</p>
+<pre><code>Array.prototype.reverse = function() {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2, 3, 4, 5];
+var res = arr1.reverse();
+console.log(res);
+console.log(arr1);
+</code></pre><p><strong>注意：</strong>该方法的返回值为自身（翻转后的值），<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="6、shift"><a href="#6、shift" class="headerlink" title="6、shift()"></a>6、shift()</h4><p>定义：原型方法，删除并返回数组的第一个元素。</p>
+<pre><code>Array.prototype.shift = function() {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2, 3];
+var res = arr1.shift();
+console.log(res);
+console.log(arr1);
+</code></pre><p><strong>注意：</strong>该方法返回数组第一个元素，和pop()方法对应（返回并删除最后一个元素）。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="7、slice"><a href="#7、slice" class="headerlink" title="#7、slice()"></a>#7、slice()</h4><p>定义：原型方法，从某个已有的数组返回选定的元素。</p>
+<pre><code>Array.prototype.slice = function(start,end) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var res1 = arr.slice(0, 3);
+var res2 = arr.slice(0, 100);
+var res3 = arr.slice(-1,-6);
+var res4 = arr.slice(-6, -1);
+console.log(res1);
+console.log(res2);
+console.log(res3);
+console.log(res4);
+console.log(arr)
+</code></pre><p><strong>注意：</strong>该方法支持逆向索引，同时索引采取区间左闭右开的原则。<span style="color:red;"><b>该方法不会改变原始数组</b></span></p>
+<h4 id="8、sort"><a href="#8、sort" class="headerlink" title="#8、sort()"></a>#8、sort()</h4><p>定义：原型方法，对数组的元素进行排序。</p>
+<pre><code>Array.prototype.sort = function(compareFn) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr = [1, 5, 2, 3, 4, 7, 8, 6, 9];
+var res1 = arr.sort(); //如果是数字，默认从小到大排序
+console.log(res1);
+var arr2 = [&apos;a&apos;, &apos;c&apos;, &apos;b&apos;];
+var res2 = arr2.sort();//如果是字符，按照字符顺序（ASCII，字符串同）排序
+console.log(res2);
+//遇到复杂数据，经过测试是按照数组&lt;正则&lt;数字&lt;对象&lt;字符串&lt;函数 这个顺序
+var arr3 = [{name:&apos;name&apos;}, 134, &apos;aaa&apos;, function(){}, [], /a/];
+var res3 = arr3.sort();
+console.log(arr3);
+
+//可以通过自定义规则实现复杂的排序
+var res4 = arr.sort(function(a1, a2){
+    if(a1 === a2){ // 两者相等，那么就算想等
+        return 0;
+    }
+    if(a1%3 === 0){ //如果a1被3整除，那么a1小
+        return -1;
+    }
+    if(a2%3 === 0){ //如果a2被3整除，那么a2小
+        return 1;
+    }
+    return a2%3-a2%3; //不满足以上条件，那么根据余数比大小，余数小的元素小
+})
+console.log(res4);
+</code></pre><p><strong>注意：</strong>该方法返回自身（排序后数组）。可通过function(a1, a2){}实现非常复杂的排序规则。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="9、splice"><a href="#9、splice" class="headerlink" title="#9、splice()"></a>#9、splice()</h4><p>定义：原型方法，删除元素，并向数组添加新元素。（该方法相等较复杂，悠着点用）</p>
+<pre><code>Array.prototype.splice = function(start,deleteCount,items) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var res1 = arr1.splice(0, 3, &apos;new1&apos;, &apos;new2&apos;);
+console.log(res1);  // [1, 2, 3] 
+console.log(arr1);  // [&apos;new1&apos;, &apos;new2&apos;, 4, 5, 6, 7, 8, 9] 
+
+arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+res1 = arr1.splice(-6, 3, &apos;new1&apos;, &apos;new2&apos;);
+console.log(res1);  // [4, 5, 6]
+console.log(arr1);  // [1, 2, 3, &apos;new1&apos;, &apos;new2&apos;, 7, 8, 9]
+</code></pre><p><strong>注意：</strong>splice()函数支持倒叙索引，同时第二个参数是长度（不是下标），新插入的数据会插入在start下标位置。返回值为删除的元素数组。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h4 id="10、unshift"><a href="#10、unshift" class="headerlink" title="#10、unshift()"></a>#10、unshift()</h4><p>定义：原型方法，向数组的开头添加一个或更多元素，并返回新的长度。</p>
+<pre><code>Array.prototype.unshift = function(items) {};
+</code></pre><p>示例：</p>
+<pre><code>var arr1= [1, 2, 3];
+var res1 = arr1.unshift(&apos;new1&apos;, &apos;new2&apos;);
+console.log(res1); // 5
+console.log(arr1); // [&quot;new1&quot;, &quot;new2&quot;, 1, 2, 3] 
+</code></pre><p><strong>注意：</strong>该方法和push相对(在末尾添加元素，返回新长度)，该方法的返回值是新数组长度。<span style="color:red;"><b>该方法会改变原始数组</b></span></p>
+<h3 id="我们还可以为Array添加更多的常用功能，比如："><a href="#我们还可以为Array添加更多的常用功能，比如：" class="headerlink" title="我们还可以为Array添加更多的常用功能，比如："></a>我们还可以为Array添加更多的常用功能，比如：</h3><pre><code>Array.prototype.where = function(predicateFn){
+    var parameterIsFn = typeof predicateFn === &apos;function&apos;
+    var result = [];
+    for(var i = 0, len = this.length; i &lt; len; i++){
+        if(!parameterIsFn || predicateFn(this[i])){
+            result.push(this[i]);
+        }
+    }
+    return result;
+};
+
+var arr = [&apos;new1&apos;, &apos;new2&apos;, 1, 2, 3];
+var res = arr.where(function(item){
+    return typeof item === &apos;number&apos;;
+});
+console.log(res);
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/11/14/SQL SERVER/[20141114]这些年你需要注意的SQL/">
+        这些年你需要注意的SQL
+      </a>
+    </h2>
+    
+    <time>
+      Nov 14, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="1、使用对象时，请显式的指定对象的架构者（默认为dbo）"><a href="#1、使用对象时，请显式的指定对象的架构者（默认为dbo）" class="headerlink" title="#1、使用对象时，请显式的指定对象的架构者（默认为dbo）"></a>#1、使用对象时，请显式的指定对象的架构者（默认为dbo）</h2><p><strong>分析：</strong> 在SQL SERVER中，如果用户User1访问表table1，那么查询分析器必须决定是检索 User1.table1 还是 dbo.table1 。所以每次User1访问同一张表table1时，查询分析器都必须对查询计划<br>重编译，影响执行速度。</p>
+<h2 id="2、尽量避免使用SELECT-，建议使用-SELECT"><a href="#2、尽量避免使用SELECT-，建议使用-SELECT" class="headerlink" title="#2、尽量避免使用SELECT *，建议使用 SELECT "></a>#2、尽量避免使用SELECT *，建议使用 SELECT <field list=""></field></h2><p><strong>分析：</strong> 采用SELECT * 语法会导致DB对列进行一个遍历，同时可能会查询多余字段数据(本着用啥查啥的原则，建议使用SELECT &lt;Field List&gt;)，导致查询性能下降。 </p>
+<h2 id="3、如果一个T-SQL语句涉及到多个表，则引用的每个列必须制定该列所属的对象"><a href="#3、如果一个T-SQL语句涉及到多个表，则引用的每个列必须制定该列所属的对象" class="headerlink" title="#3、如果一个T-SQL语句涉及到多个表，则引用的每个列必须制定该列所属的对象"></a>#3、如果一个T-SQL语句涉及到多个表，则引用的每个列必须制定该列所属的对象</h2><p><strong>分析：</strong> 避免造成数据查询异常</p>
+<h2 id="4、Insert语句中必须指定插入列的列表"><a href="#4、Insert语句中必须指定插入列的列表" class="headerlink" title="#4、Insert语句中必须指定插入列的列表"></a>#4、Insert语句中必须指定插入列的列表</h2><p><strong>分析：</strong> 避免表列变化导致插入语句失败</p>
+<h2 id="5、在非事物和特别要求完整性的上下文中，使用NOLOCK查询"><a href="#5、在非事物和特别要求完整性的上下文中，使用NOLOCK查询" class="headerlink" title="#5、在非事物和特别要求完整性的上下文中，使用NOLOCK查询"></a>#5、在非事物和特别要求完整性的上下文中，使用NOLOCK查询</h2><p><strong>分析：</strong> 考虑到并发性，提高查询效率</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TOP <span class="number">100</span> COL1,COL2 <span class="keyword">FROM</span> TABLE1 t1 <span class="keyword">WITH</span> (NOLOCK)</div></pre></td></tr></table></figure>
+<h2 id="6、通过SELECT语句对变量赋值时，如果未使用聚合函数，请加上TOP-1"><a href="#6、通过SELECT语句对变量赋值时，如果未使用聚合函数，请加上TOP-1" class="headerlink" title="#6、通过SELECT语句对变量赋值时，如果未使用聚合函数，请加上TOP 1"></a>#6、通过SELECT语句对变量赋值时，如果未使用聚合函数，请加上TOP 1</h2><p><strong>分析：</strong> 防止结果非预期</p>
+<p><strong>示例：</strong> (预期结果为2，因为第二次Name2是后添加的。)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> test6</div><div class="line">( </div><div class="line">      <span class="keyword">Id</span> <span class="built_in">int</span> </div><div class="line">    ,<span class="keyword">Name</span> <span class="keyword">nvarchar</span>(<span class="number">32</span>) </div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test6	(<span class="keyword">Id</span>, <span class="keyword">Name</span>)</div><div class="line"><span class="keyword">SELECT</span>     <span class="number">1</span>, N<span class="string">'Name1'</span></div><div class="line"><span class="keyword">UNION</span> all</div><div class="line"><span class="keyword">SELECT</span>	   <span class="number">2</span>, N<span class="string">'Name2'</span> </div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test6	(<span class="keyword">Id</span>, <span class="keyword">Name</span>)</div><div class="line"><span class="keyword">SELECT</span>	   <span class="number">3</span>, N<span class="string">'Name2'</span></div><div class="line"></div><div class="line"><span class="comment">--错误的写法</span></div><div class="line"><span class="keyword">DECLARE</span> @<span class="keyword">Id</span> <span class="built_in">int</span></div><div class="line"><span class="keyword">SELECT</span> </div><div class="line">    @<span class="keyword">Id</span>=<span class="keyword">Id</span> </div><div class="line"><span class="keyword">FROM</span> test6 </div><div class="line"><span class="keyword">WHERE</span> </div><div class="line">    <span class="keyword">Name</span> = <span class="string">'Name2'</span></div><div class="line"></div><div class="line"><span class="comment">--正确的写法</span></div><div class="line"><span class="keyword">DECLARE</span> @<span class="keyword">Id</span> <span class="built_in">int</span></div><div class="line"><span class="keyword">SELECT</span> TOP <span class="number">1</span></div><div class="line">    @<span class="keyword">Id</span>=<span class="keyword">Id</span> </div><div class="line"><span class="keyword">FROM</span> test6 </div><div class="line"><span class="keyword">WHERE</span> </div><div class="line">    <span class="keyword">Name</span> = <span class="string">'Name2'</span></div><div class="line"><span class="string">``</span><span class="string">` </span></div><div class="line"></div><div class="line">## #7、对于排序后取字段TOP 1的值，建议使用聚合</div><div class="line">**分析:** 可以用上索引，而且不需要Table Scan</div><div class="line"></div><div class="line">**示例：**</div><div class="line"></div><div class="line">`<span class="string">``</span><span class="keyword">sql</span></div><div class="line"><span class="comment">--错误的写法</span></div><div class="line"><span class="keyword">SELECT</span> TOP <span class="number">1</span> col1 <span class="keyword">FROM</span> table1 <span class="keyword">ORDER</span> <span class="keyword">BY</span> col1 <span class="keyword">DESC</span></div><div class="line"></div><div class="line"><span class="comment">--正确的写法</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>(col1) <span class="keyword">FROM</span> table1</div></pre></td></tr></table></figure>
+<h2 id="8、有关char和varchar，char和nchar-varchar和nvarchar的区别"><a href="#8、有关char和varchar，char和nchar-varchar和nvarchar的区别" class="headerlink" title="#8、有关char和varchar，char和nchar,varchar和nvarchar的区别"></a>#8、有关char和varchar，char和nchar,varchar和nvarchar的区别</h2><p><strong>分析：</strong></p>
+<ol>
+<li>char是固定长度，如果数据不够，会在存储时自动补空格</li>
+<li>varchar是可变长度，会有三个字节来存储字段信息，可以设置最大长度</li>
+<li>nchar和varchar这种以N开头的表示存储unicode编码字符</li>
+<li>在特定字符集下，如果定义数据格式为char或者是varchar，那么存储特殊字符（包括中文）会乱码</li>
+<li>关于数据库函数LEN()，是用于返回指定字符串表达式的字符数，<span style="color:red;"><b>其中不包含尾随空格。</b></span></li>
+<li>关于DATALENGTH函数，<span style="color:red;"><b>返回用于表示任何表达式的字节数。</b></span></li>
+</ol>
+<p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DECLARE</span> @s1 <span class="built_in">CHAR</span>(<span class="number">5</span>)</div><div class="line">        ,@s2 <span class="built_in">VARCHAR</span>(<span class="number">5</span>)</div><div class="line">        ,@s3 <span class="keyword">NCHAR</span>(<span class="number">5</span>)</div><div class="line">        ,@s4 <span class="keyword">NVARCHAR</span>(<span class="number">5</span>)</div><div class="line"></div><div class="line"><span class="comment">--看看这个结果是什么？</span></div><div class="line"><span class="keyword">SET</span> @s1 = <span class="string">'test'</span></div><div class="line"><span class="keyword">SET</span> @s2 = <span class="string">'test'</span></div><div class="line"><span class="keyword">SET</span> @s3 = <span class="string">'test'</span></div><div class="line"><span class="keyword">SET</span> @s4 = <span class="string">'test'</span></div><div class="line"><span class="keyword">SELECT</span> </div><div class="line">    <span class="keyword">LEN</span>(@s1)</div><div class="line">    ,<span class="keyword">LEN</span>(@s2)</div><div class="line">    ,<span class="keyword">LEN</span>(@s3)</div><div class="line">    ,<span class="keyword">Len</span>(@s4)</div><div class="line"><span class="keyword">SELECT</span> </div><div class="line">    <span class="keyword">DATALENGTH</span>(@s1)</div><div class="line">    ,<span class="keyword">DATALENGTH</span>(@s2)</div><div class="line">    ,<span class="keyword">DATALENGTH</span>(@s3)</div><div class="line">    ,<span class="keyword">DATALENGTH</span>(@s4)</div><div class="line"></div><div class="line"><span class="comment">--如果这样呢？</span></div><div class="line"><span class="keyword">SET</span> @s1 = <span class="string">'我是中文'</span></div><div class="line"><span class="keyword">SET</span> @s2 = <span class="string">'我是中文'</span></div><div class="line"><span class="keyword">SET</span> @s3 = <span class="string">'我是中文'</span></div><div class="line"><span class="keyword">SET</span> @s4 = <span class="string">'我是中文'</span></div><div class="line"><span class="keyword">SELECT</span> </div><div class="line">    <span class="keyword">LEN</span>(@s1) </div><div class="line">    ,<span class="keyword">LEN</span>(@s2) </div><div class="line">    ,<span class="keyword">LEN</span>(@s3) </div><div class="line">    ,<span class="keyword">Len</span>(@s4)</div><div class="line"><span class="keyword">SELECT</span> </div><div class="line">    <span class="keyword">DATALENGTH</span>(@s1)</div><div class="line">    ,<span class="keyword">DATALENGTH</span>(@s2)</div><div class="line">    ,<span class="keyword">DATALENGTH</span>(@s3)</div><div class="line">    ,<span class="keyword">DATALENGTH</span>(@s4)</div><div class="line"></div><div class="line"><span class="comment">--一般情况下，SELECT @s1,@s2,@s3,@s4不会显示乱码，是由于安装SQL SERVER的时候后默认字符集是支持unicode字符的。如果遇到不支持的字符集，就需要显示定义字段类型为带N的类型，同时在赋值的时候使用N'中文'这种形式。</span></div></pre></td></tr></table></figure>
+<h2 id="9、禁止在使用了事物的情况下，不编写防止造成未提交或者未回滚事务的情况的处理代码"><a href="#9、禁止在使用了事物的情况下，不编写防止造成未提交或者未回滚事务的情况的处理代码" class="headerlink" title="#9、禁止在使用了事物的情况下，不编写防止造成未提交或者未回滚事务的情况的处理代码"></a>#9、禁止在使用了事物的情况下，不编写防止造成未提交或者未回滚事务的情况的处理代码</h2><p><strong>分析：</strong> 数据库阻塞，你懂的…罪过大大的！</p>
+<h2 id="10、警惕表变量的使用"><a href="#10、警惕表变量的使用" class="headerlink" title="#10、警惕表变量的使用"></a>#10、警惕表变量的使用</h2><p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">--思考下结果是什么？</span></div><div class="line">IF NOT exists (<span class="keyword">SELECT</span> <span class="number">1</span>)</div><div class="line"><span class="keyword">BEGIN</span></div><div class="line">    PRINT <span class="string">'enter'</span></div><div class="line">  <span class="keyword">DECLARE</span> @<span class="keyword">table</span> <span class="keyword">TABLE</span> </div><div class="line">  ( </div><div class="line">        <span class="keyword">name</span> <span class="keyword">nvarchar</span>(<span class="number">32</span>) </div><div class="line">  )</div><div class="line"><span class="keyword">END</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> @<span class="keyword">table</span></div></pre></td></tr></table></figure>
+<p><strong>分析：</strong></p>
+<ol>
+<li>在表变量的使用中，会出现如JavaScript一样的定义前置，相当于不管你在哪个条件（也不关心是否能走到这个分支）中定义表变量，那么这个表变量在整个作用域中都是有效的。</li>
+<li>临时表表现正常</li>
+<li>表变量和一般的变量有点不一样的地方，表变量也会在tempdb中创建表。示例如下：</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> #TempTable (TT_Col1 <span class="built_in">INT</span>)</div><div class="line"><span class="keyword">DECLARE</span> @TableVariable <span class="keyword">TABLE</span> (TV_Col1 <span class="built_in">INT</span>)</div><div class="line"></div><div class="line"><span class="keyword">SELECT</span> TOP <span class="number">2</span> * </div><div class="line"><span class="keyword">FROM</span> tempdb.sys.tables</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> create_date <span class="keyword">DESC</span></div></pre></td></tr></table></figure>
+<h2 id="11、判断是否存在（或者不存在）符合条件的记录使用-EXISTS-关键字。"><a href="#11、判断是否存在（或者不存在）符合条件的记录使用-EXISTS-关键字。" class="headerlink" title="#11、判断是否存在（或者不存在）符合条件的记录使用 EXISTS 关键字。"></a>#11、判断是否存在（或者不存在）符合条件的记录使用 EXISTS 关键字。</h2><p><strong>分析：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">IF (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> <span class="keyword">Table</span> <span class="keyword">WITH</span> (NOLOCK))&gt;<span class="number">0</span></div><div class="line"><span class="keyword">BEGIN</span></div><div class="line">  <span class="comment">--Do something</span></div><div class="line"><span class="keyword">END</span></div><div class="line"><span class="comment">--应该用：</span></div><div class="line"><span class="keyword">IF</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> TOP <span class="number">1</span> <span class="number">1</span> <span class="keyword">FROM</span> <span class="keyword">Table</span> <span class="keyword">WITH</span> (NOLOCK)</div><div class="line"><span class="keyword">BEGIN</span></div><div class="line">  <span class="comment">--Do something</span></div><div class="line"><span class="keyword">END</span></div></pre></td></tr></table></figure>
+<h2 id="12、字符串比较时，SQL-SERVER会忽略末尾的空格。"><a href="#12、字符串比较时，SQL-SERVER会忽略末尾的空格。" class="headerlink" title="#12、字符串比较时，SQL SERVER会忽略末尾的空格。"></a>#12、字符串比较时，SQL SERVER会忽略末尾的空格。</h2><p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="number">1</span> </div><div class="line"><span class="keyword">WHERE</span> <span class="string">'t'</span> =<span class="string">'t        '</span></div></pre></td></tr></table></figure>
+<h2 id="13、注意NULL的特殊性"><a href="#13、注意NULL的特殊性" class="headerlink" title="#13、注意NULL的特殊性"></a>#13、注意NULL的特殊性</h2><p><strong>分析：</strong></p>
+<p>1.NULL既不能被=匹配，也不能被&lt;&gt;(!=)匹配，只能用IS NULL 或者是 ISNULL()</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> #tb(col1 <span class="built_in">int</span>)</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> #tb(col1)</div><div class="line"><span class="keyword">SELECT</span> <span class="literal">NULL</span> </div><div class="line"><span class="keyword">UNION</span> </div><div class="line"><span class="keyword">SELECT</span> <span class="number">1</span>    </div><div class="line"><span class="keyword">UNION</span></div><div class="line"><span class="keyword">SELECT</span> <span class="number">2</span></div><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> #tb </div><div class="line"><span class="keyword">WHERE</span> col1 &lt;&gt; <span class="number">1</span> <span class="keyword">OR</span> col1 = <span class="number">1</span> <span class="comment">--2</span></div><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> #tb <span class="comment">--3</span></div></pre></td></tr></table></figure>
+<h2 id="14、COUNT-0-COUNT-COUNT-column-的区别"><a href="#14、COUNT-0-COUNT-COUNT-column-的区别" class="headerlink" title="14、COUNT(0),COUNT(*),COUNT(column)的区别"></a>14、COUNT(0),COUNT(*),COUNT(column)的区别</h2><p><strong>分析：</strong></p>
+<ol>
+<li>COUNT(0),COUNT(*)计数时会包含NULL值</li>
+<li>COUNT(column)计数时，如果需要该列为NULL，则会忽略计数</li>
+</ol>
+<p><strong>示例:</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> #tb(col1 <span class="built_in">int</span>)</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> #tb(col1)</div><div class="line"><span class="keyword">SELECT</span> <span class="literal">NULL</span> </div><div class="line"><span class="keyword">UNION</span> </div><div class="line"><span class="keyword">SELECT</span> <span class="number">1</span>    </div><div class="line"><span class="keyword">UNION</span></div><div class="line"><span class="keyword">SELECT</span> <span class="number">2</span></div><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> #tb <span class="comment">--3</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="number">0</span>) <span class="keyword">FROM</span> #tb <span class="comment">--3</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(col1) <span class="keyword">FROM</span> #tb <span class="comment">--2</span></div></pre></td></tr></table></figure></p>
+<h2 id="15、通过合理的方法避免在-SELECT-语句中使用-DISTINCT"><a href="#15、通过合理的方法避免在-SELECT-语句中使用-DISTINCT" class="headerlink" title="#15、通过合理的方法避免在 SELECT 语句中使用 DISTINCT"></a>#15、通过合理的方法避免在 SELECT 语句中使用 DISTINCT</h2><p><strong>分析：</strong></p>
+<ol>
+<li>DISTINCT 是数据查询中一个非常慢的操作，所以尽可能的避免</li>
+</ol>
+<p><strong>示例：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span></div><div class="line">    A.au_fname</div><div class="line">    ,A.au_lname</div><div class="line"><span class="keyword">FROM</span> dbo.authors <span class="keyword">AS</span> A <span class="keyword">WITH</span> (NOLOCK) </div><div class="line">  <span class="keyword">INNER</span> <span class="keyword">JOIN</span> dbo.titleAuthor <span class="keyword">AS</span> T <span class="keyword">WITH</span> (NOLOCK)  <span class="comment">--一对多的关系</span></div><div class="line"><span class="keyword">ON</span> T.au_id = A.au_id</div><div class="line"></div><div class="line"><span class="comment">--避免DISTINCT的写法</span></div><div class="line"><span class="keyword">SELECT</span> au_fname</div><div class="line">    ,au_lname</div><div class="line"><span class="keyword">FROM</span> dbo.authors <span class="keyword">AS</span> A <span class="keyword">WITH</span> (NOLOCK) </div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (</div><div class="line">        <span class="keyword">SELECT</span> TOP <span class="number">1</span> <span class="number">1</span></div><div class="line">        <span class="keyword">FROM</span> dbo.titleAuthor <span class="keyword">AS</span> T <span class="keyword">WITH</span> (NOLOCK)</div><div class="line">        <span class="keyword">WHERE</span> T.au_id = A.au_id</div></pre></td></tr></table></figure></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
+
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

@@ -1,22 +1,798 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="幻☆精灵的Blog站点"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Archives: 2017/2 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><script>window.location.href = "http://hstarorg.github.io/blog/blog//pigeonhole";
-</script></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Archives: 2017/2 | 幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="幻☆精灵的Blog站点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="幻☆精灵的Blog">
+<meta property="og:url" content="http://hstarorg.github.io/blog/archives/2017/02/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="幻☆精灵的Blog站点">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="幻☆精灵的Blog">
+<meta name="twitter:description" content="幻☆精灵的Blog站点">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
 
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
-
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
     }
-});</script></body></html>
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        
+	
+	<section class="page-header archive banner waves-image">
+    <h1>Year : <span>2017.2</span></h1>
+  </section>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/VsCode简易配置手册/">
+        VsCode简易配置手册
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、什么是VsCode（Visual-Studio-Code-vsc）"><a href="#0、什么是VsCode（Visual-Studio-Code-vsc）" class="headerlink" title="0、什么是VsCode（Visual Studio Code - vsc）"></a>0、什么是VsCode（Visual Studio Code - vsc）</h2><p>VsCode是MS基于Atom Shell开发的新一代 <strong><em>跨平台</em></strong> 编辑器。vsc将简洁和”编码-编辑-调试”循环的流水线特点结合在代码编辑器中。</p>
+<p>截止该文创建时，最新版本是0.10.11。官网地址： <a href="https://code.visualstudio.com" target="_blank" rel="external">https://code.visualstudio.com</a></p>
+<h2 id="1、VsCode的优势"><a href="#1、VsCode的优势" class="headerlink" title="1、VsCode的优势"></a>1、VsCode的优势</h2><p>对比业界各类强大的编辑器，VsCode有哪些优势呢？</p>
+<ol>
+<li>跨平台 - VsCode兼容Windows,Linux,OSX三大平台</li>
+<li>高性能 - VsCode对比Atom，有更高的性能，更快的大文件加载速度</li>
+<li>集成Git - Git作为最流行的版本控制工具，VsCode默认集成</li>
+<li>代码调试 - 强大的调试工具</li>
+<li>智能提示（代码不全） - 强大的代码不全，语义理解</li>
+<li>插件机制 - 可以很方便的扩展需要的功能</li>
+</ol>
+<h2 id="2、配置编辑器"><a href="#2、配置编辑器" class="headerlink" title="2、配置编辑器"></a>2、配置编辑器</h2><h3 id="2-1、用户设置"><a href="#2-1、用户设置" class="headerlink" title="2.1、用户设置"></a>2.1、用户设置</h3><p>通过选择菜单栏上的Files &gt; Preferences &gt; User Settings，或者是按F1，然后输入user，进行user settings.json的配置。</p>
+<p>在配置时，默认是分栏的界面，左侧是标准的系统配置项，右侧是用户自定义配置项。配置右边的项就可以参考左边的标准配置。</p>
+<p>由于默认配置已经非常实用了，所以需要我们自定义配置的项并不多：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    "editor.tabSize": 2, //tab键所占用的字符数</div><div class="line">    "files.exclude": &#123; //需要排除的文件（夹），不在EXPLORER面板中显示</div><div class="line">      ".idea/": false,</div><div class="line">      ".vscode/": false,</div><div class="line">      "typings/": false</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-2、工作空间配置"><a href="#2-2、工作空间配置" class="headerlink" title="2.2、工作空间配置"></a>2.2、工作空间配置</h3><p>与用户设置一样，我们可以针对工作空间进行配置，此处的配置文件，保存在目录下vscode/settings.json中。</p>
+<h3 id="2-3-常用快捷键说明"><a href="#2-3-常用快捷键说明" class="headerlink" title="2.3 常用快捷键说明"></a>2.3 常用快捷键说明</h3><ol>
+<li>Ctrl+Shift+\  在块标记之间跳转</li>
+<li>Ctrl+Down or Ctrl+Up  上下移动一行</li>
+<li>Ctrl+Alt+Down or Ctrl+Alt+Up  上下纵向选择</li>
+<li>Alt+Click  添加辅助光标，然后就可以多个光标编辑了</li>
+<li>Ctrl+D 当有选中字符时，跳转到下一个该字符处</li>
+<li>Ctrl+F2 or Ctrl+Shift+L  选中所有出现的选中字符</li>
+<li>Ctrl+T 搜索语法</li>
+<li>F1打开输入框，删除&gt;,输入?,可以看到相关命令</li>
+</ol>
+<p>更多快捷键，请参考：<a href="https://code.visualstudio.com/docs/customization/keybindings" target="_blank" rel="external">https://code.visualstudio.com/docs/customization/keybindings</a></p>
+<h2 id="3、Debugging相关配置"><a href="#3、Debugging相关配置" class="headerlink" title="3、Debugging相关配置"></a>3、Debugging相关配置</h2><p>当前支持的Debugging语言有node，Chrome，Go，大概配置如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    "version": "0.2.0",</div><div class="line">    "configurations": [</div><div class="line">        &#123;</div><div class="line">            "name": "Launch", //名称</div><div class="line">            "type": "node",  //类型</div><div class="line">            "request": "launch",</div><div class="line">            "program": "app.js", //要启动的程序</div><div class="line">            "stopOnEntry": false,</div><div class="line">            "args": [], //启动参数</div><div class="line">            "cwd": ".", //从那个相对路径启动</div><div class="line">            "runtimeExecutable": null,</div><div class="line">            "runtimeArgs": [</div><div class="line">                "--nolazy"</div><div class="line">            ],</div><div class="line">            "env": &#123;</div><div class="line">                "NODE_ENV": "development" //环境变量</div><div class="line">            &#125;,</div><div class="line">            "externalConsole": false,</div><div class="line">            "preLaunchTask": "",</div><div class="line">            "sourceMaps": false,</div><div class="line">            "outDir": null</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            "name": "Attach",</div><div class="line">            "type": "node",</div><div class="line">            "request": "attach",</div><div class="line">            "port": 5858</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4、Tasks相关配置"><a href="#4、Tasks相关配置" class="headerlink" title="4、Tasks相关配置"></a>4、Tasks相关配置</h2><p>在VsCode中，我们还可以自定义task。首先在.vscode目录下创建tasks.json，进行task的配置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	"version": "0.1.0",</div><div class="line">	"command": "gulp",</div><div class="line">	"isShellCommand": true,</div><div class="line">	"tasks": [</div><div class="line">		&#123;</div><div class="line">			"taskName": "less", //配置任务名称</div><div class="line">			// Make this the default build command.</div><div class="line">			"isBuildCommand": true,</div><div class="line">			// Show the output window only if unrecognized errors occur.</div><div class="line">			"showOutput": "silent",</div><div class="line">			// Use the standard less compilation problem matcher.</div><div class="line">			"problemMatcher": "$lessCompile"</div><div class="line">		&#125;</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5、语言环境相关配置"><a href="#5、语言环境相关配置" class="headerlink" title="5、语言环境相关配置"></a>5、语言环境相关配置</h2><p>在使用VsCode的过程中，非常吸引人的一个特性就是智能提示。在0.10.8和之前的版本，node代码是直接可以通过typings来智能提示的。但是在0.10.10版本之后，就需要通过配置文件来启用功能了。</p>
+<h3 id="5-1-JavaScript"><a href="#5-1-JavaScript" class="headerlink" title="5.1 JavaScript"></a>5.1 JavaScript</h3><p>在使用JavaScript的时候，配置文件是jsconfig.json(tsconfig.json的子集)，如果目录中存放该问题，表示该目录是项目的根路径。jsconfig配置文件本身列出属于该项目以及编译器的选项。大致内容如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "compilerOptions": &#123;</div><div class="line">    "target": "ES6", //可选es3,es5,es6,es2015</div><div class="line">    "module": "commonjs" //可选amd,umd,commonjs,system</div><div class="line">  &#125;,</div><div class="line">  "files": [ </div><div class="line">    "app.js",</div><div class="line">    "model.js"</div><div class="line">  ],</div><div class="line">  "exclude": [ //排除的目录，不在搜索</div><div class="line">    "node_modules"</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Tips: 如果应用程序有的代码在app/ or src/下，那么jsconfig应该在这些目录下创建</strong></p>
+<p><strong>Tips: 如果你的工作空间中，包含多个不同的应用程序（比如client和server），那么请在每个文件夹下增加独立的jsconfig.json文件</strong></p>
+<p><strong>Tips： 如果没有jsconfig.json，默认是排除node_modules目录</strong></p>
+<h3 id="5-2、Dockerfile"><a href="#5-2、Dockerfile" class="headerlink" title="5.2、Dockerfile"></a>5.2、Dockerfile</h3><p>Dockerfile编写支持，极大的丰富了VsCode的多样性。要支持Dockerfile，需要通过ext install 来安装Dockerfile and Docker Compose File Support扩展。</p>
+<p>创建好一个Dockerfile文件后，使用空格就可以使用智能提示了。</p>
+<h3 id="5-3、关于智能提示所需要的typing文件"><a href="#5-3、关于智能提示所需要的typing文件" class="headerlink" title="5.3、关于智能提示所需要的typing文件"></a>5.3、关于智能提示所需要的typing文件</h3><p>要安装typing文件，那么首先需要我们全局安装<code>npm install typings -g</code>，typings相关地址<a href="https://github.com/typings/typings" target="_blank" rel="external">https://github.com/typings/typings</a></p>
+<p>通过<code>typings search --name &lt;name&gt;</code> 可以全名匹配搜索插件</p>
+<p>通过<code>typings search &lt;name&gt;</code> 可以模糊搜索插件</p>
+<p>通过<code>typings install &lt;name&gt; --ambient --save</code> 可以安装type definition</p>
+<p>如何要js文件能够智能提示呢？</p>
+<p><strong>方式一：</strong>可以在js文件中首行使用引用注释的方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// &lt;reference path="typings/main.d.ts" /&gt;</span></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line">fs.access...</div></pre></td></tr></table></figure>
+<p><strong>方式二：</strong><br>把typings文件加入到jsconfig.json中的files项下，不要忘记Reload JavaScript Project</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "compilerOptions": &#123;</div><div class="line">    "target": "ES6", //可选es3,es5,es6,es2015</div><div class="line">    "module": "commonjs", //可选amd,umd,commonjs,system</div><div class="line">    "moduleResolution": "node"</div><div class="line">  &#125;,</div><div class="line">  "files": [</div><div class="line">    "typings/main.d.ts"</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>另，附上DefinitelyTyped仓库地址：<a href="https://github.com/DefinitelyTyped/DefinitelyTyped" target="_blank" rel="external">https://github.com/DefinitelyTyped/DefinitelyTyped</a></strong></p>
+<h2 id="6、MORE"><a href="#6、MORE" class="headerlink" title="6、MORE"></a>6、MORE</h2><p>更多内容，请查阅：<a href="https://code.visualstudio.com/docs/" target="_blank" rel="external">https://code.visualstudio.com/docs/</a></p>
+<p>补充说明，2016-3-18 16:08:01更新</p>
+<p>如果在VsCode中开启了EsLint，而又使用了import等语法，请使用如下.eslintrc</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    "parserOptions": &#123;</div><div class="line">        "ecmaVersion": 6,</div><div class="line">        "sourceType": "module", //支持import</div><div class="line">        "ecmaFeatures": &#123;</div><div class="line">            "globalReturn": true,</div><div class="line">            "impliedStrict": true,</div><div class="line">            "jsx": true,</div><div class="line">            "experimentalObjectRestSpread": true,</div><div class="line">            "modules": true</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    "rules": &#123;</div><div class="line">        "semi": 2</div><div class="line">    &#125;,</div><div class="line">    "env": &#123;</div><div class="line">      "browser": false,</div><div class="line">      "node": true</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/认识AMD、CMD、UMD、CommonJS/">
+        认识AMD、CMD、UMD、CommonJS
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>JavaScript的生态系统一直在稳步增长，当各种组件混合使用时，就可能会发现不是所有的组件都能“和平共处”，为了解决这些问题，各种模块规范就出来了。</p>
+<h2 id="1、AMD（Asynchromous-Module-Definition-异步模块定义）"><a href="#1、AMD（Asynchromous-Module-Definition-异步模块定义）" class="headerlink" title="1、AMD（Asynchromous Module Definition - 异步模块定义）"></a>1、AMD（Asynchromous Module Definition - 异步模块定义）</h2><p>AMD是RequireJS在推广过程中对模块定义的规范化产出，AMD是异步加载模块，推崇依赖前置。</p>
+<pre><code>define(&apos;module1&apos;, [&apos;jquery&apos;], ($) =&gt; {
+  //do something...
+});
+</code></pre><p>代码中依赖被前置，当定义模块（module1）时，就会加载依赖（jquery）</p>
+<h2 id="2、CMD（Common-Module-Definition-公共模块定义）"><a href="#2、CMD（Common-Module-Definition-公共模块定义）" class="headerlink" title="2、CMD（Common Module Definition - 公共模块定义）"></a>2、CMD（Common Module Definition - 公共模块定义）</h2><p>CMD是SeaJS在推广过程中对模块定义的规范化产出，对于模块的依赖，CMD是延迟执行，推崇依赖就近。</p>
+<pre><code>define((require, exports, module) =&gt; {
+  module.exports = {
+    fun1: () =&gt; {
+       var $ = require(&apos;jquery&apos;);
+       return $(&apos;#test&apos;);
+    } 
+  };
+});
+</code></pre><p>如上代码，只有当真正执行到fun1方法时，才回去执行jquery。</p>
+<p>同时CMD也是延自CommonJS Modules/2.0规范</p>
+<h2 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h2><p>提到CMD，就不得不提起CommonJS，CommonJS是服务端模块的规范，由于Node.js被广泛认知。</p>
+<p>根据CommonJS规范，一个单独的文件就是一个模块。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的module.exports对象。</p>
+<pre><code>//file1.js
+moudle.exports = {
+  a: 1
+};
+
+//file2.js
+var f1 = require(&apos;./file1&apos;);
+var v = f1.a + 2;
+module.exports ={
+  v: v
+};
+</code></pre><p>CommonJS 加载模块是同步的，所以只有加载完成才能执行后面的操作。像Node.js主要用于服务器的编程，加载的模块文件一般都已经存在本地硬盘，所以加载起来比较快，不用考虑异步加载的方式，所以CommonJS规范比较适用。但如果是浏览器环境，要从服务器加载模块，这是就必须采用异步模式。所以就有了 AMD  CMD 解决方案。</p>
+<h2 id="UMD（Universal-Module-Definition-通用模块定义）"><a href="#UMD（Universal-Module-Definition-通用模块定义）" class="headerlink" title="UMD（Universal Module Definition - 通用模块定义）"></a>UMD（Universal Module Definition - 通用模块定义）</h2><p>UMD又是个什么玩意呢？UMD是AMD和CommonJS的一个糅合。AMD是浏览器优先，异步加载；CommonJS是服务器优先，同步加载。</p>
+<p>既然要通用，怎么办呢？那就先判断是否支持node.js的模块，存在就使用node.js；再判断是否支持AMD（define是否存在），存在则使用AMD的方式加载。这就是所谓的UMD。</p>
+<pre><code>((root, factory) =&gt; {
+  if (typeof define === &apos;function&apos; &amp;&amp; define.amd) {
+    //AMD
+    define([&apos;jquery&apos;], factory);
+  } else if (typeof exports === &apos;object&apos;) {
+    //CommonJS
+    var $ = requie(&apos;jquery&apos;);
+    module.exports = factory($);
+  } else {
+    //都不是，浏览器全局定义
+    root.testModule = factory(root.jQuery);
+  }
+})(this, ($) =&gt; {
+  //do something...  这里是真正的函数体
+});
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/那些容易出错的Dom操作/">
+        那些容易出错的Dom操作
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>在用惯了 <code>jQuery</code> 这种利器之后，回到原生JS的Dom操作，一时间反而感觉有点陌生。</p>
+<p>最近在做的项目中，为了尽可能少的引用三方库，所有DOM操作都是用的原生JS来实现的。在这里也分享下在DOM操作中，容易混淆的一些知识点。</p>
+<p>原生JS可能会有兼容性问题，以下方法如非特别说明，均在 <code>Chrome latest(53), Firefox latest(47), Edge25, IE11</code> 中测试通过</p>
+<h2 id="1、获取视口高度"><a href="#1、获取视口高度" class="headerlink" title="1、获取视口高度"></a>1、获取视口高度</h2><p>所谓视口高度，就是在浏览器中，我们可见区域的高度，它不会随着内容的变化而变化，只会跟着浏览器本身的大小变化而变化（工具栏高度也会影响浏览区域的大小）。</p>
+<p>先来一段完整的测试代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'window.innerWidth:'</span>, <span class="built_in">window</span>.innerWidth, <span class="string">', window.innerHeight:'</span>, <span class="built_in">window</span>.innerHeight);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'document.documentElement.clientWidth:'</span>, <span class="built_in">document</span>.documentElement.clientWidth, <span class="string">', document.documentElement.clientHeight:'</span>, <span class="built_in">document</span>.documentElement.clientHeight);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'document.body.clientWidth:'</span>, <span class="built_in">document</span>.body.clientWidth, <span class="string">', document.body.clientHeight:'</span>, <span class="built_in">document</span>.body.clientHeight);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>打开不同的页面（是否有滚动条，页面内容大于视口高度），分析得知：</p>
+<p><code>window.innerWidth</code> 和 <code>window.innerHeight</code> 是获取浏览器视口的宽高，包含滚动条。</p>
+<p><code>document.documentElement.clientWidth</code> 和 <code>document.documentElement.clientHeight</code> 是获取浏览器视口的宽高，但不包含滚动条。</p>
+<p><code>document.body.clientWidth</code> 和 <code>document.body.clientHeight</code> 是获取页面的宽高，不包含滚动条</p>
+<p><strong>通过也根据结果得出：IE、FF、Chrome的滚动条宽度/高度为 <code>17px</code>， Edge25中滚动条宽度/高度为 <code>12px</code>。</strong></p>
+<p>除此之外，还可以通过 <code>window.outerWidth</code> 和 <code>window.outerHeight</code> 获取浏览器的宽高，包含工具栏，标题栏等的宽高。</p>
+<p><strong>结论：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> viewHeight = <span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.documentElement.clientHeight;</div><div class="line"><span class="keyword">let</span> viewWidth = <span class="built_in">window</span>.innerWidth || <span class="built_in">document</span>.documentElement.clientWidth;</div></pre></td></tr></table></figure>
+<h2 id="2、获取iframe内容高度"><a href="#2、获取iframe内容高度" class="headerlink" title="2、获取iframe内容高度"></a>2、获取iframe内容高度</h2><p><code>iframe</code> 本身等价于一个独立的窗口, 所以要获取iframe内容的高度和获取页面内容高度一致。</p>
+<p>在获取视口宽度时，我们知道，通过 <code>document.body.clientHeight</code> 可以获取 <code>body</code> 的高度，那么还有其他的方式可以获取么？</p>
+<p>还是先上一个测试代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> timerId;</div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">window</span>.clearTimeout(timerId);</div><div class="line">  timerId = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'document.documentElement.clientHeight:'</span>, <span class="built_in">document</span>.documentElement.clientHeight);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'document.documentElement.offsetHeight:'</span>, <span class="built_in">document</span>.documentElement.offsetHeight);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'document.documentElement.scrollHeight:'</span>, <span class="built_in">document</span>.documentElement.scrollHeight);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'document.body.clientHeight:'</span>, <span class="built_in">document</span>.body.clientHeight);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'document.body.offsetHeight:'</span>, <span class="built_in">document</span>.body.offsetHeight);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight:'</span>, <span class="built_in">document</span>.body.scrollHeight);</div><div class="line">  &#125;, <span class="number">200</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这个测试的结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Chrome</span></div><div class="line">documentElement.offsetHeight = documentElement.scrollHeight = body.scrollHeight</div><div class="line">body.offsetHeight = body.clientHeight</div><div class="line">documentElement.offsetHeight &gt; body.offsetHeight (大<span class="number">24</span>px)</div><div class="line"></div><div class="line"><span class="comment">// Firefox</span></div><div class="line">documentElement.offsetHeight = documentElement.scrollHeight</div><div class="line">body.scrollHeight = body.offsetHeight = body.clientHeight</div><div class="line">documentElement.offsetHeight &gt; body.offsetHeight (大<span class="number">24</span>px)</div><div class="line"></div><div class="line"><span class="comment">// Edge25</span></div><div class="line">documentElement.offsetHeight = body.scrollHeight &gt; documentElement.scrollHeight (大<span class="number">1</span>px)</div><div class="line">body.clientHeight = body.offsetHeight</div><div class="line">documentElement.offsetHeight &gt; body.clientHeight (大<span class="number">24</span>px)</div><div class="line"></div><div class="line"><span class="comment">// IE11</span></div><div class="line">documentElement.offsetHeight = documentElement.scrollHeight</div><div class="line">body.scrollHeight = body.offsetHeight = body.clientHeight</div><div class="line">documentElement.offsetHeight &gt; body.offsetHeight (大<span class="number">24</span>px)</div></pre></td></tr></table></figure>
+<p>根据以上结果，暂时还无法得出结论，所以我们接着测试：</p>
+<p><strong>测试一：设置body的margin:0</strong></p>
+<p>以上四个都有大24px，先来分析下这个是怎么来的。</p>
+<p>初步分析是由于 <code>body</code> 默认的 <code>margin: 8px</code> 导致的，当设置body的 <code>margin: 0</code> 之后，这个差距变成了 <code>16px</code>。</p>
+<p><strong>Edge25比较特殊，相关数据变成了：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">documentElement.offsetHeight = documentElement.scrollHeight &lt; body.scrollHeight （小<span class="number">1</span>px）</div><div class="line">body.clientHeight = body.offsetHeight</div><div class="line">documentElement.offsetHeight &gt; body.clientHeight (大<span class="number">16</span>px)</div></pre></td></tr></table></figure>
+<p><strong>测试二：给body设置固定高度</strong></p>
+<p>此时，我们给body设定一个固定高度，得出以下结果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">documentElement.offsetHeight = body.clientHeight = body.offsetHeight = 我们设定的高度</div></pre></td></tr></table></figure>
+<p><strong>测试三：增加超高的 absolute 元素</strong></p>
+<p>当absolute元素高度不超过整个页面高度时，无影响。</p>
+<p>当absolute元素高度超过整个页面高度时，结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Chrome</span></div><div class="line">body.scrollHeight = 设定的absolute元素高度</div><div class="line"></div><div class="line"><span class="comment">// Firefox, IE11</span></div><div class="line">documentElement.scrollHeight = 设定的absolute元素高度</div><div class="line"></div><div class="line"><span class="comment">// Edge25</span></div><div class="line">documentElement.scrollHeight = body.scrollHeight = 设定的absolute元素高度</div></pre></td></tr></table></figure>
+<p>综合以上测试，在这里得出一个获取页面高度的代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">let</span> pageHeight = <span class="built_in">Math</span>.max(documentElement.scrollHeight, body.scrollHeight);</div></pre></td></tr></table></figure>
+<p><strong>注意，以上方案并不具有通用性，还需根据自己的场景来灵活选择。</strong></p>
+<h2 id="3、URL编码"><a href="#3、URL编码" class="headerlink" title="3、URL编码"></a>3、URL编码</h2><p>我们在浏览器中进行URL编码一般有两个方法，<code>encodeURI</code> 和 <code>encodeURIComponent</code>，那它们之间有啥区别呢？</p>
+<p>不多说，先来段代码就知道了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> str = <span class="string">'_- key fda'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">encodeURI</span>(str)); <span class="comment">//_-%20key%20fda</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">encodeURIComponent</span>(str)); <span class="comment">//_-%20key%20fda</span></div><div class="line"></div><div class="line">str = <span class="string">'https://www.google.com/search?q=Path+must+be+a+string.+Received+null&amp;oq=Path'</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">encodeURI</span>(str)); <span class="comment">//https://www.google.com/search?q=Path+must+be+a+string.+Received+null&amp;oq=Path</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">encodeURIComponent</span>(str)); <span class="comment">//https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3DPath%2Bmust%2Bbe%2Ba%2Bstring.%2BReceived%2Bnull%26oq%3DPath</span></div></pre></td></tr></table></figure>
+<p>由此可以看出，当str是简单的非url字符串时，两者并没有差异。但当我们要对一个完整的URL进行编码的时候，就需要使用 <code>encodeURIComponent</code> 。</p>
+<h2 id="4、新Tab打开链接实现"><a href="#4、新Tab打开链接实现" class="headerlink" title="4、新Tab打开链接实现"></a>4、新Tab打开链接实现</h2><p>一般做法是模拟一个 <code>a</code> 标签，然后打开，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</div><div class="line">a.setAttribute(<span class="string">'href'</span>, url);</div><div class="line">a.setAttribute(<span class="string">'target'</span>, <span class="string">'_blank'</span>);</div><div class="line"><span class="comment">// 以下两行为兼容IE9而实现，IE9要求必须在body中的a才可以跳转</span></div><div class="line">a.style.display = <span class="string">'none'</span>;</div><div class="line"><span class="built_in">document</span>.body.appendChild(a);</div><div class="line"></div><div class="line">a.click();</div><div class="line"><span class="built_in">document</span>.body.removeChild(a);</div></pre></td></tr></table></figure>
+<h2 id="5、设置iframe内容"><a href="#5、设置iframe内容" class="headerlink" title="5、设置iframe内容"></a>5、设置iframe内容</h2><p>如果设置局部内容，直接获取 <code>contentDocument</code> 就可以做到，那如果要填充一个完整的HTML文档，该如何做呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 找到document</span></div><div class="line"><span class="keyword">let</span> fd = <span class="built_in">document</span>.getElementById(<span class="string">'previewFrame'</span>).contentDocument;</div><div class="line">fd.open(); <span class="comment">// 打开输入流</span></div><div class="line">fd.write(<span class="string">''</span>);</div><div class="line">fd.write(fullHtml); <span class="comment">// 写入完整的HTML内容</span></div><div class="line">fd.close(); <span class="comment">// 关闭输入流</span></div></pre></td></tr></table></figure>
+<h2 id="6、获取滚动高度"><a href="#6、获取滚动高度" class="headerlink" title="6、获取滚动高度"></a>6、获取滚动高度</h2><p>老规矩，先来段测试代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> timerId;</div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">window</span>.clearTimeout(timerId);</div><div class="line">  timerId = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'document.documentElement.scrollTop:'</span>, <span class="built_in">document</span>.documentElement.scrollTop);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'document.body.scrollTop:'</span>, <span class="built_in">document</span>.body.scrollTop);</div><div class="line">  &#125;, <span class="number">200</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>通过在浏览器中测试，得到以下结果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Chrome and Edge</span></div><div class="line">documentElement.scrollTop 始终等于 <span class="number">0</span></div><div class="line"><span class="built_in">document</span>.body.scrollTop 是真实的滚动高度</div><div class="line"></div><div class="line"><span class="comment">// Firefox and IE11</span></div><div class="line">documentElement.scrollTop 是真实的滚动高度</div><div class="line"><span class="built_in">document</span>.body.scrollTop 始终为<span class="number">0</span></div></pre></td></tr></table></figure>
+<p>因此当我们要计算滚动高度的时候，可以采用如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> scrollTop = <span class="built_in">document</span>.documentElement.scrollTop || <span class="built_in">document</span>.body.scrollTop;</div></pre></td></tr></table></figure>
+<h2 id="7、获取屏幕大小"><a href="#7、获取屏幕大小" class="headerlink" title="7、获取屏幕大小"></a>7、获取屏幕大小</h2><p>这个就比较简单了，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 屏幕宽度</span></div><div class="line">screen.width</div><div class="line"></div><div class="line"><span class="comment">// 屏幕高度 </span></div><div class="line">screen.height</div></pre></td></tr></table></figure>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/测试相关/利用Karma、Mocha搭建测试环境/">
+        利用Karma、Mocha搭建测试环境
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/测试相关/使用chai-http实现API测试/">
+        使用chai-http实现API测试
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h1 id="0x1、导言"><a href="#0x1、导言" class="headerlink" title="0x1、导言"></a>0x1、导言</h1><p>一个前后端分离的完整的项目中，一般少不了 <code>API TEST</code>，那我们如何来做API相关的测试呢？</p>
+<p>我们可以使用客户端工具（如PostMan），来进行模拟请求，还可以写一个小程序来请求待测试的API。</p>
+<p>既然也算是测试，为什么我们不直接和一般的 <code>unit test</code> 使用同样的工具呢？</p>
+<p>在我们使用 <code>mocha</code> 测试工具函数的同时，我们也可以结合 <code>chai-http</code> 来实现API的测试。</p>
+<h1 id="0x2、关于-chai-http"><a href="#0x2、关于-chai-http" class="headerlink" title="0x2、关于 chai-http"></a>0x2、关于 <code>chai-http</code></h1><p><code>chai-http</code> 官方定义是：一个HTTP响应的断言库，是 <code>Chai</code> 断言库的一个补充。（原文：HTTP Response assertions for the Chai Assertion Library. ）</p>
+<p>使用它，我们可以模拟发起HTTP请求，然后使用断言语法来判断响应是否满足需求。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">chai.request(<span class="string">'rootpath'</span>)</div><div class="line">  .put(<span class="string">'/user/me'</span>)</div><div class="line">  .send(&#123; <span class="attr">password</span>: <span class="string">'123'</span>, <span class="attr">confirmPassword</span>: <span class="string">'123'</span> &#125;)</div><div class="line">  .end(<span class="function"><span class="keyword">function</span> (<span class="params">err, res</span>) </span>&#123;</div><div class="line">     expect(err).to.be.null;</div><div class="line">     expect(res).to.have.status(<span class="number">200</span>);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
+<h1 id="0x3、API测试演示"><a href="#0x3、API测试演示" class="headerlink" title="0x3、API测试演示"></a>0x3、API测试演示</h1>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/测试相关/利用Nightwatch.js实现e2e测试/">
+        利用Nightwatch.js实现e2e测试
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/测试相关/MOCHA测试代码汇总/">
+        MOCHA测试代码汇总
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h1 id="0x0、导言"><a href="#0x0、导言" class="headerlink" title="0x0、导言"></a>0x0、导言</h1><p>Mocha是应用最广泛的JS测试框架，但是现在，它的维护者公开说，Mocha快死了，<a href="https://twitter.com/b0neskull/status/820848476393091072" target="_blank" rel="external">原文Twitter地址</a>。</p>
+<p>死不死的理我们太远，我们先来回味一波。。。</p>
+<h1 id="0x1、关于单元测试"><a href="#0x1、关于单元测试" class="headerlink" title="0x1、关于单元测试"></a>0x1、关于单元测试</h1><p><em>什么是单元测试？</em></p>
+<p><strong>维基百科：</strong> 单元测试（英语：Unit Testing）又称为模块测试, 是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作</p>
+<p><strong>个人理解：</strong> 编写测试代码/脚本，通过执行测试代码来保证某一功能（一般是方法）的结果可预期。</p>
+<p><em>如何做单元测试？</em></p>
+<p>抛开 <code>mocha</code>, 我们应该怎么做单元测试呢？</p>
+<p>我们会考虑书写一段代码或者脚本，来调用我们写好的方法，通过 <code>Console</code> 输出来查看最终结果。</p>
+<p>使用单元测试，能够有效的保证代码的正确性，并且有利于我们之后的大胆重构。必须有用例保证，就不怕改出大量新bug。</p>
+<p>当然，这仅仅是最原始的测试方式，一般情况下，我们会选择使用单元测试工具。</p>
+<h1 id="0x2、Mocha"><a href="#0x2、Mocha" class="headerlink" title="0x2、Mocha"></a>0x2、Mocha</h1><p><code>Mocha(摩卡)</code> 是一个多功能的，支持浏览器和 Node 的 JavaScript 测试工具。仅仅是测试工具，当然还不能满足我们的需要，我们一般还会结合一些插件来进行使用，如下：</p>
+<ol>
+<li>chai BDD/TDD风格的断言库</li>
+<li>chai-http Http请求包</li>
+</ol>
+<p><em>如何用 <code>Mocha</code> 来做单元测试呢？</em></p>
+<p>首先是引入断言库，然后定义测试块，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>);</div><div class="line"></div><div class="line">describe(<span class="string">'Test object exist'</span>, () =&gt; &#123;</div><div class="line">  it(<span class="string">'first test'</span>, () =&gt; &#123;</div><div class="line">    assert.equal(<span class="number">1</span>, <span class="number">2</span>, <span class="string">'实际值和期望值不一致'</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><em>多种风格断言演示</em></p>
+<p>测试本身比较容易理解，就我来说，我比较容易忘记断言库的写法，接下来就以 <code>chai</code> 为例，体验下几种方式的断言代码：</p>
+<p>第一步，我们要先引入断言库，允许多种风格的断言：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> chai = <span class="built_in">require</span>(<span class="string">'chai'</span>);</div><div class="line"><span class="keyword">const</span> assert = chai.assert; <span class="comment">// TDD</span></div><div class="line"><span class="keyword">const</span> expect = chai.expect; <span class="comment">// BDD</span></div><div class="line">chai.should(); <span class="comment">// BDD</span></div></pre></td></tr></table></figure>
+<p>接着，我们来一一演示断言的使用：</p>
+<ol>
+<li>判断类型</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> chai = <span class="built_in">require</span>(<span class="string">'chai'</span>);</div><div class="line"><span class="keyword">const</span> assert = chai.assert; <span class="comment">// TDD</span></div><div class="line"><span class="keyword">const</span> expect = chai.expect; <span class="comment">// BDD</span></div><div class="line">chai.should(); <span class="comment">// BDD</span></div><div class="line"></div><div class="line">describe(<span class="string">'Test object exist'</span>, () =&gt; &#123;</div><div class="line">  it(<span class="string">'object is exist'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">let</span> a = <span class="string">'abc'</span>;</div><div class="line">    <span class="keyword">let</span> b = <span class="number">1</span>;</div><div class="line">    <span class="keyword">let</span> c = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">let</span> d = <span class="regexp">/xxx/</span>;</div><div class="line">    <span class="keyword">let</span> e = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">    <span class="keyword">let</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;;</div><div class="line">    <span class="keyword">let</span> g = &#123;&#125;;</div><div class="line">    <span class="keyword">let</span> h = [];</div><div class="line">    assert.isString(a); <span class="comment">// a必须是字符串</span></div><div class="line">    assert.isNotString(f); <span class="comment">// f必须不是字符串</span></div><div class="line">    expect(b).to.be.a(<span class="string">'number'</span>); <span class="comment">// b必须是一个数字</span></div><div class="line">    expect(c).to.be.a(<span class="string">'boolean'</span>); <span class="comment">// c必须是boolean</span></div><div class="line">    d.should.be.a(<span class="string">'RegExp'</span>); <span class="comment">// d必须是正则</span></div><div class="line">    e.should.be.a(<span class="string">'date'</span>); <span class="comment">// e必须是Date</span></div><div class="line">    assert.isArray(h); <span class="comment">// h必须是Array</span></div><div class="line">    assert.isObject(g); <span class="comment">// g必须是对象</span></div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>判断属性存在与否/属性值是否满足预期</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> chai = <span class="built_in">require</span>(<span class="string">'chai'</span>);</div><div class="line"><span class="keyword">const</span> assert = chai.assert; <span class="comment">// TDD</span></div><div class="line"><span class="keyword">const</span> expect = chai.expect; <span class="comment">// BDD</span></div><div class="line">chai.should(); <span class="comment">// BDD</span></div><div class="line"></div><div class="line">describe(<span class="string">'Test Property'</span>, () =&gt; &#123;</div><div class="line">  it(<span class="string">'property and value'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">let</span> a = &#123;</div><div class="line">      <span class="attr">b</span>: <span class="number">1</span>,</div><div class="line">      <span class="attr">c</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">deep</span>: &#123;</div><div class="line">        <span class="attr">test</span>: <span class="string">'1'</span></div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="comment">// 对象a必须包含属性b</span></div><div class="line">    assert.property(a, <span class="string">'b'</span>);</div><div class="line">    expect(a).has.property(<span class="string">'b'</span>);</div><div class="line">    a.should.has.property(<span class="string">'b'</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 对象a不能包含属性d</span></div><div class="line">    assert.notProperty(a, <span class="string">'d'</span>);</div><div class="line">    expect(a).not.has.property(<span class="string">'d'</span>);</div><div class="line">    a.should.not.has.property(<span class="string">'d'</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 对象必须有嵌套属性deep.test</span></div><div class="line">    assert.deepProperty(a, <span class="string">'deep.test'</span>);</div><div class="line">    expect(a).has.deep.property(<span class="string">'deep.test'</span>);</div><div class="line">    expect(a).has.property(<span class="string">'deep'</span>).has.property(<span class="string">'test'</span>);</div><div class="line">    a.should.has.deep.property(<span class="string">'deep.test'</span>);</div><div class="line">    a.should.has.property(<span class="string">'deep'</span>).has.property(<span class="string">'test'</span>); </div><div class="line"></div><div class="line">    <span class="comment">// 对象必须不包含嵌套属性deep.test2</span></div><div class="line">    assert.notDeepProperty(a, <span class="string">'deep.test2'</span>);</div><div class="line">    expect(a).not.has.deep.property(<span class="string">'deep.test2'</span>);</div><div class="line">    a.should.not.has.deep.property(<span class="string">'deep.test2'</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 对象属性值必须等于指定值，注意，是===判断</span></div><div class="line">    assert.propertyVal(a, <span class="string">'b'</span>, <span class="number">1</span>);</div><div class="line">    expect(a).has.property(<span class="string">'b'</span>, <span class="number">1</span>);</div><div class="line">    a.should.has.property(<span class="string">'b'</span>, <span class="number">1</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 对象属性值必须不等于指定值</span></div><div class="line">    assert.propertyNotVal(a, <span class="string">'c'</span>, <span class="literal">true</span>);</div><div class="line">    expect(a).not.has.property(<span class="string">'c'</span>, <span class="number">0</span>);</div><div class="line">    a.should.not.has.property(<span class="string">'c'</span>, <span class="literal">undefined</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 对象必须包含多个指定的属性</span></div><div class="line">    assert.property(a, <span class="string">'b'</span>).property(<span class="string">'c'</span>).property(<span class="string">'deep.test2'</span>)</div><div class="line">    expect(a).has.property(<span class="string">'a'</span>).has.property(<span class="string">'c'</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>比较目标值与期望值</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> chai = <span class="built_in">require</span>(<span class="string">'chai'</span>);</div><div class="line"><span class="keyword">const</span> assert = chai.assert; <span class="comment">// TDD</span></div><div class="line"><span class="keyword">const</span> expect = chai.expect; <span class="comment">// BDD</span></div><div class="line">chai.should(); <span class="comment">// BDD</span></div><div class="line"></div><div class="line">describe(<span class="string">'Test Value'</span>, () =&gt; &#123;</div><div class="line">  it(<span class="string">'value equal or not equal'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">let</span> a = <span class="string">'abc'</span>;</div><div class="line">    <span class="keyword">let</span> b = [<span class="number">1</span>, <span class="string">'2'</span>, <span class="literal">false</span>];</div><div class="line">    <span class="keyword">let</span> c = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: &#123; <span class="attr">c</span>: <span class="number">2</span> &#125; &#125;;</div><div class="line"></div><div class="line">    <span class="comment">// 直接比较</span></div><div class="line">    assert.equal(<span class="string">'abc'</span>, a);</div><div class="line">    expect(a).eql(<span class="string">'abc'</span>);</div><div class="line">    a.should.eq(<span class="string">'abc'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">let</span> cCopy = <span class="built_in">Object</span>.assign(&#123;&#125;, c);</div><div class="line"></div><div class="line">    assert.deepEqual(cCopy, c);</div><div class="line">    expect(cCopy).deep.equal(c);</div><div class="line">    cCopy.should.be.deep.equal(c);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  it(<span class="string">'test multi equal function'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">let</span> c = &#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: <span class="string">'str'</span> &#125; &#125;;</div><div class="line">    <span class="keyword">let</span> cCopy = <span class="built_in">Object</span>.assign(&#123;&#125;, c);</div><div class="line"></div><div class="line">    cCopy.should.be.eql(&#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: <span class="string">'str'</span> &#125; &#125;); <span class="comment">// 内容相等即可，不判断引用（别名：eqls, deep.equal, deep.eq, deep.equals）</span></div><div class="line">    cCopy.should.be.equal(a = cCopy); <span class="comment">// 严格完全相等， === 判断（别名：eq, equals）</span></div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>目标是否存在</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> chai = <span class="built_in">require</span>(<span class="string">'chai'</span>);</div><div class="line"><span class="keyword">const</span> assert = chai.assert; <span class="comment">// TDD</span></div><div class="line"><span class="keyword">const</span> expect = chai.expect; <span class="comment">// BDD</span></div><div class="line"><span class="keyword">const</span> should = chai.should(); <span class="comment">// BDD</span></div><div class="line"></div><div class="line">describe(<span class="string">'Test Value'</span>, () =&gt; &#123;</div><div class="line">  it(<span class="string">'value exist'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">let</span> a = <span class="string">'hi'</span>;</div><div class="line">    <span class="keyword">let</span> b = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">let</span> c;</div><div class="line"></div><div class="line">    <span class="comment">// 对象存在</span></div><div class="line">    assert.isOk(a);</div><div class="line">    expect(a).to.be.exist;</div><div class="line">    a.should.to.be.exist;</div><div class="line"></div><div class="line">    <span class="comment">// 对象不存在</span></div><div class="line">    assert.isNotOk(b);</div><div class="line">    assert.isNotOk(c);</div><div class="line">    expect(b).to.be.not.exist;</div><div class="line">    expect(c).to.be.not.exist;</div><div class="line">    should.not.exist(b);</div><div class="line">    should.not.exist(c);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>判断数组长度</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> chai = <span class="built_in">require</span>(<span class="string">'chai'</span>);</div><div class="line"><span class="keyword">const</span> assert = chai.assert; <span class="comment">// TDD</span></div><div class="line"><span class="keyword">const</span> expect = chai.expect; <span class="comment">// BDD</span></div><div class="line"><span class="keyword">const</span> should = chai.should(); <span class="comment">// BDD</span></div><div class="line"></div><div class="line">describe(<span class="string">'Test Length'</span>, () =&gt; &#123;</div><div class="line">  it(<span class="string">'array length'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"></div><div class="line">    <span class="comment">// 判断数组长度</span></div><div class="line">    assert.lengthOf(arr, <span class="number">3</span>);</div><div class="line">    expect(arr).length(<span class="number">3</span>);</div><div class="line">    arr.should.length(<span class="number">3</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 小于4</span></div><div class="line">    expect(arr).length.below(<span class="number">4</span>);</div><div class="line">    expect(arr).length.lessThan(<span class="number">4</span>);</div><div class="line">    arr.should.length.below(<span class="number">4</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 大于2</span></div><div class="line">    expect(arr).length.above(<span class="number">2</span>);</div><div class="line">    arr.should.length.above(<span class="number">2</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>空判断</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> chai = <span class="built_in">require</span>(<span class="string">'chai'</span>);</div><div class="line"><span class="keyword">const</span> assert = chai.assert; <span class="comment">// TDD</span></div><div class="line"><span class="keyword">const</span> expect = chai.expect; <span class="comment">// BDD</span></div><div class="line"><span class="keyword">const</span> should = chai.should(); <span class="comment">// BDD</span></div><div class="line"></div><div class="line">describe(<span class="string">'Test Empty'</span>, () =&gt; &#123;</div><div class="line">  it(<span class="string">'array|string|object empty'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">let</span> arr = [];</div><div class="line">    <span class="keyword">let</span> a = <span class="string">''</span>;</div><div class="line">    <span class="keyword">let</span> b = &#123;&#125;;</div><div class="line"></div><div class="line">    <span class="comment">// 判断数组为空</span></div><div class="line">    assert.isTrue(arr.length === <span class="number">0</span>); <span class="comment">// assert没有直接空判断，需要转换一下思路</span></div><div class="line">    expect(arr).empty;</div><div class="line">    arr.should.empty;</div><div class="line">    <span class="comment">// 其他类型判断（注意：null和undefined不能用此方式判断）</span></div><div class="line">    expect(a).empty;</div><div class="line">    b.should.be.empty;</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><strong>注意：还有其他较多的用法，如果理解了上面的这几种，按照同样的思路，结合api就基本能使用其他的模式了。一般情况下，以上的几种断言也足够我们使用了。</strong></p>
+<p><strong>注意2：更多断言，请参考： <a href="http://chaijs.com/api/" target="_blank" rel="external">chai断言API</a></strong></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/从零开始H5/从零开始H5（二）：HTML5新技术点/">
+        从零开始H5（二）：HTML5新技术点
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>现在，将我们的页面升级到HTML5了。为什么要这样去做呢？通过简单的升级我们没看到任何大的变化。</p>
+<p>答案即将揭晓，<strong>升级到HTML5之后，我们可以使用如下技术：</strong></p>
+<h3 id="1、不再需要插件，就有对音频-视频的内置支持，可以充分利用"><a href="#1、不再需要插件，就有对音频-视频的内置支持，可以充分利用" class="headerlink" title="1、不再需要插件，就有对音频\视频的内置支持，可以充分利用"></a>1、不再需要插件，就有对音频\视频的内置支持，可以充分利用</h3><p>HTML5新增了&lt;audio&gt;和&lt;video&gt;标签，可以让我们操作音视频。</p>
+<h3 id="2、更有描述性的标记"><a href="#2、更有描述性的标记" class="headerlink" title="2、更有描述性的标记"></a>2、更有描述性的标记</h3><p>针对Web语义化，HTML5新增了许多带有特定语义的标签，如header、footer、section、article、dialog、summary等等。</p>
+<h3 id="3、富客户端支持，可以使用画布、转换和JavaScript创建炫酷的界面和动画"><a href="#3、富客户端支持，可以使用画布、转换和JavaScript创建炫酷的界面和动画" class="headerlink" title="3、富客户端支持，可以使用画布、转换和JavaScript创建炫酷的界面和动画"></a>3、富客户端支持，可以使用画布、转换和JavaScript创建炫酷的界面和动画</h3><p>使用画布（canvas）和JavaScript，我们可以直接在Web页面上画图像、线条等，同时对开发Web游戏也是更加友好的。</p>
+<h3 id="4、新增客户端存储和缓存功能"><a href="#4、新增客户端存储和缓存功能" class="headerlink" title="4、新增客户端存储和缓存功能"></a>4、新增客户端存储和缓存功能</h3><p>使用Application-Cache，我们可以让我们的网页离线浏览，同时可以采用localStorage和sessionStorage来存储数据。</p>
+<h3 id="5、新增Web工作线程，让JavaScript更高效"><a href="#5、新增Web工作线程，让JavaScript更高效" class="headerlink" title="5、新增Web工作线程，让JavaScript更高效"></a>5、新增Web工作线程，让JavaScript更高效</h3><p>可以让耗时的JS，在后台工作，让UI的响应更快，提高用户体验。</p>
+<h3 id="6、可以结合CSS3的新内容，如高级选择器、动画、阴影"><a href="#6、可以结合CSS3的新内容，如高级选择器、动画、阴影" class="headerlink" title="6、可以结合CSS3的新内容，如高级选择器、动画、阴影"></a>6、可以结合CSS3的新内容，如高级选择器、动画、阴影</h3><p>可以让元素运行动画，也可以让元素具有圆角边框，甚至阴影。也能通过简单的代码快速选择对象。</p>
+<h3 id="7、新增位置API（移动设备）"><a href="#7、新增位置API（移动设备）" class="headerlink" title="7、新增位置API（移动设备）"></a>7、新增位置API（移动设备）</h3><p>通过该API，页面能够知道访问者的地理位置，这在移动设备访问中，尤其重要。</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/从零开始H5/从零开始H5（一）：升级你的HTML到HTML5/">
+        从零开始H5（一）：升级你的HTML到HTML5
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？"><a href="#现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？" class="headerlink" title="现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？"></a>现有的网页大部分还是基于HTML4开发的，那么如何简单的升级到HTML5呢？</h2><h3 id="1、从doctype定义开始"><a href="#1、从doctype定义开始" class="headerlink" title="1、从doctype定义开始"></a>1、从doctype定义开始</h3><p>HTML4：</p>
+<pre><code>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; 
+&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+</code></pre><p>HTML5：</p>
+<pre><code>&lt;!doctype html&gt;
+</code></pre><p><strong>注意：这不仅仅是HTML5的doctype，这也是HTML将来所有版本的doctype。不仅如此，它甚至在老版本的浏览器中也能正常工作。</strong></p>
+<h3 id="2、简化meta"><a href="#2、简化meta" class="headerlink" title="2、简化meta"></a>2、简化meta</h3><p>HTML4：</p>
+<pre><code>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+</code></pre><p>HTML5：</p>
+<pre><code>&lt;meta charset=&quot;utf-8&quot; /&gt;
+</code></pre><h3 id="3、简化link标记"><a href="#3、简化link标记" class="headerlink" title="3、简化link标记"></a>3、简化link标记</h3><p>HTML4：</p>
+<pre><code>&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;index.css&quot; /&gt;
+</code></pre><p>HTML5：</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;index.css&quot; /&gt;
+</code></pre><p><strong>注意：升级到HTML5后，使用link不在需要指定type了，因为已经宣布CSS作为HTML5的标准样式，这也是HTML5的默认样式。</strong></p>
+<h3 id="4、简化script标记"><a href="#4、简化script标记" class="headerlink" title="4、简化script标记"></a>4、简化script标记</h3><p>HTML4：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>HTML5：</p>
+<pre><code>&lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    console.log(&apos;html5&apos;);
+&lt;/sscript&gt;
+</code></pre><p><strong>注意：对于HTML5，JavaScript已经成为标准，所以不在需要指定type了，同时，对于script标签，结尾标记不能简写。</strong></p>
+<h2 id="Q-A"><a href="#Q-A" class="headerlink" title="Q/A"></a>Q/A</h2><h3 id="1、为什么做了这些改变，在老式浏览器上也能用？"><a href="#1、为什么做了这些改变，在老式浏览器上也能用？" class="headerlink" title="1、为什么做了这些改变，在老式浏览器上也能用？"></a>1、为什么做了这些改变，在老式浏览器上也能用？</h3><p>拿link和script来说，浏览器早已假定默认使用CSS和JavaScript，所以和标准一致。包括doctype和meta也是一样。</p>
+<h3 id="2、doctype以后也不会在变了，合适吗？"><a href="#2、doctype以后也不会在变了，合适吗？" class="headerlink" title="2、doctype以后也不会在变了，合适吗？"></a>2、doctype以后也不会在变了，合适吗？</h3><p>doctype的使用主要在于告诉浏览器采用它们的”标准模式”表现内容，所以不管以后HTML6或者其他，&lt;!doctype html&gt;已经足够表达意思了。</p>
+<h3 id="3、XHTML怎么了？很多年前听说它是未来的发展方向？"><a href="#3、XHTML怎么了？很多年前听说它是未来的发展方向？" class="headerlink" title="3、XHTML怎么了？很多年前听说它是未来的发展方向？"></a>3、XHTML怎么了？很多年前听说它是未来的发展方向？</h3><p>它夭折了。因为灵活性超过了严格语法。当然，如果你喜欢XML，那么还可以用严格模式编写HTML5。</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/前端相关/JSONP详解/">
+        JSONP详解
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、关于JSONP"><a href="#0、关于JSONP" class="headerlink" title="0、关于JSONP"></a>0、关于JSONP</h2><h3 id="什么的JSONP"><a href="#什么的JSONP" class="headerlink" title="什么的JSONP"></a>什么的JSONP</h3><p>JSONP（JSON with Padding）是资料格式 JSON 的一种“使用模式”，可以让网页从别的网域要资料。另一个解决这个问题的新方法是跨来源资源共享。（参考：<a href="https://zh.wikipedia.org/wiki/JSONP" target="_blank" rel="external">https://zh.wikipedia.org/wiki/JSONP</a>）</p>
+<h3 id="JSONP的起源"><a href="#JSONP的起源" class="headerlink" title="JSONP的起源"></a>JSONP的起源</h3><ol>
+<li>曾经的Ajax不能跨域请求（现在的也不能，不过有cors）</li>
+<li>Web上使用script调用js文件不存在跨域问题（实际上，只要拥有src属性的标签都允许跨域，比如script,img,iframe）</li>
+<li>那个时候，想要通过web端跨域访问数据，只可以在服务器端设法把数据装进js，然后客户端调用</li>
+<li>刚好这个时候JSON大行其道</li>
+<li>所以，解决方案就出来，web端像调用脚本一样来跨域请求服务器上动态生成的js文件</li>
+<li>为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP。</li>
+</ol>
+<h3 id="JSONP用来做什么"><a href="#JSONP用来做什么" class="headerlink" title="JSONP用来做什么"></a>JSONP用来做什么</h3><p>通过JSONP的起源，我们大概也知道了JSONP就是为了跨域资源访问的。</p>
+<h2 id="1、JSONP实现原理"><a href="#1、JSONP实现原理" class="headerlink" title="1、JSONP实现原理"></a>1、JSONP实现原理</h2><p>我们知道，在script标签中请求的js代码，到客户端之后，是能被自动执行的。</p>
+<p>我们先构造一个后端（采用node实现）：</p>
+<pre><code>var http = require(&apos;http&apos;);
+
+var server = http.createServer((req, res) =&gt; {
+  var sendObj = {
+    url: req.url,
+    name: &apos;test&apos;
+  };
+  res.write(`callback(${JSON.stringify(sendObj)})`);
+  res.end();
+});
+
+server.listen(9999, () =&gt; {
+  console.log(&apos;started.&apos;)
+});
+</code></pre><p>我们要使用这个这个数据呢？可以用Ajax，可能会产生跨域问题</p>
+<p>另外，可以用如下写法：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;JSONP TEST&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script&gt;
+  function callback(obj){
+    console.log(obj);
+  }
+  &lt;/script&gt;
+  &lt;script src=&quot;http://localhost:9999/abc&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>打开这个页面后，我们会看到控制台会输出一个对象<code>Object {url: &quot;/abc&quot;, name: &quot;test&quot;}</code>,<br>也就是后端返回的对象。</p>
+<p><strong>当使用script请求地址时，会将返回的字符串，默认当成js解析。由于后端返回是的callback(xxx),所以会调用本地的callback函数。</strong></p>
+<p><strong>从原理上来看，要使用JSONP，必须要后端返回相应的数据，这个就是JSONP的模式了，允许客户端传递一个callback函数，后端将数据包裹在callback函数中返回。</strong></p>
+<p><strong>从原理也能看出，JSONP并不要求必须传递JSON格式的数据，只要是JS函数能够认可的数据都是可以传递的</strong></p>
+<h2 id="2、封装JSONP调用JSONP"><a href="#2、封装JSONP调用JSONP" class="headerlink" title="2、封装JSONP调用JSONP"></a>2、封装JSONP调用JSONP</h2><p>知道了原理，我们很容易能够实现一个jsonp的函数调用，代码如下：</p>
+<pre><code>window.JSONP = function(url, callback){
+  callback = callback || &apos;callback&apos;;
+  var result;
+  return new Promise((resolve, reject) =&gt; {
+    var overwritten;
+    var scriptEl = document.createElement(&apos;script&apos;);
+    scriptEl.src = url + &apos;?callback=&apos; + callback;
+    //加载完成后，删除callback
+    scriptEl.onload = function(){
+      if(overwritten === undefined){
+        delete window[callback];  
+      }else{
+        window[callback] = overwritten;
+      }
+      resolve(result);
+    }
+    //挂载一个callback到window上
+    overwritten = window[callback]; //先保存一个，用完之后再还原
+    window[callback] = function(data){
+      result = data
+    }
+    document.head.appendChild(scriptEl);
+  });
+};
+</code></pre><p>如何用？</p>
+<pre><code>window.JSONP(&apos;http://localhost:9999/abc&apos;).then((data) =&gt; {
+  console.log(data);
+});
+</code></pre><h2 id="3、扩展"><a href="#3、扩展" class="headerlink" title="3、扩展"></a>3、扩展</h2><p>在jQuery中，我们使用jsonp感觉就和使用ajax没有区别，但实际上它们的底层实现实现是完全不一样的，毕竟原理都不同。</p>
+<p>虽然很多库和框架都把jsonp封装到了ajax中，但是一定要记得jsonp不是ajax的一个特例。</p>
+<p>当前，除了用jsonp跨域之外，还可以采用服务端代理（通过不跨域的后端程序，发送webClient去请求数据，然后转发），CORS（API服务器允许跨域的一种设置）。</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+  <nav id="page-nav">
+    
+    
+    <a class="next" rel="next" href="/blog/archives/2017/02/page/2/">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
+    
+  </nav>
+  
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
+
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

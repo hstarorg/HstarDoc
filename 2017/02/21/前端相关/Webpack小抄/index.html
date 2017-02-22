@@ -1,5 +1,148 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、前言此文用于记载在使用webpack打包过程中的点点滴滴！（仅适用于 webpack1.x）
-1、动态指定loaderwebpack 的config文件中的loader，一般针对特定的后缀文件，当我们要对单个文件进行独立配置的时候，就不太好满足需求了，此时我们就需要在 import 或者 req"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Webpack小抄 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>Webpack小抄</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、前言"><span class="toc-number">1.</span> <span class="toc-text">0、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、动态指定loader"><span class="toc-number">2.</span> <span class="toc-text">1、动态指定loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、打包项目为类库"><span class="toc-number">3.</span> <span class="toc-text">2、打包项目为类库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、webpack-dev-server部署IP访问"><span class="toc-number">4.</span> <span class="toc-text">3、webpack-dev-server部署IP访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、Webpack使用外部依赖"><span class="toc-number">5.</span> <span class="toc-text">4、Webpack使用外部依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、Webpack多入口点，打包为library"><span class="toc-number">6.</span> <span class="toc-text">5、Webpack多入口点，打包为library</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、和gulp配合使用"><span class="toc-number">7.</span> <span class="toc-text">6、和gulp配合使用</span></a></li></ol></div><h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>此文用于记载在使用webpack打包过程中的点点滴滴！（仅适用于 <code>webpack1.x</code>）</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Webpack小抄 | 幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0、前言此文用于记载在使用webpack打包过程中的点点滴滴！（仅适用于 webpack1.x）
+1、动态指定loaderwebpack 的config文件中的loader，一般针对特定的后缀文件，当我们要对单个文件进行独立配置的时候，就不太好满足需求了，此时我们就需要在 import 或者 require 中指定文件的loader。
+指定loader的时候，有如下几种场景：
+
+需要使用自定义lo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webpack小抄">
+<meta property="og:url" content="http://hstarorg.github.io/blog/2017/02/21/前端相关/Webpack小抄/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="0、前言此文用于记载在使用webpack打包过程中的点点滴滴！（仅适用于 webpack1.x）
+1、动态指定loaderwebpack 的config文件中的loader，一般针对特定的后缀文件，当我们要对单个文件进行独立配置的时候，就不太好满足需求了，此时我们就需要在 import 或者 require 中指定文件的loader。
+指定loader的时候，有如下几种场景：
+
+需要使用自定义lo">
+<meta property="og:updated_time" content="2017-02-21T07:07:32.701Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Webpack小抄">
+<meta name="twitter:description" content="0、前言此文用于记载在使用webpack打包过程中的点点滴滴！（仅适用于 webpack1.x）
+1、动态指定loaderwebpack 的config文件中的loader，一般针对特定的后缀文件，当我们要对单个文件进行独立配置的时候，就不太好满足需求了，此时我们就需要在 import 或者 require 中指定文件的loader。
+指定loader的时候，有如下几种场景：
+
+需要使用自定义lo">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        <article id="post-前端相关/Webpack小抄"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/blog/2017/02/21/前端相关/Webpack小抄/">
+    	Webpack小抄
+    </a>
+  </h2>
+	<time>
+	  Feb 21, 2017
+	</time>
+	
+	</section>
+	
+		<section class="tog"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、前言"><span class="toc-number">1.</span> <span class="toc-text">0、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、动态指定loader"><span class="toc-number">2.</span> <span class="toc-text">1、动态指定loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、打包项目为类库"><span class="toc-number">3.</span> <span class="toc-text">2、打包项目为类库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、webpack-dev-server部署IP访问"><span class="toc-number">4.</span> <span class="toc-text">3、webpack-dev-server部署IP访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、Webpack使用外部依赖"><span class="toc-number">5.</span> <span class="toc-text">4、Webpack使用外部依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、Webpack多入口点，打包为library"><span class="toc-number">6.</span> <span class="toc-text">5、Webpack多入口点，打包为library</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、和gulp配合使用"><span class="toc-number">7.</span> <span class="toc-text">6、和gulp配合使用</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>此文用于记载在使用webpack打包过程中的点点滴滴！（仅适用于 <code>webpack1.x</code>）</p>
 <h2 id="1、动态指定loader"><a href="#1、动态指定loader" class="headerlink" title="1、动态指定loader"></a>1、动态指定loader</h2><p><code>webpack</code> 的config文件中的loader，一般针对特定的后缀文件，当我们要对单个文件进行独立配置的时候，就不太好满足需求了，此时我们就需要在 <code>import</code> 或者 <code>require</code> 中指定文件的loader。</p>
 <p>指定loader的时候，有如下几种场景：</p>
 <ol>
@@ -17,34 +160,101 @@
 <h2 id="5、Webpack多入口点，打包为library"><a href="#5、Webpack多入口点，打包为library" class="headerlink" title="5、Webpack多入口点，打包为library"></a>5、Webpack多入口点，打包为library</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">  <span class="attr">path</span>: <span class="string">'./dist'</span>,</div><div class="line">  <span class="attr">publicPath</span>: <span class="string">'http://10.16.85.170:9999/'</span>,</div><div class="line">  <span class="attr">filename</span>: <span class="string">'newkit.[name].js'</span>,</div><div class="line">  <span class="attr">library</span>: [<span class="string">'newkit'</span>, <span class="string">'[name]'</span>],</div><div class="line">  <span class="attr">liabraryTarget</span>: <span class="string">'umd'</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure>
 <h2 id="6、和gulp配合使用"><a href="#6、和gulp配合使用" class="headerlink" title="6、和gulp配合使用"></a>6、和gulp配合使用</h2><p>尽量使用 <code>const webpack = require(&#39;webpack&#39;)</code> 。</p>
 <p>用法如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> showWebpackError = <span class="function">(<span class="params">err, stats</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> gutil.PluginError(<span class="string">'webpack'</span>, err);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">let</span> statColor = stats.compilation.warnings.length &lt; <span class="number">1</span> ? <span class="string">'green'</span> : <span class="string">'yellow'</span>;</div><div class="line">  <span class="keyword">if</span> (stats.compilation.warnings.length &gt; <span class="number">0</span>) &#123;</div><div class="line">    stats.compilation.errors.forEach(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</div><div class="line">      statColor = <span class="string">'red'</span>;</div><div class="line">    &#125;);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    gutil.log(stats.toString(&#123;</div><div class="line">      <span class="attr">colors</span>: gutil.colors.supportsColor,</div><div class="line">      <span class="attr">hash</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">timings</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">chunks</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">chunkModules</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">modules</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">children</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">version</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">cached</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">cachedAssets</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">reasons</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">source</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">errorDetails</span>: <span class="literal">false</span></div><div class="line">    &#125;));</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">webpack(opt).watch(<span class="number">200</span>, (err, stats) =&gt; &#123;</div><div class="line">	showWebpackError(err, stats);</div><div class="line">&#125;);</div></pre></td></tr></table></figure><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/前端相关/Webpack小抄/" data-title="Webpack小抄" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/前端相关/Webpack小抄/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
-duoshuoQuery["short_name"] = _shortName;
-(function() {
-    var ds = document.createElement("script");
-    ds.type = "text/javascript";
-    ds.async = true;
-    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
-    ds.charset = "utf-8";
-    (document.getElementsByTagName("head")[0] ||
-        document.getElementsByTagName("body")[0]).appendChild(ds);
-})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> showWebpackError = <span class="function">(<span class="params">err, stats</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> gutil.PluginError(<span class="string">'webpack'</span>, err);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">let</span> statColor = stats.compilation.warnings.length &lt; <span class="number">1</span> ? <span class="string">'green'</span> : <span class="string">'yellow'</span>;</div><div class="line">  <span class="keyword">if</span> (stats.compilation.warnings.length &gt; <span class="number">0</span>) &#123;</div><div class="line">    stats.compilation.errors.forEach(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</div><div class="line">      statColor = <span class="string">'red'</span>;</div><div class="line">    &#125;);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    gutil.log(stats.toString(&#123;</div><div class="line">      <span class="attr">colors</span>: gutil.colors.supportsColor,</div><div class="line">      <span class="attr">hash</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">timings</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">chunks</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">chunkModules</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">modules</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">children</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">version</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">cached</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">cachedAssets</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">reasons</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">source</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">errorDetails</span>: <span class="literal">false</span></div><div class="line">    &#125;));</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">webpack(opt).watch(<span class="number">200</span>, (err, stats) =&gt; &#123;</div><div class="line">	showWebpackError(err, stats);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+  	</div>
+	  
+	</section>
+	
+</article>
 
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
 
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
 
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
-    }
-});</script></body></html>
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

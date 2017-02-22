@@ -1,8 +1,154 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="在浏览本文之前，建议您先浏览《NPM使用详解（上）》
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>NPM使用详解（下） | 幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在浏览本文之前，建议您先浏览《NPM使用详解（上）》
 在上一文中，罗列出了最常用的NPM命令，那么本文将继续分解剩下的NPM命令
 
 1、access2、adduser//用于启动在指定的git仓库添加用户的向导
-npm adduser [--registry=url] [--scope=@orgna"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>NPM使用详解（下） · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>NPM使用详解（下）</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、access"><span class="toc-number">1.</span> <span class="toc-text">1、access</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、adduser"><span class="toc-number">2.</span> <span class="toc-text">2、adduser</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、bin"><span class="toc-number">3.</span> <span class="toc-text">3、bin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、bugs"><span class="toc-number">4.</span> <span class="toc-text">4、bugs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、build"><span class="toc-number">5.</span> <span class="toc-text">5、build</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、bundle-已过期"><span class="toc-number">6.</span> <span class="toc-text">6、bundle(已过期)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7、completion"><span class="toc-number">7.</span> <span class="toc-text">7、completion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8、dedupe"><span class="toc-number">8.</span> <span class="toc-text">8、dedupe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9、deprecate"><span class="toc-number">9.</span> <span class="toc-text">9、deprecate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10、dist-tag"><span class="toc-number">10.</span> <span class="toc-text">10、dist-tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11、docs"><span class="toc-number">11.</span> <span class="toc-text">11、docs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12、edit"><span class="toc-number">12.</span> <span class="toc-text">12、edit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13、explore"><span class="toc-number">13.</span> <span class="toc-text">13、explore</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14、help"><span class="toc-number">14.</span> <span class="toc-text">14、help</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15、help-search"><span class="toc-number">15.</span> <span class="toc-text">15、help-search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16、link"><span class="toc-number">16.</span> <span class="toc-text">16、link</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17、logout"><span class="toc-number">17.</span> <span class="toc-text">17、logout</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18、ls"><span class="toc-number">18.</span> <span class="toc-text">18、ls</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19、npm"><span class="toc-number">19.</span> <span class="toc-text">19、npm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20、outdated-☆☆☆☆☆"><span class="toc-number">20.</span> <span class="toc-text">20、outdated(☆☆☆☆☆)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21、owner"><span class="toc-number">21.</span> <span class="toc-text">21、owner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22、pack-☆☆☆☆☆"><span class="toc-number">22.</span> <span class="toc-text">22、pack(☆☆☆☆☆)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23、prefix"><span class="toc-number">23.</span> <span class="toc-text">23、prefix</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24、prune-☆☆☆☆☆"><span class="toc-number">24.</span> <span class="toc-text">24、prune(☆☆☆☆☆)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#25、publish"><span class="toc-number">25.</span> <span class="toc-text">25、publish</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26、rebuild"><span class="toc-number">26.</span> <span class="toc-text">26、rebuild</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#27、repo"><span class="toc-number">27.</span> <span class="toc-text">27、repo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#28、restart"><span class="toc-number">28.</span> <span class="toc-text">28、restart</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#29、rm"><span class="toc-number">29.</span> <span class="toc-text">29、rm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#30、root"><span class="toc-number">30.</span> <span class="toc-text">30、root</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#31、run-script"><span class="toc-number">31.</span> <span class="toc-text">31、run-script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32、search"><span class="toc-number">32.</span> <span class="toc-text">32、search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#33、shrinkwrap"><span class="toc-number">33.</span> <span class="toc-text">33、shrinkwrap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#34、star"><span class="toc-number">34.</span> <span class="toc-text">34、star</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#35、stars"><span class="toc-number">35.</span> <span class="toc-text">35、stars</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#36、start"><span class="toc-number">36.</span> <span class="toc-text">36、start</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#37、stop"><span class="toc-number">37.</span> <span class="toc-text">37、stop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#38、tag"><span class="toc-number">38.</span> <span class="toc-text">38、tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#39、test"><span class="toc-number">39.</span> <span class="toc-text">39、test</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#40、unpublish"><span class="toc-number">40.</span> <span class="toc-text">40、unpublish</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#41、version"><span class="toc-number">41.</span> <span class="toc-text">41、version</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#42、view"><span class="toc-number">42.</span> <span class="toc-text">42、view</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#43、whoami"><span class="toc-number">43.</span> <span class="toc-text">43、whoami</span></a></li></ol></div><p>在浏览本文之前，建议您先浏览《NPM使用详解（上）》</p>
+npm adduser [--registry=url] [--scope=@orgname] [--always-auth]
+//eg:
+npm adduser --registry=h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NPM使用详解（下）">
+<meta property="og:url" content="http://hstarorg.github.io/blog/2017/02/21/Other/NPM使用详解（下）/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="在浏览本文之前，建议您先浏览《NPM使用详解（上）》
+在上一文中，罗列出了最常用的NPM命令，那么本文将继续分解剩下的NPM命令
+
+1、access2、adduser//用于启动在指定的git仓库添加用户的向导
+npm adduser [--registry=url] [--scope=@orgname] [--always-auth]
+//eg:
+npm adduser --registry=h">
+<meta property="og:updated_time" content="2017-02-21T07:07:32.455Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NPM使用详解（下）">
+<meta name="twitter:description" content="在浏览本文之前，建议您先浏览《NPM使用详解（上）》
+在上一文中，罗列出了最常用的NPM命令，那么本文将继续分解剩下的NPM命令
+
+1、access2、adduser//用于启动在指定的git仓库添加用户的向导
+npm adduser [--registry=url] [--scope=@orgname] [--always-auth]
+//eg:
+npm adduser --registry=h">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        <article id="post-Other/NPM使用详解（下）"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/blog/2017/02/21/Other/NPM使用详解（下）/">
+    	NPM使用详解（下）
+    </a>
+  </h2>
+	<time>
+	  Feb 21, 2017
+	</time>
+	
+	</section>
+	
+		<section class="tog"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、access"><span class="toc-number">1.</span> <span class="toc-text">1、access</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、adduser"><span class="toc-number">2.</span> <span class="toc-text">2、adduser</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、bin"><span class="toc-number">3.</span> <span class="toc-text">3、bin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、bugs"><span class="toc-number">4.</span> <span class="toc-text">4、bugs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、build"><span class="toc-number">5.</span> <span class="toc-text">5、build</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、bundle-已过期"><span class="toc-number">6.</span> <span class="toc-text">6、bundle(已过期)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7、completion"><span class="toc-number">7.</span> <span class="toc-text">7、completion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8、dedupe"><span class="toc-number">8.</span> <span class="toc-text">8、dedupe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9、deprecate"><span class="toc-number">9.</span> <span class="toc-text">9、deprecate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10、dist-tag"><span class="toc-number">10.</span> <span class="toc-text">10、dist-tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11、docs"><span class="toc-number">11.</span> <span class="toc-text">11、docs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12、edit"><span class="toc-number">12.</span> <span class="toc-text">12、edit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13、explore"><span class="toc-number">13.</span> <span class="toc-text">13、explore</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14、help"><span class="toc-number">14.</span> <span class="toc-text">14、help</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15、help-search"><span class="toc-number">15.</span> <span class="toc-text">15、help-search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16、link"><span class="toc-number">16.</span> <span class="toc-text">16、link</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17、logout"><span class="toc-number">17.</span> <span class="toc-text">17、logout</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18、ls"><span class="toc-number">18.</span> <span class="toc-text">18、ls</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19、npm"><span class="toc-number">19.</span> <span class="toc-text">19、npm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20、outdated-☆☆☆☆☆"><span class="toc-number">20.</span> <span class="toc-text">20、outdated(☆☆☆☆☆)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21、owner"><span class="toc-number">21.</span> <span class="toc-text">21、owner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22、pack-☆☆☆☆☆"><span class="toc-number">22.</span> <span class="toc-text">22、pack(☆☆☆☆☆)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23、prefix"><span class="toc-number">23.</span> <span class="toc-text">23、prefix</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24、prune-☆☆☆☆☆"><span class="toc-number">24.</span> <span class="toc-text">24、prune(☆☆☆☆☆)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#25、publish"><span class="toc-number">25.</span> <span class="toc-text">25、publish</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26、rebuild"><span class="toc-number">26.</span> <span class="toc-text">26、rebuild</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#27、repo"><span class="toc-number">27.</span> <span class="toc-text">27、repo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#28、restart"><span class="toc-number">28.</span> <span class="toc-text">28、restart</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#29、rm"><span class="toc-number">29.</span> <span class="toc-text">29、rm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#30、root"><span class="toc-number">30.</span> <span class="toc-text">30、root</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#31、run-script"><span class="toc-number">31.</span> <span class="toc-text">31、run-script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32、search"><span class="toc-number">32.</span> <span class="toc-text">32、search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#33、shrinkwrap"><span class="toc-number">33.</span> <span class="toc-text">33、shrinkwrap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#34、star"><span class="toc-number">34.</span> <span class="toc-text">34、star</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#35、stars"><span class="toc-number">35.</span> <span class="toc-text">35、stars</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#36、start"><span class="toc-number">36.</span> <span class="toc-text">36、start</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#37、stop"><span class="toc-number">37.</span> <span class="toc-text">37、stop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#38、tag"><span class="toc-number">38.</span> <span class="toc-text">38、tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#39、test"><span class="toc-number">39.</span> <span class="toc-text">39、test</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#40、unpublish"><span class="toc-number">40.</span> <span class="toc-text">40、unpublish</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#41、version"><span class="toc-number">41.</span> <span class="toc-text">41、version</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#42、view"><span class="toc-number">42.</span> <span class="toc-text">42、view</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#43、whoami"><span class="toc-number">43.</span> <span class="toc-text">43、whoami</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>在浏览本文之前，建议您先浏览《NPM使用详解（上）》</p>
 <p>在上一文中，罗列出了最常用的NPM命令，那么本文将继续分解剩下的NPM命令</p>
 <hr>
 <h4 id="1、access"><a href="#1、access" class="headerlink" title="1、access"></a>1、access</h4><h4 id="2、adduser"><a href="#2、adduser" class="headerlink" title="2、adduser"></a>2、adduser</h4><pre><code>//用于启动在指定的git仓库添加用户的向导
@@ -103,34 +249,101 @@ npm stars [username]
 //查看项目相关信息
 npm version
 npm version major
-</code></pre><h4 id="42、view"><a href="#42、view" class="headerlink" title="42、view"></a>42、view</h4><h4 id="43、whoami"><a href="#43、whoami" class="headerlink" title="43、whoami"></a>43、whoami</h4><hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/Other/NPM使用详解（下）/" data-title="NPM使用详解（下）" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/Other/NPM使用详解（下）/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
-duoshuoQuery["short_name"] = _shortName;
-(function() {
-    var ds = document.createElement("script");
-    ds.type = "text/javascript";
-    ds.async = true;
-    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
-    ds.charset = "utf-8";
-    (document.getElementsByTagName("head")[0] ||
-        document.getElementsByTagName("body")[0]).appendChild(ds);
-})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
+</code></pre><h4 id="42、view"><a href="#42、view" class="headerlink" title="42、view"></a>42、view</h4><h4 id="43、whoami"><a href="#43、whoami" class="headerlink" title="43、whoami"></a>43、whoami</h4>
+  	</div>
+	  
+	</section>
+	
+</article>
 
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
 
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
 
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
-    }
-});</script></body></html>
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

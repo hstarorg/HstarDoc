@@ -1,53 +1,1653 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="幻☆精灵的Blog站点"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>幻☆精灵的Blog · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="item"><a class="article" href="/blog/2017/02/21/ES6入门/ES6入门系列二（特性总览上）/"><h2 class="home-title">ES6入门系列二（特性总览上）</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、导言最近从coffee切换到js，代码量一下子变大了不少，也多了些许陌生感。为了在JS代码中，更合理的使用ES6的新特性，特在此对ES6的特性做一个简单的总览。
-1、箭头函数(Arrows)使用 =&amp;gt; 简写的函数称之为箭头函数，和C#的lambda，CoffeeScri</p></article><article class="item"><a class="article" href="/blog/2017/02/21/GoLang学习笔记/01_开始GO/"><h2 class="home-title">01_开始GO</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、前言Go是啥？看这里。简而言之，就是一门系统级的编程语言。
-为嘛要学/用它？
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="幻☆精灵的Blog站点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="幻☆精灵的Blog">
+<meta property="og:url" content="http://hstarorg.github.io/blog/page/11/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="幻☆精灵的Blog站点">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="幻☆精灵的Blog">
+<meta name="twitter:description" content="幻☆精灵的Blog站点">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
 
-追个潮流，体验下不同风格的语言设计思想
-跨平台部署，单文件部署
-强大的功能（系统级）
-对分布式的友好支持
-
-上手有啥问题？
-
-不友好的语法（也有一部分人觉得语法很优雅，对我来说，这语法可算不上友好</p></article><article class="item"><a class="article" href="/blog/2017/02/21/r/"><h2 class="home-title"></h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 19 分</time></span><p class="post-excerpt">const fs = require('fs');
-const path = require('path');
-
-const mdFiles = [];
-
-const addMdFilesToArr = (folder) =&gt; {
-  fs.readdirSync(folder)</p></article><article class="item"><a class="article" href="/blog/2015/03/14/前端相关/[20140311]前端构建之gulp与常用插件/"><h2 class="home-title">前端构建之gulp与常用插件</h2></a><span class="post-meta">写于<time> 2015 年 03 月 14 日 13 时 56 分</time></span><p class="post-excerpt">##gulp是什么？
-http://gulpjs.com/ 相信你会明白的！
-与著名的构建工具grunt相比，有什么优势呢？
-
-易于使用，代码优于配置
-高效，不会产生过多的中间文件，减少I/O压力
-易于学习，API非常少，你能在很短的事件内学会gulp
-
-##那些常用的gulp插</p></article><article class="item"><a class="article" href="/blog/2015/03/13/Angular相关/AngularJS官方FAQ/"><h2 class="home-title">AngularJS官方FAQ</h2></a><span class="post-meta">写于<time> 2015 年 03 月 13 日 11 时 24 分</time></span><p class="post-excerpt">相关：最佳实践，反模式1、为什么会觉得jQuery插件缺失？请记住：当你在使用jQuery插件时，请在AngularJS之前加载jQuery库
-分析： 因为AngularJS自带jqLite（可以理解为jQuery的精简版），如果先引入AngularJS的话，那么AngularJ</p></article><article class="item"><a class="article" href="/blog/2015/03/13/Angular相关/AngularJS教程：1W字综合指南/"><h2 class="home-title">AngularJS教程：1W字综合指南</h2></a><span class="post-meta">写于<time> 2015 年 03 月 13 日 11 时 24 分</time></span><p class="post-excerpt">AngularJSj教程：1W字指南（译）原文地址：http://www.airpair.com/angularjs
-1、AngularJS简介Angular 是用于编写引人注目的Web应用程序的是客户端 MVW JavaScript框架。它由Google创建好维护，（offer</p></article><article class="item"><a class="article" href="/blog/2015/03/13/Angular相关/用AngularJS开发Web应用程序/"><h2 class="home-title">用AngularJS开发Web应用程序</h2></a><span class="post-meta">写于<time> 2015 年 03 月 13 日 11 时 24 分</time></span><p class="post-excerpt">##章节一：Angular 禅道##
-###本章生词###    serve = 提供    take a brief = 先简要的    introduction = 介绍    concept = 概念    a lot of = 许多    material = 材料   </p></article><article class="item"><a class="article" href="/blog/2015/03/13/Angular相关/[20140917]Angular：如何编写一个指令/"><h2 class="home-title">Angular：如何编写一个指令</h2></a><span class="post-meta">写于<time> 2015 年 03 月 13 日 11 时 24 分</time></span><p class="post-excerpt">Angular是什么？AngularJS是一个用JavaScript编写的客户端MVC框架，它运行于Web浏览器，能够极大的帮助我们（开发者）编写模块化，单页面，Ajax风格的Web Applications。
-PS：AngularJS适合开发CRUD的SPA
-Angular D</p></article><article class="item"><a class="article" href="/blog/2015/03/13/Angular相关/Angular：指令、Controller数据共享/"><h2 class="home-title">Angular：指令、Controller数据共享</h2></a><span class="post-meta">写于<time> 2015 年 03 月 13 日 11 时 24 分</time></span><p class="post-excerpt">1、Directive与Controller数据共享在指令中，不仅仅需要指令配置信息，很多时候也需要获取$scope的相关数据。那么，如何在指令中拿到$scope的数据呢？
-1.1、Directive和Controller使用同一个scope&amp;lt;!doctype html&amp;g</p></article><article class="item"><a class="article" href="/blog/2015/03/13/Angular相关/AngularJS：Looking under the hood/"><h2 class="home-title">AngularJS：Looking under the hood</h2></a><span class="post-meta">写于<time> 2015 年 03 月 13 日 11 时 24 分</time></span><p class="post-excerpt">原文地址：https://www.binpress.com/tutorial/angular-js-looking-under-the-hood/153
-用AngularJS写得越多，你就越惊叹于它的神奇。我对Angular能做的一些奇妙的事情非常好奇，然后我决定分析它的源代码，</p></article><div class="pagination"><a class="extend prev" rel="prev" href="/blog/page/10/">«</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="page-number" href="/blog/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/blog/page/12/">12</a><a class="page-number" href="/blog/page/13/">13</a><a class="extend next" rel="next" href="/blog/page/12/">»</a></div><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
-
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
-
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
     }
-});</script></body></html>
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        
+  <section class="page-header category banner waves-image">
+    <h1 id='hitokoto'></h1>
+  </section>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/JS札记/ES6 Class如何管理私有数据/">
+        ES6 Class如何管理私有数据
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>在ES5时代，要模拟对象的私有变量，是比较容易的，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> _age = <span class="number">20</span>; <span class="comment">//定义一个私有变量，外部无法访问。</span></div><div class="line">  <span class="keyword">this</span>.setAge = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">    _age = value;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.getAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> _age;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在ES6中，虽然可以在 <code>Class</code> 的 <code>constructor</code> 中实现类似function的私有方法，但是实际上，ES6中并不推荐这种做法。这样极大的加重了对象的实例。</p>
+<p>那我们就来看看在ES6中有多少方法可以实现私有数据管理。</p>
+<h2 id="1、在构造函数中存储私有数据"><a href="#1、在构造函数中存储私有数据" class="headerlink" title="1、在构造函数中存储私有数据"></a>1、在构造函数中存储私有数据</h2><p>该方式，和在ES5中，没有什么区别。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</div><div class="line">  <span class="keyword">constructor</span>()&#123;</div><div class="line">    <span class="keyword">var</span> _age = <span class="number">20</span>;</div><div class="line">    <span class="keyword">this</span>.setAge = <span class="function"><span class="params">value</span> =&gt;</span> _age = value;</div><div class="line">    <span class="keyword">this</span>.getAge = <span class="function"><span class="params">_</span> =&gt;</span> _age;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方式有一个变种，就是利用构造参数来存储，减少重新定义变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(age)&#123;</div><div class="line">    <span class="keyword">this</span>.setAge = <span class="function"><span class="params">value</span> =&gt;</span> age = value;</div><div class="line">    <span class="keyword">this</span>.getAge = <span class="function"><span class="params">_</span> =&gt;</span> age;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>优点：</strong></p>
+<ol>
+<li>数据绝对安全，外部无法直接通过属性访问到。</li>
+<li>不会与其他私有属性有任何冲突。如 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(); </div><div class="line">p.age = <span class="number">10</span>; </div><div class="line">p.getAge(); <span class="comment">//20</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>代码不怎么优雅，需要把方法设置为实例方法，才能访问到私有数据。</li>
+<li>实例方法，比较浪费内存（每个实例都会拷贝一份）。</li>
+</ol>
+<h2 id="2、通过命名约定来使用私有数据"><a href="#2、通过命名约定来使用私有数据" class="headerlink" title="2、通过命名约定来使用私有数据"></a>2、通过命名约定来使用私有数据</h2><p>该方式是在ES6 Class 中，我个人比较推荐的一个方式，实现代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</div><div class="line">  <span class="keyword">constructor</span>()&#123;</div><div class="line">    <span class="keyword">this</span>._age = <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setAge(value)&#123;</div><div class="line">    <span class="keyword">this</span>._age = value;</div><div class="line">  &#125;</div><div class="line">  getAge()&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._age;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>优点：</strong></p>
+<ol>
+<li>代码看起来非常不错，简单易懂。</li>
+<li>能否在原型方法中访问。</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li><p>并不安全，如果不遵守约定，直接操作_age，也是可行的，如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person();</div><div class="line">p._age = <span class="number">555</span>;</div><div class="line">p.getAge(); <span class="comment">// 555</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如果在对象上设置同名属性，会覆盖掉原本是私有属性。</p>
+</li>
+</ol>
+<h2 id="3、利用WeakMap来存储私有数据"><a href="#3、利用WeakMap来存储私有数据" class="headerlink" title="3、利用WeakMap来存储私有数据"></a>3、利用WeakMap来存储私有数据</h2><p>该方式是利用WeakMap可以用Object来做key的特点，把this当做key来存储具体的私有属性。具体实现如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> dataStore = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</div><div class="line">  <span class="keyword">constructor</span>()&#123;</div><div class="line">    dataStore.set(<span class="keyword">this</span>, &#123;<span class="attr">age</span>: <span class="number">20</span>&#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setAge(value)&#123;</div><div class="line">    <span class="keyword">let</span> oldObj = dataStore.get(<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">let</span> newObj = <span class="built_in">Object</span>.assign(oldObj, &#123;<span class="attr">age</span>: value&#125;);</div><div class="line">    dataStore.set(<span class="keyword">this</span>, newObj);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  getAge()&#123;</div><div class="line">    <span class="keyword">return</span> dataStore.get(<span class="keyword">this</span>).age;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如何使用？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person();</div><div class="line">p1.getAge(); <span class="comment">// 20</span></div><div class="line">p1.setAge(<span class="number">25</span>);</div><div class="line">p1.getAge(); <span class="comment">// 25</span></div></pre></td></tr></table></figure>
+<p><strong>优点：</strong></p>
+<ol>
+<li>能够使用原型方法，内存占用小；</li>
+<li>比命名约定属性名称安全性更高；</li>
+<li>不会有命名冲突（允许同名实例属性）；</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>代码没有命名约定方式（方式2）优雅；</li>
+<li>依赖外部对象；</li>
+</ol>
+<h2 id="4、利用Symbol来生成私有属性key。"><a href="#4、利用Symbol来生成私有属性key。" class="headerlink" title="4、利用Symbol来生成私有属性key。"></a>4、利用Symbol来生成私有属性key。</h2><p>该方式和命名约定方式没有本质区别，只是用 <code>Symbol</code> 来生成key，提高了key的安全性。具体实现代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> keyForAge = <span class="built_in">Symbol</span>(<span class="string">'age'</span>); </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</div><div class="line">  <span class="keyword">constructor</span>()&#123;</div><div class="line">    <span class="keyword">this</span>[keyForAge] = <span class="number">20</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  setAge(value)&#123;</div><div class="line">    <span class="keyword">this</span>[keyForAge] = value;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  getAge()&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>[keyForAge];</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>优点：</strong></p>
+<ol>
+<li>能够使用原型方法，内存占用小；</li>
+<li><p>比命名约定属性名称安全性更高，但也并不安全；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person();</div><div class="line"><span class="built_in">Object</span>.keys(p1); <span class="comment">// []，无法直接访问到属性名</span></div><div class="line">p1[keyForAge] = <span class="number">30</span>;</div><div class="line">p1.getAge(); <span class="comment">// 30</span></div><div class="line"><span class="built_in">Reflect</span>.ownKeys(p1); <span class="comment">// [Symbol(age)]，通过能方式能遍历Key</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>不会有命名冲突（允许同名实例属性）；</p>
+</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>代码没有命名约定方式（方式2）优雅；</li>
+<li>依赖外部对象；</li>
+<li>不是绝对安全；</li>
+</ol>
+<h2 id="5、Other"><a href="#5、Other" class="headerlink" title="5、Other"></a>5、Other</h2><p>能够达到的目的的方式有很多，也没有那个有绝对优势，根据实际的需求，来选择合适的方式才是最佳的方式。</p>
+<p><strong>参考资料</strong></p>
+<ol>
+<li><a href="http://www.2ality.com/2016/01/private-data-classes.html" target="_blank" rel="external">http://www.2ality.com/2016/01/private-data-classes.html</a></li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/JS札记/JavaScript之毒瘤/">
+        JavaScript之毒瘤
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>JavaScript中有许多难以避免的问题特性。接下来就一一揭示。</p>
+<h2 id="1、全局变量"><a href="#1、全局变量" class="headerlink" title="1、全局变量"></a>1、全局变量</h2><p>在所有JavaScript的糟糕特性中，最为糟糕的就是全局变量的依赖。全局变量使得在同一个程序中运行独立的子程序变得更难。</p>
+<h2 id="2、作用域"><a href="#2、作用域" class="headerlink" title="2、作用域"></a>2、作用域</h2><p>JavaScript是类C的语法，但是却没有提供类C的块级作用域。</p>
+<h2 id="3、自动插入分号"><a href="#3、自动插入分号" class="headerlink" title="3、自动插入分号"></a>3、自动插入分号</h2><p>JavaScript有一个自动修复机制，会试图通过自动插入分号来修正有缺损的程序，但是它有可能掩盖更为严重的错误。</p>
+<h2 id="4、保留字"><a href="#4、保留字" class="headerlink" title="4、保留字"></a>4、保留字</h2><p>有太多的单词在JavaScript中被保留，它们不能用来命名变量或者函数（在大部分执行环境下，部分关键字是可用的）。</p>
+<h2 id="5、Unicode字符"><a href="#5、Unicode字符" class="headerlink" title="5、Unicode字符"></a>5、Unicode字符</h2><p>JavaScript设计之初，Unicode预计只会有65536个字符。实际上，到现在Unicode有多大百万个字符。这也就导致了JavaScript会认为一对字符是两个不同的字符（Unicode把一对字符视为一个单一的字符）</p>
+<h2 id="6、typeof"><a href="#6、typeof" class="headerlink" title="6、typeof"></a>6、typeof</h2><p>不要指望typeof返回的类型。比如null或者是检测对象，另外检测正则可能会返回function或者是object。</p>
+<h2 id="7、parseInt"><a href="#7、parseInt" class="headerlink" title="7、parseInt"></a>7、parseInt</h2><p>parseInt把一个字符串转换为整数，会在遇到非数字时停止解析。另外如果第一个字符是0，还会按照8进制来取值。</p>
+<h2 id="8、运算符（-）"><a href="#8、运算符（-）" class="headerlink" title="8、运算符（+）"></a>8、运算符（+）</h2><p>+运算符可以用于加法运算或者是字符串连接，究竟如何执行会取决于其参数类型。</p>
+<h2 id="9、-浮点数"><a href="#9、-浮点数" class="headerlink" title="9、 浮点数"></a>9、 浮点数</h2><p>二进制浮点数不能正确的处理十进制小数，因此0.1+0.2 不等于0.3。</p>
+<h2 id="10、NaN"><a href="#10、NaN" class="headerlink" title="10、NaN"></a>10、NaN</h2><p>NaN是一个特殊的数量值，它表示不是一个数字。也是唯一一个不等于自身的JavaScript数值。</p>
+<h2 id="11、伪数组"><a href="#11、伪数组" class="headerlink" title="11、伪数组"></a>11、伪数组</h2><p>JavaScript没有真正的数组，就连Array也是通过object来模拟的，如果完全达不到真正的数组的地步。同时typeof运算符也不能辨别数组和对象。</p>
+<h2 id="12、假值"><a href="#12、假值" class="headerlink" title="12、假值"></a>12、假值</h2><p>JavaScript中包含诸多的假值，如: 0, NaN, ‘’, false, null, undefined</p>
+<h2 id="13、hasOwnProperty"><a href="#13、hasOwnProperty" class="headerlink" title="13、hasOwnProperty"></a>13、hasOwnProperty</h2><p>hasOwnProperty方法被用做一个过滤器来避开for..in语句的隐患，但hasOwnProperty是一个普通的方法，所以是可以被重写的。</p>
+<h2 id="14、对象"><a href="#14、对象" class="headerlink" title="14、对象"></a>14、对象</h2><p>JavaScript的对象，永远不会是真的空对象，因为可以从原形链取得成员属性。</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/03/14/前端相关/[20140311]前端构建之gulp与常用插件/">
+        前端构建之gulp与常用插件
+      </a>
+    </h2>
+    
+    <time>
+      Mar 14, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##gulp是什么？</p>
+<p><a href="http://gulpjs.com/" target="_blank" rel="external">http://gulpjs.com/</a> 相信你会明白的！</p>
+<p>与著名的构建工具grunt相比，有什么优势呢？</p>
+<ol>
+<li>易于使用，代码优于配置</li>
+<li>高效，不会产生过多的中间文件，减少I/O压力</li>
+<li>易于学习，API非常少，你能在很短的事件内学会gulp</li>
+</ol>
+<p>##那些常用的gulp插件</p>
+<p>###No.1、run-sequence</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/run-sequence" target="_blank" rel="external">https://www.npmjs.com/package/run-sequence</a></p>
+<p><strong>作用</strong>：让gulp任务，可以相互独立，解除任务间的依赖，增强task复用</p>
+<p><strong>推荐指数</strong>：★★★★★</p>
+<p>###No.2、browser-sync</p>
+<p><strong>Links</strong>: <a href="http://www.browsersync.io/" target="_blank" rel="external">http://www.browsersync.io/</a></p>
+<p><strong>作用</strong>：静态文件服务器，同时也支持浏览器自动刷新</p>
+<p><strong>推荐指数</strong>：★★★★★</p>
+<p>###No.3、del</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/del" target="_blank" rel="external">https://www.npmjs.com/package/del</a></p>
+<p><strong>作用</strong>：删除文件/文件夹</p>
+<p><strong>推荐指数</strong>：★★★★★</p>
+<p>###No.4、gulp-coffee</p>
+<p><strong>Links</strong>: <a href="https://github.com/wearefractal/gulp-coffee" target="_blank" rel="external">https://github.com/wearefractal/gulp-coffee</a></p>
+<p><strong>作用</strong>：编译coffee代码为Js代码，使用coffeescript必备</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.5、coffee-script</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/coffee-script" target="_blank" rel="external">https://www.npmjs.com/package/coffee-script</a></p>
+<p><strong>作用</strong>：gulpfile默认采用js后缀，如果要使用gulpfile.coffee来编写，那么需要此模块</p>
+<p><strong>推荐指数</strong>：★★★</p>
+<p>###No.6、gulp-nodemon</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/gulp-nodemon" target="_blank" rel="external">https://www.npmjs.com/package/gulp-nodemon</a></p>
+<p><strong>作用</strong>：自动启动/重启你的node程序，开发node服务端程序必备</p>
+<p><strong>推荐指数</strong>：★★★★★</p>
+<p>###No.7、yargs</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/yargs" target="_blank" rel="external">https://www.npmjs.com/package/yargs</a></p>
+<p><strong>作用</strong>：用于获取启动参数，针对不同参数，切换任务执行过程时需要</p>
+<p><strong>推荐指数</strong>：★★★</p>
+<p>###No.8、gulp-util</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/gulp-util" target="_blank" rel="external">https://www.npmjs.com/package/gulp-util</a></p>
+<p><strong>作用</strong>：gulp常用的工具库</p>
+<p><strong>推荐指数</strong>：★★★★★</p>
+<p>###No.9、gulp-uglify</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/gulp-uglify" target="_blank" rel="external">https://www.npmjs.com/package/gulp-uglify</a></p>
+<p><strong>作用</strong>：通过UglifyJS来压缩JS文件</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.9、gulp-concat</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/gulp-concat" target="_blank" rel="external">https://www.npmjs.com/package/gulp-concat</a></p>
+<p><strong>作用</strong>：合并JS</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.10、gulp-sourcemaps</p>
+<p><strong>Links</strong>: <a href="https://www.npmjs.com/package/gulp-sourcemaps" target="_blank" rel="external">https://www.npmjs.com/package/gulp-sourcemaps</a></p>
+<p><strong>作用</strong>：处理JS时，生成SourceMap</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.11、gulp-less</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/gulp-less" target="_blank" rel="external">https://www.npmjs.com/package/gulp-less</a></p>
+<p><strong>作用</strong>：将less预处理为css</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.12、gulp-sass</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/gulp-sass" target="_blank" rel="external">https://www.npmjs.com/package/gulp-sass</a></p>
+<p><strong>作用</strong>：将sass预处理为css</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.13、gulp-autoprefixer</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/gulp-autoprefixer" target="_blank" rel="external">https://www.npmjs.com/package/gulp-autoprefixer</a></p>
+<p><strong>作用</strong>：使用Autoprefixer来补全浏览器兼容的css。</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.14、gulp-minify-css</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/gulp-minify-css" target="_blank" rel="external">https://www.npmjs.com/package/gulp-minify-css</a></p>
+<p><strong>作用</strong>：压缩css。</p>
+<p><strong>推荐指数</strong>：★★★★</p>
+<p>###No.15、connect-history-api-fallback</p>
+<p><strong>Links</strong>：<a href="https://www.npmjs.com/package/connect-history-api-fallback" target="_blank" rel="external">https://www.npmjs.com/package/connect-history-api-fallback</a></p>
+<p><strong>作用</strong>：开发angular应用必须，用于支持HTML5 history API.</p>
+<p><strong>推荐指数</strong>：★★★</p>
+<p>##一般的gulpfile文件（采用coffee编写）</p>
+<p>首先是，node应用程序：</p>
+<pre><code>gulp = require(&apos;gulp&apos;)
+runSequence = require(&apos;run-sequence&apos;)
+
+coffee = require(&apos;gulp-coffee&apos;)
+gutil = require(&apos;gulp-util&apos;)
+del = require(&apos;del&apos;)
+nodemon = require(&apos;gulp-nodemon&apos;)
+argv = require(&apos;yargs&apos;).argv
+rename = require(&apos;gulp-rename&apos;)
+browserSync = require(&apos;browser-sync&apos;)
+reload = browserSync.reload
+
+# 处理参数
+isDebug = not (argv.r || false)
+
+# --入口任务-----------------------------------------------------------------
+gulp.task(&apos;default&apos;, (callback)-&gt;
+  runSequence(
+    [&apos;clean&apos;]
+    [&apos;coffee-server&apos;, &apos;copy-server&apos;, &apos;copy-client&apos;, &apos;coffee-client&apos;, &apos;copy-views&apos;]
+    &apos;serve&apos;
+    [&apos;browserSync&apos;, &apos;watch&apos;]
+    callback
+  )
+)
+# --构建相关任务---------------------------------------
+gulp.task(&apos;clean&apos;, (callback)-&gt;
+  del([&apos;./dist/&apos;], callback)
+)
+
+gulp.task(&apos;coffee-server&apos;, -&gt;
+  gulp.src([
+    &apos;./src/**/*.coffee&apos;
+    &apos;!./src/public/**/*.coffee&apos;
+    &apos;!./src/views/**&apos;
+  ])
+  .pipe(coffee({bare: true}).on(&apos;error&apos;, gutil.log))
+  .pipe(gulp.dest(&apos;./dist/&apos;))
+)
+
+gulp.task(&apos;copy-server&apos;, -&gt;
+  gulp.src([
+    &apos;./src/config*/*.json&apos;
+    &apos;./src/database*/*.*&apos;
+  ])
+  .pipe(gulp.dest(&apos;./dist/&apos;))
+)
+
+gulp.task(&apos;copy-client&apos;, -&gt;
+  gulp.src([
+    &apos;./src/public*/**/*&apos;
+    &apos;!./src/public*/**/*.coffee&apos;
+  ])
+  .pipe(gulp.dest(&apos;./dist/&apos;))
+)
+
+gulp.task(&apos;coffee-client&apos;, -&gt;
+  gulp.src([
+    &apos;./src/public*/**/*.coffee&apos;
+  ])
+  .pipe(coffee({bare: true}).on(&apos;error&apos;, gutil.log))
+  .pipe(gulp.dest(&apos;./dist/&apos;))
+)
+
+gulp.task(&apos;copy-views&apos;, -&gt;
+  gulp.src(&apos;./src/views/**/*.html&apos;)
+  .pipe(rename({extname: &apos;.vash&apos;}))
+  .pipe(gulp.dest(&apos;./dist/views&apos;))
+)
+
+
+# --启动程序,打开浏览器任务----------------------------------------------------
+nodemon_instance = undefined
+gulp.task(&apos;serve&apos;, (callback)-&gt;
+  called = false
+  if not nodemon_instance
+    nodemon_instance = nodemon({
+      script: &apos;./dist/index.js&apos;
+      ext: &apos;none&apos;
+    })
+    .on(&apos;restart&apos;, -&gt;
+      console.log(&apos;restart server......................&apos;)
+    )
+    .on(&apos;start&apos;, -&gt;
+      if not called
+        called = true
+        callback()
+    )
+  else
+    nodemon_instance.emit(&quot;restart&quot;)
+    callback()
+  nodemon_instance
+)
+
+gulp.task(&apos;browserSync&apos;, -&gt;
+  browserSync({
+    proxy: &apos;localhost:3000&apos;
+    port: 8888
+  #files: [&apos;./src/public/**/*&apos;]
+    open: true
+    notify: true
+    reloadDelay: 500 # 延迟刷新
+  })
+)
+
+
+
+# --监视任务------------------------------------------------
+gulp.task(&apos;watch&apos;, -&gt;
+  gulp.watch([
+    &apos;./src/**/*.*&apos;
+    &apos;!./src/**/*.coffee&apos;
+  ], [&apos;reload-client&apos;])
+  gulp.watch(&apos;./src/**/*.coffee&apos;, [&apos;reload-server&apos;])
+)
+
+gulp.task(&apos;reload-client&apos;, (callback) -&gt;
+  runSequence(
+    [&apos;copy-client&apos;, &apos;coffee-client&apos;, &apos;copy-views&apos;]
+    &apos;bs-reload&apos;
+    callback
+  )
+)
+
+gulp.task(&apos;reload-server&apos;, (callback) -&gt;
+  runSequence(
+    [&apos;copy-server&apos;, &apos;coffee-server&apos;]
+    &apos;serve&apos;
+    &apos;bs-reload&apos;
+    callback
+  )
+)
+
+gulp.task(&apos;bs-reload&apos;, -&gt;
+  browserSync.reload()
+)
+</code></pre><p>接下来是前端网站：</p>
+<pre><code>gulp = require(&apos;gulp&apos;)
+gutil = require(&apos;gulp-util&apos;)
+coffee = require(&apos;gulp-coffee&apos;)
+del = require(&apos;del&apos;)
+runSequence = require(&apos;run-sequence&apos;)
+browserSync = require(&apos;browser-sync&apos;)
+historyApiFallback = require(&apos;connect-history-api-fallback&apos;)
+# 入口点
+gulp.task(&apos;default&apos;, -&gt;
+  runSequence(
+    [&apos;clean&apos;]
+    [&apos;copy&apos;]
+    [&apos;serve&apos;]
+  )
+)
+
+gulp.task(&apos;copy&apos;, -&gt;
+  gulp.src([
+    &apos;./src/**/*.*&apos;
+    &apos;!./src/**/*.coffee&apos;
+    &apos;!./src/**/*.less&apos;
+  ])
+  .pipe(gulp.dest(&apos;./dist&apos;))
+)
+
+gulp.task(&apos;clean&apos;, (callback)-&gt;
+  del([&apos;./dist/&apos;], callback)
+)
+
+gulp.task(&apos;serve&apos;, -&gt;
+  browserSync({
+    server: {
+      baseDir: &quot;./dist&quot;
+      middleware: [historyApiFallback]
+    }
+    port: 2222
+  })
+)
+
+gulp.task(&apos;watch&apos;, -&gt;
+  # do something...
+)
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/03/13/Angular相关/Angular：指令、Controller数据共享/">
+        Angular：指令、Controller数据共享
+      </a>
+    </h2>
+    
+    <time>
+      Mar 13, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="1、Directive与Controller数据共享"><a href="#1、Directive与Controller数据共享" class="headerlink" title="1、Directive与Controller数据共享"></a>1、Directive与Controller数据共享</h2><p>在指令中，不仅仅需要指令配置信息，很多时候也需要获取$scope的相关数据。那么，如何在指令中拿到$scope的数据呢？</p>
+<h3 id="1-1、Directive和Controller使用同一个scope"><a href="#1-1、Directive和Controller使用同一个scope" class="headerlink" title="1.1、Directive和Controller使用同一个scope"></a>1.1、Directive和Controller使用同一个scope</h3><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Angular Demo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div ng-controller=&quot;DemoCtrl&quot;&gt;
+      &lt;d1&gt;&lt;/d1&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 脚本区域 --&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          scope: false, //defualt value is false
+          template: &apos;&lt;h1&gt;Hi,{{name}}&lt;/h1&gt;&apos;,
+          link: function(scope, iElement, iAttrs){
+            console.log(&apos;directive scope id = &apos; + scope.$id);
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+        console.log(&apos;controller scope id = &apos; + $scope.$id);
+        $scope.name = &apos;Jay&apos;;
+      }]);
+
+      //可以采用如此方式启动angular扫描，或者直接使用ng-app=&quot;app&quot;
+      angular.bootstrap(document.body, [&apos;app&apos;]);
+    &lt;/script&gt;
+    &lt;!-- 脚本区域 End --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>执行以上代码，页面显示Hi Jay，并在控制台打印</p>
+<pre><code>controller scope id = 2
+directive scope id = 2
+</code></pre><p>在指令中，默认会直接使用上级的scope，从控制台来看，先执行controller的scope，再执行directive的scope。因为id一致，所以是同一个scope。既然是同一个scope，那么共享数据自然就不是问题了。该方式，适合业务性质的directive，如果是公共的directive，不建议使用此方式，可能会导致scope杂乱。</p>
+<h3 id="1-2、在指令作用域中使用-，将当前属性作为字符串传递"><a href="#1-2、在指令作用域中使用-，将当前属性作为字符串传递" class="headerlink" title="1.2、在指令作用域中使用@，将当前属性作为字符串传递"></a>1.2、在指令作用域中使用@，将当前属性作为字符串传递</h3><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Angular Demo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div ng-controller=&quot;DemoCtrl&quot;&gt;
+      &lt;d1 name=&quot;{{key}}&quot;&gt;&lt;/d1&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 脚本区域 --&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          scope: {
+            name: &apos;@&apos;
+          },
+          template: &apos;&lt;h1&gt;Hi,{{name}}&lt;/h1&gt;&apos;,
+          link: function(scope, iElement, iAttrs){
+            console.log(&apos;directive scope id = &apos; + scope.$id);
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+        console.log(&apos;controller scope id = &apos; + $scope.$id);
+        $scope.key = &apos;Jay&apos;;
+
+      }]);
+
+      //可以采用如此方式启动angular扫描，或者直接使用ng-app=&quot;app&quot;
+      angular.bootstrap(document.body, [&apos;app&apos;]);
+    &lt;/script&gt;
+    &lt;!-- 脚本区域 End --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>以上代码，主要修改了指令的scope，从输出来看，指令和controller各自是自己独有的作用域。</p>
+<p><code>scope = {name: &#39;@&#39;}</code>，等价于</p>
+<pre><code>link:function(scope, iElement, iAttrs){
+    scope.name = iAttrs.name;
+}
+</code></pre><p>Controller中的key的变化，会即时影响到Directive的变化，但是Directive的变化并不会反向影响到Controller，结果近似于单向绑定。</p>
+<h3 id="1-3、在指令的作用域中使用-，进行数据的双向绑定"><a href="#1-3、在指令的作用域中使用-，进行数据的双向绑定" class="headerlink" title="1.3、在指令的作用域中使用=，进行数据的双向绑定"></a>1.3、在指令的作用域中使用=，进行数据的双向绑定</h3><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Angular Demo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div ng-controller=&quot;DemoCtrl&quot;&gt;
+      key = {{key}}
+      &lt;d1 name=&quot;key&quot;&gt;&lt;/d1&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 脚本区域 --&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          scope: {
+            name: &apos;=&apos;
+          },
+          template: &apos;&lt;h1&gt;Hi,{{name}}&lt;/h1&gt;&lt;input type=&quot;text&quot; ng-model=&quot;name&quot; /&gt;&apos;,
+          link: function(scope, iElement, iAttrs){
+            console.log(&apos;directive scope id = &apos; + scope.$id);
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+        console.log(&apos;controller scope id = &apos; + $scope.$id);
+        $scope.key = &apos;Jay&apos;;
+
+      }]);
+
+      //可以采用如此方式启动angular扫描，或者直接使用ng-app=&quot;app&quot;
+      angular.bootstrap(document.body, [&apos;app&apos;]);
+    &lt;/script&gt;
+    &lt;!-- 脚本区域 End --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>以上代码的变化在于，使用了scope: {name: ‘=’}，该代码将父作用域的属性和指令的属性进行双向绑定。所以指令中文本框的值的变化，将会同步影响controller中key的变化。</p>
+<p><strong>注意：在使用指令的时候，html代码，并不是和示例1.1一致了，如果是双向绑定，那么应该使用&lt;d1 name=”key” /&gt;，而不是&lt;d1 name=”“&gt;。</strong></p>
+<h3 id="1-4、在Directive中调用Controller的方法"><a href="#1-4、在Directive中调用Controller的方法" class="headerlink" title="1.4、在Directive中调用Controller的方法"></a>1.4、在Directive中调用Controller的方法</h3><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Angular Demo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body ng-app=&quot;app&quot;&gt;
+    &lt;div ng-controller=&quot;DemoCtrl&quot;&gt;
+      key = {{key}}
+      &lt;d1 name=&quot;key&quot; show-name=&quot;show(key)&quot;&gt;&lt;/d1&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 脚本区域 --&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          scope: {
+            name: &apos;=&apos;,
+            showName: &apos;&amp;&apos;
+          },
+          template: &apos;&lt;h1&gt;Hi,{{name}}&lt;/h1&gt;&lt;input type=&quot;text&quot; ng-model=&quot;name&quot; /&gt;&apos; 
+          + &apos;&lt;button ng-click=&quot;showName(name)&quot;&gt;Show&lt;/button&gt;&apos;,
+          link: function(scope, iElement, iAttrs){
+            console.log(&apos;directive scope id = &apos; + scope.$id);
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+        console.log(&apos;controller scope id = &apos; + $scope.$id);
+        $scope.key = &apos;Jay&apos;;
+        $scope.show = function(name){
+            alert(name);
+        };
+      }]);
+    &lt;/script&gt;
+    &lt;!-- 脚本区域 End --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>点击指令生成的按钮，会执行controller的show方法，利用在scope: {showName: ‘&amp;’}，可以将父级作用域的方法绑定到指令中。</p>
+<p><strong>注意，一定要注意属性命令，在html中书写showName，那么在iAttrs中对应showname，只有在html中书写show-name,在会在iAttrs中对应showName。</strong></p>
+<h2 id="2、在controller中，拿到directive的作用域"><a href="#2、在controller中，拿到directive的作用域" class="headerlink" title="2、在controller中，拿到directive的作用域"></a>2、在controller中，拿到directive的作用域</h2><h3 id="2-1、拿到scope的元素，调用isolateScope获取scope"><a href="#2-1、拿到scope的元素，调用isolateScope获取scope" class="headerlink" title="2.1、拿到scope的元素，调用isolateScope获取scope"></a>2.1、拿到scope的元素，调用isolateScope获取scope</h3><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Angular Demo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body ng-app=&quot;app&quot;&gt;
+    &lt;div ng-controller=&quot;DemoCtrl&quot;&gt;
+      key = {{key}}
+      &lt;button ng-click=&quot;click()&quot;&gt;Click&lt;/button&gt;
+      &lt;hr /&gt;
+      &lt;d1 id=&quot;d1&quot; name=&quot;key&quot; show-name=&quot;show(key)&quot;&gt;&lt;/d1&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 脚本区域 --&gt;
+    &lt;script src=&quot;//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          scope: {}, //等价于 scope: true
+          template: &apos;&lt;h1&gt;Hi,{{name}}&apos;,
+          link: function(scope, iElement, iAttrs){
+            scope.name = &apos;directive name&apos;;
+            console.log(&apos;directive scope id = &apos; + scope.$id);
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+        console.log(&apos;controller scope id = &apos; + $scope.$id);
+        $scope.click = function(){
+          var dirScope = $(&apos;#d1&apos;).isolateScope();
+          alert(dirScope.name);
+        }
+      }]);
+    &lt;/script&gt;
+    &lt;!-- 脚本区域 End --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>此代码中，利用$(‘#d1’).isolateScope，拿到了该指令的scope，所以可以随时方式，该方式在多种指令中也有效。</p>
+<p><strong>如果判断应该用isolateScope()还是scope()获取作用域？一个最简单的方式，用F12查看源码，找到该元素，然后查看class是ng-isolate-scope还是ng-scope</strong></p>
+<h2 id="3、-指令之间相互获取数据"><a href="#3、-指令之间相互获取数据" class="headerlink" title="3、 指令之间相互获取数据"></a>3、 指令之间相互获取数据</h2><h3 id="3-1、通过directive依赖来共享数据"><a href="#3-1、通过directive依赖来共享数据" class="headerlink" title="3.1、通过directive依赖来共享数据"></a>3.1、通过directive依赖来共享数据</h3><pre><code>&lt;script&gt;
+      angular.module(&apos;app&apos;, [])
+      .directive(&apos;d1&apos;, [function(){
+        return {
+          restrict: &apos;E&apos;,
+          require: &apos;^ngModel&apos;,
+          scope: {}, //等价于 scope: true
+          template: false,
+          link: function(scope, iElement, iAttrs, ngModelCtrl){
+
+          }
+        }
+      }])
+      .controller(&apos;DemoCtrl&apos;, [&apos;$scope&apos;, function($scope){
+
+      }]);
+&lt;/script&gt;
+</code></pre><h3 id="3-2、通过如2-1的方式获取数据"><a href="#3-2、通过如2-1的方式获取数据" class="headerlink" title="3.2、通过如2.1的方式获取数据"></a>3.2、通过如2.1的方式获取数据</h3><h2 id="4、-其他Hacky的方式"><a href="#4、-其他Hacky的方式" class="headerlink" title="4、 其他Hacky的方式"></a>4、 其他Hacky的方式</h2><ol>
+<li>通过<code>$parent</code>访问父级作用域</li>
+<li>通过<code>$$prevSibling</code>访问该作用域的上一个兄弟作用域</li>
+<li>通过<code>$$nextSibling</code>访问该作用域的下一个兄弟作用域</li>
+<li>通过<code>$$childHead</code>访问儿子作用域的第一个</li>
+<li>通过<code>$$childTail</code>访问儿子作用域的最后一个</li>
+</ol>
+<h2 id="5、参考资料"><a href="#5、参考资料" class="headerlink" title="5、参考资料"></a>5、参考资料</h2><ol>
+<li><p><a href="http://tech.blinemedical.com/sharing-data-between-child-and-parent-directives-and-scopes-in-angularjs/" target="_blank" rel="external">SHARING DATA BETWEEN CHILD AND PARENT DIRECTIVES AND SCOPES (IN ANGULARJS)</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/bigdataZJ/p/AngularJS1.html" target="_blank" rel="external">directive和controller如何通信</a></p>
+</li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/03/13/Angular相关/[20140917]Angular：如何编写一个指令/">
+        Angular：如何编写一个指令
+      </a>
+    </h2>
+    
+    <time>
+      Mar 13, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="Angular是什么？"><a href="#Angular是什么？" class="headerlink" title="Angular是什么？"></a>Angular是什么？</h2><p>AngularJS是一个用JavaScript编写的客户端MVC框架，它运行于Web浏览器，能够极大的帮助我们（开发者）编写模块化，单页面，Ajax风格的Web Applications。</p>
+<p>PS：<strong>AngularJS适合开发CRUD的SPA</strong></p>
+<h2 id="Angular-Directive是什么？"><a href="#Angular-Directive是什么？" class="headerlink" title="Angular Directive是什么？"></a>Angular Directive是什么？</h2><p>Angular Directive是构建在DOM元素（属性、标签名、注释和CSS类）上的标记，告诉AngularJS的HTML编译器($compile) 附加指定的行为到元素或者甚至变换这个元素和它的子集。</p>
+<p>PS：<strong>通过扩展HTML标签的方式提供可复用的web组件</strong></p>
+<p>PS2：<strong>指令的作用：提供语义化标签</strong></p>
+<h2 id="完整的Directive参数"><a href="#完整的Directive参数" class="headerlink" title="完整的Directive参数"></a>完整的Directive参数</h2><pre><code>var directiveModule=angular.module(&apos;Newkit.negHotkeys&apos;);
+directiveModule.directive(&apos;negHotkeys&apos;,function(injectables){
+    var directiveDefineObject={
+        restrict:(string), 
+        priority:(number),
+        template:(string),
+        templateUrl:(string),
+        replace:(bool),
+        transclude:(bool),
+        scope:(bool or object),
+        controller:(function),
+        require:(string),
+        link:(function)
+        compile:(function)
+    };
+    return directiveDefineObject;
+});
+</code></pre><h5 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h5><ul>
+<li>restrict：(string)指令的使用方式，可选值：元素[E]、属性[A]、样式类[C]、注释[M]，并且可以采用组合的方式使用，示例：’AE’</li>
+<li>priority：(number)优先级，描述了多个指令时，指令的执行顺序。数字越大，优先级越高，默认值0。</li>
+<li>template：(string)文本模板</li>
+<li>templateUrl：(string)模板文件地址，如果设置了该属性，那么将会忽略template的配置。</li>
+<li>replace：(bool)指示是否替换元素，如果设置为true,则替换，否则（设置为false或不设置）追加到元素内部</li>
+<li>transclude：(bool)是否将指令的子节点移动到一个新模板内部，如果在模板中指定了ng-transclude，那么会将元素原本的内容移动到新的模板内部，具体看示例二</li>
+<li>scope：(bool or object)设置作用域，如果设置为false[默认值]，则使用现有的作用域；如果设置为true，则创建一个新的作用域。设置为object时，设定作用域绑定策略</li>
+<li>controller：创建一个控制器，它会暴露一个API，实现在多个指令之间进行通信</li>
+<li>require：设置依赖的指令。不设置，则无依赖，示例：’?\^testDirective’，其中，?表示该指令可选，^表示需要遍历DOM树查找指令</li>
+<li>link：链接函数，function(scope,iElement,iAttrs){}，其中的i表示实例，所以在link中接收的是实例元素和实例元素属性</li>
+<li>compile：编译函数，function(tElement,tAttrs,transclude){}，其中t表示模板，所以在compile中使用的是模板元素。在编译过程中，可以返回preLink(链接前)，postLink(链接后)函数，compile函数只会调用一次，而link函数的调用次数等于things中的元素个数，所以多余共同的东西，那么最好放在compile函数中实现（出于效率考虑） <strong>注：设置了compile属性之后，指令将忽略link属性，同时compile函数的返回值将作为link函数使用</strong></li>
+</ul>
+<h2 id="Angular-Directive-示例"><a href="#Angular-Directive-示例" class="headerlink" title="Angular Directive 示例"></a>Angular Directive 示例</h2><h3 id="示例一-简单指令"><a href="#示例一-简单指令" class="headerlink" title="示例一(简单指令)"></a>示例一(简单指令)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;!--demo1指令定义--&gt;</div><div class="line">angular.module(<span class="string">'app'</span>).directive(<span class="string">'demo1'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">restrict</span>:<span class="string">'AE'</span>,<span class="comment">/*标签或者属性*/</span></div><div class="line">    template:<span class="string">'&lt;div&gt;Hello&lt;/div&gt;'</span>,</div><div class="line">    <span class="attr">replace</span>:<span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="xml"><span class="comment">&lt;!--使用--&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span>...<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span>	</div><div class="line">    <span class="tag">&lt;<span class="name">demo1</span>&gt;</span><span class="tag">&lt;/<span class="name">demo1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">data-demo1</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--结果(指令将满足条件的元素替换为了新的内容)--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">demo1</span>=<span class="string">""</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="操作步骤分析"><a href="#操作步骤分析" class="headerlink" title="操作步骤分析"></a>操作步骤分析</h3><ol>
+<li>定义一个模块app，并创建了一个指令demo1。</li>
+<li>设定该指令可采用元素的标签和属性申明，并设置了一个文本模板，同时设置了replace=true。</li>
+<li>在html中，采用标签如<em>&lt;demo1&gt;&lt;/demo1&gt;</em>和属性<em>&lt;div demo1&gt;&lt;/div&gt;</em>来实现调用</li>
+</ol>
+<h3 id="示例二（变换）"><a href="#示例二（变换）" class="headerlink" title="示例二（变换）"></a>示例二（变换）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;!--demo2指令定义--&gt;</div><div class="line">angular.module(<span class="string">'app.directive.demo2'</span>,[]).directive(<span class="string">'demo2'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">restrict</span>:<span class="string">'E'</span>,</div><div class="line">        <span class="attr">template</span>:<span class="string">'&lt;div&gt;This is Demo2&lt;div ng-transclude&gt;&lt;/div&gt;&lt;/div&gt;'</span>,</div><div class="line">        <span class="attr">transclude</span>:<span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">&lt;!--使用--&gt;</div><div class="line">&lt;demo2&gt;</div><div class="line">    &lt;span&gt;原始的内容，&lt;/span&gt;&lt;br/&gt;</div><div class="line">    &lt;span&gt;还会在这里。&lt;/span&gt;</div><div class="line">&lt;/demo2&gt;</div><div class="line">&lt;demo2&gt;&lt;/demo2&gt;</div><div class="line"></div><div class="line">&lt;!--页面生成的HTML--&gt;</div><div class="line">  &lt;demo2&gt;</div><div class="line">  &lt;div&gt;This is Demo2</div><div class="line">    &lt;div ng-transclude=""&gt;</div><div class="line">          &lt;span class="ng-scope"&gt;原始的内容，&lt;/span&gt;&lt;br class="ng-scope"&gt;</div><div class="line">          &lt;span class="ng-scope"&gt;还会在这里。&lt;/span&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/demo2&gt;</div><div class="line">&lt;demo2&gt;</div><div class="line">  &lt;div&gt;This is Demo2</div><div class="line">    &lt;div ng-transclude=""&gt;&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/demo2&gt;</div></pre></td></tr></table></figure>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><ol>
+<li>通过在指令中设置transclude=true，同时在template中包含<em>&lt;div ng-transclude&gt;</em>，实现了将元素内部元素移动到了ng-transclude元素内部，并创建了新的作用域</li>
+</ol>
+<h3 id="示例三（link与compile）"><a href="#示例三（link与compile）" class="headerlink" title="示例三（link与compile）"></a>示例三（link与compile）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*指令*/</span></div><div class="line">angular.module(<span class="string">'app.directive.demo3'</span>,[]).directive(<span class="string">'demo3Link'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="keyword">return</span> &#123;</div><div class="line">       <span class="attr">restrict</span>:<span class="string">'E'</span>,</div><div class="line">       <span class="attr">template</span>:<span class="string">'&lt;div&gt;This is Demo3Link&lt;/div&gt;'</span>,</div><div class="line">       <span class="attr">link</span>:<span class="function"><span class="keyword">function</span>(<span class="params">scope,iElement,iAttrs</span>)</span>&#123;</div><div class="line">           iElement.html(<span class="string">'&lt;div&gt;good link&lt;/div&gt;'</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">&#125;).directive(<span class="string">'demo3Compile'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">       <span class="keyword">return</span> &#123;</div><div class="line">           <span class="attr">restrict</span>:<span class="string">'E'</span>,</div><div class="line">           <span class="attr">template</span>:<span class="string">'&lt;div&gt;This is Demo3Compile&lt;/div&gt;'</span>,</div><div class="line">           <span class="attr">compile</span>:<span class="function"><span class="keyword">function</span>(<span class="params">tElement,tAttrs,transclude</span>)</span>&#123;</div><div class="line">               tElement.html(<span class="string">'&lt;div&gt;test demo3 compile&lt;/div&gt;'</span>);</div><div class="line">               <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">scope,iElement,iAttrs</span>)</span>&#123;</div><div class="line">                   <span class="comment">//iElement.html('&lt;div&gt;good compile&lt;/div&gt;');</span></div><div class="line">               &#125;;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;);</div><div class="line"></div><div class="line"><span class="comment">/*使用*/</span></div><div class="line">&lt;demo3-link&gt;&lt;/demo3-link&gt;</div><div class="line">   &lt;demo3-link&gt;&lt;/demo3-link&gt;</div><div class="line">   &lt;demo3-compile&gt;&lt;/demo3-compile&gt;</div><div class="line"></div><div class="line">/*页面生成的HTML*/</div><div class="line">   &lt;demo3-link&gt;&lt;div&gt;good link&lt;/div&gt;&lt;/demo3-link&gt;</div><div class="line">   &lt;demo3-link&gt;&lt;div&gt;good link&lt;/div&gt;&lt;/demo3-link&gt;</div><div class="line">   &lt;demo3-compile&gt;&lt;div&gt;test demo3 compile&lt;/div&gt;&lt;/demo3-compile&gt;</div></pre></td></tr></table></figure>
+<h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><p>compile用于在编译期处理模板内容，并能设置preLink和postLink函数，此时将不能设置link函数，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">compile:function(tElement,tAttrs,transclude)&#123;</div><div class="line">    tElement.html(&apos;&lt;div&gt;test demo3 compile&lt;/div&gt;&apos;);</div><div class="line">    return &#123;</div><div class="line">        pre:function preLink(scope,iElement,iAttrs)&#123;</div><div class="line">            console.log(&apos;preLink&apos;);</div><div class="line">        &#125;,</div><div class="line">        post:function postLink(scope,iElement,iAttrs)&#123;</div><div class="line">            console.log(&apos;postLink&apos;);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>link用于对替换后的元素进行操作，如果参数是iElement。</p>
+<h3 id="示例四（简单加法计算器）"><a href="#示例四（简单加法计算器）" class="headerlink" title="示例四（简单加法计算器）"></a>示例四（简单加法计算器）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">/*代码在这里*/</div><div class="line">angular.module(&apos;app.directive.demo4&apos;,[]).directive(&apos;demo4&apos;,function()&#123;</div><div class="line">    return &#123;</div><div class="line">        restrict:&apos;E&apos;,</div><div class="line">        template:&apos;&lt;fieldset&gt;&lt;legend&gt;计算两个数之和&lt;/legend&gt;&apos; +</div><div class="line">            &apos;&lt;div&gt;&lt;input type=&quot;text&quot; ng-model=&quot;num1&quot;&gt;+&lt;input type=&quot;text&quot; ng-model=&quot;num2&quot;&gt;=&lt;span&gt;&#123;&#123;total&#125;&#125;&lt;/span&gt;&lt;/div&gt;&apos; +</div><div class="line">            &apos;&lt;/fieldset&gt;&apos;,</div><div class="line">        replace:true,</div><div class="line">        link:function(scope,iElement,iAttrs)&#123;</div><div class="line">            scope.num1=0;</div><div class="line">            scope.num2=0;</div><div class="line">            scope.total=0;</div><div class="line">            scope.$watch(&apos;num1+num2&apos;,function(to,from)&#123;</div><div class="line">                scope.total=+scope.num1+(+scope.num2)</div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">/*HTML在这里*/</div><div class="line">&lt;demo4&gt;&lt;/demo4&gt;、</div><div class="line"></div><div class="line">/*效果请自行测试*/</div></pre></td></tr></table></figure>
+<h4 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h4><p>可以利用指令完成特定的功能了。</p>
+<h3 id="示例五（negHotkeys指令代码）"><a href="#示例五（negHotkeys指令代码）" class="headerlink" title="示例五（negHotkeys指令代码）"></a>示例五（negHotkeys指令代码）</h3><p><a href="http://trgit/backend_framework/web_platform/blob/master/src/framework/js/directives/custom/negHotKeys.coffee" target="_blank" rel="external">代码在这里</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>指令依附于模块</li>
+<li>一个模块可以有多个指令，但是需要采用示例三的写法</li>
+<li>指令可以语义化标签，实现html组件化</li>
+<li>其他…</li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/03/13/Angular相关/AngularJS：Looking under the hood/">
+        AngularJS：Looking under the hood
+      </a>
+    </h2>
+    
+    <time>
+      Mar 13, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>原文地址：<a href="https://www.binpress.com/tutorial/angular-js-looking-under-the-hood/153" target="_blank" rel="external">https://www.binpress.com/tutorial/angular-js-looking-under-the-hood/153</a></p>
+<p><strong>用AngularJS写得越多，你就越惊叹于它的神奇。我对Angular能做的一些奇妙的事情非常好奇，然后我决定分析它的源代码，看看我能否揭示它的一些秘密。我记录了我在23000多行Angular源码中发现的真正有用的，能够解释Angular先进（和隐藏）的方面的一些内容。</strong></p>
+<h2 id="1、Dependency-Injection-annotation-process"><a href="#1、Dependency-Injection-annotation-process" class="headerlink" title="1、Dependency Injection annotation process"></a>1、Dependency Injection annotation process</h2><p>依赖注入（DI）是除开用代码获取或创建依赖之外的一条不同的请求依赖的方式。简单的说，依赖是作为一个注入对象传递给我们的。Angular允许我们在我们的应用程序中通过像Controllers和Directives的方法来使用DI。我们能创建自己的依赖，同时允许Angular在请求它们的时候被注入。</p>
+<p>在Angular中，一个最常用的被请求的依赖是 <em>$scope</em>。例如：</p>
+<pre><code>function MainCtrl ($scope){
+    //access to $scope
+}
+angular.module(&apos;app&apos;).controller(&apos;MainCtrl&apos;, MainCtrl);
+</code></pre><p>对于没有使用过Angular提供的依赖注入的JavaScript开发者来说，这看起来像一个局部变量名。实际上，它仅仅是我们所请求的依赖名称的一个占位符。Angular查找这些占位符，然后通过DI将它们转换为真正的依赖对象，让我们来仔细看看。</p>
+<h3 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h3><p>直到我们压缩我们的应用前，方法参数都运行正常。当你压缩你的代码，你的方法定义将会用字符表示参数而不是单词-这意味着Angular不能找到你想要的！Angular使用了一个方式来解决，调用function的 <em>toString()</em> 方法。这将返回函数的字符串形式！接下来我们就能访问正在被请求的参数。Angular</p>
+<pre><code>var FN_ARGS = /^function\s*[^\(]*\(\s*([^\)]*)\)/m;
+var FN_ARG_SPLIT = /,/;
+var FN_ARG = /^\s*(_?)(\S+?)\1\s*$/;
+var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
+</code></pre><p>Angular做的第一件事就是将函数转换为字符串，这是JavaScript中非常有用的一个特性。这将给我们一个字符串类型的函数，如：</p>
+<pre><code>&apos;function MainCtrl ($scope) {...}&apos;
+</code></pre><p>接下来，Angular使用如下方法，移除所有的注释：</p>
+<pre><code>fnText = fn.toString().replace(STRIP_COMMENTS, &apos;&apos;);
+</code></pre><p>紧接着，Angular从处理好的function中分割参数来创建真正有用的部分，</p>
+<pre><code>argDecl = fnText.match(FN_ARGS);
+</code></pre><p>Angular接下来使用 <em>.split()</em> 来移除空白字符，同时返回我们请求的参数数组。为了更完美，Angular使用了一个内部的forEach方法来迭代这个数组，并匹配参数名称然后将它们添加到 <em>$inject</em> 数组中。</p>
+<pre><code>forEach(argDecl[1].split(FN_ARG_SPLIT), function(arg) {
+  arg.replace(FN_ARG, function(all, underscore, name) {
+    $inject.push(name);
+  });
+});
+</code></pre><p>这是你能想象的一个昂贵的处理流程。对每个函数的4个正则查找和一很多转换会造成性能损耗。当我们得到了Angular抽象的 <em>$inject</em> 数组，我们可以直接切入且田填充 <em>$inject</em> 数组来保存Angular困难和开销时间长的操作。</p>
+<h3 id="inject-对象"><a href="#inject-对象" class="headerlink" title="$inject 对象"></a>$inject 对象</h3><p>我们可以通过在函数上添加 <em>$inject</em>属性来指定依赖自身，其中，如果存在的话，Angular使用DI注解。这是很容易的最可读的语法。例子如下：</p>
+<pre><code>function SomeCtrl ($scope) {
+}
+SomeCtrl.$inject = [&apos;$scope&apos;];
+angular.module(&apos;app&apos;, [])
+    .controller(&apos;SomeCtrl&apos;, [&apos;$scope&apos;, SomeCtrl]);
+</code></pre><p>这样节省了Angular的许多工作-替代了检查方法参数，或者是操纵数组（详情请查看下一章节：Array Arguments）,它仅仅返回和运行指定的 <em>$inject</em> 数组。简单，高性能。</p>
+<p>理想情况下，由于依赖注入在我们自己的时间和Angular的转换时间上开销很大，我们可以使用任务运行工具如Grunt.js或者是Gulp.js 来自动化注入任务或者是数组语法。</p>
+<p><strong>Note：这个并没有实例化被依赖的所有服务，Angular所做的只是标注相关的名字-框架的其他部分关心对象注入。</strong></p>
+<h3 id="Array-Arguments"><a href="#Array-Arguments" class="headerlink" title="Array Arguments"></a>Array Arguments</h3><p>最后一个例子使用了我们通常看见的数组索引对应函数参数序号的语法，例如：</p>
+<pre><code>[&apos;$scope&apos;, function($scope){}]
+</code></pre><p>数组的顺序是非常重要的，因为函数的参数将会按照同样的顺序，以此来避免依赖被错误的实例化和可能引发的错误。</p>
+<pre><code>function SomeCtrl ($scope, $rootScope) {    
+}    
+angular.module(&apos;app&apos;, [])
+    .controller(&apos;SomeCtrl&apos;, [&apos;$scope&apos;, ‘$rootScope’, SomeCtrl]);
+</code></pre><p>我们需要做的是传递函数作为数组的最后一个项，Angular会删除这个函数，并遍历数组所注明的依赖名称，就好像我们创建的 <em>$inject</em> 属性。当Angular解析一个方法的时候，它会检查参数是不是一个数组，如果是，那么最后一项是函数，其他的则是依赖。</p>
+<pre><code>else if (isArray(fn)) {
+  last = fn.length - 1;
+  assertArgFn(fn[last], &apos;fn&apos;);
+  $inject = fn.slice(0, last);
+}
+</code></pre><h2 id="2、Factory-vs-Service"><a href="#2、Factory-vs-Service" class="headerlink" title="2、Factory vs Service"></a>2、Factory vs Service</h2><p>Factory 和 Service 非常类似，但往往开发人员都难以理解它们。</p>
+<p>当 <em>.service()</em> 已经实例化，那么 <em>new Service()</em> 将被引擎调用，返回一个新实例给我们。本质上，<em>。.service()</em> 是作为构造函数被使用的。</p>
+<p>service 基本上是一个 factory，然而它是创建时被实例化，因为，你需要在 service 中使用this来注册变量和函数，来替代在factory中返回一个对象的方式。</p>
+<p>factory 是非常接近面向对象中的“工厂模式”，当你注入了这个 factory ,你就获得了完整的方法，允许你创建你需要的新的实例-本质上是通过一个对象创建多个新对象。</p>
+<p>你可以看下在Angular源码中的内部的工作：</p>
+<pre><code>function factory(name, factoryFn) { 
+    return provider(name, { $get: factoryFn }); 
+}
+function service(name, constructor) {
+    return factory(name, [&apos;$injector&apos;, function($injector) {
+        return $injector.instantiate(constructor);
+    }]);
+}
+</code></pre><h2 id="3、New-scope-creation-from-rootScope"><a href="#3、New-scope-creation-from-rootScope" class="headerlink" title="3、New $scope creation from $rootScope"></a>3、New $scope creation from $rootScope</h2><p>Angular中所有的scope都是 <em>$rootScope</em> 的下级。 <em>$rootScope</em> 是通过 <em>new Scope()</em>创建的，进一步的子 scope 是通过 <em>$scope.$new()</em> 创建的。</p>
+<pre><code>var $rootScope = new Scope();
+</code></pre><p>在 <em>$new</em> 方法里面，Angular设置了一个原型链来允许允许 scope 引用它们的父亲，它们的自己跟踪（作为生命周期），和以前的兄弟 scope 。</p>
+<p>从下面的代码，如果你请求了一个隔离的 scope ，它会创建一个 <em>new Scope()</em> ,否则，它会创建一个从父级继承的子 scope 。</p>
+<p>我省略了一些不必要的代码，但这里的是重点：</p>
+<pre><code>$new: function(isolate) {
+    var child;
+
+    if (isolate) {
+      child = new Scope();
+      child.$root = this.$root;
+    } else {
+      // Only create a child scope class if somebody asks for one,
+      // but cache it to allow the VM to optimize lookups.
+      if (!this.$$ChildScope) {
+        this.$$ChildScope = function ChildScope() {
+          this.$$watchers = null;
+        };
+        this.$$ChildScope.prototype = this;
+      }
+      child = new this.$$ChildScope();
+    }
+    child[&apos;this&apos;] = child;
+    child.$parent = this;
+    return child;
+  }
+</code></pre><p>当你使用<em>$scope.$new()</em>来测试Controller的时候，这也是非常好的能了解测试目的。这有助于明确对我来说Angular是如何创建新的scope的，为什么用Angular mocks 模块来嘲笑测试驱动开发（TDD）。</p>
+<h2 id="4、Digest-Cycle"><a href="#4、Digest-Cycle" class="headerlink" title="4、Digest Cycle"></a>4、Digest Cycle</h2><p>Digest Cycle 经常作为 <em>$digest</em> 被我们看到，这是Angular双向绑定的能力。当一个模型值更新的时候，它会运行，检查它最后已知的值，如果值有变化，呼叫适当的监听器。这是基本的脏检查 - 它针对所有有可能的值来检查，如果是脏值，那么呼叫相关的监听器，直到他没有脏值。我们快速看一下它是如何工作的：</p>
+<pre><code>$scope.name = &apos;Todd&apos;;
+
+$scope.$watch(function() {
+    return $scope.name;
+}, function (newValue, oldValue) {
+    console.log(&apos;$scope.name was updated!&apos;);
+} );
+</code></pre><p>当你调用 <em>$scope.$watch</em>，你注册了两件事。参数一是一个函数，返回你想要监视的值（当你提供一个字符串的时候，Angualr会将他转换为函数）。当 $digest 运行时，监视的参数将被调用，返回任何你想要的值。参数二是当你的参数一变化时，想要执行的函数。看一下Angular是怎样注册watch的。</p>
+<pre><code>$watch: function(watchExp, listener, objectEquality) {
+    var get = $parse(watchExp);
+
+    if (get.$$watchDelegate) {
+      return get.$$watchDelegate(this, listener, objectEquality, get);
+    }
+    var scope = this,
+        array = scope.$$watchers,
+        watcher = {
+          fn: listener,
+          last: initWatchVal,
+          get: get,
+          exp: watchExp,
+          eq: !!objectEquality
+        };
+
+    lastDirtyWatch = null;
+
+    if (!isFunction(listener)) {
+      watcher.fn = noop;
+    }
+
+    if (!array) {
+      array = scope.$$watchers = [];
+    }
+    // we use unshift since we use a while loop in $digest for speed.
+    // the while loop reads in reverse order.
+    array.unshift(watcher);
+
+    return function deregisterWatch() {
+      arrayRemove(array, watcher);
+      lastDirtyWatch = null;
+    };
+ }
+</code></pre><p>这个函数推送你提供的参数到 scope 的 <em>$$watchers</em> 数组中，同时，返回一个方法允许你停止watch。</p>
+<p>然后，每当<em>$scope.$apply</em>或者<em>$scope.$digest</em> 运行时，digest cycle将被运行。</p>
+<h3 id="未完…待续…"><a href="#未完…待续…" class="headerlink" title="未完…待续…"></a>未完…待续…</h3>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/03/13/Angular相关/AngularJS官方FAQ/">
+        AngularJS官方FAQ
+      </a>
+    </h2>
+    
+    <time>
+      Mar 13, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="相关：最佳实践，反模式"><a href="#相关：最佳实践，反模式" class="headerlink" title="相关：最佳实践，反模式"></a>相关：最佳实践，反模式</h2><h3 id="1、为什么会觉得jQuery插件缺失？"><a href="#1、为什么会觉得jQuery插件缺失？" class="headerlink" title="1、为什么会觉得jQuery插件缺失？"></a>1、为什么会觉得jQuery插件缺失？</h3><p>请记住：当你在使用jQuery插件时，请在AngularJS之前加载jQuery库</p>
+<p><strong>分析：</strong> 因为AngularJS自带jqLite（可以理解为jQuery的精简版），如果先引入AngularJS的话，那么AngularJS会采用jqLite，而不是完整的jQuery库。</p>
+<h3 id="2、如何从一个Controller中访问DOM元素？"><a href="#2、如何从一个Controller中访问DOM元素？" class="headerlink" title="2、如何从一个Controller中访问DOM元素？"></a>2、如何从一个Controller中访问DOM元素？</h3><p>不要从Controller中执行DOM的选择/遍历。HTML还没有被渲染。查一查”directive“</p>
+<h3 id="3、为什么Angular说-controller-directive等缺失？"><a href="#3、为什么Angular说-controller-directive等缺失？" class="headerlink" title="3、为什么Angular说 controller/directive等缺失？"></a>3、为什么Angular说 controller/directive等缺失？</h3><p>调用 <code>angular.module(&#39;myApp&#39;,[])</code> 总是会创建一个新的模块（同时干掉已有的重名模块）。相反，使用一个参数的方式调用 angular.module(‘myApp’) 来引用已经存在的模块。</p>
+<h3 id="4、如何渲染未转义的数据？"><a href="#4、如何渲染未转义的数据？" class="headerlink" title="4、如何渲染未转义的数据？"></a>4、如何渲染未转义的数据？</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$sce.trustAsHtml(data)</div><div class="line">如何禁用$sce?</div><div class="line">app.config([<span class="string">'$sceProvider'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$sceProvider</span>) </span>&#123;</div><div class="line">    $sceProvider.enabled(<span class="literal">false</span>);</div><div class="line">&#125;]);</div></pre></td></tr></table></figure>
+<h3 id="5、当array-object-resource-result变化时，应该如何监视？"><a href="#5、当array-object-resource-result变化时，应该如何监视？" class="headerlink" title="5、当array/object/$resource-result变化时，应该如何监视？"></a>5、当array/object/$resource-result变化时，应该如何监视？</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$scope.$watch 有第三个参数设置来监视值变化（非引用变化）</div><div class="line">$watch(watchExpression, listener, [objectEquality]);</div><div class="line">[objectEquality]设置为<span class="literal">true</span>，则使用angular.equals对象相等，而不是使用引用相等比较。</div></pre></td></tr></table></figure>
+<h3 id="6、怎样才能序列化表单数据提交？"><a href="#6、怎样才能序列化表单数据提交？" class="headerlink" title="6、怎样才能序列化表单数据提交？"></a>6、怎样才能序列化表单数据提交？</h3><p><strong>不要这么做！</strong> 不要尝试手动收集输入框值。仅仅只需要在每一个表单元素上附加 <code>ng-model=&quot;data.myField</code>，在需要使用的地方，使用 <code>$scope.data</code> 即可</p>
+<h3 id="7、总是在-ng-models-上使用-gt-最佳实践"><a href="#7、总是在-ng-models-上使用-gt-最佳实践" class="headerlink" title="7、总是在 ng-models 上使用(.) =&gt;最佳实践"></a>7、总是在 ng-models 上使用(.) =&gt;最佳实践</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">any</span> <span class="attr">ng-model</span>=<span class="string">"book.price"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">any</span> <span class="attr">ng-model</span>=<span class="string">"book.name"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="8、应该如何从-service-中访问-scope-？"><a href="#8、应该如何从-service-中访问-scope-？" class="headerlink" title="8、应该如何从 service 中访问 scope ？"></a>8、应该如何从 service 中访问 scope ？</h3><p><code>$rootScope</code> 相当于 <code>ng-app</code> 标记，它能够被引导或者是服务注入，可以用于在所有的 scopes 上添加新功能和值</p>
+<p><strong>注意：避免这样做–这相当于定义全局变量</strong></p>
+<h3 id="9、module-factory-和-module-service-不同点是什么？"><a href="#9、module-factory-和-module-service-不同点是什么？" class="headerlink" title="9、module().factory() 和 module().service() 不同点是什么？"></a>9、<code>module().factory()</code> 和 <code>module().service()</code> 不同点是什么？</h3><p><a href="https://groups.google.com/forum/?fromgroups#!topic/angular/56sdORWEoqg" target="_blank" rel="external">查看讨论信息</a></p>
+<h3 id="10、如何防止无样式的内容闪现（页面显示双大括号绑定表达式）？"><a href="#10、如何防止无样式的内容闪现（页面显示双大括号绑定表达式）？" class="headerlink" title="10、如何防止无样式的内容闪现（页面显示双大括号绑定表达式）？"></a>10、如何防止无样式的内容闪现（页面显示双大括号绑定表达式）？</h3><p>在一些地方使用 <code>ng-bind</code> 来替换双括号表达式</p>
+<h3 id="11、为什么-lt-a-ng-click-quot-go-lt-￼5-gt-quot-gt-不工作？"><a href="#11、为什么-lt-a-ng-click-quot-go-lt-￼5-gt-quot-gt-不工作？" class="headerlink" title="11、为什么 &lt;a ng-click=&quot;go()&quot;&gt; 不工作？"></a>11、为什么 <code>&lt;a ng-click=&quot;go()&quot;&gt;</code> 不工作？</h3><p>仅有的 <code>ng-*</code> 属性中，需要 <code></code> 的只有 <code>ng-src</code> 和 <code>ng-href</code>，因为最终的结果必须是一个字符串，不是一个表达式。所以其他的不能工作。</p>
+<h3 id="12、嵌套-routes-views"><a href="#12、嵌套-routes-views" class="headerlink" title="12、嵌套 routes/views?"></a>12、嵌套 routes/views?</h3><p>或许吧</p>
+<h3 id="13、可以在行内指定模板或者是分部视图吗？"><a href="#13、可以在行内指定模板或者是分部视图吗？" class="headerlink" title="13、可以在行内指定模板或者是分部视图吗？"></a>13、可以在行内指定模板或者是分部视图吗？</h3><p>可以。可以采用 <code>&lt;script id=&quot;some/partial.html&quot; type=&quot;text/ng-template&quot;&gt;&lt;/script&gt;</code> ，Angular会使用它来替换。</p>
+<h3 id="14、-如何在-ngResource-地址中使用端口？"><a href="#14、-如何在-ngResource-地址中使用端口？" class="headerlink" title="14、 如何在 ngResource 地址中使用端口？"></a>14、 如何在 ngResource 地址中使用端口？</h3><pre><code>如下：$resource(&apos;example.com\\:8080&apos;)
+</code></pre><h3 id="15、为什么插件触发的change事件似乎不工作？"><a href="#15、为什么插件触发的change事件似乎不工作？" class="headerlink" title="15、为什么插件触发的change事件似乎不工作？"></a>15、为什么插件触发的change事件似乎不工作？</h3><p>Angular监视 <a href="https://developer.mozilla.org/en-US/docs/Web/Events/input" target="_blank" rel="external">input</a> 事件，不是’change’ 事件。</p>
+<h3 id="16、不要使用jQuery来切换crap-待定：无效元素-，在行内使用一些变量标记。"><a href="#16、不要使用jQuery来切换crap-待定：无效元素-，在行内使用一些变量标记。" class="headerlink" title="16、不要使用jQuery来切换crap(待定：无效元素)，在行内使用一些变量标记。"></a>16、不要使用jQuery来切换crap(待定：无效元素)，在行内使用一些变量标记。</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">ng-click</span>=<span class="string">"flags.open=!flags.open"</span>&gt;</span>...<span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-class</span>=<span class="string">"&#123;active:flags.open&#125;"</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="17、如何从DOM检查上查看-scope-？"><a href="#17、如何从DOM检查上查看-scope-？" class="headerlink" title="17、如何从DOM检查上查看 scope ？"></a>17、如何从DOM检查上查看 scope ？</h3><p>Google Chrome:安装 Batarang extension,检查一个DOM元素，然后在console中键入$scope</p>
+<p>Firefox/Firebug：检查一个DOM元素，然后在console中键入 <code>angular.element($0).scope()</code><br>或者 <code>$($0).scope()</code></p>
+<p>IE10+: 使用F12工具，检查一个元素。然后在console中键入 <code>angular.element($0).scope()</code><br>或者 <code>$($0).scope()</code></p>
+<h3 id="18、你有一些好的指令示例-库吗？"><a href="#18、你有一些好的指令示例-库吗？" class="headerlink" title="18、你有一些好的指令示例/库吗？"></a>18、你有一些好的指令示例/库吗？</h3><p><a href="http://angular-ui.github.com/" target="_blank" rel="external">AngularUI</a> 是非常棒的AngularJS工具集合（甚至是更好的示例代码）</p>
+<h3 id="19、IE？"><a href="#19、IE？" class="headerlink" title="19、IE？"></a>19、IE？</h3><p>针对IE8.0或者更早，你需要<a href="https://docs.angularjs.org/guide/ie" target="_blank" rel="external">阅读这个</a>和<a href="http://angular-ui.github.io/#ieshiv" target="_blank" rel="external">使用这个</a></p>
+<h3 id="20、必须对路由使用"><a href="#20、必须对路由使用" class="headerlink" title="20、必须对路由使用#?"></a>20、必须对路由使用#?</h3><p>参考 <a href="https://docs.angularjs.org/api/ng/provider/$locationProvider" target="_blank" rel="external">$locationProvider</a></p>
+<h3 id="21、你应该在尝试用指令包装jQuery插件前，优先尝试使用AngularUI-Passthru-Directive-uiJq"><a href="#21、你应该在尝试用指令包装jQuery插件前，优先尝试使用AngularUI-Passthru-Directive-uiJq" class="headerlink" title="21、你应该在尝试用指令包装jQuery插件前，优先尝试使用AngularUI Passthru Directive (uiJq) "></a>21、你应该在尝试用指令包装jQuery插件前，优先尝试使用<a href="http://angular-ui.github.io/#directives-jq" target="_blank" rel="external">AngularUI Passthru Directive (uiJq) </a></h3><h3 id="22、为什么我的-scope-watch-递归触发"><a href="#22、为什么我的-scope-watch-递归触发" class="headerlink" title="22、为什么我的 $scope.$watch() 递归触发?"></a>22、为什么我的 $scope.$watch() 递归触发?</h3><p>如果你在 $scope.$watch(newVal,oldVal)中改变 newVal ，它会重复触发。在 $watch 运行后，$scope 会重新评估，被观察对象将被重新触发。</p>
+<h3 id="23、何时我需要使用-scope-apply"><a href="#23、何时我需要使用-scope-apply" class="headerlink" title="23、何时我需要使用 $scope.$apply() ?"></a>23、何时我需要使用 $scope.$apply() ?</h3><p>仅仅需要在没有angular 事件/回调时 使用 $scope.$apply()。它通常不属于任何地方。</p>
+<h3 id="24、启用了-html5Mode-，如何获取-lt-a-href-gt-的后退行为？"><a href="#24、启用了-html5Mode-，如何获取-lt-a-href-gt-的后退行为？" class="headerlink" title="24、启用了 html5Mode ，如何获取&lt;a href /&gt;的后退行为？"></a>24、启用了 html5Mode ，如何获取&lt;a href /&gt;的后退行为？</h3><p>如果你想一个链接能够全页面刷新，那么只需要在a标记上添加 target=”_self”</p>
+<h3 id="25、如何-preventDefualt-或-stopPropagation"><a href="#25、如何-preventDefualt-或-stopPropagation" class="headerlink" title="25、如何 .preventDefualt() 或 .stopPropagation() ?"></a>25、如何 .preventDefualt() 或 .stopPropagation() ?</h3><p>所有的 ng-click 和相关的绑定都注入了 $event 事件对象，你可以用它来调用 .preventDefualt()，甚至是对象传递给你的方法。</p>
+<h3 id="26、AngularJS在我的Chrome扩展中不工作！"><a href="#26、AngularJS在我的Chrome扩展中不工作！" class="headerlink" title="26、AngularJS在我的Chrome扩展中不工作！"></a>26、AngularJS在我的Chrome扩展中不工作！</h3><p>你需要使用 <a href="http://docs.angularjs.org/api/ng.directive:ngCsp" target="_blank" rel="external">ng-csp</a></p>
+<h3 id="27、如何缓存-http-和html-分部视图"><a href="#27、如何缓存-http-和html-分部视图" class="headerlink" title="27、如何缓存 $http 和html 分部视图"></a>27、如何缓存 $http 和html 分部视图</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用装饰器，添加缓存功能</span></div><div class="line">myAppModule.config(<span class="function"><span class="keyword">function</span>(<span class="params">$routeProvider, $provide</span>) </span>&#123;</div><div class="line">  $provide.decorator(<span class="string">'$http'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$delegate</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> get = $delegate.get;</div><div class="line">    $delegate.get = <span class="function"><span class="keyword">function</span>(<span class="params">url, config</span>)</span>&#123;</div><div class="line">      url += (url.indexOf(<span class="string">'?'</span>) !== <span class="number">-1</span>) ? <span class="string">'?'</span> : <span class="string">'&amp;'</span>;</div><div class="line">      url += <span class="string">'v='</span> + cacheBustVersion;</div><div class="line">      <span class="keyword">return</span> get(url, config);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> $delegate;</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="1、拒绝-解决一个-q-defer-不通过"><a href="#1、拒绝-解决一个-q-defer-不通过" class="headerlink" title="1、拒绝/解决一个 $q.defer() 不通过"></a>1、拒绝/解决一个 $q.defer() 不通过</h3><p>你必须在处理它们的时候添加 <code>$scope.$apply()</code></p>
+<h3 id="2、Jasmine-spyOn-不执行-spy’d-功能"><a href="#2、Jasmine-spyOn-不执行-spy’d-功能" class="headerlink" title="2、Jasmine spyOn() 不执行 spy’d 功能"></a>2、Jasmine spyOn() 不执行 spy’d 功能</h3><p>不一定是AngularJS的问题，但是你需要追加 <code>.addCallThrough()</code></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/03/13/Angular相关/用AngularJS开发Web应用程序/">
+        用AngularJS开发Web应用程序
+      </a>
+    </h2>
+    
+    <time>
+      Mar 13, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##章节一：Angular 禅道##</p>
+<p>###本章生词###<br>    serve = 提供<br>    take a brief = 先简要的<br>    introduction = 介绍<br>    concept = 概念<br>    a lot of = 许多<br>    material = 材料<br>    cover = 概括<br>    painless = 无痛的<br>    plenty = 丰富、大量<br>    unique = 独特的<br>    doubt = 疑问<br>    shape = 塑造<br>    explain = 解释<br>    expect = 预计<br>    get familiar with = 熟悉<br>    become aware = 察觉<br>    sophisticated = 复杂<br>    dependency injection = 依赖注入nuance<br>    nuance = 细微之处<br>    general = 一般<br>    purpose = 目的<br>    shines = 耀眼<br>    recent = 最近<br>    addition = 此外<br>    mostly = 主要的<br>    due = 由于<br>    innovative = 创新<br>    yet = 但<br>    attract = 吸引<br>    ease = 缓解<br>    solid = 扎实<br>    engineering = 工程<br>    practice = 实践<br>    indeed = 的确<br>    respects = 方面<br>    explicit = 明确的<br>    capable = 能<br>    figure out = 弄清楚<br>    interesting = 有趣的<br>    interpret = 解析<br>    mistaken = 错误，谬<br>    several = 几个，数个<br>    typically = 通常<br>    treasure = 宝藏<br>    testability = 可测试性<br>    built-in support 内置支持<br>    thoroughly = 彻底的<br>    relatively = 比较的<br>    actor = 演员<br>    personal = 个人的<br>    turned out = 横空出世</p>
+<hr>
+<p>这个章节介绍了AngularJS，包括框架和它背后的项目。首先，我们先简要的了解项目本身：谁become aware驱动了它，在哪儿可以找到源代码和文档，如何寻求帮助等等。</p>
+<p>这个章节的大部分是介绍AngularJS框架，它的核心概念和编码模式。包含有许多概括（总结）性的材料，使得学习进程快速无障碍，同时也有丰富的代码示例。</p>
+<p>AngularJS是一个独特的框架，毫无疑问的引领一个Web开发潮流。这也是为什么章节的最后部分解释了是什么让AngularJS如此特别，它和其它外部框架之间的差异和我们能在未来如何设想它。</p>
+<p>这个章节包含了以下几个主题：</p>
+<ol>
+<li>如何用AngularJS书写一个简单的Hello World 程序。在做这个的过程中，你将了解到在哪儿找到框架源代码、文档以及社区。</li>
+<li>熟悉AngularJS应用程序的基本构造块：Templates、Directives、Scopes和Controllers。</li>
+<li>察觉AngularJS复杂的依赖注入系统以及它所有的细微之处。</li>
+<li>理解AngularJS与其他框架或库（特别是jQuery）之间的差异，是什么使得它如此特别。</li>
+</ol>
+<p>###AngularJS简介###<br>AngularJS是一个用JavaScript编写的客户端MVC框架，它运行于Web浏览器，能够极大的帮助我们（开发者）编写模块化，单页面，Ajax风格的Web Applications。它是一个平常的框架，不过如果用于编写CRUD类型的web app，那么它将非常耀眼。</p>
+<p>###熟悉框架###<br>AngularJS是最近的客户端mvc框架的例外，但是它吸引了许多注意力，主要是由于它创新的模板系统，减轻了开发，同时有很扎实的工程实践。的确，它的模板系统独特于许多方面：</p>
+<ol>
+<li>使用HTML作为模板语言</li>
+<li>不要求明确的DOM刷新，AngularJS 能跟踪用户操作、浏览器事件和模型变化，来选择何时和那个模板将被刷新</li>
+<li>它有非常有趣的和可扩展的组件子系统，它能教会浏览器如何解析新的HTML标签和属性</li>
+</ol>
+<p>模板子系统可能是AngularJS中最常见的部分，但是不要错误的认为AngularJS是单页Web程序所需要的包含数个工具和常用服务的完整框架包。</p>
+<p>AngularJS同样有一些隐藏的宝藏，依赖注入（DI=dependency injection）和可测试特性的强烈关注。DI的内置支持能够非常容易的访问从一个极小的、彻底的可测试服务创建的web app。</p>
+<p>###项目发展路线###<br>AngularJS是客户端MVC框架中比较新的成员；它的1.0版本发布于2012年6月。实际上，这个框架作为谷歌雇员Misko Hevery的个人项目开始于2009年。最初的idea是如此的好，在写作本文的同时，这个项目已经被Google正式支持，并且有Google的完整团队全职维护这个框架。</p>
+<p>AngularJS是托管在<a href="https://github.com/angular/angular.js" target="_blank" rel="external">GitHub</a>上的，基于MIT协议的开源项目</p>
+<p>###社区###</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/03/13/Angular相关/AngularJS教程：1W字综合指南/">
+        AngularJS教程：1W字综合指南
+      </a>
+    </h2>
+    
+    <time>
+      Mar 13, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h1 id="AngularJSj教程：1W字指南（译）"><a href="#AngularJSj教程：1W字指南（译）" class="headerlink" title="AngularJSj教程：1W字指南（译）"></a>AngularJSj教程：1W字指南（译）</h1><p><strong>原文地址：</strong><a href="http://www.airpair.com/angularjs" target="_blank" rel="external">http://www.airpair.com/angularjs</a></p>
+<h2 id="1、AngularJS简介"><a href="#1、AngularJS简介" class="headerlink" title="1、AngularJS简介"></a>1、AngularJS简介</h2><p>Angular 是用于编写引人注目的Web应用程序的是客户端 MVW JavaScript框架。它由Google创建好维护，（offers a futuristic spin on the web and its upcoming features and standards.<br>Read more at <a href="http://www.airpair.com/angularjs#tY7q00WpGrTLB71Z.99）" target="_blank" rel="external">http://www.airpair.com/angularjs#tY7q00WpGrTLB71Z.99）</a></p>
+<p>MVW 即 Model-View-Whatever,它是能在开发应用程序时，为我们提供灵活性的一种设计模式。我们可以选择MVC(Model-View-Controller)或者是MVVM(Model-View-ViewModel)方式。</p>
+<p>本教程可以作为一个最终的资源来开始学习AngularJS,它的概念和它背后的API，同时能帮助您学习如何实现现代的Web应用程序。</p>
+<p>AngularJS自身作为增强HTML的一个框架。它从多种语言包括JavaScript和服务端语言中获得灵感，使得HTML也成为了动态语言。这意味着我们获得了一个完全的数据数据方式来开发应用程序，不再需要刷新实体，更新DOM和其他费时任务如浏览器bug和不一致。我们可以只关注数据，让数据关心HTML的方式来编写我们的应用程序。</p>
+<h2 id="2、JavaScript框架中的工程概念"><a href="#2、JavaScript框架中的工程概念" class="headerlink" title="2、JavaScript框架中的工程概念"></a>2、JavaScript框架中的工程概念</h2><p>AngularJS在处理提供数据绑定和其他工程概念上，和其他框架如Backbone.js和Ember.js采取了不同了做法。我们坚持使用熟悉的、令人喜欢的HTML，使Angular拦截它，并增强它。Angular将纯粹的JavaScript对象用于数据绑定，保证任何模型变化都会更新DOM。当模型值更新了一次，Angular会更新来自应用程序的状态来源对象。</p>
+<h3 id="2-1、MVC-和-MVVM"><a href="#2-1、MVC-和-MVVM" class="headerlink" title="2.1、MVC 和 MVVM"></a>2.1、MVC 和 MVVM</h3><p>如果你已经习惯了构建静态网站，你可能更熟悉手动一块一块的构建HTML，通过数据一遍一遍的打印相同的HTML。这可能是grid中的列，一个导航结构，一个链接列表或者是图片等等。在这个实例中，你需要习惯一点小东西的变化都需要手动更新HTML的痛苦，你必须更新模板来保持其他用途的一致性。你还要为每个导航项目杜绝相同的HTML。</p>
+<p>深呼吸一下，通过Angular我们能实现恰当的关注点分离以及动态HTML。这意味着数据在模Model中，HTML是作为一个微小的模板被渲染为View，我们能使用Controller来连接它们两个，并驱动Model和View值的变化。</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/03/12/编写高质量JS代码的68个有效方法-读书笔记/[20150312]编写高质量JS代码的68个有效方法（十三）/">
+        编写高质量JS代码的68个有效方法（十三）
+      </a>
+    </h2>
+    
+    <time>
+      Mar 12, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.61、不要阻塞I/O事件队列</p>
+<p><strong>Tips：</strong>：</p>
+<ol>
+<li>异步API使用回调函数来延缓处理代价高昂的操作以避免阻塞主应用程序</li>
+<li>JavaScript并发的接收事件，但会使用一个事件队列按序地处理事件处理程序</li>
+<li>在应用程序事件队列中绝不要使用阻塞的I/O</li>
+</ol>
+<p>JavaScript程序是构建在事件之上的。在其他一些语言中，我们可能常常会实现如下代码：</p>
+<pre><code>var result = downFileSync(&apos;http://xxx.com&apos;); 
+console.log(result);
+</code></pre><p>以上代码，如果downFileSync需要5分钟，那么程序就会停下来等待5分钟。这样的函数就被称为同步函数（或阻塞函数）。如果在浏览器中实现这样的函数，那么结果就是浏览器卡住，等待下载完成后，再继续响应。那么，这将极大的影响体验。所以，在JavaScript中，一般使用如下方式：</p>
+<pre><code>downFileAsync(&apos;http://xxx.com&apos;, function(result){
+  console.log(result);
+});
+console.log(&apos;async&apos;);
+</code></pre><p>以上代码执行中，就算下载文件要5分钟，那么程序也会立马打印出“async”，然后在下载完成的时候，打印result出来。这样才能保证执行环境能正确响应客户的操作。</p>
+<p>JavaScript并发的一个最重要的规则是绝不要在应用程序事件队列中使用阻塞I/O的API。在浏览器中，甚至基本没有任何阻塞的API是可用的。其中XMLHttpRequest库有一个同步版本的实现，被认为是一种不好的实现，影响Web应用程序的交互性。</p>
+<p>在现代浏览器（IE10+(含)、Chrome、FireFox）中，提供了Worker的API，该API使得产生大量的并行计算称为可能。</p>
+<p><em>如何使用？</em></p>
+<p>首先，编写两个文件,第一个是task.js,如下：</p>
+<pre><code>//task.js
+console.time(&apos;t1&apos;);
+var sum = 0;
+for(var i = 0; i &lt; 500000000; i++){
+  sum += i;
+}
+console.log(&apos;test&apos;);
+console.timeEnd(&apos;t1&apos;);
+postMessage(&apos;worker result:&apos; + sum);
+</code></pre><p>然后是index.html，用于调用worker，代码如下：</p>
+<pre><code>// index.html
+&lt;button onclick=&quot;alert(&apos;aa&apos;)&quot;&gt;Test&lt;/button&gt;
+&lt;script&gt;
+  var worker = new Worker(&apos;test.js&apos;); 
+  worker.onmessage = function(evt){
+    console.log(evt.data);
+  };
+&lt;/script&gt;
+</code></pre><p>在index.html的JavaScript脚本中。使用<code>var worker = new Worker(&#39;test.js&#39;);</code>来实例化一个Worker，Worker的构造为：new Worker([string] url),然后注册一个onmessage事件，用于处理test.js的通知，就是test.js中的postMessage函数。test.js中的每一次执行postMessage函数都会触发一次Worker的onmessage回调。</p>
+<p>在静态服务器中访问index.html,可以看到输出为：</p>
+<pre><code>test
+t1: 2348.633ms
+worker result:124999999567108900
+</code></pre><p>再来看看Worker的优缺点，我们可以做什么：</p>
+<ol>
+<li>可以加载一个JS进行大量的复杂计算而不挂起主进程，并通过postMessage，onmessage进行通信</li>
+<li>可以在worker中通过importScripts(url)加载另外的脚本文件</li>
+<li>可以使用 setTimeout(), clearTimeout(), setInterval(), and clearInterval()</li>
+<li>可以使用XMLHttpRequest来发送请求</li>
+<li>可以访问navigator的部分属性</li>
+</ol>
+<p>有那些局限性：</p>
+<ol>
+<li>不能跨域加载JS</li>
+<li>worker内代码不能访问DOM</li>
+<li>各个浏览器对Worker的实现不大一致，例如FF里允许worker中创建新的worker,而Chrome中就不行</li>
+<li>不是每个浏览器都支持这个新特性</li>
+</ol>
+<p>更多信息，请参考：</p>
+<ol>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/Performance/Using_web_workers" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/Guide/Performance/Using_web_workers</a></li>
+<li><a href="http://www.cnblogs.com/feng_013/archive/2011/09/20/2175007.html" target="_blank" rel="external">http://www.cnblogs.com/feng_013/archive/2011/09/20/2175007.html</a></li>
+</ol>
+<p>##No.62、在异步序列中使用嵌套或命名的回调函数<br><strong>Tips：</strong>：</p>
+<ol>
+<li>使用嵌套或命名的回调函数按顺序地执行多个异步操作</li>
+<li>尝试在过多的嵌套的回调函数和尴尬的命名的非嵌套回调函数之间取得平衡</li>
+<li>避免将可被并行执行的操作顺序化</li>
+</ol>
+<p>想象一下如下需求，异步请数据库查找一个地址，并异步下载。由于是异步，我们不可能发起两个连续请求，那么js代码很可能是这样的：</p>
+<pre><code>db.lookupAsync(&apos;url&apos;, function(url){
+  downloadAsync(url, function(result){
+    console.log(result);
+  });
+});
+</code></pre><p>我们使用嵌套，成功解决了这个问题，但是当这样的依赖很多时，我们的代码可能是这样：</p>
+<pre><code>db.lookupAsync(&apos;url&apos;, function(url){
+  downloadAsync(&apos;1.txt&apos;, function(){
+    downloadAsync(&apos;2.txt&apos;, function(){
+      downloadAsync(&apos;3.txt&apos;, function(){
+        //do something...
+      });
+    });
+  });
+});
+</code></pre><p>这样就陷入了回调地狱。要减少过多的嵌套的方法之一就是将回调函数作为命名的函数，并将它们需要的附加数据作为额外的参数传递。比如：</p>
+<pre><code>db.lookupAsync(&apos;url&apos;, downloadUrl);
+
+function downloadUrl(url){
+  downloadAsync(url, printResult);
+}
+
+function printResult(result){
+  console.log(result);
+}
+</code></pre><p>这样能控制嵌套回调的规模，但是还是不够直观。实际上，在node中解决此类问题是用现有的模块，如async。</p>
+<p>##No.63、当心丢弃错误<br><strong>Tips：</strong>：</p>
+<ol>
+<li>通过编写共享的错误处理函数来避免复制和粘贴错误处理代码</li>
+<li>确保明确地处理所有的错误条件以避免丢弃错误</li>
+</ol>
+<p>一般情况下，我们的错误处理代码如下：</p>
+<pre><code>try{
+  a();
+  b();
+  c();
+}catch(ex){
+  //处理错误
+}
+</code></pre><p>对于异步的代码，不可能将错误包装在一个try中，事实上，异步的API甚至根本不可能抛出异常。<strong>异步的API倾向于将错误表示为回调函数的特定参数，或使用一个附加的错误处理回调函数（有时被称为errbacks）</strong>。代码如下:</p>
+<pre><code>downloadAsync(url, function(result){
+  console.log(result);
+}, function(err){ //提供一个单独的错误处理函数
+  console.log(&apos;Error:&apos; + err);
+});
+</code></pre><p>多次嵌套时，错误处理函数会被多次复制，所以可以将错误处理函数提取出来，减少重复代码，代码如下：</p>
+<pre><code>downloadAsync(&apos;1.txt&apos;, function(result){
+  downloadAsync(&apos;2.txt&apos;, function(result2){
+    console.log(result + result2);
+  }, onError);
+}, onError);
+</code></pre><p><strong>在node中，异步API的回调函数第一个参数表示err，这已经成为一个大众标准</strong></p>
+<p>##No.64、对异步循环使用递归<br><strong>Tips：</strong>：</p>
+<ol>
+<li>循环不能是异步的</li>
+<li>使用递归函数在时间循环的单独轮次中执行迭代</li>
+<li>在事件循环的单独伦次中执行递归，并不会导致调用栈溢出</li>
+</ol>
+<p>针对异步下载文件，如果要使用循环，大概是如下代码：</p>
+<pre><code>function downloadFilesSync(urls){
+  for(var i = 0, len = urls.length; i &lt; len; i++){
+    try{
+      return downloadSync(urls[i]);
+    }catch(ex){
+    }
+  }
+}
+</code></pre><p>以上代码并不能正确工作，因为方法一调用，就会启动所有的下载，并不能等待一个完成，再继续下一个。</p>
+<p>要实现功能，看看下面的递归代码：</p>
+<pre><code>function downloadFilesSync(urls){
+  var len = urls.length;
+  function tryNextURL(i) {
+    if (i &gt;= n) {
+      console.log(&apos;Error&apos;);
+      return; //退出
+    }
+    downloadAsync(urls[i], function(result){
+      console.log(result);
+      //下载成功后，尝试下一个。    
+      tryNextURL(i + 1);
+    });
+  }
+  tryNextURL(0);// 启动递归
+}
+</code></pre><p>类似这样的实现，就能解决批量下载的问题了。</p>
+<p>##No.65、不要再计算时阻塞事件队列<br><strong>Tips：</strong>：</p>
+<ol>
+<li>避免在主事件队列中执行代码高昂的算法</li>
+<li>在支持Worker API的平台，该API可以用来在一个独立的事件队列中运行长计算程序</li>
+<li>在Worker API 不可用或代价高昂的环境中，考虑将计算程序分解到事件循环的多个轮次中</li>
+</ol>
+<p>打开浏览器控制台，执行 <code>while(true){}</code>，会是什么效果？</p>
+<p><strong>好吧，浏览器卡死了！！！</strong></p>
+<p>如果有这样的需求，那么优先选择使用Worker实现吧。由于有些平台不支持类似Worker的API，那么可选的方案是将算法分解为多个步骤。代码如下：</p>
+<pre><code>//首先，将逻辑分为几个步骤
+function step1(){console.log(1);}
+function step2(){console.log(2);}
+function step3(){console.log(3);}
+var taskArr = [step1, step2, step3];
+
+var doWork = function(tasks){
+  function next(){
+    if(tasks.length === 0){
+      console.log(&apos;Tasks finished.&apos;);
+      return;
+    }
+    var task = tasks.shift();
+    if(task){
+      task();
+      setTimeout(next, 0);
+    }   
+  }
+  setTimeout(next, 0);
+}
+//启动任务
+doWork(taskArr);
+</code></pre><p>##No.66、使用计数器来执行并行操作<br><strong>Tips：</strong>：</p>
+<ol>
+<li>JavaScript应用程序中的事件发生是不确定的，即顺序是不可预测的</li>
+<li>使用计数器避免并行操作中的数据竞争</li>
+</ol>
+<p>先看一个简单的示例：</p>
+<pre><code>function downFiles(urls){
+  var result = [],len = urls.length;
+  if(len === 0){
+    console.log(&apos;urls argument is a empty array.&apos;);
+    return;
+  }
+  urls.forEach(function(url){
+    downloadAsync(url, function(text){
+      result.push(text);
+      if(result.length === len){
+        console.log(&apos;download all files.&apos;);
+      }
+    });
+  });
+}
+</code></pre><p>有什么问题呢？result的结果和urls是顺序并不匹配，所以，我们不知道怎么使用这个result。</p>
+<p>如何改进？请看如下代码，使用计数器，代码如下：</p>
+<pre><code>function downFiles(urls){
+  var result = [],len = urls.length;
+  var count = 0;// 定义计数器
+  if(len === 0){
+    console.log(&apos;urls argument is a empty array.&apos;);
+    return;
+  }
+  urls.forEach(function(url, i){
+    downloadAsync(url, function(text){
+      result[i] = text;
+      count++;
+      //计数器等于url个数，那么退出
+      if(count === len){
+        console.log(&apos;download all files.&apos;);
+      }
+    });
+  });
+}
+</code></pre><p>##No.67、绝不要同步地调用异步的回调函数<br><strong>Tips：</strong>：</p>
+<ol>
+<li>即使可以立即得到数据，也绝不要同步地调用异步回调函数</li>
+<li>同步地调用异步的回调函数扰乱了预期的操作序列，并可能导致意想不到的交错代码</li>
+<li>同步地调用异步的回调函数可能导致栈溢出或错误的处理异常</li>
+<li>使用异步的API，比如setTimeout函数来调用异步回调函数，使其运行于另外一个回合</li>
+</ol>
+<p>如果异步下载代码，优先从缓存拿数据，那么代码很可能是：</p>
+<pre><code>var cache = new Dict();
+
+function downFileWithCache(url, onsuccess){
+  if (cache.has(url)){
+    onsuccess(cache.get(url));
+    return;
+  }
+  return downloadAsync(url, function(text){
+    cache.set(url, text);
+    onsuccess(text);
+  });
+}
+</code></pre><p>以上代码，同步的调用了回调函数，可能会导致一些微妙的问题，<strong>异步的回调函数本质上是以空的调用栈来调用，因此将异步的循环实现为递归函数是安全的，完全没有累计赵越调用栈控件的危险。</strong>同步的调用不能保证这一点，所以，更好的代码如下：</p>
+<pre><code>var cache = new Dict();
+
+function downFileWithCache(url, onsuccess){
+  if (cache.has(url)){
+    setTimeout(onsuccess.bind(null, cache.get(url)), 0)
+    return;
+  }
+  return downloadAsync(url, function(text){
+    cache.set(url, text);
+    onsuccess(text);
+  });
+}
+</code></pre><p>##No.68、使用promise模式清洁异步逻辑<br><strong>Tips：</strong>：</p>
+<ol>
+<li>promise代表最终值，即并行操作完成时最终产生的结果</li>
+<li>使用promise组合不同的并行操作</li>
+<li>使用promise模式的API避免数据竞争</li>
+<li>在要求有意的竞争条件时使用select（也被称为choose）</li>
+</ol>
+<p>一直以来，JavaScript处理异步的方式都是callback，当异步任务很多的时候，维护大量的callback将是一场灾难。所以Promise规范也应运而生，<a href="http://www.ituring.com.cn/article/66566" target="_blank" rel="external">http://www.ituring.com.cn/article/66566</a> 。</p>
+<p>Promise已经纳入了ES6，而且高版本的Chrome、Firefox都已经实现了Promise，只不过和现如今流行的类Promise类库相比少些API。</p>
+<p>看下最简单的Promise代码（猜猜最后输出啥？）：</p>
+<pre><code>var p1 = new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(&apos;1&apos;);
+    resolve(&apos;2&apos;);
+  }, 3000);
+});
+
+p1.then(function(val){
+  console.log(val);
+});
+</code></pre><p>如果代码是这样呢？</p>
+<pre><code>var p1 = new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(&apos;1&apos;);
+    //resolve(&apos;2&apos;);
+    reject(&apos;3&apos;);
+  }, 3000);
+});
+
+p1.then(function(val){
+  console.log(val);
+}, function(val){
+  console.log(val);
+});
+</code></pre><p>再来看一个Promise.all的示例：</p>
+<pre><code>Promise.all([new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(1);
+    resolve(1);
+  }, 2000);
+}), new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(2);
+    resolve(2);
+  }, 1000);
+}), Promise.reject(3)])
+.then(function(values){
+  console.log(values);
+});
+</code></pre><p><code>Promise.all([]).then(fn)</code><strong>只有当所有的异步任务执行完成之后，才会执行then。</strong></p>
+<p>接着看一个Promise.race的示例：</p>
+<pre><code>Promise.race([new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(&apos;p1&apos;);
+    resolve(1);
+  }, 2000);
+}), new Promise(function(resolve, reject){
+  setTimeout(function(){
+    console.log(&apos;p2&apos;);
+    resolve(2);
+  }, 1000);
+})])
+.then(function(value){
+  console.log(&apos;value = &apos; + value);
+});
+</code></pre><p>结果是：</p>
+<pre><code>p2
+value = 2
+p1
+</code></pre><p><code>Promise.race([]).then(fn)</code><strong>会同时执行所有的异步任务，但是只要完成一个异步任务，那么就调用then。</strong></p>
+<p><strong>promise.catch(onRejected)是promise.then(undefined, onRejected) 的语法糖。</strong></p>
+<p>更多关于Promise的资料请参考：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></p>
+<p>第三方Promise库有许多，如：Q, when.js 等</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+  <nav id="page-nav">
+    
+    <a class="prev" rel="prev" href="/blog/page/10/">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
+    </a>
+    
+    
+    <a class="next" rel="next" href="/blog/page/12/">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
+    
+  </nav>
+  
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
+
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

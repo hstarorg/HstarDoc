@@ -1,74 +1,1844 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="幻☆精灵的Blog站点"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>幻☆精灵的Blog · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="item"><a class="article" href="/blog/2015/03/12/编写高质量JS代码的68个有效方法-读书笔记/[20150312]编写高质量JS代码的68个有效方法（十三）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（十三）</h2></a><span class="post-meta">写于<time> 2015 年 03 月 12 日 00 时 00 分</time></span><p class="post-excerpt">##No.61、不要阻塞I/O事件队列
-Tips：：
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="幻☆精灵的Blog站点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="幻☆精灵的Blog">
+<meta property="og:url" content="http://hstarorg.github.io/blog/page/12/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="幻☆精灵的Blog站点">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="幻☆精灵的Blog">
+<meta name="twitter:description" content="幻☆精灵的Blog站点">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
 
-异步API使用回调函数来延缓处理代价高昂的操作以避免阻塞主应用程序
-JavaScript并发的接收事件，但会使用一个事件队列按序地处理事件处理程序
-在应用程序事件队列中绝不要使用阻塞的I/O
-
-JavaScript程序是构建</p></article><article class="item"><a class="article" href="/blog/2015/03/04/编写高质量JS代码的68个有效方法-读书笔记/[20150304]编写高质量JS代码的68个有效方法（十二）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（十二）</h2></a><span class="post-meta">写于<time> 2015 年 03 月 04 日 00 时 00 分</time></span><p class="post-excerpt">##No.56、避免不必要的状态Tips：
-
-尽可能地使用无状态的API
-如果API是有状态的，标示出每个操作与哪些状态有关联
-
-无状态的API简洁，更容易学习和使用，也不需要考虑其他的状态。如：
-&amp;apos;test&amp;apos;.toUpperCase(); // &amp;apos;</p></article><article class="item"><a class="article" href="/blog/2015/02/14/编写高质量JS代码的68个有效方法-读书笔记/[20150214]编写高质量JS代码的68个有效方法（十一）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（十一）</h2></a><span class="post-meta">写于<time> 2015 年 02 月 14 日 00 时 00 分</time></span><p class="post-excerpt">##No.51、在类数组对象上附庸通用的数组方法Tips:
-
-对于类数组对象，通过提取方法对象并使用其call方法来复用通用的Array方法
-任意一个具有索引属性和恰当length属性的对象都可以使用通用的Array方法
-
-Array.proteotype中的标准方法被设计成其他</p></article><article class="item"><a class="article" href="/blog/2015/01/23/编写高质量JS代码的68个有效方法-读书笔记/[20150123]编写高质量JS代码的68个有效方法（十）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（十）</h2></a><span class="post-meta">写于<time> 2015 年 01 月 23 日 00 时 00 分</time></span><p class="post-excerpt">##No.46、使用数组而不要使用字典来存储有序集合Tips:
-
-使用for…in 循环来枚举对象属性应当与顺序无关
-如果聚集运算字典中的数据，确保聚集操作与顺序无关
-使用数组而不是字典来存储有序集合
-
-由于标准允许JavaScript引擎自由选择顺序，那么如果用字典存储有序数据</p></article><article class="item"><a class="article" href="/blog/2015/01/10/编写高质量JS代码的68个有效方法-读书笔记/[20150110]编写高质量JS代码的68个有效方法（九）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（九）</h2></a><span class="post-meta">写于<time> 2015 年 01 月 10 日 00 时 00 分</time></span><p class="post-excerpt">##No.41、将原型视为实现细节Tips：
-
-对象是接口，原型是实现
-避免检查你无法控制的对象的原型结构
-避免检查实现在你无法控制的对象内部的属性
-
-我们可以获取对象的属性值和调用其方法，这些操作都不是特别在意属性存储在原型继承结构的哪个位置。只要其属性值保存很定，那么这些操作</p></article><article class="item"><a class="article" href="/blog/2015/01/07/前端相关/[20150107]Web离线存储的几种方式/"><h2 class="home-title">Web离线存储的几种方式</h2></a><span class="post-meta">写于<time> 2015 年 01 月 07 日 00 时 00 分</time></span><p class="post-excerpt">随着HTML5的正式定稿，我们也可以大量使用HTML离线网络应用程序的特性。
-#1、Application CacheApplication Cache 可以很简单让我们的WebApp具有离线的能力。
-支持的浏览器：IE10+，FireFox，Chrome，Safari，Oper</p></article><article class="item"><a class="article" href="/blog/2014/12/27/编写高质量JS代码的68个有效方法-读书笔记/[20141227]编写高质量JS代码的68个有效方法（八）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（八）</h2></a><span class="post-meta">写于<time> 2014 年 12 月 27 日 00 时 00 分</time></span><p class="post-excerpt">##NO.36、只将实例状态存储在实例对象中Tips：
-
-共享可变数据可能会出问题，因为原型是被其所有的实例共享的
-将可变的实例存储在实例对象中
-
-一般来说，由于原型属性指向的对象是所有实例共享的。所以不建议在原型指向的对象中存储共享数据。下面给一个简单的例子：
-var Pers</p></article><article class="item"><a class="article" href="/blog/2014/12/20/编写高质量JS代码的68个有效方法-读书笔记/[20141220]编写高质量JS代码的68个有效方法（七）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（七）</h2></a><span class="post-meta">写于<time> 2014 年 12 月 20 日 00 时 00 分</time></span><p class="post-excerpt">##No.30、理解prototype、getPrototypeOf和proto之间的不同Tips：
-
-C.prototype属性是new C() 创建的对象的原型
-Object.getPrototypeOf(obj)是ES5中检索对象原型的标准函数
-obj. proto是检索对</p></article><article class="item"><a class="article" href="/blog/2014/12/13/编写高质量JS代码的68个有效方法-读书笔记/[20141213]编写高质量JS代码的68个有效方法（六）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（六）</h2></a><span class="post-meta">写于<time> 2014 年 12 月 13 日 00 时 00 分</time></span><p class="post-excerpt">##No.26、使用bind方法实现函数柯里化Tips：
-
-使用bind方法实现函数柯里化，即创建一个固定需求参数子集的委托函数
-传入null或undefined作为接收者的参数来实现函数柯里化，从而忽略其接收者
-
-什么是函数柯里化？
-将函数与其参数的一个子集绑定的技术称为函数柯</p></article><article class="item"><a class="article" href="/blog/2014/12/05/编写高质量JS代码的68个有效方法-读书笔记/[20141205]编写高质量JS代码的68个有效方法（五）/"><h2 class="home-title">编写高质量JS代码的68个有效方法（五）</h2></a><span class="post-meta">写于<time> 2014 年 12 月 05 日 00 时 00 分</time></span><p class="post-excerpt">##No.21、使用apply方法通过不同数量的参数调用函数Tips：
-
-使用apply方法自定一个可计算的参数数组来调用可变参数的函数
-使用apply方法的第一个参数给可变参数的方法提供一个接收者
- //示例：计算给定数据的最大值 function getMaxNum(){
-v</p></article><div class="pagination"><a class="extend prev" rel="prev" href="/blog/page/11/">«</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/10/">10</a><a class="page-number" href="/blog/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/blog/page/13/">13</a><a class="extend next" rel="next" href="/blog/page/13/">»</a></div><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
-
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
-
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
     }
-});</script></body></html>
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        
+  <section class="page-header category banner waves-image">
+    <h1 id='hitokoto'></h1>
+  </section>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/03/04/编写高质量JS代码的68个有效方法-读书笔记/[20150304]编写高质量JS代码的68个有效方法（十二）/">
+        编写高质量JS代码的68个有效方法（十二）
+      </a>
+    </h2>
+    
+    <time>
+      Mar 4, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.56、避免不必要的状态<br><strong>Tips：</strong></p>
+<ol>
+<li>尽可能地使用无状态的API</li>
+<li>如果API是有状态的，标示出每个操作与哪些状态有关联</li>
+</ol>
+<p>无状态的API简洁，更容易学习和使用，也不需要考虑其他的状态。如：</p>
+<pre><code>&apos;test&apos;.toUpperCase(); // &apos;TEST&apos;
+</code></pre><p>有状态的API往往会导致额外的声明，并增加复杂度。</p>
+<p>##No.57、使用结构类型设计灵活的接口<br><strong>Tips：</strong></p>
+<ol>
+<li>使用结构类型（也称为鸭子类型）来设计灵活的对象接口</li>
+<li>结构接口更灵活、更轻量，所以应该避免使用继承</li>
+<li>针对单元测试，使用mock对象即接口的替代实现来提供可复验的行为</li>
+</ol>
+<p>直接上代码：</p>
+<pre><code>function Wiki(format){
+  this.format = format;
+}
+
+Wiki.prototype.show = function(source){
+  var page = this.format(source);
+  return {
+    title: page.getTitle(),
+    author: page.getAuthor(),
+    content: page.getContent()
+  }
+}
+</code></pre><p>将format设计为结构类型，可以极大的增加设计的灵活性。</p>
+<p>##No.58、区分数组对象和类数组对象<br><strong>Tips：</strong></p>
+<ol>
+<li>绝不重载与其他类型有重叠的结构类型</li>
+<li>当重载一个结构类型与其他类型时，先测试其他类型</li>
+<li>当重载其他对象类型时，接收真数组而不是类数组对象</li>
+</ol>
+<p><strong>API绝不应该重载与其他类型有重叠的类型</strong></p>
+<p>最简单的判断数组与类数组，代码如下：</p>
+<pre><code>x instanceof Array
+</code></pre><p>但是，在一些允许多个全局对象的环境中可能会有标准的Array构造函数和原型对象的多份副本。那么就有可能导致以上的测试结果不可信，所以在ES5引入了Array.isArray函数来判断是否是Array对象，通过检查对象内部[[Class]]属性值是否为Array来判定。在不支持ES5的环境中，可以使用标准的Object.prototype.toString方法测试一个对象是否为数组。</p>
+<pre><code>function isArray(x){
+  return toString.call(x) === &apos;[object Array]&apos;;
+}
+</code></pre><p>##No.59、避免过度的强制转换<br><strong>Tips：</strong></p>
+<ol>
+<li>避免强制转换和重载的混用</li>
+<li>考虑防御性地监视非预期的输入</li>
+</ol>
+<p>看以下的函数：</p>
+<pre><code>function square(x){
+  return x*x;
+}
+
+console.log(square(&apos;3&apos;));  // 9 
+</code></pre><p>强制转换无疑是很方便的。但很多时候却会导致含糊不清。</p>
+<pre><code>function fun(x){
+  x = Number(x);
+  if(typeof x === &apos;number&apos;){
+    return x-1;
+  }else{
+    return x;
+  }
+}
+</code></pre><p>由于进行了Number(x)，那么后面的else是无法执行到的。如果不知道这个函数的细节，那么使用该函数则具有一定的模糊性。<br>事实上，如果我们要更小心的设计API，我们可以强制只接受数字和对象。</p>
+<pre><code>function fun(x){
+  if(typeof x === &apos;number&apos;){
+    return x-1;
+  }else if(typeof x === &apos;object&apos; &amp;&amp; x){
+    return x;
+  }else{
+    throw new TypeError(&apos;expected number or array-like.&apos;);
+  }
+}
+</code></pre><p>这种风格更加谨慎的示例，被称为防御性编程。</p>
+<p>##No.60、支持方法链<br><strong>Tips：</strong></p>
+<ol>
+<li>使用方法链来连接无状态的操作</li>
+<li>通过在无状态的方法中返回新对象来支持方法链</li>
+<li>通过在有状态的方法中返回this来支持方法链</li>
+</ol>
+<p>无状态的API部分能力是讲复杂操作分解为更小的操作。如replace：</p>
+<pre><code>function escapeHtml(str){
+  return str.replace(/&amp;/g, &apos;&amp;amp;&apos;)
+            .replace(/&lt;/g, &apos;&amp;lt;&apos;);
+}
+</code></pre><p>如果不采用方法链方式，代码应该是以下这样：</p>
+<pre><code>function escapeHtml(str){
+  var str1 = str.replace(/&amp;/g, &apos;&amp;amp;&apos;);
+  var str2 = str1.replace(/&lt;/g, &apos;&amp;lt;&apos;);
+  return str2;
+}
+</code></pre><p>同样的功能，将会产生多个临时变量。消除临时变量使得代码更加可读，中间结果只是得到最终结果中的一个重要步骤而已。</p>
+<p>在有状态的API中设置方法链也是可行的。技巧是方法在更新对象时返回this，而不是undefined。如：</p>
+<pre><code>element.setBackgroundColor(&apos;gray&apos;)
+       .setColor(&apos;red&apos;)
+       .setFontweight(&apos;bold&apos;);  
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/02/14/编写高质量JS代码的68个有效方法-读书笔记/[20150214]编写高质量JS代码的68个有效方法（十一）/">
+        编写高质量JS代码的68个有效方法（十一）
+      </a>
+    </h2>
+    
+    <time>
+      Feb 14, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.51、在类数组对象上附庸通用的数组方法<br><strong>Tips:</strong></p>
+<ol>
+<li>对于类数组对象，通过提取方法对象并使用其call方法来复用通用的Array方法</li>
+<li>任意一个具有索引属性和恰当length属性的对象都可以使用通用的Array方法</li>
+</ol>
+<p>Array.proteotype中的标准方法被设计成其他对象可复用的方法，即使这些对象没有继承Array。很实际的一个例子就是 <code>arguments</code> ,示例如下：</p>
+<pre><code>//define
+function fun(){
+  console.log(arguments);  // [1, 2, 3]
+  console.log(arguments instanceof Array) // false
+  arguments.forEach(function(argv){  //TypeError
+    console.log(argv)
+  });
+}
+
+//call
+fun(1, 2, 3);
+</code></pre><p>从结果来看，输出arguments和数组非常相似，通过instanceof来看，确实不是数组，所以arguments是类数组对象，但是在执行forEach的时候却TypeError。why？</p>
+<p>因为 <code>arguments</code> 没有继承Array.prototype,所以并不能直接调用forEach方法，但是可以提取forEach方法的引用并使用其call来调用，代码如下：</p>
+<pre><code>//define
+function fun(){
+  [].forEach.call(arguments, function(argv){
+    console.log(argv);
+  });
+}
+
+//call
+fun(1, 2, 3);
+</code></pre><p>除了arguments之外，dom的NodeList也是类数组对象：</p>
+<pre><code>var nodes = document.getElementsByTagName(&apos;a&apos;);
+console.log(nodes);
+console.log(nodes instanceof Array); // false
+</code></pre><p>那么，到底怎样使得一个对象“看起来像数组”呢？有以下两个规则：</p>
+<ol>
+<li>具有一个范围在0到2^32 - 1 的整型length属性</li>
+<li>length属性大于该对象的最大索引。索引是一个范围在0到2^32 -2 的整数，它的字符串表示的是该对象的一个key。</li>
+</ol>
+<p>鉴于以上规则，那么我们可以自己创建类数组对象：</p>
+<pre><code>var arrayLike = {0: &apos;a&apos;, 1: &apos;b&apos;, 2: &apos;c&apos;, length: 3};
+var result = [].map.call(arrayLike, function(el){
+  return el.toUpperCase();
+});
+console.log(result); // [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]
+</code></pre><p>特例，数组连接方法concat不是完全通用的。因为它会检查对象的[[Class]]属性，要想连接类数组对象，我们就需要先将类数组处理为数组：</p>
+<pre><code>var arrLike = {0: &apos;a&apos;, length: 1};
+var arr = [].slice.call(arrLike);
+console.log([&apos;A&apos;].concat(arr)); // [&apos;A&apos;, &apos;a&apos;]
+</code></pre><p>##No.52、数组字面量优于数组构造函数<br><strong>Tips:</strong></p>
+<ol>
+<li>如果数组构造函数的第一个参数是数字则数组的构造函数行为是不同的</li>
+<li>使用数组字面量替代数组构造函数</li>
+</ol>
+<p>原因如下：</p>
+<p><strong>[] 比 new Array简洁</strong></p>
+<pre><code>var arr = [];
+var arr = new Array();
+</code></pre><p><strong>使用new Array()，必须要确保没有人重新包转过Array变量</strong></p>
+<pre><code>funciton f(Array){
+    return new Array(1, 2, 3, 4, 5);
+}
+f(String); //new String(1)
+</code></pre><p><strong>使用new Array()，必须要确保没有人修改过全局的Array变量</strong></p>
+<pre><code>Array = String
+new Array(1, 2, 3); // new String(1)
+</code></pre><p><strong>使用new Array时，由于第一个参数类型不同，会导致二义性</strong></p>
+<pre><code>new Array(&apos;hello&apos;) 和 [&apos;hello&apos;] 等价
+[1] 和 new Array(1) 不等价，前者创建包含元素的1的数组，后则创建长度为1的数组。
+</code></pre><p><strong>所以，优先使用字面量，因为数组字面量具有更规范、更一致的语义。</strong></p>
+<p>##No.53、保持一致的约定<br><strong>Tips：</strong></p>
+<ol>
+<li>在变量命名和函数签名中使用一致的约定</li>
+<li>不要偏离用户在他们的开发平台中很可能遇到的约定</li>
+</ol>
+<p>有良好的编码习惯，使用业界常规的编码规范，同时注意参数的顺序等。一句话概述：<strong>保持代码的一致性</strong>。</p>
+<p>##No.54、将undefined看做“没有值”<br><strong>Tips：</strong></p>
+<ol>
+<li>避免使用undefined表示任何非特定值</li>
+<li>使用描述性的字符串值或命名布尔属性的对象，而不要使用undefined 或 null来代表特定应用标志</li>
+<li>提供参数默认值应该采用测试undefined的方式，而不是检查arguments.length。</li>
+<li>在允许0、NaN或空字符串为有效参数的地方，绝不要通过真值测试来实现参数默认值。</li>
+</ol>
+<p>undefined很特殊，当JavaScript无法提供具体的值时没救产生undefined。<br>如只定义变量，不赋值；或者是对象中不存在属性；再者，函数无return语句都会产生undefined。</p>
+<pre><code>var x;
+console.log(x); //undefined
+var o = {};
+console.log(o.p1); //undefined
+function fun(){
+
+}
+console.log(fun()); //undefined
+</code></pre><p>未给函数参数提供实参则该函数参数值为undefined</p>
+<pre><code>function fun(x){
+    return x;
+}
+console.log(fun()); //undefined
+</code></pre><p>将undefined看做缺少某个特定的值是公约。将它用于其他目的具有很高的风险：</p>
+<pre><code>//假设highlight为设置元素高亮
+element.highlight(&apos;yellow&apos;); //设置为黄色
+
+//如果要设置为随机颜色
+//方式一、如果遇到undefined则设置为随机
+element.highlight(undefined);
+
+//这样的方式通常会产生歧义
+element.highlight(config.highlightColor);
+//使用如上语句时，我们的期望一般是没有提供配置则使用默认色，但是由于undefined代表随机，那么破坏了这种常规思维。让代码变得难以理解。
+
+//更好的做法
+element.highlight(&apos;random&apos;);
+//或者是
+element.highlight({random: true});
+</code></pre><p>另一个提防undefined的地方是可选参数的实现。</p>
+<pre><code>function fun(a, b){
+  if(arguments.length &lt; 2){
+    b = &apos;xx&apos;;
+  }
+}
+</code></pre><p>如果使用 fun(a);调用，基本符合预期；但是如果使用fun(a, ‘undefind’);则不会执行if之内的语句，导致结果错误，如果测试是否为undefined有助于打造更为健壮的API。</p>
+<p>针对可选参数这个问题，另外一个合理的替代方案是：</p>
+<pre><code>function fun(a, b){
+  b = b || &apos;xxx&apos;;
+}
+</code></pre><p>但是要注意，真值测试并不总是安全的。如果一个函数应该接受空字符串，0，NaN为合法值，那么真值测试就不该使用了。</p>
+<pre><code>//Bad Use
+function Point(x, y){
+  this.x = x || 200;
+  this.y = y || 200;
+}
+</code></pre><p>以上代码有什么问题呢，因为使用 new Point(0, 0);会导致使用默认值，这样就偏离了预期。所以需要更严格的测试：</p>
+<pre><code>function Point(x, y){
+  this.x = x === undefined ? 200 : x;
+  this.y = y === undefined ? 200 : y;
+}
+</code></pre><p>##No.55、接收关键字参数的选项对象<br><strong>Tips：</strong></p>
+<ol>
+<li>使用选项对象似的API更具可读性、更容易记忆</li>
+<li>所有通过选项对象提供的参数应当被视为可选的</li>
+<li>使用extend函数抽象出从选项对象中提取值的逻辑</li>
+</ol>
+<p>首先来看一个复杂的函数调用：</p>
+<pre><code>fun(200, 200, &apos;action&apos;, &apos;green&apos;, true);
+</code></pre><p>一眼望去，完全不知所云。在体会到C#的可选参数的便利性的时候，肯定会想JavaScript要是有这样的用法就好了。</p>
+<p>幸运的是，JavaScript提供了一个简单、轻量的惯用法：选项对象。基本达到了可选参数的效果。</p>
+<pre><code>fun({
+  width: 200,
+  height: 200,
+  action: &apos;action&apos;,
+  color: &apos;green&apos;,
+  ignoreError: true
+});
+</code></pre><p>相对来说，更繁琐一点，但是更易于阅读。另外一个好处就是，参数都是可选的。</p>
+<p>如果有必选参数，那么在设计API的时候。建议将它们独立于选项之外，其他语言也可借鉴这种思路。</p>
+<pre><code>// options 为可选参数
+function fun(width, height, options){
+}
+</code></pre><p>通过extend组合可选参数和默认参数，可以让函数变得简洁和健壮。</p>
+<pre><code>function fun(width, height, options){
+  var defaults = {
+    color: &apos;green&apos;,
+    ignoreError: false,
+    action: &apos;&apos;
+  }
+  //$.extend 可以理解为jQuery的方法
+  options = $.extend({}, defaults, options);
+  //do something...
+}
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/01/23/编写高质量JS代码的68个有效方法-读书笔记/[20150123]编写高质量JS代码的68个有效方法（十）/">
+        编写高质量JS代码的68个有效方法（十）
+      </a>
+    </h2>
+    
+    <time>
+      Jan 23, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.46、使用数组而不要使用字典来存储有序集合<br><strong>Tips:</strong></p>
+<ol>
+<li>使用for…in 循环来枚举对象属性应当与顺序无关</li>
+<li>如果聚集运算字典中的数据，确保聚集操作与顺序无关</li>
+<li>使用数组而不是字典来存储有序集合</li>
+</ol>
+<p>由于标准允许JavaScript引擎自由选择顺序，那么如果用字典存储有序数据，就会导致兼容性问题。</p>
+<p>##No.47、绝不要在Object.prototype中增加可枚举的属性<br><strong>Tips：</strong></p>
+<ol>
+<li>避免在Object.prototype中增加属性</li>
+<li>考虑编写一个函数代理Object.prototype方法</li>
+<li>如果你是在需要在prototype中增加属性，请使用ES5中的Object.defineProperty方法将它们定义为不可枚举的属性</li>
+</ol>
+<p><code>for...in</code>循环非常便利，但是容易受到原型污染。如果在Object.prorotype中增加可枚举属性的话，将会导致大多数<code>for...in</code>循环受到污染。</p>
+<p>如果是在是要在Object.prototype上定义属性的话，可以使用如下代码：</p>
+<pre><code>Object.defineProperty(Object.prototype, &apos;allKeys&apos;, {
+  value: function(){
+    var arr = [];
+    for(var key in this){
+      arr.push(key);
+    }
+    return arr;
+  },
+  writable: true,
+  enumerable: false, //设置属性为不可枚举
+  configurable: true
+});
+</code></pre><p>测试代码：</p>
+<pre><code>var obj = {a: 1, b: 2};
+console.log(obj.allKeys()); // [&apos;a&apos;, &apos;b&apos;]
+</code></pre><p>##No.48、避免在枚举期间修改对象<br><strong>Tips：</strong></p>
+<ol>
+<li>当使用<code>for...in</code> 循环枚举一个对象的属性时，确保不要修改该对象</li>
+<li>当迭代一个对象时，如果该对象的内容可能会在循环期间被改变，应该使用while循环或经典的for循环来代替<code>for...in</code></li>
+<li>为了在不断变化的数据结构中能够预测枚举，考虑使用一个有序的数据结构，例如数组，而不要使用字典</li>
+</ol>
+<p>在大部分编译型语言中，如果在迭代时修改对象属性，是会出现编译错误的。在js中，没有这样的编译机制，但是也尽量保证不要修改迭代对象。</p>
+<p>如果在被枚举时添加了新对象，并不一定能保证新添加的对象能被访问到：</p>
+<pre><code>var obj = {a: 1, b: 2};
+for(var p in obj){
+  console.log(p);
+  obj[p + &apos;1&apos;] = obj[p] + 1;
+}
+</code></pre><p>遇到这样的场景，应当使用while和标准的for循环。</p>
+<p>##No.49、数组迭代要优先使用for循环而不是<code>for...in</code>循环<br><strong>Tips:</strong></p>
+<ol>
+<li>迭代数组的索引属性应当总是使用for循环而不是<code>for...in</code>循环</li>
+<li>考虑在循环之前将数组的长度存储在一个局部变量中以避免重新计算数组长度</li>
+</ol>
+<p>猜测下面一段代码的结果？</p>
+<pre><code>var arr = [5, 6, 8, 10, 9];
+var sum = 0;
+for(var a in arr){
+  sum += a;
+}
+console.log(sum);
+</code></pre><p>要达到正确的结果，那么应该使用for循环</p>
+<pre><code>var arr = [5, 6, 8, 10, 9];
+var sum = 0;
+for(var i = 0, len = arr.length; i &lt; len; i++){
+  sum += arr[i];
+}
+console.log(sum); //38
+</code></pre><p>再看一个比较极端的例子：</p>
+<pre><code>var arr = [5, 6, 8, 10, 9];
+arr.len = 4;
+for(var p in arr){
+  console.log(p);
+}
+</code></pre><p>这个时候用<code>for...in</code>,完全是达不到预期效果的</p>
+<p>再来看一个对于数组长度缓存的测试代码：</p>
+<pre><code>var count = 0;
+console.time(&apos;t1&apos;);
+while(count &lt; 10000){
+  var arr = [5, 6, 8, 10, 9];
+  var sum = 0;
+  count++;
+  for(var i = 0, len = arr.length; i &lt; len; i++){
+    sum += arr[i];
+  }
+}
+console.timeEnd(&apos;t1&apos;);
+
+count = 0;
+console.time(&apos;t2&apos;);
+while(count &lt; 10000){
+  var arr = [5, 6, 8, 10, 9];
+  var sum = 0;
+  count++;
+  for(var i = 0; i &lt; arr.length; i++){
+    sum += arr[i];
+  }
+}
+console.timeEnd(&apos;t2&apos;);
+</code></pre><p>结果，请自行复制代码执行。。。</p>
+<p>##No.50、迭代方法优于循环<br><strong>Tips：</strong></p>
+<ol>
+<li>使用迭代方法（如Array.prototype.forEach和Array.prototype.map）替换for循环使得代码更可读，并且避免了重复循环控制逻辑</li>
+<li>使用自定义的迭代函数来抽象未被标准库支持的常见循环模式</li>
+<li>在需要提前终止循环的情况下，仍然推荐使用传统的循环。另外some和every方法也可用于提前退出</li>
+</ol>
+<p>在使用循环的时候，在确定循环的终止条件时容易引入一些简单的错误：</p>
+<pre><code>for(var i = 0; i &lt;= n; i++){}
+for(var i = 1; i&lt; n; i++){}
+</code></pre><p>比较庆幸的是，闭包是一种为这些模式建立迭代抽象方便的、富有表现力的手法。</p>
+<p>我们可以用以下代码来代替：</p>
+<pre><code>var arr = [1, 2, 3];
+arr.forEach(function(v, i){
+  console.log(v);
+});
+</code></pre><p>如果要创建新数组，那么可以用以下方式：</p>
+<pre><code>var arr = [1, 2, 3];
+var arrNew = [];
+//方式一
+arr.forEach(function(v, i){
+  arrNew.push(v);
+});
+//方式二
+for(var i = 0, len = arr.length; i &lt; len; i++){
+  arrNew.push(arr[i]);
+}
+</code></pre><p>为了简化这种普遍操作，ES5中引入了Array.prototype.map方法：</p>
+<pre><code>var arr = [1, 2, 3];
+var arrNew = arr.map(function(v){
+  return v;
+});
+</code></pre><p>同样，如果想提取满足条件的元素，ES5也提供了filter方法：</p>
+<pre><code>var arr = [1, 2, 3];
+var arrNew = arr.filter(function(v){
+  return v &gt; 1;
+});
+console.log(arrNew);
+</code></pre><p>在ES5中，针对数组也提供了some和every ,可以用来终止循环，但是实际意义等同于C#的Linq方法All和Any：</p>
+<pre><code>var arr = [1, 2, 3];
+
+//数组元素有一个&gt;1就返回true，并终止循环
+var b = arr.some(function(a){
+  return a&gt;1;
+});
+console.log(b); //true
+
+//数组元素每个都&lt;3，则返回true，否则返回false，并提前终止循环
+b = arr.every(function(a){
+  return a&lt;3;
+});
+console.log(b); //false
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/01/10/编写高质量JS代码的68个有效方法-读书笔记/[20150110]编写高质量JS代码的68个有效方法（九）/">
+        编写高质量JS代码的68个有效方法（九）
+      </a>
+    </h2>
+    
+    <time>
+      Jan 10, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.41、将原型视为实现细节<br><strong>Tips：</strong></p>
+<ol>
+<li>对象是接口，原型是实现</li>
+<li>避免检查你无法控制的对象的原型结构</li>
+<li>避免检查实现在你无法控制的对象内部的属性</li>
+</ol>
+<p>我们可以获取对象的属性值和调用其方法，这些操作都不是特别在意属性存储在原型继承结构的哪个位置。只要其属性值保存很定，那么这些操作的行为也不变。简言之，原型是一种对象行为的实现细节。</p>
+<p>正是由于以上的特性，所以如果修改了实现细节，那么依赖于这些对象的使用者就会被破坏，而且还很难诊断这类bug。所以一般来说，对于使用者，最好不要干涉那些属性。</p>
+<p>##No.42、避免使用轻率的猴子补丁<br><strong>Tips：</strong></p>
+<ol>
+<li>避免使用轻率的猴子补丁</li>
+<li>记录程序库所执行的所有猴子补丁</li>
+<li>考虑通过将修改设置于一个导出函数中，使猴子补丁成为可选的</li>
+<li>使用猴子补丁为缺失的标准API提供polyfills</li>
+</ol>
+<p><strong>何为猴子补丁？</strong></p>
+<p>由于对象共享原型，因为每一个对象都可以增加、删除或修改原型的属性。这个有争议的实践通常被称为猴子补丁。</p>
+<p>猴子补丁的吸引力在于它的强大，如果数组缺少一个有用的方法，那么我们可以自己扩展它。但是在多个库同时对数组进行不兼容扩展时，问题就来了，有可能调用方法之后的结果和预期不一致。</p>
+<p>危险的猴子补丁有一个特别可靠而且有价值的使用场景：polyfill。补齐标准所支持的方法。</p>
+<p>##No.43、使用Object的直接实例构造轻量级的字典<br><strong>Tips:</strong></p>
+<ol>
+<li>使用对象字面量构建轻量级字典</li>
+<li>轻量级字典应该是Object.prototype的直接子类，以使for…in循环免受原型污染</li>
+</ol>
+<p>JavaScript对象的核心是一个字符串属性名称与属性值的映射表。</p>
+<pre><code>var dict = {
+  key1: &apos;value1&apos;,
+  key2: &apos;value2&apos;
+};
+for(var key in dict){
+  console.log(&apos;key=&apos;+ key + &apos;,value=&apos; + dict[key]);
+}
+</code></pre><p>在使用for…in时，要小心原型污染。</p>
+<pre><code>function Dict(){
+  Dict.prototype.count = function(){
+    var c = 0;
+    for(var p in this){
+      c++;
+    }
+    return c;
+  }  
+}
+
+var dict = new Dict();
+dict.name = &apos;jay&apos;;
+console.log(dict.count()); //结果是2，因为for...in会枚举出所有的属性，包括原型上的。
+</code></pre><p>所有人都不应当增加属性到Object.prototype上，因为这样做可能会污染for…in循环，那么我们通过使用Object的直接实例，可以将风险仅仅局限于Object.prototype。</p>
+<p>##No.44、使用null原型以防止原型污染<br><strong>Tips：</strong></p>
+<ol>
+<li>在ES5中，使用Object.create(null)创建的自由原型的空对象是不太容易被污染的</li>
+<li>在一些较老的环境中，考虑使用{<strong>proto</strong>: null}</li>
+<li>要注意<code>__proto__</code>既不标准，也不是完全可移植的，并且可能会在未来的JavaScript环境中去除</li>
+<li>绝不要使用<code>__proto__</code>名作为字典的key，因为一些环境将其作为特殊的属性对待</li>
+</ol>
+<p>对构造函数的原型属性设置null或者是undefined是无效的：</p>
+<pre><code>function Dict(){
+
+}
+Dict.prototype = null;
+var dict = new Dict();
+console.log(Object.getPrototypeOf(dict) === null); // false
+console.log(Object.getPrototypeOf(dict) === Object.prototype); //true
+</code></pre><p>在ES5中，提供了标准方法来创建一个没有原型的对象：</p>
+<pre><code>var dict = Object.create(null);
+console.log(Object.getPrototypeOf(dict) === null); // true
+</code></pre><p>在不支持Object.create函数的旧的JS环境中，可以使用如下方式创建没有原型的对象：</p>
+<pre><code>var dict = {__proto__: null}
+console.log(Object.getPrototypeOf(dict) === null); // true
+</code></pre><p><strong>注意：在支持Object.create函数的环境中，尽可能的坚持使用标准的Object.create函数</strong></p>
+<p>##No.45、使用hasOwnProperty方法来避免原型污染<br><strong>Tips：</strong></p>
+<ol>
+<li>使用hasOwnProperty方法避免原型污染</li>
+<li>使用词法作用域和call方法避免覆盖hasOwnProperty方法</li>
+<li>考虑在封装hasOwnProperty测试样板代码的类中实现字典操作</li>
+<li>使用字典类避免将<code>__proto__</code>作为key来使用</li>
+</ol>
+<p>即使是一个空的对象字面量也继承了Object.prototype的大量属性：</p>
+<pre><code>var dict = {}
+console.log(&apos;a&apos; in dict); // false
+console.log(&apos;toString&apos; in dict); // true
+console.log(&apos;valueOf&apos; in dict); // true
+</code></pre><p>不过，Object.prototype提供了方法来测试字典条目：</p>
+<pre><code>var dict = {}
+console.log(dict.hasOwnProperty(&apos;a&apos;)); // false
+console.log(dict.hasOwnProperty(&apos;toString&apos;)); // false
+console.log(dict.hasOwnProperty(&apos;valueOf&apos;)); // false
+</code></pre><p>但是，如果在字典中存储一个同为“hasOwnProperty”的属性，那么：</p>
+<pre><code>var dict = {
+  hasOwnProperty: null
+}
+console.log(dict.hasOwnProperty(&apos;a&apos;)); // TypeError
+</code></pre><p>最安全的方法则是使用call：</p>
+<pre><code>var dict = {
+  hasOwnProperty: null
+}
+console.log({}.hasOwnProperty.call(dict, &apos;hasOwnProperty&apos;)); // true、
+</code></pre><p>最后，我们来看一个复杂的但更安全的字典类：</p>
+<pre><code>function Dict(elements){
+  this.elements = elements || {};
+  this.hasSpecialProto = false;
+  this.specialProto = undefined;
+}
+
+Dict.prototype.has = function(key){
+  if(key === &apos;__proto__&apos;){
+    return this.hasSpecialProto;
+  }
+  return {}.hasOwnProperty.call(this.elements, key);
+};
+
+Dict.prototype.get = function(key){
+  if(key === &apos;__proto__&apos;){
+    return this.specialProto;
+  }
+  return this.has(key) ? this.elements[key] : undefined;
+};
+
+Dict.prototype.set = function(key, value){
+  if(key === &apos;__proto__&apos;){
+    this.hasSpecialProto = true;
+    this.specialProto = value;
+  }else{
+    this.elements[key] = value;
+  }
+};
+
+Dict.prototype.remove = function(key){
+  if(key === &apos;__proto__&apos;){
+    this.hasSpecialProto = false;
+    this.specialProto = undefined;
+  }else{
+    delete this.elements[key];
+  }
+};
+
+// 测试代码
+var dict = new Dict();
+console.log(dict.has(&apos;__proto__&apos;)); // false
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2015/01/07/前端相关/[20150107]Web离线存储的几种方式/">
+        Web离线存储的几种方式
+      </a>
+    </h2>
+    
+    <time>
+      Jan 7, 2015
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>随着HTML5的正式定稿，我们也可以大量使用HTML离线网络应用程序的特性。</p>
+<h1 id="1、Application-Cache"><a href="#1、Application-Cache" class="headerlink" title="#1、Application Cache"></a>#1、Application Cache</h1><p><a href="http://www.w3schools.com/html/html5_app_cache.asp" target="_blank" rel="external">Application Cache</a> 可以很简单让我们的WebApp具有离线的能力。</p>
+<p><strong>支持的浏览器：</strong>IE10+，FireFox，Chrome，Safari，Opera</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>离线浏览 – 用户可以再离线时使用Application</li>
+<li>速度 – 由于缓存了资源，如果加载很快</li>
+<li>减少服务端数据加载 – 浏览器只需要从服务器加载更新过的数据</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>Manifest文件有变化时才更新</li>
+<li>一次必须更新Manifest中的所有文件，下次才生效</li>
+</ol>
+<p><strong>如何使用？</strong></p>
+<p>Step1:在html上指定manifest文件 (index.html)</p>
+<pre><code>&lt;html manifest=&quot;appCacheList.manifest&quot;&gt;
+&lt;/html&gt;
+</code></pre><p>Step2:设定manifest文件内容 (appCache.manifest)</p>
+<pre><code>CACHE MANIFEST
+
+# 离线缓存的内容
+./all.css
+./1.jpg
+./index.js
+
+# NETWORK:*，表示其他内容从网络获取
+NETWORK:
+*
+
+# 第一个uri是资源，第二个是fallback
+FALLBACK:
+/html/ /offline.html
+</code></pre><p>手动更新缓存：</p>
+<pre><code>if ( window.applicationCache.status == window.applicationCache.UPDATEREADY ){
+    window.applicationCache.update();
+}
+</code></pre><p><strong>注意：</strong></p>
+<ol>
+<li>不同的浏览器对Application Cache的大小不一致，请注意。</li>
+<li>更多细节可参考<a href="http://kayosite.com/web-app-by-jquery-mobile-and-html5-offline-web-applications.html" target="_blank" rel="external">http://kayosite.com/web-app-by-jquery-mobile-and-html5-offline-web-applications.html</a></li>
+</ol>
+<h1 id="2、Local-Storage"><a href="#2、Local-Storage" class="headerlink" title="#2、Local Storage"></a>#2、Local Storage</h1><p><a href="http://www.w3schools.com/html/html5_webstorage.asp" target="_blank" rel="external">Local Storage</a>使得我们可以在浏览器中保存数据。</p>
+<p><strong>支持的浏览器：</strong>IE10+，FireFox，Chrome，Safari，Opera</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>容量大</li>
+<li>易用</li>
+<li>强大</li>
+<li>原生支持</li>
+<li>仅存在本地，不会与服务器发生交互</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>浏览器兼容性差</li>
+<li>安全性差（不要存储敏感数据）</li>
+</ol>
+<p><strong>如何使用？</strong></p>
+<p>首先通过 <code>window.localStorage</code> 来判断浏览器是否支持Local Storage。然后由于该方式具有浏览器兼容性，建议用一个通用的库，来屏蔽兼容性。</p>
+<pre><code>// 对基本方法的封装，需要判断浏览器，屏蔽它们的细节差异。
+(function(window){
+  if(!window.localStorage){
+    throw new Error(&apos;Your brower can\&apos;t support local storage!&apos;);
+  }
+  var ls = window.localStorage;
+  var localStorageKit = {
+    getLength: function(){
+      return ls.length;
+    },
+    clear: function(){
+      ls.clear();
+      return true;
+    },
+    set: function(k, v){
+      ls.setItem(k, v);
+    },
+    get: function(k){
+      return ls.getItem(k);
+    },
+    remove: function(k){
+      ls.removeItem(k);
+    },
+    getKeyByIndex: function(index){
+      return ls.key(index);
+    }
+  };
+  window.lsKit = localStorageKit;
+})(window);
+</code></pre><p>基本操作方式与cookie无太多差异。</p>
+<p><strong>Session Storage：</strong><br>Session Storage和Local Storage非常类似，操作方式也一致。由于其中保存的存只是当前会话有效，那么此处就不细说。</p>
+<h1 id="3、Web-SQL"><a href="#3、Web-SQL" class="headerlink" title="#3、Web SQL"></a>#3、Web SQL</h1><p><a href="http://en.wikipedia.org/wiki/Web_SQL_Database" target="_blank" rel="external">Web Sql Database</a>，是html5环境下可以用js执行CRUD的web数据库。数据库核心是SQLite。</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>本地数据库</li>
+<li>可以处理复杂的关系型数据</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>暂时只有chrome才支持，对于Android大行其道的移动端，这应该是可以避免的缺点(貌似最新版本的Opera和Safari也支持了)</li>
+</ol>
+<p><strong>如何使用？</strong></p>
+<p>首先，先介绍Web sql的三个核心方法：</p>
+<ol>
+<li>openDatabase：这个方法使用现有数据库或创建新数据库创建数据库对象。</li>
+<li>transaction：这个方法允许我们根据情况控制事务提交或回滚。</li>
+<li><p>executeSql：这个方法用于执行真实的SQL查询。</p>
+<p> var db = openDatabase(‘mydb’, ‘1.0’, ‘Test DB’, 2 <em> 1024 </em> 1024);<br> var msg;<br> db.transaction(function (tx) {<br>   tx.executeSql(‘CREATE TABLE IF NOT EXISTS LOGS (id unique, log)’);<br>   tx.executeSql(‘INSERT INTO LOGS (id, log) VALUES (1, “foobar”)’);<br>   tx.executeSql(‘INSERT INTO LOGS (id, log) VALUES (2, “logmsg”)’);<br>   console.log(‘Log message created and row inserted.’);<br> });<br> db.transaction(function (tx) {<br>   tx.executeSql(‘SELECT * FROM LOGS’, [], function (tx, results) {</p>
+<pre><code>var len = results.rows.length, i;
+console.log(&apos;Found rows: &apos; + len);
+for (i = 0; i &lt; len; i++){
+  console.log(results.rows.item(i).log)
+}
+</code></pre><p>   }, null);<br> });</p>
+</li>
+</ol>
+<p>当成数据库用，就行。</p>
+<h1 id="4、IndexedDB"><a href="#4、IndexedDB" class="headerlink" title="#4、IndexedDB"></a>#4、IndexedDB</h1><p><a href="http://www.w3.org/TR/IndexedDB/" target="_blank" rel="external">IndexedDB</a>是结构化的本地数据存储。是基于平面文件的数据库，采用了分层的键值存储和基本的索引。</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>标准化</li>
+<li>存储复杂数据</li>
+<li>支持索引</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>不支持SQL</li>
+<li>相对来说，操作较复杂</li>
+</ol>
+<p><strong>如何使用？</strong></p>
+<pre><code>// 打开数据库，第一个参数为数据库名，第二个为数据库版本号
+var dbRequest = window.indexedDB.open(&apos;testDb&apos;, 2);
+
+dbRequest.onupgradeneeded=function(e){
+    // 创建数据仓库
+    var db=e.target.result;
+    if(!db.objectStoreNames.contains(&apos;users&apos;)){
+        var store=db.createObjectStore(&apos;users&apos;,{keyPath: &apos;id&apos;});
+        store.createIndex(&apos;nameIndex&apos;,&apos;name&apos;,{unique:true}); 
+        store.createIndex(&apos;ageIndex&apos;,&apos;age&apos;,{unique:false}); 
+    }
+    console.log(&apos;upgrade successfully!&apos;);
+};
+
+dbRequest.onsuccess = function(e){
+  console.log(&apos;Open database successfully!&apos;);
+  // 这里拿到了数据库
+  var db = e.target.result;
+  var storeName = &apos;users&apos;;
+  // 写入数据
+  var tran = db.transaction(storeName, &apos;readwrite&apos;);
+  var users = tran.objectStore(storeName);
+  for(var i = 0; i &lt; 5; i++){
+    users.add({
+      id: i,
+      name: &apos;user&apos; + i,
+      age: Math.floor(Math.random() * 10) + 18
+    });
+  }
+
+  //查询数据
+  var userStore = db.transaction(storeName).objectStore(storeName);
+  var request = userStore.openCursor();
+  request.onsuccess = function(e){
+    var cursor = e.target.result;
+    if(cursor){
+      console.log(cursor.key);
+      console.log(cursor.value);
+      cursor.continue();
+    }
+  }
+}
+</code></pre><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p><a href="http://html5online.com.cn/articles/2012080901.html" target="_blank" rel="external">HTML 5中几种用于在客户端本地存储数据的API之间的比较</a></p>
+<p><a href="http://www.cnblogs.com/dolphinX/p/3415761.html" target="_blank" rel="external">HTML5本地存储——IndexedDB（一：基本使用）</a></p>
+<p><a href="http://www.cnblogs.com/dolphinX/p/3416889.html" target="_blank" rel="external">HTML5本地存储——IndexedDB（二：索引）</a></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/12/27/编写高质量JS代码的68个有效方法-读书笔记/[20141227]编写高质量JS代码的68个有效方法（八）/">
+        编写高质量JS代码的68个有效方法（八）
+      </a>
+    </h2>
+    
+    <time>
+      Dec 27, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##NO.36、只将实例状态存储在实例对象中<br><strong>Tips：</strong></p>
+<ol>
+<li>共享可变数据可能会出问题，因为原型是被其所有的实例共享的</li>
+<li>将可变的实例存储在实例对象中</li>
+</ol>
+<p>一般来说，由于原型属性指向的对象是所有实例共享的。所以不建议在原型指向的对象中存储共享数据。下面给一个简单的例子：</p>
+<pre><code>var Person = function(name){
+    this.name = name;
+};
+Person.prototype = {
+    children: [],
+    addChild: function(childName){
+        this.children.push(childName);
+    },
+    getChildren: function(){
+        return this.children;
+    }
+};
+
+var p1 = new Person(&apos;P1&apos;);
+var p2 = new Person(&apos;P2&apos;);
+p2.addChild(&apos;P2_C1&apos;);
+console.log(p1.getChildren());
+</code></pre><p>结果比较明显。p2的孩子成p1的了。标准做法是将children存储在实例对象中。</p>
+<pre><code>var Person = function(name){
+    this.name = name;
+    this.children = [];
+};
+Person.prototype = {
+    addChild: function(childName){
+        this.children.push(childName);
+    },
+    getChildren: function(){
+        return this.children;
+    }
+};
+</code></pre><p>##No.37、认识到this变量的隐式绑定问题<br><strong>Tips：</strong></p>
+<ol>
+<li>this变量的作用域总是有其最近的封闭函数所确定</li>
+<li>使用一个局部变量（通常命名为self,me,that）使得this的绑定对于内部函数是可用的。</li>
+</ol>
+<p>老规矩，看一个简单的示例：</p>
+<pre><code>var testObj = {
+    a1: 0,
+    fun1: function(){
+        function fun2(){
+            console.log(this.a1);
+        }
+        fun2();
+    }
+};
+testObj.fun1();
+</code></pre><p>为什么会这样呢？因为this变量是以不同的方式被绑定的。每个函数都有一个this变量的隐式绑定。this变量是隐式的绑定到最近的封闭函数。针对以上的问题，可以有集中方法来处理，参考如下：</p>
+<pre><code>//通过将this用变量self保存的方式实现
+var testObj = {
+    a1: 0,
+    fun1: function(){
+        var self = this;
+        function fun2(){
+            console.log(self.a1);
+        }
+        fun2();
+    }
+};
+testObj.fun1();
+
+//通过call方法指定接收者（也可以用apply）
+var testObj = {
+    a1: 0,
+    fun1: function(){
+        function fun2(){
+            console.log(this.a1);
+        }
+        fun2.call(this);
+    }
+};
+testObj.fun1();
+
+//通过bind来实现
+var testObj = {
+    a1: 1,
+    fun1: function(){
+        function fun2(){
+            console.log(this.a1);
+        }
+        fun2.bind(this)();
+    }
+};
+testObj.fun1();
+</code></pre><p>##No.38、在子类的构造函数中调用父类的构造函数<br><strong>Tips：</strong></p>
+<ol>
+<li>在子类构造函数中显式地传入this作为显式的接收者调用父类的构造函数</li>
+<li>使用Object.create函数来构造子类的原型对象以避免调用父类的构造</li>
+</ol>
+<p>JS中实现的继承：</p>
+<pre><code>var Animal = function(){
+    this.weight = 50;
+};
+Animal.prototype.eat = function(){
+    console.log(&apos;eat food...&apos;);
+};
+
+var Dog = function(){
+    Animal.call(this);
+    Dog.prototype = Object.create(Animal.prototype);
+};
+
+var dog = new Dog();
+console.log(dog.weight);
+</code></pre><p>##No.39、不要重用父类的属性名<br><strong>Tips：</strong></p>
+<ol>
+<li>留意父类使用的所有属性名</li>
+<li>不要再子类中重用父类的属性名</li>
+</ol>
+<p>由于JS中，属性都是key-value存储，那么同名的属性指向同样的地址，所以以下代码：</p>
+<pre><code>var Animal = function(){
+    this.weight = 50;
+    this.id = ++Animal.nextId;
+};
+Animal.nextId = 0;
+Animal.prototype.eat = function(){
+    console.log(&apos;eat food...&apos;);
+};
+
+var Dog = function(){
+    Animal.call(this);
+    this.id = ++ Dog.nextId;
+    Dog.prototype = Object.create(Animal.prototype);
+};
+Dog.nextId = 0;
+
+var dog = new Dog();
+console.log(dog.id);
+</code></pre><p>两个类都试图给实例属性id写数据。</p>
+<p>##No.40、避免继承标准类<br><strong>Tips：</strong></p>
+<ol>
+<li>继承标准类往往会由于一些特殊的内部属性（如[[Class]]）而被破坏</li>
+<li>使用属性委托优于继承标准类</li>
+</ol>
+<p>扩展标注库使得其功能更强大是很有诱惑力的，但不幸的是它们的定义具有很多特殊的行为，所以很难写出正确的子类。</p>
+<pre><code>var ArrayEx = function(){
+    for(var i = 0, len = arguments.length; i&lt;len ; i++){
+        this[i] = arguments[i];
+    }
+};
+ArrayEx.prototype = Object.create(Array.prototype);
+
+var ar = new ArrayEx(&apos;1&apos;, &apos;2&apos;);
+console.log(ar.length) //猜猜结果是什么？
+</code></pre><p>原因分析：length属性只对在内部标记为“真正的”数组对象才起作用。直接继承的对象并没有继承<br>Array的标记标签属性[[Class]]。测试如下：</p>
+<pre><code>var ar = new ArrayEx(&apos;1&apos;, &apos;2&apos;);
+console.log(Object.prototype.toString.call(ar)); //[object Object]
+console.log(Object.prototype.toString.call([])); //[object Array]
+</code></pre><p>ECMAScript标准库中干掉大多数构造函数都有类似的问题。基于这个原因，最好避免继承一下的标准类：<br>Array,Boolean,Date,Function,Number,RegExp或String。</p>
+<p>要想实现类似的功能，可以采用属性委托的方式：</p>
+<pre><code>var ArrayEx = function(){
+    this.array = []
+    for(var i = 0, len = arguments.length; i&lt;len ; i++){
+        this.array[i] = arguments[i];
+    }
+};
+ArrayEx.prototype.forEach = function(f, thisArg){
+    if(typeof thisArg === &apos;undefined&apos;){
+        thisArg = this;
+    }
+    this.array.forEach(f, thisArg);
+};
+
+var ar = new ArrayEx(&apos;1sfdfsd&apos;, &apos;2fdsfs&apos;);
+ar.forEach(function(item, i){
+    console.log(item);
+});
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/12/20/编写高质量JS代码的68个有效方法-读书笔记/[20141220]编写高质量JS代码的68个有效方法（七）/">
+        编写高质量JS代码的68个有效方法（七）
+      </a>
+    </h2>
+    
+    <time>
+      Dec 20, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.30、理解prototype、getPrototypeOf和<strong>proto</strong>之间的不同<br><strong>Tips：</strong></p>
+<ol>
+<li>C.prototype属性是new C() 创建的对象的原型</li>
+<li>Object.getPrototypeOf(obj)是ES5中检索对象原型的标准函数</li>
+<li>obj.<strong> proto</strong>是检索对象原型的非标准方法</li>
+<li>类是由一个构造函数和一个关联的原型组成的一种设计模式</li>
+</ol>
+<p>简单点说，就是prototype属性直接是创建的对象的原型；getPrototypeOf()是一个标准函数，来获取对象原型；而<strong> proto</strong>则是不标准的原型属性。</p>
+<pre><code>//定义一个类型
+function User(name, age){
+    this.name = name;
+    this.age = age;
+}
+//实例化类型
+var user = new User(&apos;Jay&apos;, 23);
+
+//原型属性prototype作用在类对象上
+User.prototype
+//非标准__proto__作用在对象实例上
+user.__proto__
+//getPrototypeOf则是Object的一个方法，参数为实例对象
+Object.getPrototypeOf(user)
+
+Object.getPrototypeOf(user) === User.prototype; // true
+User.prototype === user.__proto__; // true
+</code></pre><p>##No.31、使用Object.getPrototypeOf()函数而不要使用<strong> proto</strong>属性<br><strong>Tips：</strong></p>
+<ol>
+<li>使用符合标准的Object.getPrototypeOf()函数而不要使用非标准的<strong> proto</strong>属性</li>
+<li>在支持<strong> proto</strong>属性的非ES5环境中实现Object.getPrototypeOf()函数</li>
+</ol>
+<p>由于非标准属性不具有完全兼容性，所以容易出一些奇奇怪怪的问题，不建议使用。<br>在支持<strong> proto</strong>的非ES5标准环境下，使用下面代码来实现Object.getPrototypeOf()函数：</p>
+<pre><code>if(typeof Object.getPrototypeOf === &apos;undefined&apos;){
+    Object.getPrototypeOf = function(obj){
+        var t = typeof obj;
+        if(!obj || (t !== &apos;object&apos; &amp;&amp; t !== &apos;function&apos;)){
+            throw new TypeError(&apos;Not an object.&apos;);
+        }
+        return obj.__proto__;
+    }
+}
+</code></pre><p>##No.32、始终不要修改<strong> proto</strong>属性<br><strong>Tips：</strong></p>
+<ol>
+<li>始终不要修改<strong> proto</strong>属性</li>
+<li>使用Object.create函数给对象设置自定义原型</li>
+</ol>
+<p><strong> proto</strong>很特殊，具有修改对象原型链的能力。修改了<strong> proto</strong>属性可能会造成以下几个问题：</p>
+<ol>
+<li>可移植性问题。并不是所有平台都支持改变对象原型的特性</li>
+<li>性能问题。会使得引擎对JS代码的优化失效</li>
+<li>行为不可预测。修改了<strong> proto</strong>可能会破坏原有的继承体系</li>
+</ol>
+<p>##No.33、使构造函数和new操作符无关<br><strong>Tips：</strong></p>
+<ol>
+<li>通过使用new操作符或Object.create方法在构造函数中调用自身使得该构造函数与调用语法无关</li>
+<li>当一个函数期望使用new操作符调用时，清晰地文档化该函数</li>
+</ol>
+<p>同31，我们来看一下User对象：</p>
+<pre><code>function User(name, age){
+    this.name = name;
+    this.age = age;
+}
+//如果使用new，那么会创建全新对象
+var user = new User(&apos;Jay&apos;, 23);
+
+//如果忘记使用new呢？
+var user = User(&apos;Jay&apos;, 23)
+//这个时候，该句代码，相当于调用函数，此时this在一般情况下是window，在ES5严格模式下是undefined。
+//当是window的时候，则会污染全局变量name和age，造成无法预期的问题。
+//当是undefined的时候，则会直接导致一个即时错误。
+//由于User没有显式return，导致等号左边的user的值为undefined。
+</code></pre><p>为了避免以上问题，可能使用以下两种方式：</p>
+<pre><code>//方式一：
+//通过在函数体判断，然后调用自身的方式来实现，一定会使用new。缺点是它需要额外的函数调用，对性能有影响。
+function User(name, age){
+    if(!(this instanceof User)){
+        return new User(name, age);
+    }
+    this.name = name;
+    this.age = age;
+}
+
+//方式二：
+//通过判断this，将正确的接收者赋值给self，其他函数体内需要用this的地方，全部用self代替。缺点是使用了再ES5环境中有效的Object.create()。
+function User(name, age){
+    var self = this instaceof User ? this : Object.create(User.prototype);
+    self.name = name;
+    self.age  =age; 
+}
+
+//方式二补充，由于Object.create()只在ES5中生效，为了在旧环境中使用的话，可以使用以下方式扩充Object.create()。
+if(typeof Object.create === &apos;undefined&apos;){
+    Object.create = function(prototype){
+        function C(){}
+        C.prototype = prototype;
+        return new C();
+    }
+}
+</code></pre><p>##No.34、在原型中存储方法<br><strong>Tips：</strong></p>
+<ol>
+<li>将方法存储在实例对象中将创建该函数的多个副本，因为每个实例都有一份副本</li>
+<li>将方法存储于原型中优于存储在实例对象中</li>
+</ol>
+<p>将方法存储在原型上，那么多个实例对象会共享该原型方法。如果存储在实例上的，每创建一个实例则会创建一个函数副本，会占用更多的内存。</p>
+<p>##No.35、使用闭包存储私有数据<br><strong>Tips：</strong></p>
+<ol>
+<li>闭包变量是私有的，只能通过局部引用获取</li>
+<li>将局部变量作为私有数据从而通过方法实现信息隐藏</li>
+</ol>
+<p>不多说，直接上代码：</p>
+<pre><code>function User(name, age){
+    // 私有对象
+    var privateObj = {
+        name: name,
+        age: age,
+        sex: &apos;男&apos;
+    }
+    // 公开属性
+    return {
+        name: privateObj.name,
+        age: privateObj.age,
+        setAge: function(age){
+            privateObj.age = age;
+        }
+    }
+}
+
+var user = new User(&apos;Jay&apos;, 23);
+console.log(user.name); // &apos;Jay&apos;
+console.log(user.age);  // 23
+console.log(user.sex);  // undefined
+user.setAge(25);        
+console.log(user.age);  // 23
+</code></pre><p>思考：为什么最后一个user.age 是 23？？？</p>
+<p>修改如下呢：</p>
+<pre><code>function User(name, age){
+    // 私有对象
+    var privateObj = {
+        name: name,
+        age: age,
+        sex: &apos;男&apos;
+    }
+    // 公开属性
+    return {
+        name: privateObj.name,
+        age: function(){
+            return privateObj.age;
+        }
+        setAge: function(age){
+            privateObj.age = age;
+        }
+    }
+}
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/12/13/编写高质量JS代码的68个有效方法-读书笔记/[20141213]编写高质量JS代码的68个有效方法（六）/">
+        编写高质量JS代码的68个有效方法（六）
+      </a>
+    </h2>
+    
+    <time>
+      Dec 13, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.26、使用bind方法实现函数柯里化<br><strong>Tips：</strong></p>
+<ol>
+<li>使用bind方法实现函数柯里化，即创建一个固定需求参数子集的委托函数</li>
+<li>传入null或undefined作为接收者的参数来实现函数柯里化，从而忽略其接收者</li>
+</ol>
+<p><strong>什么是函数柯里化？</strong></p>
+<p><strong>将函数与其参数的一个子集绑定的技术称为函数柯里化，它是一种简洁的、使用更少引用来实现函数委托的方式。</strong></p>
+<pre><code>//有一个组装URL的JS函数
+function bulidURL(protocol, domain, path){
+    return protocol + &apos;://&apos; + domain + &apos;/&apos; + path;
+}
+
+//需要一个path数组转换为url数组，那么一般做法是：
+var urls = paths.map(function(path){
+    return bulidURL(&apos;http&apos;, &apos;www.hstar.org&apos;, path);
+});
+
+如果用bind实现函数柯里化，则是：
+var buildURL2 = buildURL.bind(null, &apos;http&apos;, &apos;www.hstar.org&apos;);
+var urls = paths.map(buildURL2);
+
+其中由于buildURL不引用this，那么在bind中使用null，忽略函数本身的接收者，然后用bind实现柯里化。
+使用buildURL.bind的参数+buildURL2的参数结合起来调用buildURL方法。
+可以在bulidURL中写console(arguments)来查看参数合集。
+</code></pre><p>##No.27、使用闭包而不是字符串来封装代码<br><strong>Tips：</strong></p>
+<ol>
+<li>当将字符串传递给eval函数以执行它们的API时，绝不要在字符串中包含局部变量引用</li>
+<li>接受函数调用的API优于使用eval函数执行字符串的API</li>
+</ol>
+<p>JS中，函数是一个将代码作为数据结构存储的便利方式，这些代码可以后面被执行。所以可以在JS中编写富有表现力的高阶函数，如map，forEach。</p>
+<p>比较不好的设计，使用eval函数执行字符串。</p>
+<pre><code>//定义一个函数，使用eval执行字符串
+function fun1(code){
+    eval(code);
+}
+
+//用法一：
+var val = 0;
+fun1(&apos;console.log(val)&apos;);
+
+//用法二：
+function fun2(){
+    var val = 1;
+    fun1(&apos;console.log(val)&apos;);
+}
+fun2(); //Error:val is not defined
+</code></pre><p><strong>警告：在使用eval的时候，作用域是全局作用域（window），如用法一的调用，刚好能够出正常结果；如果转移到函数体内，如用法二的调用，则会出现错误；最坏的情况是用法二调用时，全局作用域上刚好有个同名的变量（本例中为val），那么将会让结果无法预期。</strong></p>
+<p>好的做法，就是直接传递函数</p>
+<pre><code>function fun1(){
+
+}
+function fun2(p, action){
+    if(p === 1){
+        action();
+    }
+}
+
+fun2();
+</code></pre><p>##No.28、不要依赖函数对象的toString方法<br><strong>Tips：</strong></p>
+<ol>
+<li>调用函数的toString方法时，并没有要求JavaScript引擎能够精确的获取到函数的源代码</li>
+<li>由于在不同的引擎下调用toString方法的结果可能不同，所以绝不要信赖函数源代码的详细细节</li>
+<li>toString方法的执行结果并不会暴露存储在闭包中的局部变量值</li>
+<li>通常情况下，应该避免使用函数对象的toString方法</li>
+</ol>
+<p>JavaScript函数有一个非凡的特性，即将其源代码重现为字符串的能力。但是ECMAScript标准对toString返回的字符串没有任何要求，所以不同引擎产生的结果可能不同。甚至返回到字符串和该函数并不相关</p>
+<p>##No.29、避免使用非标准的栈检查属性<br><strong>Tips：</strong></p>
+<ol>
+<li>避免使用非标准的arguments.caller和arguments.callee属性，因为它们不具备良好的移植性</li>
+<li>避免使用非标准的函数对象caller属性，因为在包含全部栈信息方面，它是不可靠的</li>
+</ol>
+<p>基本错误（不推荐使用）</p>
+<pre><code>function getCallStack(){
+    var stack = [];
+    for(var f = getCallStack.caller; f; f = f.caller){
+        stack.push(f);
+    }
+    return stack;
+}
+</code></pre><p><strong>警告：该函数非常脆弱，如果某函数叜调用栈中出现了不止一次，那么栈检查会陷入死循环。同时使用caller在ES5的严格模式下会error。</strong></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/12/05/编写高质量JS代码的68个有效方法-读书笔记/[20141205]编写高质量JS代码的68个有效方法（五）/">
+        编写高质量JS代码的68个有效方法（五）
+      </a>
+    </h2>
+    
+    <time>
+      Dec 5, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.21、使用apply方法通过不同数量的参数调用函数<br><strong>Tips：</strong></p>
+<ol>
+<li>使用apply方法自定一个可计算的参数数组来调用可变参数的函数</li>
+<li><p>使用apply方法的第一个参数给可变参数的方法提供一个接收者</p>
+<p> //示例：计算给定数据的最大值<br> function getMaxNum(){</p>
+<pre><code>var max = arguments[0];
+for(var i = 1, len = arguments.length;i &lt; len; i++){
+    if(max &lt; arguments[i]){
+        max = arguments[i];
+    }
+}
+return max;
+</code></pre><p> }<br> getMaxNum.apply(null,[1,3,4]);</p>
+</li>
+</ol>
+<p><strong>该方法和call()方法功能基本类似，差别在于参数写法不一样。</strong></p>
+<p>##No.22、使用arguments创建可变参数的函数<br><strong>Tips:</strong></p>
+<ol>
+<li>使用隐式的arguments对象实现可变参数的函数</li>
+<li>考虑对可变参数的函数提供一个额外的固定元数的版本，从而使用者无需借助apply方法。</li>
+</ol>
+<p>每一个函数内部都有一个arguments对象包含所有传递的参数</p>
+<pre><code>function fun1(){
+    console.log(arguments);
+}
+fun1(&apos;1&apos;);
+fun1(1,&apos;2&apos;,&apos;str&apos;);
+</code></pre><p>##No.23、永远不要修改arguments的值<br><strong>Tips：</strong></p>
+<ol>
+<li>永远不要修改arguments的值</li>
+<li>使用[].slice.call(arguments)将arguments对象赋值到一个真正的数组中再进行修改</li>
+</ol>
+<p>arguments看起来像是数组，但是它并不是标准的数组，所以不支持数组的原型方法</p>
+<pre><code>function fun1(nums){
+    var lastParam = arguments.pop(); //报错，undefined is not a function。
+    console.log(arguments);
+}
+
+fun1([1, 2, 3]);
+</code></pre><p>正确的做法是，将arguments转换为真正的数组，再进行操作，代码如下：</p>
+<pre><code>function fun1(nums){
+    var argArr = [].slice.call(arguments);
+    var lastParam = argArr.pop();
+    console.log(arguments);
+}
+
+fun1([1, 2, 3]);
+</code></pre><p><strong>注意：永远不要修改arguments对象是更为安全的。</strong></p>
+<p>##No.24、使用变量保存arguments的引用<br><strong>Tips：</strong></p>
+<ol>
+<li>当引用arguments时当心函数嵌套层级</li>
+<li>绑定一个明确作用域的引用到arguments变量，从而可以再嵌套的函数中引用它</li>
+</ol>
+<p>首先，先来看一段代码的输出：</p>
+<pre><code>function fun1(){
+    var i = 0;
+    console.log(arguments);
+    return {
+        next:function(){
+            return arguments[i++]; 
+        }
+    }
+}
+var f = fun1(1,2,3,4);
+console.log(f.next()); //猜猜是啥？
+</code></pre><p>arguments是函数中的隐式变量，每个函数都会有这样的一个隐式对象。所以最后一个console的结果可想而知。所以遇到这种场景，是建议用变量保存arguments的引用，也能让嵌套函数正确的进行对象引用，正确代码如下：</p>
+<pre><code>function fun1(){
+    var i = 0;
+    var args = arguments;
+    return {
+        next:function(){
+            return args[i++]; 
+        }
+    }
+}
+var f = fun1(1,2,3,4);
+console.log(f.next());
+</code></pre><p>##No.25、使用bind方法提取具有确定接收者的方法<br><strong>Tips：</strong></p>
+<ol>
+<li>要注意，提取一个方法不会将方法的接收者绑定到该方法的对象上</li>
+<li>当给高阶函数传递对象方法时，使用匿名函数在适当的接收者上调用该方法</li>
+<li>使用bind方法创建绑定到适当接收者的函数</li>
+</ol>
+<p>老规矩，看代码：（代码1）</p>
+<pre><code>var buffer = {
+    entries: [],
+    add: function(value){
+        this.entries.push(value);
+    },
+    concat: function(){
+        return this.entries.join(&apos;&apos;);
+    }
+};
+</code></pre><p>该代码在直接使用时是没有问题的，思考下，由于高阶函数将函数/方法作为变量传递，那么可以有如下用法：（代码2）</p>
+<pre><code>var arr = [&apos;Jay&apos;, &apos;.M&apos;, &apos;.Hu&apos;];
+arr.forEach(buffer.add);
+console.log(buffer.concat()); //思考下这个结果是什么？
+</code></pre><p>以上代码在arr.forEach处已经报错，Cannot read property ‘push’ of undefined。因为这个时候的涉及到this的指向问题。我们可以改造下buffer代码，输出this让我们看看：（代码3）</p>
+<pre><code>var buffer = {
+    entries: [],
+    add: function(value){
+        console.log(this);
+        this.entries.push(value);
+    },
+    concat: function(){
+        return this.entries.join(&apos;&apos;);
+    }
+};
+</code></pre><p>从输出结果我们可以看到这个this，在（代码2）的执行环境中，指向的是window对象，所以导致了报错，那么如何避免这样的问题呢？针对forEach，我们有三个方法：(代码4)</p>
+<pre><code>//方式一，去掉this，直接用buffer对象引用
+var buffer = {
+    entries: [],
+    add: function(value){
+        buffer.entries.push(value);
+    },
+    concat: function(){
+        return buffer.entries.join(&apos;&apos;);
+    }
+};
+
+//方式二，指定接收者，forEach方法提供，其他方法不一定提供
+var arr = [&apos;Jay&apos;, &apos;.M&apos;, &apos;.Hu&apos;];
+arr.forEach(buffer.add, buffer);
+console.log(buffer.concat());
+
+//方式三，通过用函数包装调用，来实现指定接收者
+var arr = [&apos;Jay&apos;, &apos;.M&apos;, &apos;.Hu&apos;];
+arr.forEach(function(s){
+    buffer.add(s);
+});
+console.log(buffer.concat());
+</code></pre><p>针对这样的问题，ES5标准库中提供了一个bind()函数来实现这样的方法。只需要如下代码：</p>
+<pre><code>var arr = [&apos;Jay&apos;, &apos;.M&apos;, &apos;.Hu&apos;];
+arr.forEach(buffer.add.bind(buffer));
+console.log(buffer.concat());
+</code></pre><p>该bind()函数，利用buffer.add.bind(buffer)创建了一个新函数而不是修改了buffer.add函数。新函数行为就像原来函数的行为，但它的接收者被重新指定了。所以调用bind方法是安全的，即使是一个可能在程序的其他部分被共享的函数。</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2014/11/29/编写高质量JS代码的68个有效方法-读书笔记/[20141129]编写高质量JS代码的68个有效方法（四）/">
+        编写高质量JS代码的68个有效方法（四）
+      </a>
+    </h2>
+    
+    <time>
+      Nov 29, 2014
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>##No.16、避免使用eval创建局部变量<br><strong>Tips：</strong></p>
+<ol>
+<li>避免使用eval函数创建的变量污染调用者作用域。</li>
+<li>如果eval函数代码可能创建全局变量，将此调用封装到嵌套的函数中已防止作用域污染。</li>
+</ol>
+<p>执行eval时，eval中的变量才会被加到作用域中（函数作用域）</p>
+<pre><code>function fun1(){
+    eval(&apos;var y = 1;&apos;);
+    console.log(&apos;fun1-&gt;y:&apos;+y); // &apos;fun-&gt;y:1&apos;
+}
+fun1();
+console.log(&apos;global-&gt;y:&apos;+y); //throw Error
+</code></pre><p>不要直接将不可控参数交给eval执行，可能会改变作用域对象。</p>
+<pre><code>//Bad code
+var g = &apos;global&apos;;
+function fun2(code){
+    eval(code);
+}
+fun2(&apos;var g=&quot;local&quot;&apos;);
+console.log(g) //&apos;local&apos;
+
+//Right code
+var g = &apos;global&apos;;
+function fun2(code){
+    (function(){
+        eval(code);
+    })();
+}
+fun2(&apos;var g=&quot;local&quot;&apos;);
+console.log(g) //&apos;global&apos;,嵌套作用域
+</code></pre><p>以上Right Code，如果执行不带var的变量申明，那么也是会影响全局的g对象的。</p>
+<h2 id="No-17、间接调用eval函数优于直接调用"><a href="#No-17、间接调用eval函数优于直接调用" class="headerlink" title="No.17、间接调用eval函数优于直接调用"></a>No.17、间接调用eval函数优于直接调用</h2><p><strong>Tips：</strong></p>
+<ol>
+<li>将eval函数同一个毫无意义的字面量包裹在序列表达式中以达到强制使用间接调用eval函数的目的</li>
+<li>尽可能间接调用eval函数，而不要直接调用eval函数</li>
+</ol>
+<p>直接调用eval，那么编译器无法优化JS代码。<br>如何间接调用eval？</p>
+<pre><code>(0,eval)(code) 
+</code></pre><p>##No.18、理解函数的调用、方法调用及构造函数调用之间的不同<br><strong>Tips：</strong></p>
+<ol>
+<li>方法调用将被查找方法属性的对象作用调用接收者</li>
+<li>函数调用将全局对象作为其接受者。一般很少使用该函数调用语法来调用方法</li>
+<li>构造函数需要通过new运算符调用，并产生一个新的对象作为其接收者</li>
+</ol>
+<p>在全局对象上直接定义的function被称为函数，调用则是函数调用</p>
+<pre><code>var fun1 = function(p){
+    console.log(p);
+};
+
+function fun2(p){
+    console.log(p);
+}
+//函数调用
+fun1(&apos;p1&apos;);
+fun2(&apos;p2&apos;);
+</code></pre><p>如果对象的属性是函数，那么称之为方法，使用模式则是方法调用</p>
+<pre><code>var obj = {
+    name: &apos;Hello &apos;,
+    fun1: function(name){
+        console.log(this.name + name);
+    }
+};
+//方法调用
+obj.fun1(&apos;Jay&apos;);
+</code></pre><p><strong>注意：fun1中通过this来访问obj的name属性</strong></p>
+<p>构造函数调用将一个全新的对象作为this变量的值</p>
+<pre><code>fucntion User(name, age){
+    this.Name = name;
+    this.Age = age;
+}
+//此时，user是一个全新的对象
+var user = new User(&apos;Jay&apos;, 23);
+</code></pre><p>##No.19、熟练掌握高阶函数<br><strong>Tips：</strong></p>
+<ol>
+<li>高阶函数是那些将函数作为参数或返回值的函数</li>
+<li>熟练掌握现有库的高阶函数</li>
+<li>学会发现可以被高阶函数所取代的常见编码模式</li>
+</ol>
+<p>需求：将数组元素全部转换为大写</p>
+<pre><code>//常规做法
+var arr = [&apos;abc&apos;, &apos;test&apos;, &apos;123&apos;];
+for(var i =0, len = arr.length; i &lt; len; i++){
+    arr[i] = arr[i].toUpperCase();
+}
+console.log(arr);
+
+//高阶函数
+var arr = [&apos;abc&apos;, &apos;test&apos;, &apos;123&apos;];
+arr = arr.map(function(item){
+    return item.toUpperCase();
+});
+console.log(arr);
+</code></pre><p><strong>注意：需要注意高阶函数使用时的返回值，有些是更改原始对象，有些是返回新对象</strong></p>
+<p>##No.20、使用call方法自定义接收者来调用方法<br><strong>Tips：</strong></p>
+<ol>
+<li>使用call方法自定义接收者（个人理解为作用域）来调用函数</li>
+<li>使用call方法可以调用在给定对象中不存在的方法</li>
+<li><p>使用call方法定义高阶函数允许使用者给回调函数指定接收者</p>
+<p> function fun1(){</p>
+<pre><code>this.name = &apos;Test&apos;;
+</code></pre><p> }<br> var obj = {</p>
+<pre><code>name: &apos;Jay&apos;
+</code></pre><p> };<br> console.log(obj.name);<br> fun1.call(obj);<br> console.log(obj.name);</p>
+</li>
+</ol>
+<p>call函数的调用方式：</p>
+<pre><code>f.call(obj, p1, p2, p3);
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+  <nav id="page-nav">
+    
+    <a class="prev" rel="prev" href="/blog/page/11/">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
+    </a>
+    
+    
+    <a class="next" rel="next" href="/blog/page/13/">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
+    
+  </nav>
+  
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
+
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

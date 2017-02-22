@@ -1,6 +1,145 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="0、导言Angular2的路由组件从beta到rc经历了多次变更，知道rc.4都没有完全稳定下来。其次它的功能也并不强大，全局钩子，动态加载，状态控制都不支持。
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>09_Angular2使用ui-router-ng2 | 幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0、导言Angular2的路由组件从beta到rc经历了多次变更，知道rc.4都没有完全稳定下来。其次它的功能也并不强大，全局钩子，动态加载，状态控制都不支持。
 如果是使用Angular1，那这个时候我们一般会选择 ui-router 这一个强大的基于状态的路由。
-其实，ui-router 也提供了"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>09_Angular2使用ui-router-ng2 · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="full"><h1>09_Angular2使用ui-router-ng2</h1><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time><br>更新于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><div class="article-toc"><strong>大纲</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、引入-ui-router-ng2"><span class="toc-number">2.</span> <span class="toc-text">1、引入 ui-router-ng2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、路由钩子"><span class="toc-number">3.</span> <span class="toc-text">2、路由钩子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、自定义回调处理invalidState"><span class="toc-number">4.</span> <span class="toc-text">3、自定义回调处理invalidState</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、更多待探索"><span class="toc-number">5.</span> <span class="toc-text">4、更多待探索</span></a></li></ol></div><h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>Angular2的路由组件从beta到rc经历了多次变更，知道rc.4都没有完全稳定下来。其次它的功能也并不强大，全局钩子，动态加载，状态控制都不支持。</p>
+其实，ui-router 也提供了一个Angular2的版本，那就是 ui-router-ng2。
+我们就来简单的尝试下它的使用，和利">
+<meta property="og:type" content="article">
+<meta property="og:title" content="09_Angular2使用ui-router-ng2">
+<meta property="og:url" content="http://hstarorg.github.io/blog/2017/02/21/Angular2一路向前/09_Angular2使用ui-router-ng2/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="0、导言Angular2的路由组件从beta到rc经历了多次变更，知道rc.4都没有完全稳定下来。其次它的功能也并不强大，全局钩子，动态加载，状态控制都不支持。
+如果是使用Angular1，那这个时候我们一般会选择 ui-router 这一个强大的基于状态的路由。
+其实，ui-router 也提供了一个Angular2的版本，那就是 ui-router-ng2。
+我们就来简单的尝试下它的使用，和利">
+<meta property="og:updated_time" content="2017-02-21T07:07:31.761Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="09_Angular2使用ui-router-ng2">
+<meta name="twitter:description" content="0、导言Angular2的路由组件从beta到rc经历了多次变更，知道rc.4都没有完全稳定下来。其次它的功能也并不强大，全局钩子，动态加载，状态控制都不支持。
+如果是使用Angular1，那这个时候我们一般会选择 ui-router 这一个强大的基于状态的路由。
+其实，ui-router 也提供了一个Angular2的版本，那就是 ui-router-ng2。
+我们就来简单的尝试下它的使用，和利">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        <article id="post-Angular2一路向前/09_Angular2使用ui-router-ng2"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/blog/2017/02/21/Angular2一路向前/09_Angular2使用ui-router-ng2/">
+    	09_Angular2使用ui-router-ng2
+    </a>
+  </h2>
+	<time>
+	  Feb 21, 2017
+	</time>
+	
+	</section>
+	
+		<section class="tog"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0、导言"><span class="toc-number">1.</span> <span class="toc-text">0、导言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、引入-ui-router-ng2"><span class="toc-number">2.</span> <span class="toc-text">1、引入 ui-router-ng2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、路由钩子"><span class="toc-number">3.</span> <span class="toc-text">2、路由钩子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、自定义回调处理invalidState"><span class="toc-number">4.</span> <span class="toc-text">3、自定义回调处理invalidState</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、更多待探索"><span class="toc-number">5.</span> <span class="toc-text">4、更多待探索</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>Angular2的路由组件从beta到rc经历了多次变更，知道rc.4都没有完全稳定下来。其次它的功能也并不强大，全局钩子，动态加载，状态控制都不支持。</p>
 <p>如果是使用Angular1，那这个时候我们一般会选择 <code>ui-router</code> 这一个强大的基于状态的路由。</p>
 <p>其实，<code>ui-router</code> 也提供了一个Angular2的版本，那就是 <code>ui-router-ng2</code>。</p>
 <p>我们就来简单的尝试下它的使用，和利用它来实现动态加载一批组件（结合webpack）。</p>
@@ -27,34 +166,101 @@
 <p><strong>注意invalidCallbacks回调中的参数($from$, $to$)，必须使用这两个名字，通过分析源代码发现它是用参数名做了匹配的，如果换成其他名称，会提示注入错误。</strong></p>
 <p><strong>invalidCallbacks回调中的逻辑非常关键，演示了如何获取原始要跳转的state，也演示了如何恢复继续跳转。</strong></p>
 <h2 id="4、更多待探索"><a href="#4、更多待探索" class="headerlink" title="4、更多待探索"></a>4、更多待探索</h2><p>当前对 <code>ui-router-ng2</code> 的探索还不够多，另外它本身也还在beta版本，该处理方式应该还有优化空间。</p>
-<hr><section class="comment"><div class="ds-thread" data-thread-key="/blog/2017/02/21/Angular2一路向前/09_Angular2使用ui-router-ng2/" data-title="09_Angular2使用ui-router-ng2" data-url="http://hstarorg.github.io/blog/blog/2017/02/21/Angular2一路向前/09_Angular2使用ui-router-ng2/"></div></section><script>var _shortName = "6389370154370729000";</script><script>var duoshuoQuery = {};
-duoshuoQuery["short_name"] = _shortName;
-(function() {
-    var ds = document.createElement("script");
-    ds.type = "text/javascript";
-    ds.async = true;
-    ds.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
-    ds.charset = "utf-8";
-    (document.getElementsByTagName("head")[0] ||
-        document.getElementsByTagName("body")[0]).appendChild(ds);
-})();</script><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></article></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
 
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
+  	</div>
+	  
+	</section>
+	
+</article>
 
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
 
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
-    }
-});</script></body></html>
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
+
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

@@ -1,43 +1,817 @@
-<!DOCTYPE html><html class="han-init" lang="zh-Hant"><head><meta name="author" content="Jay.M.Hu"><meta name="description" itemprop="description" content="幻☆精灵的Blog站点"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>幻☆精灵的Blog · Love life, love coding~</title><link rel="stylesheet" type="text/css" href="/blog/font/fantasque_sans_mono/stylesheet.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/webicons/2.0.0/webicons.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Han/3.3.0/han.min.css"><link rel="stylesheet" type="text/css" href="/blog/styles/screen.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/highlight.js/9.9.0/styles/gruvbox-dark.min.css"></head><body><header><a href="/blog/"><img class="logo" src="https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460" alt="幻☆精灵的Blog" title="幻☆精灵的Blog"></a><h1><a href="/blog/" alt="幻☆精灵的Blog" title="幻☆精灵的Blog">幻☆精灵的Blog</a></h1><p>Love life, love coding~</p><nav><ul><li><a href="/" alt="首页" title="首页">首页</a></li><li><a href="pigeonhole" alt="归档" title="归档">归档</a></li><li><a href="links" alt="链接" title="链接">链接</a></li><li><a href="about" alt="关于" title="关于">关于</a></li></ul><div class="xnews-icon"><a target="_blank" href="https://github.com/hstarorg" style="position: relative; top: -2px;">&#xe735;</a><a target="_blank" href="https://twitter.com/Hstar19">&#xe71f;</a><a target="_blank" href="https://www.facebook.com/100015363883648">&#xe60b;</a><a target="_blank" href="https://www.zhihu.com/people/hstar">&#xe63f;</a><a target="_blank" href="https://weibo.com/hstarorg" style="position: relative; top: -2px;">&#xe603;</a></div></nav><div class="space"></div></header><main><article class="item"><a class="article" href="/blog/2017/02/21/CSS3学习之路/CSS3入门之转换/"><h2 class="home-title">CSS3入门之转换</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">1、CSS3 转换1.1、转换是什么，能实现哪些效果？转换是使元素改变形状、尺寸和位置的一种效果，主要能实现的效果如下：
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>幻☆精灵的Blog</title>
+  <meta name="description" content="幻☆精灵的Blog站点" />
+  <meta name="keywords" content="幻精灵" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/images/favicon.ico">
+  <link rel="alternate" href="/blog/atom.xml" title="幻☆精灵的Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="幻☆精灵的Blog站点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="幻☆精灵的Blog">
+<meta property="og:url" content="http://hstarorg.github.io/blog/page/9/index.html">
+<meta property="og:site_name" content="幻☆精灵的Blog">
+<meta property="og:description" content="幻☆精灵的Blog站点">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="幻☆精灵的Blog">
+<meta name="twitter:description" content="幻☆精灵的Blog站点">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  
+  
 
-移动
-缩放
-转动
-拉长
-拉伸
-
-1.2、浏览器兼容CSS3的转换属性为 transform ，IE10+,Firefox,Chrome,Opera,Safa</p></article><article class="item"><a class="article" href="/blog/2017/02/21/Angular2一路向前/02_Angular2组件生命周期/"><h2 class="home-title">02_Angular2组件生命周期</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、Angular2 组件Angular1并不是围绕组件的概念来实现的。所以，我们需要controller、$scope，同时也需要封装自定义指令。
-在Angular2中，把之前的这些东西都丢弃了，使用了一种更面向对象的组件模型。
-一个组件控制着我们称之为View的显示部分。组件</p></article><article class="item"><a class="article" href="/blog/2017/02/21/Angular2一路向前/03_Angular2的那些Decorator/"><h2 class="home-title">03_Angular2的那些Decorator</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、DecoratorDecorator 是ECMAScript中建议的标准，使得我们可以在设计时对类和属性进行注解和修改。
-1、Angular2的Decorator在Angular2的早期版本（使用AtScript）中，我们是使用Annotation（注解），它以一个声明的方式</p></article><article class="item"><a class="article" href="/blog/2017/02/21/Angular2一路向前/07_Angular2使用路由/"><h2 class="home-title">07_Angular2使用路由</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、关于路由此处所说的路由是指URL路由（也许叫URL Rewrite）。其实是把网址（URL）映射到相关Controller、Component的这个功能。
-Angular2的路由其实也就是URL路由，在Angular2中，有两个模块提供了路由功能，@angular/route</p></article><article class="item"><a class="article" href="/blog/2017/02/21/Angular相关/Angular1.x升级指南/"><h2 class="home-title">Angular1.x升级指南</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、导言Angular从1.2.x到1.3.x是一个大的跳跃。在1.3.x之后，也有1.4.x，1.5.x这么两个大版本。
-Newkit从1.2.x跳跃到1.3.x经历过一次大的变化，在之后的较大版本升级中，基本上没有大多大改动。但是其中的差异点，我们也需要去了解。
-1.3.x以</p></article><article class="item"><a class="article" href="/blog/2017/02/21/Angular相关/Angular再回首(1)-Component组件/"><h2 class="home-title">Angular再回首(1)-Component组件</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、再谈组件Component(组件) 在 Angular1 就已经有雏形了，那就是指令。在 Angular2 中，组件的概念被大大的强化，甚至是Angular2的核心概念。
-在前端这么多年的演变中，组件也反哺到 Angular1，成为 Angular1 的一种重要特性，在此之前</p></article><article class="item"><a class="article" href="/blog/2017/02/21/Angular相关/Angular从0到1：function（下）/"><h2 class="home-title">Angular从0到1：function（下）</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">1、前言2、function（下）2.13、angular.isArray(★★)angular.isArray用于判断对象是不是数组，等价于Array.isArray
-console.log(angular.isArray([])); // true
-console.log(a</p></article><article class="item"><a class="article" href="/blog/2017/02/21/Angular相关/Angular从0到1：function（上）/"><h2 class="home-title">Angular从0到1：function（上）</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">1、前言Angular作为最流行的前端MV*框架，在WEB开发中占据了重要的地位。接下来，我们就一步一步从官方api结合实践过程，来学习一下这个强大的框架吧。
-Note：每个function描述标题之后的★标明了该function的重要程度（1~5星）。
-2、function（上</p></article><article class="item"><a class="article" href="/blog/2017/02/21/Angular相关/Angular再回首(2)-那些容易忽略的Component细节/"><h2 class="home-title">Angular再回首(2)-那些容易忽略的Component细节</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">0、前言在 Angular 1.5.x 中，增加的组件方法，相当实用和易用。但也有许多小细节问题值得注意，以下为本人在组件实践过程中遇到的问题，或者是需要注意的小细节。
-1、问题/小细节（需要注意的点）1.1、如何判断是否添加了可选的 transclude 元素？在很多时候，我们</p></article><article class="item"><a class="article" href="/blog/2017/02/21/Angular相关/Angular开发Tips/"><h2 class="home-title">Angular开发Tips</h2></a><span class="post-meta">写于<time> 2017 年 02 月 21 日 14 时 47 分</time></span><p class="post-excerpt">1、在使用$routeProvider的时候，需要让模块依赖ngRoute，否则会提示找不到服务，示例：
-angular.module(&amp;apos;module1&amp;apos;, [&amp;apos;ngRoute&amp;apos;])
-.config([&amp;apos;$routeProvide</p></article><div class="pagination"><a class="extend prev" rel="prev" href="/blog/page/8/">«</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/7/">7</a><a class="page-number" href="/blog/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/blog/page/10/">10</a><a class="page-number" href="/blog/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/13/">13</a><a class="extend next" rel="next" href="/blog/page/10/">»</a></div><footer><section class="copyright">&copy; 2016 - 2017<a href="/blog/">Jay.M.Hu</a></section><section class="intro">由<a href="https://hexo.io/">Hexo</a>驱动&middot;挂载<a href="https://github.com/xadillax/hexo-xnew">X'new</a>主题</section></footer></main><script src="//cdn.bootcss.com/Han/3.3.0/han.min.js"></script><script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script><script src="/blog/scripts/highlight.pack.js"></script><script>$(function() {
-    $("header").backstretch("/images/header.jpeg");
-
-    $("figure.highlight").each(function(i, block) {
-        $(block).removeClass("highlight");
-        $("<pre><code class='__tobehl " + ($(block).attr("class") === "plain" ? "" : ("lang-" + $(block).attr("class"))) + "'></code></pre>").insertAfter($(block));
-        $(block).next().find("code").text((block.innerText || block.textContent));
-        $(block).remove();
-    });
-    $(".__tobehl").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-
-    $("article.full img").each(function() {
-        $(this).parent().css("text-align", "center");
-    });
-
-    if($(".article-toc").children().length < 2) {
-        $(".article-toc").css("display", "none");
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
     }
-});</script></body></html>
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+		<div class="wrapper container">
+			<a class="logo flat-box" href='/blog/' >
+				幻☆精灵的Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								首页
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								归档
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								关于我
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu"></span></a></li>
+			</ul>
+		</div>
+		<aside class="menu-phone">
+			<nav>
+				
+					<a href="/blog/" class="nav-home nav">
+						首页
+					</a>
+				
+					<a href="/blog/archives" class="nav-archives nav">
+						归档
+					</a>
+				
+					<a href="/blog/about" class="nav-about nav">
+						关于我
+					</a>
+				
+			</nav>
+		</aside>
+</header>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container'>
+      <div class='l_main'>
+        
+  <section class="page-header category banner waves-image">
+    <h1 id='hitokoto'></h1>
+  </section>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/Angular2一路向前/09_Angular2使用ui-router-ng2/">
+        09_Angular2使用ui-router-ng2
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>Angular2的路由组件从beta到rc经历了多次变更，知道rc.4都没有完全稳定下来。其次它的功能也并不强大，全局钩子，动态加载，状态控制都不支持。</p>
+<p>如果是使用Angular1，那这个时候我们一般会选择 <code>ui-router</code> 这一个强大的基于状态的路由。</p>
+<p>其实，<code>ui-router</code> 也提供了一个Angular2的版本，那就是 <code>ui-router-ng2</code>。</p>
+<p>我们就来简单的尝试下它的使用，和利用它来实现动态加载一批组件（结合webpack）。</p>
+<h2 id="1、引入-ui-router-ng2"><a href="#1、引入-ui-router-ng2" class="headerlink" title="1、引入 ui-router-ng2"></a>1、引入 <code>ui-router-ng2</code></h2><p>要使用 <code>ui-router-ng2</code>，我们必须要先通过 <code>npm install ui-router-ng2</code> 来安装该包。</p>
+<p>安装成功之后，我们需要实现一个 <code>UIRouterConfig</code> 的实例，代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Injectable &#125; from <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123; UIRouter, UIRouterConfig &#125; from <span class="string">'ui-router-ng2'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;AboutComponent&#125; from <span class="string">'./about.component'</span>;</div><div class="line"></div><div class="line"><span class="meta">@Injectable</span>()</div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppRouterConfig <span class="keyword">implements</span> UIRouterConfig &#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  configure(uiRouter: UIRouter) &#123;</div><div class="line">    uiRouter.stateRegistry.register(&#123;</div><div class="line">      name: <span class="string">'about'</span>,</div><div class="line">      component: AboutComponent,</div><div class="line">      url: <span class="string">'/about'</span></div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一般做法，我们需要在 <code>configure</code> 方法中，注册路由状态对象。</p>
+<p>当实现了 <code>UIRouterConfig</code> 之后，我们就可以在应用启动时来使用它了，具体代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; enableProdMode, provide, PLATFORM_DIRECTIVES &#125; from <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123; APP_BASE_HREF, LocationStrategy, HashLocationStrategy, PlatformLocation &#125; from <span class="string">'@angular/common'</span>;</div><div class="line"><span class="keyword">import</span> &#123; BrowserPlatformLocation &#125; from <span class="string">'@angular/platform-browser'</span>;</div><div class="line"><span class="keyword">import</span> &#123; bootstrap &#125; from <span class="string">'@angular/platform-browser-dynamic'</span>;</div><div class="line"><span class="keyword">import</span> &#123; UIROUTER_PROVIDERS, UIRouterConfig, UIROUTER_DIRECTIVES &#125; from <span class="string">'ui-router-ng2'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123; RootComponent &#125; from <span class="string">'./../shell'</span>;</div><div class="line"><span class="keyword">import</span> &#123; AppRouterConfig &#125; from <span class="string">'./routes'</span>;</div><div class="line"></div><div class="line">enableProdMode();</div><div class="line"></div><div class="line">bootstrap(RootComponent, [</div><div class="line">  provide(APP_BASE_HREF, &#123; useValue: <span class="string">'/'</span> &#125;),</div><div class="line">  provide(LocationStrategy, &#123; useClass: HashLocationStrategy &#125;),</div><div class="line">  provide(PlatformLocation, &#123; useClass: BrowserPlatformLocation &#125;),</div><div class="line">  ...UIROUTER_PROVIDERS,</div><div class="line">  provide(UIRouterConfig, &#123; useClass: AppRouterConfig &#125;),</div><div class="line">  provide(PLATFORM_DIRECTIVES, &#123; useValue: UIROUTER_DIRECTIVES, multi: <span class="literal">true</span> &#125;)</div><div class="line">])</div><div class="line">  .then(x =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'app started...'</span>);</div><div class="line">  &#125;)</div><div class="line">  .catch(error =&gt; <span class="built_in">console</span>.log(error));</div></pre></td></tr></table></figure>
+<p>其中最关键是和路由相关的代码是：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...UIROUTER_PROVIDERS, <span class="comment">//依赖路由提供者</span></div><div class="line">provide(UIRouterConfig, &#123; useClass: AppRouterConfig &#125;), <span class="comment">//指定RouterConfig</span></div><div class="line">provide(PLATFORM_DIRECTIVES, &#123; useValue: UIROUTER_DIRECTIVES, multi: <span class="literal">true</span> &#125;) <span class="comment">//依赖路由指令</span></div></pre></td></tr></table></figure>
+<p>在经过这些步骤之后，我们的项目就已经可以使用 <code>ui-router-ng2</code> 来进行路由管理了。</p>
+<h2 id="2、路由钩子"><a href="#2、路由钩子" class="headerlink" title="2、路由钩子"></a>2、路由钩子</h2><p><code>ui-router-ng2</code> 提供了很强大的路由钩子函数，可以让我们很方便的对路由的各个阶段进行控制。</p>
+<p>使用方式如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;Injectable, Inject&#125; from <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123;UIRouter, UIRouterConfig&#125; from <span class="string">'ui-router-ng2'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;AboutComponent&#125; from <span class="string">'./about.component'</span>;</div><div class="line"></div><div class="line"><span class="meta">@Injectable</span>()</div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppRouterConfig <span class="keyword">implements</span> UIRouterConfig &#123;</div><div class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  configure(uiRouter: UIRouter) &#123;</div><div class="line">    uiRouter.stateRegistry.register(&#123;</div><div class="line">      name: <span class="string">'about'</span>,</div><div class="line">      component: AboutComponent,</div><div class="line">      url: <span class="string">'/about'</span></div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="comment">// 以下t均为Transition实例</span></div><div class="line"></div><div class="line">    uiRouter.transitionService.onBefore(&#123;&#125;, t =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'onBefore'</span>, t); <span class="comment">//路由跳转之前</span></div><div class="line">    &#125;);</div><div class="line">    uiRouter.transitionService.onStart(&#123;&#125;, t =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'onStart'</span>, t); <span class="comment">//路由跳转开始</span></div><div class="line">    &#125;);</div><div class="line">    uiRouter.transitionService.onExit(&#123;&#125;, t =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'onExit'</span>, t); <span class="comment">//路由跳出时</span></div><div class="line">    &#125;);</div><div class="line">    uiRouter.transitionService.onRetain(&#123;&#125;, t =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'onRetain'</span>, t); <span class="comment">//...</span></div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    uiRouter.transitionService.onEnter(&#123;&#125;, t =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'onEnter'</span>, t); <span class="comment">//路由进入时</span></div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    uiRouter.transitionService.onFinish(&#123;&#125;, t =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'onFinish'</span>, t); <span class="comment">//路由跳转完成</span></div><div class="line">    &#125;);</div><div class="line">    uiRouter.transitionService.onSuccess(&#123;&#125;, t =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'onSuccess'</span>, t); <span class="comment">//路由跳转成功</span></div><div class="line">    &#125;);</div><div class="line">    uiRouter.transitionService.onError(&#123;&#125;, t =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'onError'</span>, t); <span class="comment">//路由跳转出错</span></div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过以上的各个阶段，我们可以灵活控制跳转是否继续，每个钩子函数都接受 <code>boolean</code> 和 <code>Promise&lt;boolean&gt;</code>来让我们确定是否跳转。</p>
+<h2 id="3、自定义回调处理invalidState"><a href="#3、自定义回调处理invalidState" class="headerlink" title="3、自定义回调处理invalidState"></a>3、自定义回调处理invalidState</h2><p>通过以上的方式，我们实现了状态路由，也实现了路由跳转的控制。接下来，我们另辟蹊径来实现动态加载。</p>
+<p>由于当我们请求不合法的state时，uiRouter都会执行到 <code>invalidCallbacks</code> 这个函数，我这里就通过它加载动态模块。</p>
+<p>实现代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">configure(uiRouter: UIRouter) &#123;</div><div class="line">  ... <span class="comment">//省略不相关代码</span></div><div class="line">  uiRouter.stateProvider.invalidCallbacks = [($from$, $to$) =&gt; &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Promise((resolve, reject) =&gt; &#123;</div><div class="line">      <span class="keyword">let</span> toStateName = $to$.name();</div><div class="line">      <span class="keyword">let</span> moduleName = <span class="keyword">this</span>._getModuleName(toStateName);</div><div class="line">      <span class="keyword">if</span> (!moduleName) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">this</span>.moduleLoader.load(moduleName).then(_ =&gt; &#123;</div><div class="line">        <span class="keyword">let</span> state = uiRouter.stateService.target(toStateName);</div><div class="line">        resolve(state);</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接着，再来看看moduleLoader的代码：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Injectable, Inject &#125; from <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123;Http&#125; from <span class="string">'@angular/http'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;UIRouter&#125; from <span class="string">'ui-router-ng2'</span>;</div><div class="line"></div><div class="line"><span class="meta">@Injectable</span>()</div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> ModuleLoader &#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> uiRouter: UIRouter;</div><div class="line">  <span class="keyword">private</span> loadedModules: Set&lt;<span class="built_in">string</span>&gt;;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> http: Http</span>) &#123;</div><div class="line">    <span class="keyword">this</span>.loadedModules = <span class="keyword">new</span> Set&lt;<span class="built_in">string</span>&gt;();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setRouter(uiRouter) &#123;</div><div class="line">    <span class="keyword">this</span>.uiRouter = uiRouter;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  load(moduleName): Promise&lt;<span class="built_in">any</span>&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.loadedModules.has(moduleName)) &#123;</div><div class="line">      <span class="keyword">return</span> Promise.resolve();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Promise((resolve, reject) =&gt; &#123;</div><div class="line">      <span class="keyword">this</span>.http.get(<span class="string">`../dist/assets/js/<span class="subst">$&#123;moduleName&#125;</span>.js`</span>)</div><div class="line">        .toPromise()</div><div class="line">        .then(res =&gt; &#123;</div><div class="line">          <span class="keyword">let</span> mod = <span class="built_in">eval</span>(res.text());</div><div class="line">          mod.MODULE_STATES.forEach(state =&gt; &#123;</div><div class="line">            <span class="keyword">this</span>.uiRouter.stateRegistry.register(state);</div><div class="line">          &#125;);</div><div class="line">          <span class="keyword">this</span>.loadedModules.add(moduleName);</div><div class="line">          resolve();</div><div class="line">        &#125;).catch(err =&gt; reject(err));</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过请求指定的文件，然后利用eval执行出具体的state数组，通过register方法，动态注入到我们的ui-router中。</p>
+<p><strong>注意invalidCallbacks回调中的参数($from$, $to$)，必须使用这两个名字，通过分析源代码发现它是用参数名做了匹配的，如果换成其他名称，会提示注入错误。</strong></p>
+<p><strong>invalidCallbacks回调中的逻辑非常关键，演示了如何获取原始要跳转的state，也演示了如何恢复继续跳转。</strong></p>
+<h2 id="4、更多待探索"><a href="#4、更多待探索" class="headerlink" title="4、更多待探索"></a>4、更多待探索</h2><p>当前对 <code>ui-router-ng2</code> 的探索还不够多，另外它本身也还在beta版本，该处理方式应该还有优化空间。</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/Angular2一路向前/08_Angular2动态加载组件/">
+        08_Angular2动态加载组件
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、为什么需要动态加载"><a href="#0、为什么需要动态加载" class="headerlink" title="0、为什么需要动态加载"></a>0、为什么需要动态加载</h2><p>在一个比较大的应用程序中，我们不可能将所有的业务逻辑一次性加载出来，比较浪费资源，因为单个用户一般用不到所有的功能，这个时候，就需要部分组件动态加载了。</p>
+<h2 id="1、Angular2如何动态加载组件"><a href="#1、Angular2如何动态加载组件" class="headerlink" title="1、Angular2如何动态加载组件"></a>1、Angular2如何动态加载组件</h2><p>在Angular2，有一个服务是 <code>DynamicComponentLoader</code>，我们就可以通过它来进行动态加载组件。</p>
+<p>首先要使用它的话，我们必须要在providers中指定它。</p>
+<p>另外，它还有一些必须的依赖，是 <code>injector</code>，当引入了这些元素之后，我们就可以实现一个加载组件的方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppComponent</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(dynamicComponentLoader, viewContainerRef, injector) &#123;</div><div class="line">    <span class="keyword">this</span>.dynamicComponentLoader = dynamicComponentLoader;</div><div class="line">    <span class="keyword">this</span>.viewContainerRef = viewContainerRef;</div><div class="line">    <span class="keyword">this</span>.injector = injector;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">//动态加载组件的方法，需要传入一个组件</span></div><div class="line">  loadComponent(component) &#123;</div><div class="line">    <span class="keyword">this</span>.viewContainerRef.clear();</div><div class="line">    <span class="keyword">this</span>.dynamicComponentLoader.loadAsRoot(component, <span class="string">'#component-container'</span>, <span class="keyword">this</span>.injector)</div><div class="line">      .then(<span class="function">(<span class="params">componentRef</span>) =&gt;</span> &#123;</div><div class="line">        <span class="comment">//必须要这样来编写，否则会导致双向绑定表达式获取不到值。</span></div><div class="line">        componentRef.changeDetectorRef.detectChanges();</div><div class="line">        componentRef.onDestroy(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">          componentRef.changeDetectorRef.detach();</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> componentRef;</div><div class="line">      &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在以上代码中，核心就是 <code>dynamicComponentLoader</code> 的 <code>loadAsRoot</code> 方法，这个方法里面有个参数是 <code>&#39;#component-container&#39;</code>，实际上指定将动态加载的组件放置的容器，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">child</span> <span class="attr">id</span>=<span class="string">"component-container"</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>通过这样的方式，我们就能够动态的把组件加载到页面上了。</p>
+<p><strong>注：<code>dynamicComponentLoader</code> 还有一个加载方法是 <code>loadNextToLocation(component, viewContainerRef)</code>，只需要提供要动态加载的组件和一个容器引用，就可以将组件加载到容器中了。</strong></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/Angular2一路向前/07_Angular2使用路由/">
+        07_Angular2使用路由
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、关于路由"><a href="#0、关于路由" class="headerlink" title="0、关于路由"></a>0、关于路由</h2><p>此处所说的路由是指URL路由（也许叫URL Rewrite）。其实是把网址（URL）映射到相关Controller、Component的这个功能。</p>
+<p>Angular2的路由其实也就是URL路由，在Angular2中，有两个模块提供了路由功能，<code>@angular/router-deprecated</code> 和 <code>@angular/router</code>。</p>
+<p><code>@angular/router-deprecated</code> 从名称也可以看出，它是一个过时的模块（beta版本中它的名字是 <code>angular2/router</code>，在rc版本被更名）。但疑惑的是，它一直存在于 <code>@angular</code> 包中。在这里，我主要使用 <code>@angular/router</code> 来实现路由功能。</p>
+<h2 id="1、使用Angular2路由"><a href="#1、使用Angular2路由" class="headerlink" title="1、使用Angular2路由"></a>1、使用Angular2路由</h2><p>建议在根组件中配置路由。要使用路由，必须先依赖 <code>ROUTER_PROVIDERS</code>；如果要使用路由指令，必须先依赖 <code>ROUTER_DIRECTIVES</code>。</p>
+<p>大概结构如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//bootstrap.ts</span></div><div class="line"><span class="keyword">import</span> &#123;provide&#125; from <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123;bootstrap&#125; from <span class="string">'@angular/platform-browser-dynamic'</span>;</div><div class="line"><span class="keyword">import</span> &#123;LocationStrategy, HashLocationStrategy&#125; from <span class="string">'@angular/common'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;AppComponent&#125; from <span class="string">'./app/app.component'</span>;</div><div class="line"></div><div class="line"></div><div class="line">bootstrap(AppComponent, [</div><div class="line">  provide(LocationStrategy, &#123; useClass: HashLocationStrategy &#125;)</div><div class="line">]);</div></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//app.component.ts</span></div><div class="line"><span class="keyword">import</span> &#123;Component, provide&#125; from <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123;Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS&#125; from <span class="string">'@angular/router'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;HomeComponent&#125; from <span class="string">'./../home/home.component'</span>;</div><div class="line"><span class="keyword">import</span> &#123;AboutComponent&#125; from <span class="string">'./../about/about.component'</span>;</div><div class="line"></div><div class="line"><span class="meta">@Component</span>(&#123;</div><div class="line">  selector: <span class="string">'demo-app'</span>,</div><div class="line">  template: <span class="string">`</span></div><div class="line">&lt;h3&gt;Angular2 Router Test&lt;/h3&gt;</div><div class="line">&lt;a [routerLink]="['/home']"&gt;Home&lt;/a&gt;</div><div class="line">&lt;a [routerLink]="['/about']"&gt;About&lt;/a&gt; </div><div class="line">&lt;router-outlet&gt;&lt;/router-outlet&gt;</div><div class="line">  `,</div><div class="line">  directives: [ROUTER_DIRECTIVES],</div><div class="line">  providers: [ROUTER_PROVIDERS]</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="meta">@Routes</span>([</div><div class="line">  &#123; path: <span class="string">'/home'</span>, component: HomeComponent&#125;,</div><div class="line">  &#123; path: <span class="string">'/about'</span>, component: AboutComponent &#125;</div><div class="line">])</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppComponent &#123;</div><div class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'app init'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过 <code>@Routes</code>，我们可以配置路由对应的组件。当然，要求这些组件必须已经存在。在配置路由节点的时候，我们仅仅需要提供 <code>path</code> 和 <code>component</code> 参数。</p>
+<p>在模板中使用 <code>[routerLink]</code> 可以配置连接，它的值是一个数组，第一个元素是要导向的url，第二个参数是路由参数。</p>
+<p>除了使用 <code>[routerLink]</code> 实现路由跳转，还可以使用特定服务来跳转，代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.router.navigate([<span class="string">'/about'</span>]);</div><div class="line"><span class="keyword">this</span>.router.navigateByUrl(<span class="string">'/about'</span>);</div></pre></td></tr></table></figure>
+<p>当URL比较复杂，如/home/test/index时，使用navigate方式如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.router.navigate([<span class="string">'home'</span>, <span class="string">'test'</span> ,<span class="string">'index'</span>]);</div></pre></td></tr></table></figure>
+<h2 id="2、路由参数"><a href="#2、路由参数" class="headerlink" title="2、路由参数"></a>2、路由参数</h2><p>有时候，我们需要给路由传递一些参数，这个时候就需要在配置路由的时候，指定参数。使用 <code>[routerLink]</code> 的方式如下:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">"['/about', &#123;id: 1&#125;]"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>那么如何获取这个参数呢？就需要在 <code>AboutComponent</code> 组件中通过 <code>RouteSegment</code> 来获取，代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> AboutComponent &#123;  </div><div class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> routeSegment: RouteSegment</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'about init'</span>, <span class="string">'params:'</span>, routeSegment.parameters);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3、嵌套路由（子路由）"><a href="#3、嵌套路由（子路由）" class="headerlink" title="3、嵌套路由（子路由）"></a>3、嵌套路由（子路由）</h2><p>一般来说，我们写一个中大型的应用程序，一个一级路由根本就不够使用。这个时候，就可以使用嵌套路由来把应用程序拆分成很多小的模块。</p>
+<p>在这种情况下，就需要我们的子组件也需要使用 <code>@Routes</code> 来申明自己的路由体系。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//about.component.ts</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;Component&#125; from <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123;ROUTER_DIRECTIVES, Routes, RouteSegment&#125; from <span class="string">'@angular/router'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;AboutUserComponent&#125; from <span class="string">'./about-user.component'</span>;</div><div class="line"><span class="keyword">import</span> &#123;AboutMeComponent&#125; from <span class="string">'./about-me.component'</span>;</div><div class="line"></div><div class="line"><span class="meta">@Component</span>(&#123;</div><div class="line">  selector: <span class="string">'demo-about'</span>,</div><div class="line">  template: <span class="string">`</span></div><div class="line">  &lt;h1&gt;About&lt;/h1&gt;</div><div class="line">  &lt;a [routerLink]="['/home']"&gt;Go to Home&lt;/a&gt;</div><div class="line">  &lt;a [routerLink]="['./user', id]"&gt;Go to About User&lt;/a&gt;</div><div class="line">  &lt;a [routerLink]="['./me']"&gt;Go to About Me&lt;/a&gt;</div><div class="line">  &lt;router-outlet&gt;&lt;/router-outlet&gt;</div><div class="line">  `,</div><div class="line">  directives: [ROUTER_DIRECTIVES]</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="meta">@Routes</span>([</div><div class="line">  &#123; path: <span class="string">'/'</span>, component: AboutUserComponent &#125;,</div><div class="line">  &#123; path: <span class="string">'/user/:id'</span>, component: AboutUserComponent &#125;,</div><div class="line">  &#123; path: <span class="string">'/me'</span>, component: AboutMeComponent &#125;</div><div class="line">])</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> AboutComponent &#123;</div><div class="line">  </div><div class="line">  <span class="keyword">private</span> id: <span class="built_in">number</span> = <span class="number">1</span>;</div><div class="line">  </div><div class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> routeSegment: RouteSegment</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'about init'</span>, <span class="string">'params:'</span>, routeSegment.parameters);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这段代码里，我们需要注意，<code>[routerLink]</code>的值，有些是 <code>[&#39;/home&#39;]</code>, 也有 <code>[&#39;./me]</code> 这种，它们有什么区别呢？</p>
+<p>其实直接 ‘/home’ 是指从根路径开始计算，也就是跳转到父路由，真实路径就是 /home。如果是使用的 ‘./me’ 这种形式，那么是相对路径，所以点击这个链接，跳转到的实际上是 /about/me 这个地址。</p>
+<h2 id="4、生命周期钩子（拦截器）"><a href="#4、生命周期钩子（拦截器）" class="headerlink" title="4、生命周期钩子（拦截器）"></a>4、生命周期钩子（拦截器）</h2><p>在路由中，我们可以通过实现 <code>CanDeactivate</code> 来控制路由是否可以被解除；还可以通过实现 <code>OnActivate</code> 来控制路由激活后的操作。</p>
+<p>当我们在 <code>HomeComponent</code> 中编写如下语句时：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">routerCanDeactivate(curTree: RouteTree, futureTree: RouteTree) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'abc'</span>);</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Promise((resolve, reject) =&gt; &#123;</div><div class="line">    resolve(<span class="literal">false</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当进入Home页之后，我们就已经无法跳出了。</p>
+<p>当我们在 <code>HomeComponent</code> 中编写如下语句时：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">routerOnActivate(currSegment: RouteSegment, prev: RouteSegment, currTree: RouteTree, prevTree: RouteTree)&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'succeed'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>每一次跳转到Home组件，我们都能在控制台看到输出 succeed 。 </p>
+<p><strong>很遗憾的是，暂时没有发现有全局的路由钩子，这也就意味着，我们没法在一个地方控制所有的路由是否允许被解除。</strong></p>
+<h2 id="5、后记"><a href="#5、后记" class="headerlink" title="5、后记"></a>5、后记</h2><p>以上就是Angular2路由的简单使用了。相关Demo，请点击 <a href="https://github.com/hstarorg/HstarDemoProject/tree/master/angular2_demo" target="_blank" rel="external">这里</a></p>
+<p>在Angular2中，还有一个路由是 <code>@angular/router-deprecated</code>，它是之前的路由方式，由于已经被标注为过期，这里就不在说明，如果想了解一下，可以查看 <a href="https://github.com/hstarorg/HstarDemoProject/tree/master/angular2_demo/angular2-router-deprecated-test" target="_blank" rel="external">Demo</a></p>
+<p>至于更复杂的动态路由，动态加载组件等等，未完待续…</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/Angular2一路向前/06_Angular2管道（Pipe）简析/">
+        06_Angular2管道（Pipe）简析
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、Angular2-Pipe"><a href="#0、Angular2-Pipe" class="headerlink" title="0、Angular2 Pipe"></a>0、Angular2 Pipe</h2><p><strong>注：由于Angular2的API好不够稳定，书写该文时，采用的是Angular2 rc1（@angular rc.1）版本，其他版本请自行测试。</strong></p>
+<p>对于 <code>Pipe</code>，其实我们并不陌生。在angular1中，它被称之为 <code>filter</code>。</p>
+<p><code>Pipe</code>用于对数据进行格式化处理，就好比管道，一个进一头出，中间过程就是管道的处理逻辑。</p>
+<p>Angular2中的 <code>Pipe</code> 本质上是包含特定方法的类。</p>
+<h2 id="1、编写一个简单Pipe"><a href="#1、编写一个简单Pipe" class="headerlink" title="1、编写一个简单Pipe"></a>1、编写一个简单Pipe</h2><p><code>Pipe</code> 相对于指令和组件来说，非常简单，我们仅仅需要编写一个类：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> EmptyToZero&#123;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实现特定的方法：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">exprt <span class="keyword">class</span> EmptyToZero&#123;</div><div class="line">  transform(v: <span class="built_in">any</span>, args: <span class="built_in">any</span>[])&#123;</div><div class="line">    <span class="keyword">if</span>(v === <span class="literal">undefined</span> || v === <span class="literal">null</span> || v === <span class="string">''</span>)&#123;</div><div class="line">      <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> v;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用 <code>Pipe</code> 装饰，请设定名称:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;Pipe&#125; from <span class="string">'@angular/core'</span>;</div><div class="line"></div><div class="line"><span class="meta">@Pipe</span>(&#123; name: <span class="string">'empty2zero'</span> &#125;)</div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> EmptyToZero &#123;</div><div class="line">  transform(v: <span class="built_in">any</span>, args: <span class="built_in">any</span>[]) &#123;</div><div class="line">    <span class="keyword">if</span> (v === <span class="literal">undefined</span> || v === <span class="literal">null</span> || v === <span class="string">''</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> v;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如何使用？</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; value | empty2zero&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>当然前提是要在Component中申明要使用的Pipe：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Component</span>(&#123;</div><div class="line">  selector: <span class="string">'todo-list'</span>,</div><div class="line">  template: <span class="built_in">require</span>(<span class="string">'./todo-list.component.html'</span>),</div><div class="line">  styles : [<span class="built_in">require</span>(<span class="string">'./todo-list.component.css'</span>)],</div><div class="line">  pipes:[EmptyToZero]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="2、有状态的Pipe"><a href="#2、有状态的Pipe" class="headerlink" title="2、有状态的Pipe"></a>2、有状态的Pipe</h2><p>在使用 <code>Pipe</code> 装饰器的时候，我们可以提供两个参数：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Pipe</span>(&#123;</div><div class="line">  name: <span class="string">'empty2zero'</span>, <span class="comment">//string类型，必填项，指定pipe的名称</span></div><div class="line">  pure: <span class="literal">true</span> <span class="comment">//boolean类型，可选项，默认为true，设定为true时，表示无状态管道。无论是输入或者是什么参数的改变都会触发重新计算结果。</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>有状态的 <code>Pipe</code> 可以收到一个Promise对象或者检测输入和自动订阅输入，最终返回一个可触发的值。</p>
+<p>要使用有状态的管道，必须将pure属性设置为false。</p>
+<p>比较典型的有状态异步管道如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;Pipe&#125; from <span class="string">'angular2/core'</span>;</div><div class="line"><span class="meta">@Pipe</span>(&#123;</div><div class="line">    name: <span class="string">'fetch'</span>,</div><div class="line">    pure: <span class="literal">false</span></div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> FetchJsonPipe &#123;</div><div class="line">    <span class="keyword">private</span> fetchedValue:<span class="built_in">any</span>;</div><div class="line">    <span class="keyword">private</span> fetchPromise:Promise&lt;<span class="built_in">any</span>&gt;;</div><div class="line">    transform(value:<span class="built_in">string</span>, args:<span class="built_in">string</span>[]):<span class="built_in">any</span> &#123;</div><div class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.fetchPromise) &#123;</div><div class="line">         <span class="keyword">this</span>.fetchPromise = <span class="built_in">window</span>.fetch(value)</div><div class="line">        .then((result:<span class="built_in">any</span>) =&gt; result.json())</div><div class="line">        .then((json:<span class="built_in">any</span>) =&gt; <span class="keyword">this</span>.fetchedValue = json);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.fetchedValue;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/C#/C#中处理耗时任务的几种方式/">
+        C#中处理耗时任务的几种方式
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、准备"><a href="#0、准备" class="headerlink" title="0、准备"></a>0、准备</h2><p>首先，我们先创建几个耗时任务：</p>
+<pre><code>public class TestTasks
+{
+    //无参、无返回值任务
+    public void Task1()
+    {
+        Console.WriteLine(&quot;task1.&quot;);
+        Thread.Sleep(5000);
+        Console.WriteLine(&quot;task1 completed.&quot;);
+    }
+
+    //有参数、无返回值任务
+    public void Task2(int x)
+    {
+        if (x &lt; 2000) 
+        {
+            x += 2000;
+        }
+        Console.WriteLine(&quot;task2.&quot;);
+        Thread.Sleep(x);
+        Console.WriteLine(&quot;task2 completed.&quot;);
+    }
+
+    //有参数，有返回值任务
+    public int Task3(int x)
+    {
+        if (x &lt; 2000)
+        {
+            x += 2000;
+        }
+        Console.WriteLine(&quot;task3.&quot;);
+        Thread.Sleep(x);
+        Console.WriteLine(&quot;task3 completed.&quot;);
+        return x;
+    }
+}
+</code></pre><h2 id="1、创建新线程执行方法"><a href="#1、创建新线程执行方法" class="headerlink" title="1、创建新线程执行方法"></a>1、创建新线程执行方法</h2><pre><code>var tt = new TestTasks();
+
+new Thread(tt.Task1).Start();
+
+//针对有参数的任务，需要用Lambda进行包装或者使用ParameterizedThreadStart对象
+new Thread(x=&gt;tt.Task2((int)x)).Start((object)1000);
+
+//使用ParameterizedThreadStart，要求要执行的方法参数必须为object，同时无返回值。
+//new Thread(new ParameterizedThreadStart(tt.Task2)).Start((object)1000);
+</code></pre><p><strong>注意：使用该方式无法执行带返回值的方法。</strong></p>
+<p><strong>推荐指数：★★</strong></p>
+<h2 id="2、使用异步调用方式执行方法"><a href="#2、使用异步调用方式执行方法" class="headerlink" title="2、使用异步调用方式执行方法"></a>2、使用异步调用方式执行方法</h2><pre><code>var tt = new TestTasks();
+
+Action ac = tt.Task1;
+Action&lt;int&gt; ac2 = tt.Task2;
+ac.BeginInvoke(null, null);
+ac2.BeginInvoke(1000, null, null);
+
+//以下是调用有参数，有返回值的方法
+//代码一
+private delegate int AsyncCaller(int x); //该代码放在方法体外部
+
+AsyncCaller ac = new AsyncCaller(tt.Task3);
+var asyncResult =  ac.BeginInvoke(1000,null,null);
+int result = ac.EndInvoke(asyncResult); //接收返回值
+
+//代码二，使用Func简化代码
+Func&lt;int,int&gt; ac = tt.Task3;
+var asyncResult =  ac.BeginInvoke(1000,null,null);
+int result = ac.EndInvoke(asyncResult);
+</code></pre><p><strong>注意：通过这种方式生成新线程是运行在后台的（background）,优先级为normal</strong></p>
+<p><strong>推荐指数：★★</strong></p>
+<h2 id="3、通过ThreadPool（线程池）执行方法"><a href="#3、通过ThreadPool（线程池）执行方法" class="headerlink" title="3、通过ThreadPool（线程池）执行方法"></a>3、通过ThreadPool（线程池）执行方法</h2><pre><code>var tt = new TestTasks();
+
+ThreadPool.QueueUserWorkItem(o =&gt; tt.Task1());
+ThreadPool.QueueUserWorkItem(o =&gt; tt.Task2(1000));
+</code></pre><p><strong>注意：该方式不支持返回值，可以将返回值保存在引入类型的参数上，然后进行迂回实现</strong></p>
+<p><strong>推荐指数：★★★</strong></p>
+<h2 id="4、通过BackgroundWorker（后台Worker）执行方法"><a href="#4、通过BackgroundWorker（后台Worker）执行方法" class="headerlink" title="4、通过BackgroundWorker（后台Worker）执行方法"></a>4、通过BackgroundWorker（后台Worker）执行方法</h2><pre><code>var tt = new TestTasks();
+
+var bw = new BackgroundWorker();
+bw.DoWork += (sender, e) =&gt; tt.Task1();
+bw.DoWork += (sender, e) =&gt; tt.Task2(1000);    
+
+//要接收返回值，必须将返回值赋值给Result。
+bw.DoWork += (sender, e) =&gt; e.Result = tt.Task3(1000);
+
+bw.RunWorkerAsync();
+
+//注册事件使用返回值
+bw.RunWorkerCompleted += (sender, e) =&gt; Console.WriteLine(e.Result);
+</code></pre><p><strong>注意：使用BackgroundWorker注册DoWork事件的任务只能挨个执行，如果要同时执行多个任务，需要多个BackgroundWorker。要使用返回值，一定要记得赋值给Result。</strong></p>
+<p><strong>推荐指数：★★</strong></p>
+<h2 id="5、同时Task执行方法"><a href="#5、同时Task执行方法" class="headerlink" title="5、同时Task执行方法"></a>5、同时Task执行方法</h2><pre><code>var tt = new TestTasks();
+
+var t1 = Task.Factory.StartNew(tt.Task1);
+var t2 = Task.Factory.StartNew(() =&gt; tt.Task2(1000));
+var t3 =Task.Factory.StartNew(() =&gt; tt.Task3(1000));
+
+//等待t1,t2,t3执行完成
+Task.WaitAll(t1,t2,t3);
+Console.WriteLine(t3.Result);
+</code></pre><p><strong>注意：Task具有灵活的控制能力，同时可以单个等待，多个等待。</strong></p>
+<p><strong>推荐指数：★★★★★</strong></p>
+<h2 id="6、使用async-await执行方法"><a href="#6、使用async-await执行方法" class="headerlink" title="6、使用async/await执行方法"></a>6、使用async/await执行方法</h2><pre><code>private async void AsyncRunTask()
+{
+    var tt = new TestTasks();
+    await Task.Factory.StartNew(tt.Task1);
+    await Task.Factory.StartNew(() =&gt; tt.Task2(1000));
+    var result = await Task.Factory.StartNew(() =&gt; tt.Task3(1000));
+    Console.WriteLine(result);
+}
+
+AsyncRunTask();
+Console.WriteLine(&quot;不用等待，我先执行了。&quot;);
+</code></pre><p><strong>注意：需要Framework4.5的支持</strong></p>
+<p><strong>推荐指数：★★★★</strong></p>
+<h2 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h2><p><strong>没有原理，没有言语，相信以大家聪明的大脑，已经学会如何在C#中执行耗时任务和使用多线程了。</strong></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/Angular2一路向前/跟我学Angular2（1-初体验）/">
+        跟我学Angular2（1-初体验）
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>Angular1作为最流行的前端MV*框架，给前端开发带来了极大的便利性。但是，仍然有许多不好的地方已经很难再改变了。Angular团队根据WEB发展的趋势和Angular1中积累的经验来开发了一个全新的Angular，也就是Angular2。</p>
+<h2 id="1、优势"><a href="#1、优势" class="headerlink" title="1、优势"></a>1、优势</h2><p>Angular2做了很激进的变化，带来的成果也是显而易见的。</p>
+<ol>
+<li>极大的提高了性能</li>
+<li>更强大的模块化</li>
+<li>改进的依赖注入</li>
+<li>对Web Component友好</li>
+<li>原生移动支持 - iOS 和 Android</li>
+<li>服务端渲染，搜索引擎优化</li>
+</ol>
+<h2 id="2、工具链"><a href="#2、工具链" class="headerlink" title="2、工具链"></a>2、工具链</h2><p>由于Angular2面向未来，使用了太多还不被当前主流浏览器支持的技术，跑起来还真不是一个容易的事情，所以我们需要一个工具链：</p>
+<p><img src="http://www.hubwiz.com/course/5599d367a164dd0d75929c76/img/toolchain.jpg" alt="http://www.hubwiz.com/course/5599d367a164dd0d75929c76/img/toolchain.jpg"></p>
+<p>systemjs - 通用模块加载器，支持AMD、CommonJS、ES6等各种格式的JS模块加载 </p>
+<p>es6-module-loader - ES6模块加载器，systemjs会自动加载这个模块 </p>
+<p>traceur - ES6转码器，将ES6代码转换为当前浏览器支持的ES5代码。systemjs会自动加载 这个模块。</p>
+<h2 id="3、Angular2-Hello-world"><a href="#3、Angular2-Hello-world" class="headerlink" title="3、Angular2 Hello world"></a>3、Angular2 Hello world</h2><h3 id="Step1、下载angular2"><a href="#Step1、下载angular2" class="headerlink" title="Step1、下载angular2"></a>Step1、下载angular2</h3><p><a href="https://angular.io/" target="_blank" rel="external">https://angular.io/</a>是angular2的官网，我们需要通过npm进行下载angular2： npm install angular2 <a href="https://www.npmjs.com/package/angular2" target="_blank" rel="external">https://www.npmjs.com/package/angular2</a>。</p>
+<h3 id="Step2、引入angular2"><a href="#Step2、引入angular2" class="headerlink" title="Step2、引入angular2"></a>Step2、引入angular2</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;&lt;/title&gt;
+  &lt;script src=&quot;../node_modules/angular2/bundles/angular2.sfx.dev.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre><h3 id="Step3、-Hello-angular"><a href="#Step3、-Hello-angular" class="headerlink" title="Step3、 Hello angular"></a>Step3、 Hello angular</h3><pre><code>&lt;body&gt;
+  &lt;app&gt;&lt;/app&gt;
+  &lt;script&gt;
+  var App = ng.Component({
+    selector: &apos;app&apos;,
+    template: &apos;&lt;h1&gt;Hello {{name}}.&lt;/h1&gt;&apos;
+  }).Class({
+    constructor: function() {
+      this.name = &apos;Angular2&apos;;
+    }
+  });
+  ng.bootstrap(App);
+  &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/jQuery拆解/jQuery中那些有趣的代码/">
+        jQuery中那些有趣的代码
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、动态执行JS代码"><a href="#0、动态执行JS代码" class="headerlink" title="0、动态执行JS代码"></a>0、动态执行JS代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">DOMEval</span>(<span class="params">code, doc</span>) </span>&#123;</div><div class="line">		doc = doc || <span class="built_in">document</span>;</div><div class="line">		<span class="keyword">var</span> script = doc.createElement(<span class="string">"script"</span>);</div><div class="line">		script.text = code;</div><div class="line">		doc.head.appendChild(script).parentNode.removeChild(script);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h2>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/jQuery拆解/01-目录篇/">
+        01-目录篇
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p><code>jQuery</code> 作为最流行的DOM操作库，已经基本上成了浏览器的事实标准。抱着学习高效dom操作的目的，我就来整个系列，来拆解下 <code>jQuery</code>。</p>
+<p>在这里，我选择的当前最新版本的 <code>jQuery(3.1.1)</code> 来分析。</p>
+<h2 id="1、jQuery功能块"><a href="#1、jQuery功能块" class="headerlink" title="1、jQuery功能块"></a>1、jQuery功能块</h2><p>为了简化分析过程，我将 <code>jQuery</code> 分为如下几个部分，然后针对每个部分进行单独分析。</p>
+<ul>
+<li>模块化加载&amp;防冲突处理</li>
+<li>基础结构</li>
+</ul>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/CSS3学习之路/CSS3入门之文本与字体/">
+        CSS3入门之文本与字体
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="1、CSS3文本效果"><a href="#1、CSS3文本效果" class="headerlink" title="1、CSS3文本效果"></a>1、CSS3文本效果</h2><h3 id="1-1、text-shadow文本阴影"><a href="#1-1、text-shadow文本阴影" class="headerlink" title="1.1、text-shadow文本阴影"></a>1.1、text-shadow文本阴影</h3><p>语法：<code>text-shadow: h-shadow v-shadow blur color;</code>(&lt;水平阴影&gt;，&lt;垂直阴影&gt;，[模糊距离]，[阴影颜色])</p>
+<p>示例：</p>
+<pre><code>&lt;h1 style=&quot;text-shadow: 5px 5px 2px green;&quot;&gt;我是文本阴影&lt;/h1&gt;
+&lt;h1 style=&quot;text-shadow: 0 0 5px blue;&quot;&gt;我是文本阴影&lt;/h1&gt;
+&lt;h1 style=&quot;text-shadow: 2px 2px 4px #000000;color: white;&quot;&gt;我是文本阴影&lt;/h1&gt;
+</code></pre><h1 style="text-shadow: 5px 5px 2px green;">我是文本阴影</h1>
+
+<h1 style="text-shadow: 0 0 5px blue;">我是文本阴影</h1>
+
+<h1 style="text-shadow: 2px 2px 4px #000000;color: white;">我是文本阴影</h1>
+
+<p><strong>该属性兼容IE10+以及所有现代浏览器</strong></p>
+<h3 id="1-2、word-break文本换行"><a href="#1-2、word-break文本换行" class="headerlink" title="1.2、word-break文本换行"></a>1.2、word-break文本换行</h3><p>语法： <code>word-break: normal|break-all|keep-all;</code></p>
+<p>normal:默认换行；break-all:允许在单词内换行；keep-all:只能在半角空格或连字符处换行</p>
+<p>示例：</p>
+<pre><code>&lt;div style=&quot;width:100px;word-break:break-all;&quot;&gt;Nice to meet you. good mor-ning.&lt;/div&gt;
+&lt;div style=&quot;width:100px;word-break:keep-all;&quot;&gt;Nice to meet you. good mor-ning.&lt;/div&gt;
+</code></pre><div style="width:100px;word-break:break-all;">Nice to meet you. good mor-ning.</div><br><div style="width:100px;word-break:keep-all;">Nice to meet you. good mor-ning.</div>
+
+<h3 id="1-3、text-overflow修剪文本"><a href="#1-3、text-overflow修剪文本" class="headerlink" title="1.3、text-overflow修剪文本"></a>1.3、text-overflow修剪文本</h3><p>语法：<code>text-overflow: clip|ellipsis|string;</code></p>
+<p>示例：</p>
+<pre><code>&lt;div style=&quot;width: 100px; overflow:hidden; white-space:nowrap;text-overflow: clip;&quot;&gt;Nice to meet you. good mor-ning.&lt;/div&gt;
+&lt;div style=&quot;width: 100px; overflow:hidden; white-space:nowrap;text-overflow: ellipsis;&quot;&gt;Nice to meet you. good mor-ning.&lt;/div&gt;
+</code></pre><div style="width: 100px; overflow:hidden; white-space:nowrap;text-overflow: clip;">Nice to meet you. good mor-ning.</div><br><div style="width: 100px; overflow:hidden; white-space:nowrap;text-overflow: ellipsis;">Nice to meet you. good mor-ning.</div>
+
+<p><strong>注意：使用text-overflow的时候，需要与overflow:hidden;white-space:nowrap;协同使用</strong></p>
+<h2 id="2、CSS3字体"><a href="#2、CSS3字体" class="headerlink" title="2、CSS3字体"></a>2、CSS3字体</h2><p>在CSS3之前，必须使用已经在用户计算机上安装好的字体，给Web设计带来很大的局限性。现在，通过CSS3,Web设计师可以使用他们喜欢的任意字体。</p>
+<h3 id="2-1、-font-face引入网络字体"><a href="#2-1、-font-face引入网络字体" class="headerlink" title="2.1、@font-face引入网络字体"></a>2.1、@font-face引入网络字体</h3><p>Firefox、Chrome、Safari 以及 Opera 支持 .ttf (True Type Fonts) 和 .otf (OpenType Fonts) 类型的字体。</p>
+<p>Internet Explorer 9+ 支持新的 @font-face 规则，但是仅支持 .eot 类型的字体 (Embedded OpenType)。</p>
+<p>不兼容IE8，IE8-。</p>
+<p>示例：</p>
+<pre><code>&lt;style&gt;
+    @font-face {
+        font-family: SentyPaperCut;
+        src:url(http://hstarcdn.github.io/fonts/SentyPaperCut.ttf);
+    }
+    @font-face {
+        font-family:SentyCreamPuff;
+        src:url(http://hstarcdn.github.io/fonts/SentyCreamPuff.otf);
+    }
+    .font1,.font2{
+      font-size: 50px;
+    }
+    .font1{
+      color: red;
+      font-family: SentyTEA-Platinum;
+    }
+    .font2{
+      color: blue;
+      font-family: SentyCreamPuff;
+    }
+&lt;/style&gt;
+
+&lt;span class=&quot;font1&quot;&gt;
+  自定义字体演示
+&lt;/span&gt;
+&lt;span class=&quot;font2&quot;&gt;
+  自定义字体演示
+&lt;/span&gt;
+</code></pre><style>
+    @font-face {
+        font-family: SentyTEA-Platinum;
+        src:url(http://hstarcdn.github.io/fonts/SentyTEA-Platinum.ttf);
+    }
+    @font-face {
+        font-family:SentyCreamPuff;
+        src:url(http://hstarcdn.github.io/fonts/SentyCreamPuff.otf);
+    }
+    .font1,.font2{
+      font-size: 50px;
+    }
+    .font1{
+      color: red;
+      font-family: SentyTEA-Platinum;
+    }
+    .font2{
+      color: blue;
+      font-family: SentyCreamPuff;
+    }
+</style>
+
+<p><span class="font1"><br>  自定义字体演示<br></span><br><span class="font2"><br>  自定义字体演示<br></span></p>
+<p>除此之外，在@font-face中，还可以设置多种字体描述符，如：</p>
+<table class="dataintable"><br><tbody><tr><br><th style="width:20%;">描述符</th><br><th style="width:25%;">值</th><br><th>描述</th><br></tr><br><br><tr><br><td>font-family</td><br><td><i>name</i></td><br><td>必需。规定字体的名称。</td><br></tr><br><br><tr><br><td>src</td><br><td><i>URL</i></td><br><td>必需。定义字体文件的 URL。</td><br></tr><br><br><tr><br><td>font-stretch</td><br><td><br>    <ul><br>    <li>normal</li><br>    <li>condensed</li><br>    <li>ultra-condensed</li><br>    <li>extra-condensed</li><br>    <li>semi-condensed</li><br>    <li>expanded</li><br>    <li>semi-expanded</li><br>    <li>extra-expanded</li><br>    <li>ultra-expanded</li><br>    </ul><br></td><br><td>可选。定义如何拉伸字体。默认是 “normal”。</td><br></tr><br><br><tr><br><td>font-style</td><br><td><br>    <ul><br>    <li>ormal</li><br>    <li>italic</li><br>    <li>oblique</li><br>    </ul><br></td><br><td>可选。定义字体的样式。默认是 “normal”。</td><br></tr><br><br><tr><br><td>font-weight</td><br><td><br>    <ul><br>    <li>normal</li><br>    <li>bold</li><br>    <li>100</li><br>    <li>200</li><br>    <li>300</li><br>    <li>400</li><br>    <li>500</li><br>    <li>600</li><br>    <li>700</li><br>    <li>800</li><br>    <li>900</li><br>    </ul><br></td><br><td>可选。定义字体的粗细。默认是 “normal”。</td><br></tr><br><br><tr><br><td>unicode-range</td><br><td><i>unicode-range</i></td><br><td>可选。定义字体支持的 UNICODE 字符范围。默认是 “U+0-10FFFF”。</td><br></tr><br></tbody></table>
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/blog/2017/02/21/Angular2一路向前/10_Angular2模块/">
+        10_Angular2模块
+      </a>
+    </h2>
+    
+    <time>
+      Feb 21, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="0、导言"><a href="#0、导言" class="headerlink" title="0、导言"></a>0、导言</h2><p>该Angular2系列，从10开始，则对应 <code>Angular2</code> 正式版本。</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+  <nav id="page-nav">
+    
+    <a class="prev" rel="prev" href="/blog/page/8/">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
+    </a>
+    
+    
+    <a class="next" rel="next" href="/blog/page/10/">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
+    
+  </nav>
+  
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='https://avatars1.githubusercontent.com/u/4043284?v=3&amp;s=460' />
+
+<div class='header'>Jay.M.Hu</div>
+<div class='content'>
+<div></div>
+</div>
+</section>
+
+  <section class='m_widget friendly-links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="http://humin.cnblogs.com/">
+            <div class='name'>幻天芒 - 博客园</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/hstarorg" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
