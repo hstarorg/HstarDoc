@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const replaceRegExp = /<!--TableOfContnets Start-->(\r\n|\n)*<!--TableOfContnets End-->/;
+const replaceRegExp = /<!--TableOfContnets Start-->(\r\n|\n|.|\.)*<!--TableOfContnets End-->/;
 
 const getSpaces = level => {
   let result = '';
@@ -9,6 +9,10 @@ const getSpaces = level => {
     result += '    ';
   }
   return result;
+};
+
+const getSafePath = p => {
+  return p.replace(/\\/g, '/');
 };
 
 let tableOfContnets = '';
@@ -21,10 +25,10 @@ const processDir = (folder, level = 0) => {
     }
     let folderPath = path.join(folder, folderName);
     if (fs.statSync(folderPath).isDirectory()) {
-      tableOfContnets += `${getSpaces(level)}* [${folderName}](${folderPath})\n`;
+      tableOfContnets += `${getSpaces(level)}* [${folderName}](${getSafePath(folderPath)})\n`;
       processDir(folderPath, level + 1);
     } else if (path.extname(folderPath) === '.md') {
-      tableOfContnets += `${getSpaces(level)}* [${folderName}](${folderPath})\n`;
+      tableOfContnets += `${getSpaces(level)}* [${folderName}](${getSafePath(folderPath)})\n`;
     }
   });
 };
