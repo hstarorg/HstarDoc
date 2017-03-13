@@ -37,7 +37,7 @@ processDir('.');
 
 let readmeContent = fs.readFileSync('README.md', 'utf8');
 
-let newReadmeContent = readmeContent.replace(replaceRegExp, `<!--TableOfContnets Start-->\n${tableOfContnets}<!--TableOfContnets End-->`)
+let newReadmeContent = readmeContent.replace(replaceRegExp, `<!--TableOfContnets Start-->\n${tableOfContnets}<!--TableOfContnets End-->\n\n`)
 fs.writeFileSync('README.md', newReadmeContent, 'utf8');
 
 console.log('更新目录成功！');
