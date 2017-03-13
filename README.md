@@ -1,6 +1,6 @@
-# blog
+# HstarDoc
 markdown docs.
-用于保存我的markdown blog.
+Save my markdown blogs.
 
 # Table of Contents
 <!--TableOfContnets Start-->
