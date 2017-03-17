@@ -12,7 +12,8 @@ const getSpaces = level => {
 };
 
 const getSafePath = p => {
-  return p.replace(/\\/g, '/');
+  let v = p.replace(/\\/g, '/');
+  return encodeURI(v);
 };
 
 let tableOfContnets = '';
