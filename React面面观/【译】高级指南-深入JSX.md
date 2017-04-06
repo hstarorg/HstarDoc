@@ -51,7 +51,7 @@ React.createElement(
 
 ### React必须在作用域内
 
-由于 `JSX` 编译为调用 `React.createElement`，那么 `React` 库也必须在 `JSX 代码` 所在的作用域类。
+由于 `JSX` 编译为调用 `React.createElement`，那么 `React` 库也必须在 `JSX 代码` 所在的作用域内。
 
 例如，即使 `React` 和 `CustomButton` 没有直接在 `JavaScript` 中被引用，顶部的 `import` 语句也是必须的：
 
@@ -65,9 +65,9 @@ function WarningButton() {
 }
 ```
 
-即使你没有使用打包工具，且是从 script 标签引入 `React`，`React` 也是已全局变量的形式存在于作用域内。
+即使你没有使用打包工具，且是从 script 标签引入 `React`，`React` 也是以全局变量的形式存在于作用域内。
 
-### 使用点分割的JSX类型
+### 对JSX类型使用点分割
 
 你们同样可以使用点表示法来引入 `React` 组件。如果您有一个导出了多个组件的模块，这样做会很方便。例如，如果 `MyComponents.DatePicker` 是一个组件，我们可以采用如下方式引入：
 
@@ -123,6 +123,7 @@ function HelloWorld() {
   // 正确！React 认为 <Hello /> 是一个组件。
   return <Hello toWhat="World" />;
 }
+```
 
 ### 在运行时选择类型
 
@@ -143,7 +144,7 @@ function Story(props) {
 }
 ```
 
-要想解决这个问题，我们可以将值赋值给一个大写变量。
+要想解决这个问题，我们可以将值赋给一个大写变量。
 
 ```js{9-11}
 import React from 'react';
@@ -219,7 +220,7 @@ function NumberDescriber(props) {
 <MyTextBox autocomplete={true} />
 ```
 
-一般来说，我们不建议这样使用。因为它可能与[ES6对象简写](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015) `{foo: foo}` 简写为 `{foo}` 相冲突。这种行为之所以存在，是因为它符合HTML的规则。
+一般来说，我们不建议这样使用，因为它可能与[ES6对象简写](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015) `{foo: foo}` 简写为 `{foo}` 混淆。这种形式之所以存在，是因为它符合HTML的规则。
 
 ### 属性扩散（Spread Attributes）
 
@@ -361,7 +362,7 @@ function ListOfTenThings() {
 
 ### 布尔值，NULL和Undefined将被忽略
 
-`false, null, undefined, true` 都是合法的子元素。它们根本不会被渲染。一下的JSX表达式都会渲染出同样的结果：
+`false, null, undefined, true` 都是合法的子元素。它们根本不会被渲染。以下的JSX表达式都会渲染出同样的结果：
 
 
 ```js
