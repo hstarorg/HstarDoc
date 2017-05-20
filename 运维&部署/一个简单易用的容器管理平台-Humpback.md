@@ -89,10 +89,12 @@ humpbacks/humpback-agent:1.0.0
 
 4. 将机器（虚拟机）纳入Humpback管理
 
-打开我们第2步运行起来的Web管理平台，登录之后，创建一个Group，并将部署了 `humpback-agent` 的机器IP，添加到Servers属性中，如图：
-
+打开我们第2步运行起来的Web管理平台，登录之后，创建一个Group:
+![Humpback Group List](http://img.hstar.org/humpback-demo-img-1.png)
+并将部署了 `humpback-agent` 的机器IP，添加到Servers属性中，如图：
+![Humpback Add Group](http://img.hstar.org/humpback-demo-img-2.jpg)
 ，然后进入我们的Group就能看到我们的机器和容器了。
-
+![Humpback Add Group](http://img.hstar.org/humpback-demo-img-3.jpg)
 **至此，我们的Humback已经可用了，当然，这仅仅部署了一部分功能。如果需要私有仓库和集群，参考官方文档进行部署即可。**
 
 
@@ -194,3 +196,17 @@ Humpback中：
 总之，Humpback好用，有需要就赶紧体验下吧。暂时不需要，也可以体验下，吹牛也能多一些套路，而且，万一以后用得到呢。
 
 当然，此文提到的仅仅的基础用法，但我觉得，这足够了。要想体验更复杂的玩法，强烈建议参考官方文档。
+
+另附上几张操作图：
+
+创建容器界面：
+![创建容器界面](http://img.hstar.org/humpback-demo-img-4.jpg) 
+
+容器详细信息界面：
+![容器详细信息界面：](http://img.hstar.org/humpback-demo-img-5.jpg) 
+
+容器版本升级界面
+![容器版本升级界面](http://img.hstar.org/humpback-demo-img-6.jpg)  
+
+容器监控界面
+![容器监控界面](http://img.hstar.org/humpback-demo-img-7.jpg)  
