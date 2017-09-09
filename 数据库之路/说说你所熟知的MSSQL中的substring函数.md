@@ -28,7 +28,7 @@ date: 2017/02/21 14:47:10
 
 ###三大知识点：
 	
-	1. MSSQL中，下标从1开始，注意：不是大多数编程语言采用的1。
+	1. MSSQL中，下标从1开始，注意：不是大多数编程语言采用的0。
 	2. substring函数的调用substring(str,startIndex,length)
 	   效果上是转换为substring(str,startIndex,endIndex)来运算的，
 	   endIndex=startIndex+length。
