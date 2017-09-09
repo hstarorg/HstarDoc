@@ -1,3 +1,7 @@
+---
+title: Express异步进化史
+date: 2017-9-9 12:59:49
+---
 # 1、导言
 
 在 `Javascript` 的世界里，异步（由于JavaScript的单线程运行，所以JavaScript中的异步是可以阻塞的）无处不在。
