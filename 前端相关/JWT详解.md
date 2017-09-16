@@ -1,3 +1,8 @@
+---
+title: JWT详解
+date: 2017-9-9 13:12:15
+---
+
 # 0、什么是JWT(JsonWebToken)
 
 JWT，全称 JSON Web Token，本身是一种开放的行业标准 [JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519)，官网 [https://jwt.io/](https://jwt.io/)。
