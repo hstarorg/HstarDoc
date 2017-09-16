@@ -94,6 +94,8 @@ const expert = `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiw
 console.log('与https://jwt.io/的结果进行比对：', expert === encrypted);
 ```
 
+**注意：jwt本身可以使用多种加密方式，如上代码只是显示了RSA-SHA256算法**
+
 # 4、常用问题解析
 
 ## 4.1、jwt如何过期呢？
