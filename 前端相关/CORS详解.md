@@ -193,10 +193,10 @@ xhr.send();
 
 此处列举后端有关CORS的响应头：
 
-1. Access-Control-Allow-Origin： <origin> | *  允许的域名
+1. Access-Control-Allow-Origin： <origin> | *  允许的域名，只能有一个值。比如“*”或“abc.com”，"a.com,b.com"这种不允许
 2. Access-Control-Expose-Headers: <headers> 允许的白名单Header，多个用逗号隔开
-3. Access-Control-Max-Age: <delta-seconds>  预请求缓存时间，单位秒
-4. Access-Control-Allow-Credentials: true | false  是否允许带凭证的请求
+3. Access-Control-Max-Age: <delta-seconds>  预请求缓存时间，单位秒，**禁用缓存**时无效哦！
+4. Access-Control-Allow-Credentials: true | false  是否允许带凭证的请求，如果为true，则Origin只能是具体的值
 5. Access-Control-Allow-Methods: <methods> 允许的请求类型，多个用逗号隔开
 6. Access-Control-Allow-Headers: <headers> 在实际请求中，允许的自定义header，多个用逗号隔开
 
