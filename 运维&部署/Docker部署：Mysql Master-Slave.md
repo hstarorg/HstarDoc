@@ -238,7 +238,7 @@ systemctl restart network
 
 ```sql
 -- 允许使用native password
-ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '<root账户密码>';
 -- 刷新授权表
 flush privileges;
 ```
